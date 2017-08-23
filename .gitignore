@@ -1,0 +1,23 @@
+# OS X
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Desktop.ini
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+Icon?
+
+# Git
+.git/
+
+# Node
+node_modules/
+
+## Temporary
+TODO
+src-old/
+tests/

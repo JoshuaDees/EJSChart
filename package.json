@@ -1,0 +1,32 @@
+{
+  "name": "ejschart",
+  "version": "3.0.0",
+  "description": "EJSChart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshuaDees/EJSChart.git"
+  },
+  "author": "Joshua Dees",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshuaDees/EJSChart/issues"
+  },
+  "homepage": "https://github.com/JoshuaDees/EJSChart#readme",
+  "devDependencies": {
+    "eslint": "^4.4.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^20.0.0",
+    "grunt-remove": "^0.1.0",
+    "grunt-replace": "^1.0.1",
+    "grunt-strip-code": "^1.0.6"
+  },
+  "dependencies": {}
+}
