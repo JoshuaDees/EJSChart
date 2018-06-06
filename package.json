@@ -1,32 +1,26 @@
 {
-  "name": "ejschart",
+  "name": "ejscharts",
   "version": "3.0.0",
   "description": "EJSChart",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JoshuaDees/EJSChart.git"
-  },
-  "author": "Joshua Dees",
+  "main": "dist/ejschart.js",
+  "repository": "https://github.com/JoshuaDees/ejscharts.git",
+  "author": "dees.joshua <dees.joshua@gmail.com>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JoshuaDees/EJSChart/issues"
-  },
-  "homepage": "https://github.com/JoshuaDees/EJSChart#readme",
+  "scripts": {},
+  "dependencies": {},
   "devDependencies": {
-    "eslint": "^4.4.0",
-    "grunt": "^1.0.1",
-    "grunt-contrib-concat": "^1.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "grunt": "^1.0.3",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^2.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-eslint": "^20.0.0",
-    "grunt-remove": "^0.1.0",
-    "grunt-replace": "^1.0.1",
-    "grunt-strip-code": "^1.0.6"
-  },
-  "dependencies": {}
+    "grunt-eslint": "^20.1.0",
+    "grunt-webpack": "^3.1.2",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.3",
+    "webpack-replace": "^1.0.0",
+    "webpack-strip-blocks": "^1.0.0"
+  }
 }
