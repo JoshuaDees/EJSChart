@@ -699,7 +699,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     var chart = this;
 
     // Draw the axes
-    Util.forEach(this.axisList, function(axis) {
+    Util.forEach(this.axisList, (axis) => {
       chart[axis].draw();
     });
 
@@ -744,7 +744,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     );
 
     // Loop through the visible series and draw each
-    Util.forEach(this.getVisibleSeries(), function(series) {
+    Util.forEach(this.getVisibleSeries(), (series) => {
       series.draw();
     });
 
@@ -809,7 +809,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   // TODO:
   getVisibleSeries() {
     // Return the list of visible series
-    return Util.filter(this.series, function(series) {
+    return Util.filter(this.series, (series) => {
       return series.isVisible();
     });
   }
@@ -829,7 +829,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     var chart = this;
 
     // Loop through each of the sides
-    Util.forEach(this.sidesList, function(side) {
+    Util.forEach(this.sidesList, (side) => {
       // Create some temporary variables
       var axis = 'axis' + Util.capitalize(side);
 
