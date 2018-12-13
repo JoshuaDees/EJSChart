@@ -825,7 +825,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     var gridStyle = axis.grid.style;
 
     // Loop through the ticks
-    Util.forEach(ticks, function(tick) {
+    Util.forEach(ticks, (tick) => {
       // Define some local variables
       var pixel = Util.round(axis.convertPointToPixel(tick));
       var x1;
@@ -866,7 +866,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     var majorTicksStyle = majorTicks.style;
 
     // Loop through the ticks
-    Util.forEach(ticks, function(tick) {
+    Util.forEach(ticks, (tick) => {
       // Define some local variables
       var pixel = Util.round(axis.convertPointToPixel(tick));
       var x1;
@@ -933,7 +933,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     }
 
     // Loop through the ticks
-    Util.forEach(ticks, function(tick) {
+    Util.forEach(ticks, (tick) => {
       // Define some local variables
       var pixel = Util.round(axis.convertPointToPixel(tick));
       var text = Util.round(tick, 12);

@@ -75,10 +75,10 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
     }
 
     // Loop through each of the visible series
-    Util.forEach(visibleSeries, function(series) {
+    Util.forEach(visibleSeries, (series) => {
       // Calculate the min and max range
-      Util.forEach(series.data, function(point) {
-        Util.forEach(series.dataPoints[dataPoint], function(property) {
+      Util.forEach(series.data, (point) => {
+        Util.forEach(series.dataPoints[dataPoint], (property) => {
           min = Util.min([min, point[property]]);
           max = Util.max([max, point[property]]);
         });

@@ -90,10 +90,10 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     }
 
     // Loop through each of the visible series
-    Util.forEach(visibleSeries, function(series) {
+    Util.forEach(visibleSeries, (series) => {
       // Calculate the min and max range
-      Util.forEach(series.data, function(point) {
-        Util.forEach(series.dataPoints[dataPoint], function(property) {
+      Util.forEach(series.data, (point) => {
+        Util.forEach(series.dataPoints[dataPoint], (property) => {
           // Calculate the extremes
           min = Util.min([min, point[property]]);
           max = Util.max([max, point[property]]);

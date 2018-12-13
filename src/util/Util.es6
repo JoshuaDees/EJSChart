@@ -645,9 +645,9 @@ export default EJSC.Util = new class {
    */
   isUndefined(value) {
     // Return if value is undefined
-    return value === (function() {
+    return value === ((() => {
       // noop
-    }());
+    })());
   }
 
   /**
