@@ -730,10 +730,7 @@ EJSC.SVG.buildStylesheet = () => {
  * @return {Boolean} If the browser supports SVG
  * @since 3.0.0
  */
-EJSC.SVG.isSupported = () => {
-  // Return if the element supports SVG
-  return document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1');
-};
+EJSC.SVG.isSupported = () => document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1');
 
 // Register the engine
 Drawing.register('SVG', EJSC.SVG);

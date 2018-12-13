@@ -1086,12 +1086,10 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   getVisibleSeries() {
     // Grab the list of visible attached series
-    var visibleSeries = Util.filter(this.chart.series, (series) => {
-      return (
-        (this.orientation === 'horizontal' && series.xAxis === this.side && series.isVisible()) ||
-        (this.orientation === 'vertical' && series.yAxis === this.side && series.isVisible())
-      );
-    });
+    var visibleSeries = Util.filter(this.chart.series, (series) => (
+      (this.orientation === 'horizontal' && series.xAxis === this.side && series.isVisible()) ||
+      (this.orientation === 'vertical' && series.yAxis === this.side && series.isVisible())
+    ));
 
     // Return the list of visible series
     return visibleSeries;

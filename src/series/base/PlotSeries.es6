@@ -112,9 +112,7 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    */
   getVisiblePoints() {
     // Return the list of visible points
-    return Util.filter(this.data, (point) => {
-      return this.isPointVisible(point);
-    });
+    return Util.filter(this.data, (point) => this.isPointVisible(point));
   }
 
   /**

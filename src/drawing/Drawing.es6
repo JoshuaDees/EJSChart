@@ -634,9 +634,7 @@ export default EJSC.Drawing = class Drawing extends Class {
   selectEngine() {
     // Find and select the first supported engine
     if (Util.isNil(this.engine)) {
-      this.engine = new (Util.find(EJSC.Drawing.engines, (engine) => {
-        return engine.isSupported();
-      }))();
+      this.engine = new (Util.find(EJSC.Drawing.engines, (engine) => engine.isSupported()))();
     }
 
     // Link the engine back to the drawing
