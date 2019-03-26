@@ -1,6 +1,7 @@
 import EJSC from '../EJSC.es6';
 import Axis from './base/Axis.es6';
-import Util from '../util/Util.es6';
+import $Number from '../util/Number.es6';
+import $Object from '../util/Object.es6';
 
 /**
  * TODO:
@@ -15,12 +16,10 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
   /* not-sparkline:start */
   calculateCross(point1, point2, coordinate) {
     // Define some local variables
-    var x = coordinate;
-    var y = coordinate;
-    var x1 = point1.x;
-    var y1 = point1.y;
-    var x2 = point2.x;
-    var y2 = point2.y;
+    let x = coordinate;
+    let y = coordinate;
+    let { x: x1, y: y1 } = point1;
+    let { x: x2, y: y2 } = point2;
 
     // Determine the cross points based on the side
     switch (this.orientation) {
@@ -34,10 +33,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
     }
 
     // Return the cross coordinates
-    return {
-      x: x,
-      y: y
-    };
+    return { x, y };
   }
   /* not-sparkline:end */
 
@@ -50,24 +46,18 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    */
   calculateExtremes() {
     // Grab some local pointers
-    var drawArea = this.drawArea;
-    var orientation = this.orientation;
-    var padding = this.padding;
-    var extremes = this.extremes;
-    var visibleSeries = this.getVisibleSeries();
+    let { drawArea, orientation, padding, extremes } = this;
+    let visibleSeries = this.getVisibleSeries();
 
     // Define some local variables
-    var dataPoint = orientation === 'vertical' ? 'y' : 'x';
-    var spacing = 0;
-    var min = null;
-    var max = null;
-    var scale;
+    let dataPoint = orientation === 'vertical' ? 'y' : 'x';
+    let spacing = 0;
+    let min = null;
+    let max = null;
+    let scale;
 
     // Reset the extremes
-    Util.merge(extremes, {
-      min: null,
-      max: null
-    });
+    $Object.merge(extremes, { min, max });
 
     // If there are no visible series, we can't calculate the extremes
     if (visibleSeries.length <= 0) {
@@ -75,17 +65,18 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
     }
 
     // Loop through each of the visible series
-    Util.forEach(visibleSeries, (series) => {
+    visibleSeries.forEach(series => {
       // Calculate the min and max range
-      Util.forEach(series.data, (point) => {
-        Util.forEach(series.dataPoints[dataPoint], (property) => {
-          min = Util.min([min, point[property]]);
-          max = Util.max([max, point[property]]);
+      series.data.forEach(point => {
+        series.dataPoints[dataPoint].forEach(property => {
+          // Calculate the extremes
+          min = $Number.min(min, point[property]);
+          max = $Number.max(max, point[property]);
         });
       });
 
       // Calculate the series spacing
-      spacing = Util.max([spacing, series.calculateSpacing()]);
+      spacing = $Number.max(spacing, series.calculateSpacing());
     });
 
     // Add the series spacing to the padding
@@ -102,11 +93,12 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
         break;
     }
 
-    // Update the extremes with the padding
-    Util.merge(extremes, {
-      min: min - (scale * padding),
-      max: max + (scale * padding)
-    });
+    // Update the extremes with padding
+    min = min - (scale * padding);
+    max = max + (scale * padding);
+
+    // Store the extremes
+    $Object.merge(extremes, { min, max });
   }
 
   /**
@@ -119,18 +111,17 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    */
   calculateTicks() {
     // Grab some local pointers
-    var zoom = this.getCurrentZoom();
+    let zoom = this.getCurrentZoom();
 
     // Define some local variables
-    var min = zoom.min;
-    var max = zoom.max;
-    var range = max - min;
-    var interval = Math.pow(10, Math.floor(Math.log10(range)));
-    var count = 3;
-    var increment;
-    var start;
-    var i;
-    var ticks = [];
+    let { min, max } = zoom;
+    let range = max - min;
+    let interval = Math.pow(10, Math.floor(Math.log10(range)));
+    let count = 3;
+    let increment;
+    let start;
+    let i;
+    let ticks = [];
 
     // Set up the increment
     if (range / interval >= count) {
@@ -166,18 +157,17 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    */
   convertPixelToPoint(pixel) {
     // Grab some local pointers
-    var drawArea = this.drawArea;
-    var zoom = this.getCurrentZoom();
+    let drawArea = this.drawArea;
+    let zoom = this.getCurrentZoom();
 
     // Define some local variables
-    var pixelMin;
-    var pixelMax;
-    var pixelDif;
-    var pixelPerc;
-    var pointMin = zoom.min;
-    var pointMax = zoom.max;
-    var pointDif = pointMax - pointMin;
-    var point = null;
+    let pixelMin;
+    let pixelMax;
+    let pixelDif;
+    let pixelPerc;
+    let { min: pointMin, max: pointMax } = zoom;
+    let pointDif = pointMax - pointMin;
+    let point = null;
 
     // There needs to be a current zoom to convert
     if (pointMin !== null && pointMax !== null) {
@@ -230,17 +220,16 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    */
   convertPointToPixel(point) {
     // Grab some local pointers
-    var drawArea = this.drawArea;
-    var zoom = this.getCurrentZoom();
+    let drawArea = this.drawArea;
+    let zoom = this.getCurrentZoom();
 
     // Define some local variables
-    var pointMin = zoom.min;
-    var pointMax = zoom.max;
-    var pointPerc = ((point - pointMin) / (pointMax - pointMin));
-    var pixelMin;
-    var pixelMax;
-    var pixelDif;
-    var pixel = null;
+    let { min: pointMin, max: pointMax } = zoom;
+    let pointPerc = ((point - pointMin) / (pointMax - pointMin));
+    let pixelMin;
+    let pixelMax;
+    let pixelDif;
+    let pixel = null;
 
     // There needs to be a current zoom to convert
     if (pointMin !== null && pointMax !== null) {

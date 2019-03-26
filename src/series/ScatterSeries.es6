@@ -1,6 +1,8 @@
 import EJSC from '../EJSC.es6';
 import XYSeries from './base/XYSeries.es6';
-import Util from '../util/Util.es6';
+import $Number from '../util/Number.es6';
+import $Object from '../util/Object.es6';
+import $Variable from '../util/Variable.es6';
 
 /**
  * // TODO:
@@ -42,7 +44,7 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
   // setter
   setPoints(points, apply) {
     // Update the current points
-    Util.merge(this.points, points);
+    $Object.merge(this.points, points);
 
     // Redraw the chart if needed
     if (apply !== false) {
@@ -78,7 +80,7 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    */
   calculateExtremes() {
     // Define some local variables
-    var extremes = {
+    let extremes = {
       xMin: null,
       xMax: null,
       yMin: null,
@@ -86,13 +88,13 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
     };
 
     // Loop through the associated data
-    Util.forEach(this.data, (point) => {
+    this.data.forEach(point => {
       // Update the xMin value if needed
-      Util.merge(extremes, {
-        xMin: Util.min([extremes.xMin, point.x]),
-        xMax: Util.max([extremes.xMax, point.x]),
-        yMin: Util.min([extremes.yMin, point.y]),
-        yMax: Util.max([extremes.yMax, point.y])
+      $Object.merge(extremes, {
+        xMin: $Number.min(extremes.xMin, point.x),
+        xMax: $Number.max(extremes.xMax, point.x),
+        yMin: $Number.min(extremes.yMin, point.y),
+        yMax: $Number.max(extremes.yMax, point.y)
       });
     });
 
@@ -110,10 +112,10 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    */
   calculateSpacing() {
     // Grab some local pointers
-    var points = this.points;
+    let points = this.points;
 
     // Determine the spacing needed for the series
-    var spacing = Math.ceil(points.size + (points.style.lineWidth / 2));
+    let spacing = Math.ceil(points.size + (points.style.lineWidth / 2));
 
     // Return the spacing needed for the series
     return spacing;
@@ -127,24 +129,24 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    * @since 3.0.0
    */
   draw() {
-    // Define some local variables
-    var chart = this.chart;
-    var xAxis = this.referenceXAxis();
-    var yAxis = this.referenceYAxis();
-    var points = this.points;
-    var color = this.color;
-    var style = Util.merge({}, points.style);
-    var size = points.size;
+    // Grab some local pointers
+    let { chart, points, color } = this;
+
+      // Define some local variables
+    let xAxis = this.referenceXAxis();
+    let yAxis = this.referenceYAxis();
+    let style = $Object.merge({}, points.style);
+    let size = points.size;
 
     // Fill in missing colors if needed
     style.fillStyle = style.fillStyle || this.setOpacity(color, 0.5);
     style.strokeStyle = style.strokeStyle || color;
 
     // Draw the visible points
-    Util.forEach(this.getVisiblePoints(), (point) => {
+    this.getVisiblePoints().forEach(point => {
       // Define the pixel values
-      var dx = xAxis.convertPointToPixel(point.x) + 0.5;
-      var dy = yAxis.convertPointToPixel(point.y) + 0.5;
+      let dx = xAxis.convertPointToPixel(point.x) + 0.5;
+      let dy = yAxis.convertPointToPixel(point.y) + 0.5;
 
       // Determine what shape to draw
       switch (points.shape) {
@@ -193,14 +195,14 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    */
   isPointVisible(point) {
     // Grab some local pointers
-    var spacing = this.calculateSpacing();
-    var xAxisZoom = this.referenceXAxis().getCurrentZoom(spacing);
-    var yAxisZoom = this.referenceYAxis().getCurrentZoom(spacing);
+    let spacing = this.calculateSpacing();
+    let xAxisZoom = this.referenceXAxis().getCurrentZoom(spacing);
+    let yAxisZoom = this.referenceYAxis().getCurrentZoom(spacing);
 
     // Determine if the point should be drawn or not
-    var isPointVisible = (
-      Util.isNil(point.x) === false &&
-      Util.isNil(point.y) === false &&
+    let isPointVisible = (
+      $Variable.isNil(point.x) === false &&
+      $Variable.isNil(point.y) === false &&
       point.x >= xAxisZoom.min &&
       point.x <= xAxisZoom.max &&
       point.y >= yAxisZoom.min &&

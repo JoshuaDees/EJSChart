@@ -1,6 +1,9 @@
 import EJSC from '../../EJSC.es6';
 import Class from '../../class/Class.es6';
-import Util from '../../util/Util.es6';
+import $Number from '../../util/Number.es6';
+import $Object from '../../util/Object.es6';
+import $String from '../../util/String.es6';
+import $Variable from '../../util/Variable.es6';
 
 /**
  * Holds the code common to all Axis types.
@@ -37,7 +40,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   // setter
   setBorder(border, apply) {
     // Update the current border
-    Util.merge(this.border, border);
+    $Object.merge(this.border, border);
 
     // Redraw the chart if needed
     if (apply !== false) {
@@ -73,7 +76,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   // setter
   setCaption(caption, apply) {
     // Update the current caption
-    Util.merge(this.caption, caption);
+    $Object.merge(this.caption, caption);
 
     // Redraw the chart if needed
     if (apply !== false) {
@@ -487,15 +490,15 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   calculateDrawArea() {
     // Grab some local pointers
-    var chart = this.chart;
-    var chartDrawArea = chart.drawArea;
-    var drawArea = Util.merge(this.drawArea, chartDrawArea);
+    let chart = this.chart;
+    let chartDrawArea = chart.drawArea;
+    let drawArea = $Object.merge(this.drawArea, chartDrawArea);
 
     // Declare some local variables
-    var bottom;
-    var left;
-    var right;
-    var top;
+    let bottom;
+    let left;
+    let right;
+    let top;
 
     /* not-sparkline:start */
     // Update the drawArea based on the axis' side
@@ -529,11 +532,11 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
         break;
     }
 
-    Util.merge(drawArea, {
-      left: left,
-      top: top,
-      right: right,
-      bottom: bottom
+    $Object.merge(drawArea, {
+      left,
+      top,
+      right,
+      bottom
     });
     /* not-sparkline:end */
   }
@@ -558,16 +561,16 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   calculateScale() {
     // Grab some local pointers
-    var drawArea = this.drawArea;
-    var extremes = this.extremes;
-    var orientation = this.orientation;
-    var zoom = this.zoom;
+    let drawArea = this.drawArea;
+    let extremes = this.extremes;
+    let orientation = this.orientation;
+    let zoom = this.zoom;
 
     // Define some local variables
-    var pointMin = zoom.min || extremes.min;
-    var pointMax = zoom.max || extremes.max;
-    var pixelMin = (orientation === 'vertical' ? drawArea.top : drawArea.left);
-    var pixelMax = (orientation === 'vertical' ? drawArea.bottom : drawArea.right);
+    let pointMin = zoom.min || extremes.min;
+    let pointMax = zoom.max || extremes.max;
+    let pixelMin = (orientation === 'vertical' ? drawArea.top : drawArea.left);
+    let pixelMax = (orientation === 'vertical' ? drawArea.bottom : drawArea.right);
 
     // Calculate the scale
     this.scale = (pointMax - pointMin) / (pixelMax - pixelMin);
@@ -628,12 +631,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   // TODO:
   draw() {
     // Grab some local pointers
-    var chart = this.chart;
-    var drawArea = chart.drawArea;
-    var bottom = drawArea.bottom - chart.axisBottom.getOffsetSize();
-    var left = drawArea.left + chart.axisLeft.getOffsetSize();
-    var right = drawArea.right - chart.axisRight.getOffsetSize();
-    var top = drawArea.top + chart.axisTop.getOffsetSize();
+    let chart = this.chart;
+    let drawArea = chart.drawArea;
+    let bottom = drawArea.bottom - chart.axisBottom.getOffsetSize();
+    let left = drawArea.left + chart.axisLeft.getOffsetSize();
+    let right = drawArea.right - chart.axisRight.getOffsetSize();
+    let top = drawArea.top + chart.axisTop.getOffsetSize();
 
     // If this axis is not visible, don't do anything
     if (!this.isVisible()) {
@@ -651,7 +654,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
 
     /* not-sparkline:start */
     // Calculate the ticks
-    var ticks = this.calculateTicks();
+    let ticks = this.calculateTicks();
 
     // TODO: Fix for left/right with lineWidth in canvas
     // Begin clipping to the drawing area
@@ -691,24 +694,24 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   drawBorder() {
     // Grab some local pointers
-    var chart = this.chart;
-    var drawArea = this.drawArea;
-    var bottom = drawArea.bottom;
-    var left = drawArea.left;
-    var right = drawArea.right;
-    var top = drawArea.top;
-    var border = this.border;
-    var lineWidth = border.style.lineWidth;
-    var bottomLineWidth = (chart.axisBottom.isVisible() ? chart.axisBottom.border.style.lineWidth : 0);
-    var leftLineWidth = (chart.axisLeft.isVisible() ? chart.axisLeft.border.style.lineWidth : 0);
-    var rightLineWidth = (chart.axisRight.isVisible() ? chart.axisRight.border.style.lineWidth : 0);
-    var topLineWidth = (chart.axisTop.isVisible() ? chart.axisTop.border.style.lineWidth : 0);
+    let chart = this.chart;
+    let drawArea = this.drawArea;
+    let bottom = drawArea.bottom;
+    let left = drawArea.left;
+    let right = drawArea.right;
+    let top = drawArea.top;
+    let border = this.border;
+    let lineWidth = border.style.lineWidth;
+    let bottomLineWidth = (chart.axisBottom.isVisible() ? chart.axisBottom.border.style.lineWidth : 0);
+    let leftLineWidth = (chart.axisLeft.isVisible() ? chart.axisLeft.border.style.lineWidth : 0);
+    let rightLineWidth = (chart.axisRight.isVisible() ? chart.axisRight.border.style.lineWidth : 0);
+    let topLineWidth = (chart.axisTop.isVisible() ? chart.axisTop.border.style.lineWidth : 0);
 
     // Define some local variables
-    var x1;
-    var y1;
-    var x2;
-    var y2;
+    let x1;
+    let y1;
+    let x2;
+    let y2;
 
     // If the border's not visible, don't draw it
     if (!border.visible) {
@@ -761,13 +764,13 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   drawCaption() {
     // Grab some local pointers
-    var drawArea = this.drawArea;
-    var caption = this.caption;
+    let drawArea = this.drawArea;
+    let caption = this.caption;
 
     // Define some local variables
-    var text = (Util.isNull(caption.text) ? Util.capitalize(this.side) + ' Axis' : caption.text);
-    var x;
-    var y;
+    let text = ($Variable.isNull(caption.text) ? $String.capitalize(this.side) + ' Axis' : caption.text);
+    let x;
+    let y;
 
     // If the caption's not visible, don't draw it
     if (!caption.visible) {
@@ -798,11 +801,11 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     }
 
     // Determine the default rotation for the caption
-    var verticalRotation = (this.side === 'left' ? -90 : 90);
-    var defaultRotation = (this.orientation === 'horizontal' ? 0 : verticalRotation);
+    let verticalRotation = (this.side === 'left' ? -90 : 90);
+    let defaultRotation = (this.orientation === 'horizontal' ? 0 : verticalRotation);
 
     // Draw the caption
-    this.chart.text(text, x, y, Util.merge({
+    this.chart.text(text, x, y, $Object.merge({
       textRotation: defaultRotation
     }, caption.style));
   }
@@ -819,19 +822,19 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   drawGrid(ticks) {
     // Grab some local pointers
-    var axis = this;
-    var chart = axis.chart;
-    var chartDrawArea = chart.drawArea;
-    var gridStyle = axis.grid.style;
+    let axis = this;
+    let chart = axis.chart;
+    let chartDrawArea = chart.drawArea;
+    let gridStyle = axis.grid.style;
 
     // Loop through the ticks
-    Util.forEach(ticks, (tick) => {
+    ticks.forEach(tick => {
       // Define some local variables
-      var pixel = Util.round(axis.convertPointToPixel(tick));
-      var x1;
-      var x2;
-      var y1;
-      var y2;
+      let pixel = $Number.round(axis.convertPointToPixel(tick));
+      let x1;
+      let x2;
+      let y1;
+      let y2;
 
       // Calculte the coordinates based on the axis' orientation
       switch (axis.orientation) {
@@ -859,20 +862,20 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   /* not-sparkline:start */
   drawMajorTicks(ticks) {
     // Grab some local pointers
-    var axis = this;
-    var chart = axis.chart;
-    var drawArea = axis.drawArea;
-    var majorTicks = axis.majorTicks;
-    var majorTicksStyle = majorTicks.style;
+    let axis = this;
+    let chart = axis.chart;
+    let drawArea = axis.drawArea;
+    let majorTicks = axis.majorTicks;
+    let majorTicksStyle = majorTicks.style;
 
     // Loop through the ticks
-    Util.forEach(ticks, (tick) => {
+    ticks.forEach(tick => {
       // Define some local variables
-      var pixel = Util.round(axis.convertPointToPixel(tick));
-      var x1;
-      var x2;
-      var y1;
-      var y2;
+      let pixel = $Number.round(axis.convertPointToPixel(tick));
+      let x1;
+      let x2;
+      let y1;
+      let y2;
 
       // Calculte the coordinates based on the axis' orientation
       switch (axis.side) {
@@ -922,10 +925,10 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   drawTicks(ticks) {
     // Grab some local pointers
-    var axis = this;
-    var chart = this.chart;
-    var drawArea = this.drawArea;
-    var majorTickSize = this.majorTicks.size;
+    let axis = this;
+    let chart = this.chart;
+    let drawArea = this.drawArea;
+    let majorTickSize = this.majorTicks.size;
 
     // If no ticks were created, we can't draw anything
     if (ticks.length === 0) {
@@ -933,14 +936,14 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     }
 
     // Loop through the ticks
-    Util.forEach(ticks, (tick) => {
+    ticks.forEach(tick => {
       // Define some local variables
-      var pixel = Util.round(axis.convertPointToPixel(tick));
-      var text = Util.round(tick, 12);
-      var x;
-      var y;
-      var align;
-      var baseline;
+      let pixel = $Number.round(axis.convertPointToPixel(tick));
+      let text = $Number.round(tick, 12);
+      let x;
+      let y;
+      let align;
+      let baseline;
 
       // Calculate the coordinates based on the axis' side
       switch (axis.side) {
@@ -975,8 +978,8 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
 
       // Draw the text
       chart.text(text, x, y, {
-        'textAlign': align,
-        'textBaseline': baseline
+        textAlign: align,
+        textBaseline: baseline
       });
     });
   }
@@ -992,17 +995,17 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   drawZeroPlane() {
     // Grab some local pointers
-    var chart = this.chart;
-    var chartDrawArea = chart.drawArea;
-    var zeroPlane = this.zeroPlane;
-    var coordinate = zeroPlane.coordinate;
-    var zoom = this.getCurrentZoom();
+    let chart = this.chart;
+    let chartDrawArea = chart.drawArea;
+    let zeroPlane = this.zeroPlane;
+    let coordinate = zeroPlane.coordinate;
+    let zoom = this.getCurrentZoom();
 
     // Define some local variables
-    var x1;
-    var y1;
-    var x2;
-    var y2;
+    let x1;
+    let y1;
+    let x2;
+    let y2;
 
     // If the zero plane is not visible, there's nothing to draw
     if (!zeroPlane.visible || coordinate < zoom.min || coordinate > zoom.max) {
@@ -1012,8 +1015,8 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     // Calculate the coordinates based on the aixs' orientation
     switch (this.orientation) {
       case 'horizontal':
-        x1 = Util.round(this.convertPointToPixel(coordinate)) + 0.5;
-        x2 = Util.round(this.convertPointToPixel(coordinate)) + 0.5;
+        x1 = $Number.round(this.convertPointToPixel(coordinate)) + 0.5;
+        x2 = $Number.round(this.convertPointToPixel(coordinate)) + 0.5;
         y1 = chartDrawArea.top + chart.axisTop.getOffsetSize();
         y2 = chartDrawArea.bottom - chart.axisBottom.getOffsetSize();
         break;
@@ -1021,8 +1024,8 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
       case 'vertical':
         x1 = chartDrawArea.left + chart.axisLeft.getOffsetSize();
         x2 = chartDrawArea.right - chart.axisRight.getOffsetSize();
-        y1 = Util.round(this.convertPointToPixel(coordinate)) + 0.5;
-        y2 = Util.round(this.convertPointToPixel(coordinate)) + 0.5;
+        y1 = $Number.round(this.convertPointToPixel(coordinate)) + 0.5;
+        y2 = $Number.round(this.convertPointToPixel(coordinate)) + 0.5;
         break;
     }
 
@@ -1043,15 +1046,15 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   */
   getCurrentZoom(spacing) {
     // Grab some local pointers
-    var zoom = this.zoom;
-    var extremes = this.extremes;
-    var scale = this.scale;
+    let zoom = this.zoom;
+    let extremes = this.extremes;
+    let scale = this.scale;
 
     // Update some variables with default values
     spacing = spacing || 0;
 
     // Calculate the current zoom
-    var currentZoom = {
+    let currentZoom = {
       min: (zoom.min || extremes.min) - (spacing * scale),
       max: (zoom.max || extremes.max) + (spacing * scale)
     };
@@ -1070,7 +1073,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   getOffsetSize() {
     // Determine the size of the axis if shown
-    var size = (this.isVisible() ? this.size : 0);
+    let size = (this.isVisible() ? this.size : 0);
 
     // Return the size
     return size;
@@ -1086,7 +1089,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   getVisibleSeries() {
     // Grab the list of visible attached series
-    var visibleSeries = Util.filter(this.chart.series, (series) => (
+    let visibleSeries = this.chart.series.filter(series => (
       (this.orientation === 'horizontal' && series.xAxis === this.side && series.isVisible()) ||
       (this.orientation === 'vertical' && series.yAxis === this.side && series.isVisible())
     ));
@@ -1098,7 +1101,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   // TODO:
   hasVisibleSeries() {
     // Determine if there are any visible attached series
-    var hasVisibleSeries = this.getVisibleSeries().length > 0;
+    let hasVisibleSeries = this.getVisibleSeries().length > 0;
 
     // Return if there are any visible attached series
     return hasVisibleSeries;
@@ -1114,7 +1117,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   isVisible() {
     // Determine if the axis is visible
-    var visible = (Util.isNil(this.visible) ? this.hasVisibleSeries() : this.visible);
+    let visible = ($Variable.isNil(this.visible) ? this.hasVisibleSeries() : this.visible);
 
     // Return if the axis is visible
     return visible;
@@ -1131,14 +1134,14 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   prepare(chart, side) {
     // Update the axis properties
-    Util.merge(this, {
-      chart: chart,
-      side: side,
+    $Object.merge(this, {
+      chart,
+      side,
       orientation: EJSC['sparkline'].Axis.orientations[side]
     });
 
     // Update the size if needed
-    if (Util.isNil(this.size)) {
+    if ($Variable.isNil(this.size)) {
       this.size = EJSC['sparkline'].Axis.sizes[this.orientation];
     }
   }
@@ -1152,7 +1155,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    */
   update() {
     // Redraw the chart
-    if (Util.has(this, 'chart.redraw')) {
+    if ($Object.has(this, 'chart.redraw')) {
       this.chart.redraw();
     }
   }

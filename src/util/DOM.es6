@@ -1,5 +1,5 @@
 import EJSC from '../EJSC.es6';
-import Util from './Util.es6';
+import $Variable from './Variable.es6';
 
 /**
  * Houses all of the utility methods for dealing with DOM elements.
@@ -37,21 +37,21 @@ class _DOM_ {
     let elements = [];
 
     // Convert the selector to an array if it's not already
-    if (!Util.isArray(selector)) {
+    if (!$Variable.isArray(selector)) {
       selector = [selector];
     }
 
     // Loop through the selectors
-    Util.forEach(selector, (selection) => {
+    selector.forEach(selection => {
       // If the current selector is a DOM element
-      if (Util.isElement(selection)) {
+      if ($Variable.isElement(selection)) {
         // TODO: Make sure this element is a child of one of the existing elements in this.elements
         // Append the element to the list of matches
         elements.push(selection);
       }
 
       // TODO: Handle strings
-      else if (Util.isString(selection)) {
+      else if ($Variable.isString(selection)) {
         // TODO: Handle strings
       }
     });
@@ -79,14 +79,14 @@ class _DOM_ {
    */
   on(events, callback) {
       // Convert the events to an array if it's not already
-    if (!Util.isArray(events)) {
+    if (!$Variable.isArray(events)) {
       events = [events];
     }
 
     // Loop through each of the elements
-    Util.forEach(this.elements, (element) => {
+    this.elements.forEach(element => {
       // Loop through each of the events
-      Util.forEach(events, (event) => {
+      events.forEach(event => {
         // Attach the event handler function for the current event to the current element
         if (element.attachEvent) {
           element.attachEvent('on' + event, callback.bind(element));
@@ -124,7 +124,7 @@ class _DOM_ {
    */
   fix(elements) {
     // Loop through each method in this class and attach it to the list of elements
-    Util.forEach(['find', 'fix', 'on'], (name) => {
+    ['find', 'fix', 'on'].forEach(name => {
       elements[name] = this[name].bind(this);
     });
 
@@ -133,4 +133,4 @@ class _DOM_ {
   }
 }
 
-export default EJSC.DOM = (selector) => new _DOM_(selector);
+export default EJSC.DOM = selector => new _DOM_(selector);

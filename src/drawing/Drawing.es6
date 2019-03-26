@@ -1,7 +1,9 @@
 import EJSC from '../EJSC.es6';
 import Class from '../class/Class.es6';
-import Util from '../util/Util.es6';
 import DOM from '../util/DOM.es6';
+import $Collection from '../util/Collection.es6';
+import $Object from '../util/Object.es6';
+import $Variable from '../util/Variable.es6';
 
 /**
  * // TODO:
@@ -19,10 +21,10 @@ export default EJSC.Drawing = class Drawing extends Class {
    * @example
    *
    *   // Create a chart sending in the id of the container
-   *   var chart = new EJSC['.sparkline'].Chart('chart-container');
+   *   let chart = new EJSC['.sparkline'].Chart('chart-container');
    *
    *   // Create a chart sending in a reference to the container's element
-   *   var chart = new EJSC['.sparkline'].Chart(document.getElementById('chart-container'));
+   *   let chart = new EJSC['.sparkline'].Chart(document.getElementById('chart-container'));
    *
    * @attribute {Element|String} container
    * @default null
@@ -41,7 +43,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     this.container = DOM(container)[0];
 
     // Move the engine's element into the container
-    if (Util.has(this, 'engine.element')) {
+    if ($Object.has(this, 'engine.element')) {
       this.container.appendChild(this.engine.element);
     }
 
@@ -221,7 +223,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    circle(cx, cy, radius, styles) {
      // Call the engine's circle method
-     this.engine.circle(cx, cy, radius, Util.merge({}, EJSC.Engine.defaults, styles));
+     this.engine.circle(cx, cy, radius, $Object.merge({}, EJSC.Engine.defaults, styles));
 
      // Return the drawing for chainability
      return this;
@@ -267,7 +269,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    draw(styles) {
      // Call the engine's draw method
-     this.engine.draw(Util.merge({}, EJSC.Engine.defaults, styles));
+     this.engine.draw($Object.merge({}, EJSC.Engine.defaults, styles));
 
      // Return the drawing for chainability
      return this;
@@ -287,7 +289,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    ellipse(cx, cy, rx, ry, styles) {
      // Call the engine's ellipse method
-     this.engine.ellipse(cx, cy, rx, ry, Util.merge({}, EJSC.Engine.defaults, styles));
+     this.engine.ellipse(cx, cy, rx, ry, $Object.merge({}, EJSC.Engine.defaults, styles));
 
      // Return the drawing for chainability
      return this;
@@ -318,7 +320,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    fill(styles) {
      // Call the engine's fill method
-     this.engine.fill(Util.merge({}, EJSC.Engine.defaults, styles));
+     this.engine.fill($Object.merge({}, EJSC.Engine.defaults, styles));
 
      // Return the drawing for chainability
      return this;
@@ -358,7 +360,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    line(x1, y1, x2, y2, styles) {
      // Call the engine's line method
-     this.engine.line(x1, y1, x2, y2, Util.merge({}, EJSC.Engine.defaults, styles));
+     this.engine.line(x1, y1, x2, y2, $Object.merge({}, EJSC.Engine.defaults, styles));
 
      // Return the drawing for chainability
      return this;
@@ -396,7 +398,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    measureText(text, styles) {
      // Call the engine's measureText method
-     return this.engine.measureText(text, Util.merge({}, EJSC.Engine.defaults, styles));
+     return this.engine.measureText(text, $Object.merge({}, EJSC.Engine.defaults, styles));
    }
 
    /**
@@ -457,7 +459,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    rect(x, y, width, height, styles) {
      // Call the engine's rect method
-     this.engine.rect(x, y, width, height, Util.merge({}, EJSC.Engine.defaults, styles));
+     this.engine.rect(x, y, width, height, $Object.merge({}, EJSC.Engine.defaults, styles));
 
      // Return the drawing for chainability
      return this;
@@ -492,11 +494,11 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    smoothBezierCurveTo(cpx, cpy, x, y) {
      // Build needed variables
-     let cp1x = (Util.isNull(this.lastControlPoint[0]) ? null : ((2 * this.lastPoint[0]) - this.lastControlPoint[0]));
-     let cp1y = (Util.isNull(this.lastControlPoint[1]) ? null : ((2 * this.lastPoint[1]) - this.lastControlPoint[1]));
+     let cp1x = ($Variable.isNull(this.lastControlPoint[0]) ? null : ((2 * this.lastPoint[0]) - this.lastControlPoint[0]));
+     let cp1y = ($Variable.isNull(this.lastControlPoint[1]) ? null : ((2 * this.lastPoint[1]) - this.lastControlPoint[1]));
 
      // Call internal method
-     if (Util.isNull(cp1x) || Util.isNull(cp1y)) {
+     if ($Variable.isNull(cp1x) || $Variable.isNull(cp1y)) {
        this.quadraticCurveTo(cpx, cpy, x, y);
      }
      else {
@@ -518,11 +520,11 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    smoothQuadraticCurveTo(x, y) {
      // Build needed variables
-     let cpx = (Util.isNull(this.lastControlPoint[0]) ? null : ((2 * this.lastPoint[0]) - this.lastControlPoint[0]));
-     let cpy = (Util.isNull(this.lastControlPoint[1]) ? null : ((2 * this.lastPoint[1]) - this.lastControlPoint[1]));
+     let cpx = ($Variable.isNull(this.lastControlPoint[0]) ? null : ((2 * this.lastPoint[0]) - this.lastControlPoint[0]));
+     let cpy = ($Variable.isNull(this.lastControlPoint[1]) ? null : ((2 * this.lastPoint[1]) - this.lastControlPoint[1]));
 
      // Call internal method
-     if (Util.isNull(cpx) || Util.isNull(cpy)) {
+     if ($Variable.isNull(cpx) || $Variable.isNull(cpy)) {
        this.lineTo(x, y);
      }
      else {
@@ -543,7 +545,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    stroke(styles) {
      // Call the engine's stroke method
-     this.engine.stroke(Util.merge({}, EJSC.Engine.defaults, styles));
+     this.engine.stroke($Object.merge({}, EJSC.Engine.defaults, styles));
 
      // Return the drawing for chainability
      return this;
@@ -562,7 +564,7 @@ export default EJSC.Drawing = class Drawing extends Class {
     */
    text(text, x, y, styles) {
      // Call the engine's text method
-     this.engine.text(text, x, y, Util.merge({}, EJSC.Engine.defaults, styles));
+     this.engine.text(text, x, y, $Object.merge({}, EJSC.Engine.defaults, styles));
 
      // Return the drawing for chainability
      return this;
@@ -633,8 +635,8 @@ export default EJSC.Drawing = class Drawing extends Class {
    */
   selectEngine() {
     // Find and select the first supported engine
-    if (Util.isNil(this.engine)) {
-      this.engine = new (Util.find(EJSC.Drawing.engines, (engine) => engine.isSupported()))();
+    if ($Variable.isNil(this.engine)) {
+      this.engine = new ($Collection.find(EJSC.Drawing.engines, engine => engine.isSupported()))();
     }
 
     // Link the engine back to the drawing

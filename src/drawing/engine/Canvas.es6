@@ -1,7 +1,7 @@
 import EJSC from '../../EJSC.es6';
-import Util from '../../util/Util.es6';
 import Drawing from '../Drawing.es6';
 import Engine from './Engine.es6';
+import $Object from '../../util/Object.es6';
 
 /**
  * Defines the CANVAS rendering engine for EJSCharts.
@@ -249,14 +249,8 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @since 3.0.0
    */
   horizontalTo(x) {
-    // Declare local variables
-    let y;
-
-    // Define needed points
-    y = this.drawing.lastPoint[1];
-
     // Call the internal lineTo method
-    this.lineTo(x, y);
+    this.lineTo(x, this.drawing.lastPoint[1]);
   }
 
   /**
@@ -486,9 +480,9 @@ export default EJSC.Canvas = class Canvas extends Engine {
    */
   drawPath(path) {
     // Run path methods
-    for (let i = 0; i < path.length; i++) {
-      this[path[i][0]].apply(this, path[i][1]);
-    }
+    path.forEach(segment => {
+      segment[0].apply(this, segment[1]);
+    });
   }
 
   /**
@@ -496,15 +490,15 @@ export default EJSC.Canvas = class Canvas extends Engine {
    *
    * @method stylize
    * @private
-   * @param {Object} styles The styles to apply
+   * @param {Object} [styles={}] The styles to apply
    * @since 3.0.0
    */
-  stylize(styles) {
+  stylize(styles = {}) {
     // Apply the default and user styles to the context
-    Util.merge(this.ctx, Drawing.defaults, styles);
+    $Object.merge(this.ctx, Drawing.defaults, styles);
 
     // Set the line dash
-    this.ctx.setLineDash((styles || {}).lineDash || []);
+    this.ctx.setLineDash(styles.lineDash || []);
   }
 
   /**
@@ -516,7 +510,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    */
   unstylize() {
     // Apply the default styles to the context
-    Util.merge(this.ctx, Drawing.defaults);
+    $Object.merge(this.ctx, Drawing.defaults);
 
     // Clear the line dash
     this.ctx.setLineDash([]);

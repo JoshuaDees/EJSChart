@@ -51,9 +51,7 @@ export default window.EJSC = new class EJSC {
    */
   load() {
     // Run all of the prepared callback functions
-    for (let i = 0; i < this.prepared.length; i++) {
-      this.prepared[i].call(this);
-    }
+    this.prepared.forEach(callback => callback.call(this));
   }
 }();
 

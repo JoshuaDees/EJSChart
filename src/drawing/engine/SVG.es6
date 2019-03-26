@@ -1,7 +1,8 @@
 import EJSC from '../../EJSC.es6';
-import Util from '../../util/Util.es6';
 import Drawing from '../Drawing.es6';
 import Engine from './Engine.es6';
+import $Object from '../../util/Object.es6';
+import $Variable from '../../util/Variable.es6';
 
 /**
  * Defines the SVG rendering engine for EJSCharts.
@@ -85,7 +86,7 @@ export default EJSC.SVG = class SVG extends Engine {
     let sweep = (counterClockwise ? 0 : 1);
 
     // Move to starting point
-    this.path.push((Util.isNull(this.drawing.lastPoint[0]) ? 'M' : 'L') + ' ' + x1 + ',' + y1);
+    this.path.push(($Variable.isNull(this.drawing.lastPoint[0]) ? 'M' : 'L') + ' ' + x1 + ',' + y1);
 
     // Append to path object
     this.path.push('A ' + radius + ',' + radius + ' ' + 0 + ' ' + largeArc + ' ' + sweep + ' ' + x2 + ',' + y2);
@@ -131,7 +132,7 @@ export default EJSC.SVG = class SVG extends Engine {
     let endAngle = Math.atan2((cy2 - cy), (cx2 - cx));
 
     // Draw the connecting line
-    this[(Util.isNull(this.drawing.lastPoint[0]) ? 'moveTo' : 'lineTo')](cx1, cy1);
+    this[($Variable.isNull(this.drawing.lastPoint[0]) ? 'moveTo' : 'lineTo')](cx1, cy1);
 
     // Draw the arc
     this.arc(cx, cy, radius, startAngle, endAngle, firstAngle > secondAngle);
@@ -208,7 +209,7 @@ export default EJSC.SVG = class SVG extends Engine {
    */
   circle(cx, cy, radius, styles) {
     // Create the circle element
-    this.element.appendChild(this.createElement('circle', Util.merge(this.stylize(styles), {
+    this.element.appendChild(this.createElement('circle', $Object.merge(this.stylize(styles), {
       cx: cx,
       cy: cy,
       r: radius
@@ -272,7 +273,7 @@ export default EJSC.SVG = class SVG extends Engine {
    */
   ellipse(cx, cy, rx, ry, styles) {
     // Create the ellipse element
-    this.element.appendChild(this.createElement('ellipse', Util.merge(this.stylize(styles), {
+    this.element.appendChild(this.createElement('ellipse', $Object.merge(this.stylize(styles), {
       cx: cx,
       cy: cy,
       rx: rx,
@@ -299,7 +300,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @since 3.0.0
    */
   fill(styles) {
-    this.drawPath(Util.merge(this.stylize(styles), {
+    this.drawPath($Object.merge(this.stylize(styles), {
       strokeStyle: 'transparent'
     }));
   }
@@ -329,7 +330,7 @@ export default EJSC.SVG = class SVG extends Engine {
    */
   line(x1, y1, x2, y2, styles) {
     // Create the line element
-    this.element.appendChild(this.createElement('line', Util.merge(this.stylize(styles), {
+    this.element.appendChild(this.createElement('line', $Object.merge(this.stylize(styles), {
       x1: x1,
       y1: y1,
       x2: x2,
@@ -404,7 +405,7 @@ export default EJSC.SVG = class SVG extends Engine {
    */
   rect(x, y, width, height, styles) {
     // Create the rect element
-    this.element.appendChild(this.createElement('rect', Util.merge(this.stylize(styles), {
+    this.element.appendChild(this.createElement('rect', $Object.merge(this.stylize(styles), {
       x: x,
       y: y,
       width: width,
@@ -442,7 +443,7 @@ export default EJSC.SVG = class SVG extends Engine {
    */
   stroke(styles) {
     // Stroke the path
-    this.drawPath(Util.merge(this.stylize(styles), {
+    this.drawPath($Object.merge(this.stylize(styles), {
       fillStyle: 'transparent'
     }));
   }
@@ -459,7 +460,7 @@ export default EJSC.SVG = class SVG extends Engine {
    */
   text(text, x, y, styles) {
     // Build the correct styles object
-    styles = Util.merge({}, this.stylize(styles), {
+    styles = $Object.merge({}, this.stylize(styles), {
       strokeStyle: 'none',
       x: x,
       y: y
@@ -599,7 +600,7 @@ export default EJSC.SVG = class SVG extends Engine {
    */
   drawPath(styles) {
     // Create the path element
-    this.element.appendChild(this.createElement('path', Util.merge(this.stylize(styles), {
+    this.element.appendChild(this.createElement('path', $Object.merge(this.stylize(styles), {
       d: this.path.join(' ')
     })));
   }
@@ -615,7 +616,7 @@ export default EJSC.SVG = class SVG extends Engine {
    */
   stylize(styles) {
     // Apply the default and user styles to the context
-    return Util.merge({}, Drawing.defaults, styles);
+    return $Object.merge({}, Drawing.defaults, styles);
   }
 };
 
@@ -697,7 +698,7 @@ EJSC.SVG.xlink = 'http://www.w3.org/1999/xlink';
  */
 EJSC.SVG.buildStylesheet = () => {
   // Only run once
-  if (Util.isNull(EJSC.SVG.stylesheet)) {
+  if ($Variable.isNull(EJSC.SVG.stylesheet)) {
     // Grab the page header
     let head = document.head || document.getElementsByTagName('head')[0];
 

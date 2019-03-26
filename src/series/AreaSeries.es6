@@ -1,6 +1,7 @@
 import EJSC from '../EJSC.es6';
 import LineSeries from './LineSeries.es6';
-import Util from '../util/Util.es6';
+import $Number from '../util/Number.es6';
+import $Object from '../util/Object.es6';
 
 /**
  * // TODO:
@@ -36,7 +37,7 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
   // setter
   setArea(area, apply) {
     // Update the current area
-    Util.merge(this.area, area);
+    $Object.merge(this.area, area);
 
     // Redraw the chart if needed
     if (apply !== false) {
@@ -95,12 +96,12 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    */
   calculateExtremes() {
     // Grab some local pointers
-    var extremes = this.point.calculateExtremes(this.handler.data);
-    var zeroCoordinate = this.zeroCoordinate;
+    let extremes = this.point.calculateExtremes(this.handler.data);
+    let zeroCoordinate = this.zeroCoordinate;
 
     // Update extremes to the zero coordinate
-    extremes.yMin = Util.min([extremes.yMin, zeroCoordinate]);
-    extremes.yMax = Util.max([extremes.yMax, zeroCoordinate]);
+    extremes.yMin = $Number.min(extremes.yMin, zeroCoordinate);
+    extremes.yMax = $Number.max(extremes.yMax, zeroCoordinate);
 
     // Return the extremes
     return extremes;
@@ -115,18 +116,18 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    */
   draw() {
     // Grab some local pointers
-    var chart = this.chart;
-    var xAxis = this.referenceXAxis();
-    var yAxis = this.referenceYAxis();
-    var yAxisZoom = yAxis.getCurrentZoom();
-    var zeroCoordinate = yAxis.convertPointToPixel(Util.clamp(this.zeroCoordinate, yAxisZoom.min, yAxisZoom.max));
-    var points = this.buildPath();
+    let chart = this.chart;
+    let xAxis = this.referenceXAxis();
+    let yAxis = this.referenceYAxis();
+    let yAxisZoom = yAxis.getCurrentZoom();
+    let zeroCoordinate = yAxis.convertPointToPixel($Number.clamp(this.zeroCoordinate, yAxisZoom.min, yAxisZoom.max));
+    let points = this.buildPath();
 
     // Start at the first point
     chart.beginPath();
 
     // Loop through the points of data adding them to the path array
-    Util.forEach(points, (point, index) => {
+    points.forEach((point, index) => {
       chart[index === 0 ? 'moveTo' : 'lineTo'](
         xAxis.convertPointToPixel(point.x),
         yAxis.convertPointToPixel(point.y)
@@ -134,7 +135,7 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
     });
 
     // Loop through the points of data adding them to the path array
-    Util.forEach(points.reverse(), (point) => {
+    points.reverse().forEach(point => {
       chart.lineTo(
         xAxis.convertPointToPixel(point.x),
         zeroCoordinate
@@ -145,7 +146,7 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
     chart.closePath();
 
     // Fill in the path
-    chart.fill(Util.merge({}, this.area, {
+    chart.fill($Object.merge({}, this.area, {
       fillStyle: this.area.fillStyle || this.setOpacity(this.color, 0.5)
     }));
 

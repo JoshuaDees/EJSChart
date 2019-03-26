@@ -1,7 +1,7 @@
 import EJSC from '../EJSC.es6';
 import Drawing from '../drawing/Drawing.es6';
-import Util from '../util/Util.es6';
 import DOM from '../util/DOM.es6';
+import $String from '../util/String.es6';
 
 /**
  * Defines a basic chart that can display a variety of series types on it.
@@ -695,12 +695,9 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @since 3.0.0
    */
   drawAxes() {
-    // Grab a local reference to the chart
-    var chart = this;
-
     // Draw the axes
-    Util.forEach(this.axisList, (axis) => {
-      chart[axis].draw();
+    this.axisList.forEach(axis => {
+      this[axis].draw();
     });
 
     /* not-sparkline:start */
@@ -744,7 +741,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     );
 
     // Loop through the visible series and draw each
-    Util.forEach(this.getVisibleSeries(), (series) => {
+    this.getVisibleSeries().forEach(series => {
       series.draw();
     });
 
@@ -808,10 +805,13 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
 
   // TODO:
   getVisibleSeries() {
-    // Return the list of visible series
-    return Util.filter(this.series, (series) => {
+    // Get the list of visible series
+    let visibleSeries = this.series.filter(series => {
       return series.isVisible();
     });
+
+    // Return the list of visible series
+    return visibleSeries;
   }
 
   // TODO:
@@ -826,20 +826,18 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
 
   // TODO:
   prepareAxes() {
-    var chart = this;
-
     // Loop through each of the sides
-    Util.forEach(this.sidesList, (side) => {
+    this.sidesList.forEach(side => {
       // Create some temporary variables
-      var axis = 'axis' + Util.capitalize(side);
+      var axis = 'axis' + $String.capitalize(side);
 
       // Turn the axis into a class if not already one
-      if (!(chart[axis] instanceof EJSC['sparkline'].Axis)) {
-        chart[axis] = new EJSC['sparkline'].LinearAxis(chart[axis]);
+      if (!(this[axis] instanceof EJSC['sparkline'].Axis)) {
+        this[axis] = new EJSC['sparkline'].LinearAxis(this[axis]);
       }
 
       // Prepare the axis
-      chart[axis].prepare(chart, side);
+      this[axis].prepare(this, side);
     });
   }
 

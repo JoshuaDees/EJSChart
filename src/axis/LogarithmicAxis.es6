@@ -1,6 +1,8 @@
 import EJSC from '../EJSC.es6';
 import Axis from './base/Axis.es6';
-import Util from '../util/Util.es6';
+import $Number from '../util/Number.es6';
+import $Object from '../util/Object.es6';
+import $Variable from '../util/Variable.es6';
 
 /**
  * TODO:
@@ -50,33 +52,31 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
   // TODO:
   calculateExtremes() {
     // Grab some local pointers
-    var drawArea = this.drawArea;
-    var orientation = this.orientation;
-    var padding = this.padding;
-    var extremes = this.extremes;
-    var logPoints = this.logPoints;
-    var visibleSeries = this.getVisibleSeries();
+    let { drawArea, orientation, padding, extremes, logPoints } = this;
+    let visibleSeries = this.getVisibleSeries();
 
     // Define some local variables
-    var dataPoint = orientation === 'vertical' ? 'y' : 'x';
-    var spacing = 0;
-    var min = null;
-    var max = null;
-    var maxPositive = null;
-    var minPositive = null;
-    var zeroValue = null;
-    var maxNegative = null;
-    var minNegative = null;
-    var scale;
+    let dataPoint = orientation === 'vertical' ? 'y' : 'x';
+    let spacing = 0;
+    let min = null;
+    let max = null;
+    let maxPositive = null;
+    let minPositive = null;
+    let zeroValue = null;
+    let maxNegative = null;
+    let minNegative = null;
+    let scale;
+    let linearMin;
+    let linearMax;
 
     // Reset the extremes
-    Util.merge(extremes, {
+    $Object.merge(extremes, {
       min: null,
       max: null
     });
 
     // Reset the log points
-    Util.merge(logPoints, {
+    $Object.merge(logPoints, {
       maxPositive: null,
       minPositive: null,
       zeroValue: null,
@@ -90,34 +90,34 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     }
 
     // Loop through each of the visible series
-    Util.forEach(visibleSeries, (series) => {
+    visibleSeries.forEach(series => {
       // Calculate the min and max range
-      Util.forEach(series.data, (point) => {
-        Util.forEach(series.dataPoints[dataPoint], (property) => {
+      series.data.forEach(point => {
+        series.dataPoints[dataPoint].forEach(property => {
           // Calculate the extremes
-          min = Util.min([min, point[property]]);
-          max = Util.max([max, point[property]]);
+          min = $Number.min(min, point[property]);
+          max = $Number.max(max, point[property]);
 
           // Calculate the log points
           if (point[property] > 0) {
-            maxPositive = Util.max([maxPositive, point[property]]);
-            minPositive = Util.min([minPositive, point[property]]);
+            maxPositive = $Number.max(maxPositive, point[property]);
+            minPositive = $Number.min(minPositive, point[property]);
           }
           else if (point[property] === 0) {
             zeroValue = 0;
           }
           else if (point[property] < 0) {
-            maxNegative = Util.max([maxNegative, point[property]]);
-            minNegative = Util.min([minNegative, point[property]]);
+            maxNegative = $Number.max(maxNegative, point[property]);
+            minNegative = $Number.min(minNegative, point[property]);
           }
         });
       });
 
       // Calculate the series spacing
-      spacing = Util.max([spacing, series.calculateSpacing()]);
+      spacing = $Number.max(spacing, series.calculateSpacing());
     });
 
-    if (!Util.isNil(zeroValue) || (!Util.isNil(minPositive) && !Util.isNil(maxNegative))) {
+    if (!$Variable.isNil(zeroValue) || (!$Variable.isNil(minPositive) && !$Variable.isNil(maxNegative))) {
       // Make sure the zero value is defined
       zeroValue = 0;
 
@@ -127,19 +127,13 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     }
 
     // Reset the log points
-    Util.merge(logPoints, {
-      maxPositive: maxPositive,
-      minPositive: minPositive,
-      zeroValue: zeroValue,
-      maxNegative: maxNegative,
-      minNegative: minNegative
-    });
+    $Object.merge(logPoints, { maxPositive, minPositive, zeroValue, maxNegative, minNegative });
 
     // Add the series spacing to the padding
     padding += spacing - 1;
 
-    var linearMin = this.convertPointToLinear(min);
-    var linearMax = this.convertPointToLinear(max);
+    linearMin = this.convertPointToLinear(min);
+    linearMax = this.convertPointToLinear(max);
 
     // Determine the scale based on the axis' orientation
     switch (orientation) {
@@ -152,26 +146,24 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
         break;
     }
 
+    // Update the extremes with padding
     min = this.convertLinearToPoint(linearMin - (scale * padding));
     max = this.convertLinearToPoint(linearMax + (scale * padding));
 
-    // Update the extremes with the padding
-    Util.merge(extremes, {
-      min: min,
-      max: max
-    });
+    // Store the extremes
+    $Object.merge(extremes, { min, max });
   }
 
   // TODO:
   calculateTicks() {
     // Grab some local pointers
-    var zoom = this.getCurrentZoom();
+    let zoom = this.getCurrentZoom();
+    let min = this.convertPointToLinear(zoom.min);
+    let max = this.convertPointToLinear(zoom.max);
 
     // Define some local variables
-    var min = this.convertPointToLinear(zoom.min);
-    var max = this.convertPointToLinear(zoom.max);
-    var ticks = [];
-    var i;
+    let ticks = [];
+    let i;
 
     // Loop through adding a tick at each power
     for (i = Math.ceil(min); i <= Math.floor(max); i++) {
@@ -185,12 +177,10 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
   // TODO:
   convertLinearToPoint(linear) {
     // TODO:
-    var logPoints = this.logPoints;
-    var minPositive = logPoints.minPositive;
-    var maxNegative = logPoints.maxNegative;
+    let { minPositive, maxNegative } = this.logPoints;
 
     // TODO:
-    var point;
+    let point;
 
     // Convert 0 to 0
     if (linear === 0) {
@@ -224,18 +214,18 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
   // TODO:
   convertPixelToPoint(pixel) {
     // Grab some local pointers
-    var drawArea = this.drawArea;
-    var zoom = this.getCurrentZoom();
+    let drawArea = this.drawArea;
+    let zoom = this.getCurrentZoom();
 
     // Define some local variables
-    var pixelMin;
-    var pixelMax;
-    var pixelDif;
-    var pixelPerc;
-    var linearMin = this.convertPointToLinear(zoom.min);
-    var linearMax = this.convertPointToLinear(zoom.max);
-    var linearDif = linearMax - linearMin;
-    var point = null;
+    let pixelMin;
+    let pixelMax;
+    let pixelDif;
+    let pixelPerc;
+    let linearMin = this.convertPointToLinear(zoom.min);
+    let linearMax = this.convertPointToLinear(zoom.max);
+    let linearDif = linearMax - linearMin;
+    let point = null;
 
     // There needs to be a current zoom to convert
     if (linearMin !== null && linearMax !== null) {
@@ -280,12 +270,10 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
   // TODO:
   convertPointToLinear(point) {
     // TODO:
-    var logPoints = this.logPoints;
-    var minPositive = logPoints.minPositive;
-    var maxNegative = logPoints.maxNegative;
+    let { minPositive, maxNegative } = this.logPoints;
 
     // TODO:
-    var linear;
+    let linear;
 
     // Convert 0 to 0
     if (point === 0) {
@@ -319,17 +307,17 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
   // TODO:
   convertPointToPixel(point) {
     // Grab some local pointers
-    var drawArea = this.drawArea;
-    var zoom = this.getCurrentZoom();
+    let drawArea = this.drawArea;
+    let zoom = this.getCurrentZoom();
 
     // Define some local variables
-    var linearMin = this.convertPointToLinear(zoom.min);
-    var linearMax = this.convertPointToLinear(zoom.max);
-    var linearPerc = ((this.convertPointToLinear(point) - linearMin) / (linearMax - linearMin));
-    var pixelMin;
-    var pixelMax;
-    var pixelDif;
-    var pixel = null;
+    let linearMin = this.convertPointToLinear(zoom.min);
+    let linearMax = this.convertPointToLinear(zoom.max);
+    let linearPerc = ((this.convertPointToLinear(point) - linearMin) / (linearMax - linearMin));
+    let pixelMin;
+    let pixelMax;
+    let pixelDif;
+    let pixel = null;
 
     // There needs to be a current zoom to convert
     if (linearMin !== null && linearMax !== null) {
@@ -372,7 +360,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
   // TODO:
   convertPointToPower(point) {
     // Calculate the power value
-    var power = Math.log(point) / Math.log(this.base);
+    let power = Math.log(point) / Math.log(this.base);
 
     // Return the power value
     return power;
@@ -381,7 +369,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
   // TODO:
   convertPowerToPoint(power) {
     // Calculate the point value
-    var point = Math.pow(this.base, power);
+    let point = Math.pow(this.base, power);
 
     // Return the point value
     return point;

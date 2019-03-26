@@ -1,6 +1,6 @@
 import EJSC from '../../EJSC.es6';
 import Series from './Series.es6';
-import Util from '../../util/Util.es6';
+import $String from '../../util/String.es6';
 
 /**
  * Defines a series that will plot its data using the chart's axes.
@@ -91,7 +91,7 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    */
   calculateExtremes() {
     // Define some local variables
-    var extremes = {
+    let extremes = {
       xMin: null,
       xMax: null,
       yMin: null,
@@ -111,8 +111,11 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    * @since 3.0.0
    */
   getVisiblePoints() {
+    // Get the list of visible points
+    let visiblePoints = this.data.filter(point => this.isPointVisible(point));
+
     // Return the list of visible points
-    return Util.filter(this.data, (point) => this.isPointVisible(point));
+    return visiblePoints;
   }
 
   /**
@@ -125,7 +128,7 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    */
   referenceXAxis() {
     // Return a reference to the x axis
-    return this.chart['axis' + Util.capitalize(this.xAxis)];
+    return this.chart['axis' + $String.capitalize(this.xAxis)];
   }
 
   /**
@@ -138,6 +141,6 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    */
   referenceYAxis() {
     // Return a reference to the y axis
-    return this.chart['axis' + Util.capitalize(this.yAxis)];
+    return this.chart['axis' + $String.capitalize(this.yAxis)];
   }
 };

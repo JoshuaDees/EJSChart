@@ -1,6 +1,6 @@
 import EJSC from '../../EJSC.es6';
 import Class from '../../class/Class.es6';
-import Util from '../../util/Util.es6';
+import $Object from '../../util/Object.es6';
 
 /**
  * Holds all of the common code to all of the series.
@@ -147,7 +147,7 @@ export default EJSC['sparkline'].Series = class Series extends Class {
     this.chart = chart;
 
     // Update any options that haven't been defined
-    Util.merge(this, options);
+    $Object.merge(this, options);
   }
 
   // TODO: document Series.setOpacity
@@ -171,7 +171,7 @@ export default EJSC['sparkline'].Series = class Series extends Class {
    */
   update() {
     // Redraw the chart
-    if (Util.has(this, 'chart.redraw')) {
+    if ($Object.has(this, 'chart.redraw')) {
       this.chart.redraw();
     }
   }

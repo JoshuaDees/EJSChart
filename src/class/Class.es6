@@ -1,5 +1,6 @@
 import EJSC from '../EJSC.es6';
-import Util from '../util/Util.es6';
+import $Object from '../util/Object.es6';
+import $String from '../util/String.es6';
 
 /**
  * Holds the base functionality of all constructable classes.
@@ -52,9 +53,9 @@ export default EJSC.Class = class Class {
     this.listening = false;
 
     // Loop through each of the options
-    Util.forEach(options, (value, name) => {
+    Object.entries(options).forEach(([name, value]) => {
       // Grab the setter
-      let setter = this['set' + Util.upperFirst(name)];
+      let setter = this['set' + $String.upperFirst(name)];
 
       // Use the setter if defined
       if (setter) {
@@ -64,12 +65,10 @@ export default EJSC.Class = class Class {
 
       // Otherwise use merge
       else {
-        // Build a new object with just this option
-        let option = {};
-        option[name] = value;
-
         // Merge the object into the class
-        Util.merge(this, option);
+        $Object.merge(this, {
+          [name]: value
+        });
       }
     });
 
