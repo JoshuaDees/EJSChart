@@ -1,5 +1,14 @@
-const path = require('path');
+// Require webpack
+const webpack = require("webpack");
+
+// Require helpers
+const fs = require('fs');
 const glob = require('glob');
+const path = require('path');
+
+// --------------
+// Define
+// --------------
 
 const sparkline_replace = {
   loader: 'webpack-replace',
@@ -25,6 +34,21 @@ const babel_loader = {
   }
 };
 
+/**
+ * Banner Plugin
+ *
+ * @plugin
+ */
+const banner_replacements = {
+  pkg: JSON.parse(fs.readFileSync('package.json', 'utf8')),
+  year: (new Date()).getFullYear()
+};
+const banner_text = fs.readFileSync('./build/grunt/banner.txt', 'utf8').replace(/\$\{([^\}]+)\}/g, (matched, variable) => {
+  let reference = banner_replacements;
+  variable.split('.').forEach(path => reference = reference[path] || {});
+  return reference;
+});
+
 module.exports = [{
   entry: glob.sync('./src/**/*.es6'),
   mode: 'none', // none, development, production
@@ -37,7 +61,10 @@ module.exports = [{
       test: /\.es6?$/,
       use: [sparkline_replace, sparkline_strip, babel_loader]
     }]
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin({ banner: banner_text, raw: true })
+  ]
 }, {
   entry: glob.sync('./src/**/*.es6'),
   mode: 'production', // none, development, production
@@ -50,5 +77,8 @@ module.exports = [{
       test: /\.es6?$/,
       use: [sparkline_replace, sparkline_strip, babel_loader]
     }]
-  }
+  },
+  plugins: [
+    new webpack.BannerPlugin({ banner: banner_text + '\n\n', raw: true })
+  ]
 }];

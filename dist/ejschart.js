@@ -1,3 +1,16 @@
+/*!
+ * Emprise JavaScript Charts v3.0.0 http://www.ejschart.com/
+ * Copyright (C) 2006-2019 Emprise Corporation. All Rights Reserved.
+ *
+ * WARNING: This software program is protected by copyright law
+ * and international treaties. Unauthorized reproduction or
+ * distribution of this program, or any portion of it, may result
+ * in severe civil and criminal penalties, and will be prosecuted
+ * to the maximum extent possible under the law.
+ *
+ * See http://www.ejschart.com/license.html for full license.
+!*/
+
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
