@@ -26,6 +26,13 @@ module.exports = function(grunt) {
       }
     },
 
+    watch: {
+      src: {
+        files: ['src/**/*.es6'],
+        tasks: ['build']
+      }
+    },
+
     // grunt-webkit
     webpack: {
       // Runs the webpack builder for production
@@ -35,6 +42,7 @@ module.exports = function(grunt) {
 
   // Load the NPM tasks
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-webpack');
 
