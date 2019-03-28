@@ -113,6 +113,7 @@ __webpack_require__(17);
 __webpack_require__(18);
 __webpack_require__(2);
 __webpack_require__(19);
+__webpack_require__(26);
 __webpack_require__(25);
 __webpack_require__(23);
 __webpack_require__(24);
@@ -122,7 +123,7 @@ __webpack_require__(21);
 __webpack_require__(5);
 __webpack_require__(6);
 __webpack_require__(14);
-__webpack_require__(26);
+__webpack_require__(27);
 __webpack_require__(9);
 __webpack_require__(4);
 __webpack_require__(8);
@@ -9606,8 +9607,29 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
   }
 
   _createClass(PlotSeries, [{
-    key: 'getXAxis',
+    key: 'getSpacing',
 
+    // TODO:
+
+    // getter
+    value: function getSpacing() {
+      // Return the current spacing
+      return this.spacing;
+    }
+
+    // setter
+
+  }, {
+    key: 'setSpacing',
+    value: function setSpacing(spacing, apply) {
+      // Update the current spacing
+      this.spacing = spacing;
+
+      // Redraw the chart if needed
+      if (apply !== false) {
+        this.update();
+      }
+    }
     /**
      * Defines the x axis to draw on.
      *
@@ -9622,6 +9644,9 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
      */
 
     // getter
+
+  }, {
+    key: 'getXAxis',
     value: function getXAxis() {
       // Return the current x axis
       return this.xAxis;
@@ -9686,6 +9711,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
       _get(PlotSeries.prototype.__proto__ || Object.getPrototypeOf(PlotSeries.prototype), 'init', this).call(this);
 
       // Initialize some public properties
+      this.spacing = 0;
       this.xAxis = 'bottom';
       this.yAxis = 'left';
     }
@@ -10098,6 +10124,430 @@ exports.default = _EJSC2.default.DataSeries = function (superclass) {
 
 /***/ }),
 /* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _EJSC = __webpack_require__(2);
+
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _ScatterSeries2 = __webpack_require__(21);
+
+var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
+
+var _Number = __webpack_require__(9);
+
+var _Number2 = _interopRequireDefault(_Number);
+
+var _Object = __webpack_require__(4);
+
+var _Object2 = _interopRequireDefault(_Object);
+
+var _Variable = __webpack_require__(7);
+
+var _Variable2 = _interopRequireDefault(_Variable);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
+  _inherits(BarSeries, _ScatterSeries);
+
+  function BarSeries() {
+    _classCallCheck(this, BarSeries);
+
+    return _possibleConstructorReturn(this, (BarSeries.__proto__ || Object.getPrototypeOf(BarSeries)).apply(this, arguments));
+  }
+
+  _createClass(BarSeries, [{
+    key: 'getBar',
+
+    /**
+     * Defines the styles for the bar.
+     *
+     * @example
+     *
+     *     // TODO:
+     *
+     * @attribute {Object} bar
+     * @property {Number} bar.size The amount of available space the bars should take up. (Default: 0.8)
+     * @property {Object} bar.style
+     * @property {String} bar.style.fillStyle The background color of the bar. (Default: null)
+     * @property {Integer} bar.style.lineWidth The border width of the bar. (Default: 1)
+     * @property {String} bar.style.strokeStyle The border color of the bar. (Default: null)
+     * @since 3.0.0
+     */
+
+    // getter
+    value: function getBar() {
+      // Return the current bar
+      return this.bar;
+    }
+
+    // setter
+
+  }, {
+    key: 'setBar',
+    value: function setBar(bar, apply) {
+      // Update the current bar
+      _Object2.default.merge(this.bar, bar);
+
+      // Redraw the chart if needed
+      if (apply !== false) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the zero coordinate for the series.
+     *
+     * @example
+     *
+     *     // TODO:
+     *
+     * @attribute {Number} zeroCoordinate
+     * @default 0
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getZeroCoordinate',
+    value: function getZeroCoordinate() {
+      // Return the current zeroCoordinate
+      return this.zeroCoordinate;
+    }
+
+    // setter
+
+  }, {
+    key: 'setZeroCoordinate',
+    value: function setZeroCoordinate(zeroCoordinate, apply) {
+      // Update the current zeroCoordinate
+      this.zeroCoordinate = zeroCoordinate;
+
+      // Redraw the chart if needed
+      if (apply !== false) {
+        this.update();
+      }
+    }
+
+    // init
+
+  }, {
+    key: 'init',
+    value: function init() {
+      // super
+      _get(BarSeries.prototype.__proto__ || Object.getPrototypeOf(BarSeries.prototype), 'init', this).call(this);
+
+      // Initialize some public properties
+      this.bar = {
+        size: 0.8,
+        style: {
+          fillStyle: null,
+          lineWidth: 1,
+          strokeStyle: null
+        }
+      };
+      this.zeroCoordinate = 0;
+    }
+
+    /**
+     * Calculates the boundary points for a bar in the series.
+     *
+     * @method calculateBarPoints
+     * @private
+     * @return {Object} The boundary points
+     * @since 3.0.0
+     */
+
+  }, {
+    key: 'calculateBarPoints',
+    value: function calculateBarPoints(point) {
+      // Grab some local pointers
+      var barSize = this.calculateBarSize();
+      var zeroCoordinate = this.zeroCoordinate;
+
+      // Return the bar points
+      var barPoints = {
+        xMax: point.x + barSize / 2,
+        xMin: point.x - barSize / 2,
+        yMax: _Number2.default.max(point.y, zeroCoordinate),
+        yMin: _Number2.default.min(point.y, zeroCoordinate)
+      };
+
+      return barPoints;
+    }
+
+    /**
+     * Calculates the boundary pixels for a bar in the series.
+     *
+     * @method calculateBarPixels
+     * @private
+     * @return {Object} The boundary pixels
+     * @since 3.0.0
+     */
+
+  }, {
+    key: 'calculateBarPixels',
+    value: function calculateBarPixels(point) {
+      // Grab some local pointers
+      var xAxis = this.referenceXAxis();
+      var yAxis = this.referenceYAxis();
+      var spacing = this.getSpacing();
+      var xAxisZoom = xAxis.getCurrentZoom(spacing);
+      var yAxisZoom = yAxis.getCurrentZoom(spacing);
+      var barPoints = this.calculateBarPoints(point);
+      var temp = void 0;
+
+      // Calculate the bar pixels
+      var barPixels = {
+        xMax: xAxis.convertPointToPixel(_Number2.default.min(barPoints.xMax, xAxisZoom.max)),
+        xMin: xAxis.convertPointToPixel(_Number2.default.max(barPoints.xMin, xAxisZoom.min)),
+        yMax: yAxis.convertPointToPixel(_Number2.default.min(barPoints.yMax, yAxisZoom.max)),
+        yMin: yAxis.convertPointToPixel(_Number2.default.max(barPoints.yMin, yAxisZoom.min))
+      };
+
+      // Reverse the x values if needed
+      if (barPixels.xMax < barPixels.xMin) {
+        temp = barPixels.xMax;
+        barPixels.xMax = barPixels.xMin;
+        barPixels.xMin = temp;
+      }
+
+      // Reverse the y values if needed
+      if (barPixels.yMax < barPixels.yMin) {
+        temp = barPixels.yMax;
+        barPixels.yMax = barPixels.yMin;
+        barPixels.yMin = temp;
+      }
+
+      // Return the bar pixels
+      return barPixels;
+    }
+
+    /**
+     * Calculates the size (width) for a bar in the series.
+     *
+     * @method calculateBarPixels
+     * @private
+     * @return {Number} The size of the bar
+     * @since 3.0.0
+     */
+
+  }, {
+    key: 'calculateBarSize',
+    value: function calculateBarSize() {
+      // Grab some local pointers
+      var data = this.data;
+
+      // Define some local variables
+      var xs = [];
+      var barSize = 1;
+
+      // If there are more than 1 points, determine the min distance between the points
+      if (data.length > 1) {
+        // Add each point's x value to the array
+        data.forEach(function (point) {
+          xs.push(point.x);
+        });
+
+        // Sort the array
+        xs.sort();
+
+        // Find the minimum difference
+        xs.forEach(function (x, index) {
+          if (index === 0) {
+            barSize = null;
+          } else {
+            barSize = _Number2.default.min(barSize, x - xs[index - 1]);
+          }
+        });
+      }
+
+      // Finalize the bar size
+      barSize = barSize * this.bar.size;
+
+      // Return the bar size
+      return barSize;
+    }
+
+    /**
+     * Calculates the extremes for the series based off of its data.
+     *
+     * @method calculateExtremes
+     * @private
+     * @return {Object<Number xMin, Number xMax, Number yMin, Number yMin>} The calculated extremes
+     * @since 3.0.0
+     */
+
+  }, {
+    key: 'calculateExtremes',
+    value: function calculateExtremes() {
+      // Grab some local pointers
+      var extremes = _get(BarSeries.prototype.__proto__ || Object.getPrototypeOf(BarSeries.prototype), 'calculateExtremes', this).call(this);
+      var barSize = this.calculateBarSize();
+      var zeroCoordinate = this.zeroCoordinate;
+
+      // Update extremes to the zero coordinate
+      extremes.yMin = _Number2.default.min(extremes.yMin, zeroCoordinate);
+      extremes.yMax = _Number2.default.max(extremes.yMax, zeroCoordinate);
+
+      // Update extremes to the bar size
+      extremes.xMin -= barSize / 2;
+      extremes.xMax += barSize / 2;
+
+      // Return the extremes
+      return extremes;
+    }
+
+    /**
+     * Draws the series to the chart.
+     *
+     * @method draw
+     * @private
+     * @since 3.0.0
+     */
+
+  }, {
+    key: 'draw',
+    value: function draw() {
+      var _this2 = this;
+
+      // Grab some local pointers
+      var chart = this.chart,
+          color = this.color,
+          bar = this.bar;
+
+      // Define the drawing style
+
+      var style = _Object2.default.merge({}, bar.style, {
+        fillStyle: bar.fillStyle || this.setOpacity(color, 0.5),
+        strokeStyle: bar.strokeStyle || color
+      });
+
+      // Loop through the visible points
+      this.getVisiblePoints().forEach(function (point) {
+        // Calculate the bar points
+        var barPixels = _this2.calculateBarPixels(point);
+
+        // Draw the bar
+        chart.rect(Math.round(barPixels.xMin) + 0.5, Math.round(barPixels.yMin) + 0.5, Math.round(barPixels.xMax - barPixels.xMin), Math.round(barPixels.yMax - barPixels.yMin), style);
+      });
+
+      // Draw the points if needed
+      if (this.points.visible === true) {
+        _get(BarSeries.prototype.__proto__ || Object.getPrototypeOf(BarSeries.prototype), 'draw', this).call(this);
+      }
+    }
+
+    /**
+     * Calculates the spacing needed for the series.
+     *
+     * @method getSpacing
+     * @private
+     * @return {Number} The spacing needed for the series
+     * @since 3.0.0
+     */
+
+  }, {
+    key: 'getSpacing',
+    value: function getSpacing() {
+      // Declare some local variables
+      var pointSpacing = this.points.visible ? _get(BarSeries.prototype.__proto__ || Object.getPrototypeOf(BarSeries.prototype), 'getSpacing', this).call(this) : 0;
+      var lineSpacing = Math.ceil(this.bar.style.lineWidth / 2);
+
+      // Calculate the spacing
+      var spacing = _Number2.default.max(pointSpacing, lineSpacing);
+
+      // Return the spacing
+      return spacing;
+    }
+
+    /**
+     * Determines if the given point is in range of the cursor or not.
+     *
+     * @method isPointInRange
+     * @private
+     * @param {EJSC.Point} point The point
+     * @param {MouseEvent} event The mouse event
+     * @return {Boolean} If the point is in range or not
+     * @since 3.0.0
+     */
+
+  }, {
+    key: 'isPointInRange',
+    value: function isPointInRange(point, event) {
+      // Grab some local pointers
+      var chart = this.chart;
+      var chartPixels = chart.getChartPixels(event);
+      var cursorX = chartPixels.x,
+          cursorY = chartPixels.y;
+
+      var spacing = this.getSpacing();
+      var barPixels = this.calculateBarPixels(point);
+
+      // Determine if the bar is in range of the cursor
+      var barInRange = cursorX >= barPixels.xMin - spacing - 5 && cursorX <= barPixels.xMax + spacing + 5 && cursorY >= barPixels.yMin - spacing - 5 && cursorY <= barPixels.yMax + spacing + 5;
+
+      // Determine if the point is in range of the cursor
+      var pointInRange = this.points.visible ? _get(BarSeries.prototype.__proto__ || Object.getPrototypeOf(BarSeries.prototype), 'isPointInRange', this).call(this, point, event) : false;
+
+      // Return if the bar or the point (if shown) is in range of the cursor
+      return barInRange || pointInRange;
+    }
+
+    /**
+     * Determines if a point is currently visible or not.
+     *
+     * @method isPointVisible
+     * @private
+     * @param {Array<Number, Number>} point The point to determine
+     * @return {Boolean} If the point is currently visible or not
+     * @since 3.0.0
+     */
+
+  }, {
+    key: 'isPointVisible',
+    value: function isPointVisible(point) {
+      // Grab some local pointers
+      var spacing = this.getSpacing();
+      var xAxisZoom = this.referenceXAxis().getCurrentZoom(spacing);
+      var yAxisZoom = this.referenceYAxis().getCurrentZoom(spacing);
+      var barPoints = this.calculateBarPoints(point);
+
+      // Determine if the bar is visible or not
+      var barVisible = _Variable2.default.isNil(point.x) === false && _Variable2.default.isNil(point.y) === false && barPoints.xMax >= xAxisZoom.min && barPoints.xMin <= xAxisZoom.max && barPoints.yMax >= yAxisZoom.min && barPoints.yMin <= yAxisZoom.max;
+
+      // Determine if the point is visible or not
+      var pointVisible = this.points.visible ? _get(BarSeries.prototype.__proto__ || Object.getPrototypeOf(BarSeries.prototype), 'isPointVisible', this).call(this, point) : false;
+
+      // Return if this bar or the point (if shown) is visible or not
+      return barVisible || pointVisible;
+    }
+  }]);
+
+  return BarSeries;
+}(_ScatterSeries3.default);
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

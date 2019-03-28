@@ -11,6 +11,24 @@ import $String from '../../util/String.es6';
  * @since 3.0.0
  */
 export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
+  // TODO:
+
+  // getter
+  getSpacing() {
+    // Return the current spacing
+    return this.spacing;
+  }
+
+  // setter
+  setSpacing(spacing, apply) {
+    // Update the current spacing
+    this.spacing = spacing;
+
+    // Redraw the chart if needed
+    if (apply !== false) {
+      this.update();
+    }
+  }
   /**
    * Defines the x axis to draw on.
    *
@@ -77,6 +95,7 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
     super.init();
 
     // Initialize some public properties
+    this.spacing = 0;
     this.xAxis = 'bottom';
     this.yAxis = 'left';
   }
