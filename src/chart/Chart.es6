@@ -1,27 +1,28 @@
+import $Array from '../util/Array.es6';
+import $Element from '../util/Element.es6';
+import $Object from '../util/Object.es6';
+import $String from '../util/String.es6';
 import EJSC from '../EJSC.es6';
 import Drawing from '../drawing/Drawing.es6';
-import DOM from '../util/DOM.es6';
-import $String from '../util/String.es6';
 
 /**
  * Defines a basic chart that can display a variety of series types on it.
- *
  * A container must be defined in the config options in order for the chart to be rendered to the page.
  *
  * @example
  *
  *   // Create a chart sending in the id of the container
- *   var chart = new EJSC['sparkline'].Chart('chart-container');
+ *   let chart = new EJSC['sparkline'].Chart('chart-container', { ... });
  *
  *   // Create a chart sending in a reference to the container's element
- *   var chart = new EJSC['sparkline'].Chart(document.getElementById('chart-container'));
+ *   let chart = new EJSC['sparkline'].Chart(document.getElementById('chart-container'), { ... });
  *
  * @class EJSC['sparkline'].Chart
  * @extends EJSC.Drawing
  * @constructor
- * @param {DOMElement|String} container The container to render the chart in
+ * @param {Element|String} container The container to render the chart in
  * @param {Object} [options] The config options to apply to the chart
- * @since 3.0.0
+ * @since @todo
  */
 export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   /* not-sparkline:start */
@@ -31,20 +32,20 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the bottom axis by sending in the config options
-   *     axisBottom: { ... }
+   *     axisBottom: { ... }}
    *   });
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the bottom axis by sending in an Axis class
    *     axisBottom: new EJSC['sparkline'].LinearAxis({ ... })
    *   });
    *
    * @attribute {EJSC['sparkline'].Axis|Object} axisBottom
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -54,7 +55,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   // setter
-  setAxisBottom(axisBottom, apply) {
+  setAxisBottom(axisBottom) {
     // Make sure the axis is actually an axis
     if (!(axisBottom instanceof EJSC['sparkline'].Axis)) {
       axisBottom = new EJSC['sparkline'].LinearAxis(axisBottom);
@@ -67,7 +68,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     this.axisBottom = axisBottom;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -80,20 +81,20 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the left axis by sending in the config options
    *     axisLeft: { ... }
    *   });
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the left axis by sending in an Axis class
    *     axisLeft: new EJSC['sparkline'].LinearAxis({ ... })
    *   });
    *
    * @attribute {EJSC['sparkline'].Axis|Object} axisLeft
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -103,7 +104,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   // setter
-  setAxisLeft(axisLeft, apply) {
+  setAxisLeft(axisLeft) {
     // Make sure the axis is actually an axis
     if (!(axisLeft instanceof EJSC['sparkline'].Axis)) {
       axisLeft = new EJSC['sparkline'].LinearAxis(axisLeft);
@@ -116,7 +117,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     this.axisLeft = axisLeft;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -129,20 +130,20 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the right axis by sending in the config options
    *     axisRight: { ... }
    *   });
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the right axis by sending in an Axis class
    *     axisRight: new EJSC['sparkline'].LinearAxis({ ... })
    *   });
    *
    * @attribute {EJSC['sparkline'].Axis|Object} axisRight
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -152,7 +153,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   // setter
-  setAxisRight(axisRight, apply) {
+  setAxisRight(axisRight) {
     // Make sure the axis is actually an axis
     if (!(axisRight instanceof EJSC['sparkline'].Axis)) {
       axisRight = new EJSC['sparkline'].LinearAxis(axisRight);
@@ -165,7 +166,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     this.axisRight = axisRight;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -178,20 +179,20 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the top axis by sending in the config options
    *     axisTop: { ... }
    *   });
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the top axis by sending in an Axis class
    *     axisTop: new EJSC['sparkline'].LinearAxis({ ... })
    *   });
    *
    * @attribute {EJSC['sparkline'].Axis|Object} axisTop
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -201,7 +202,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   // setter
-  setAxisTop(axisTop, apply) {
+  setAxisTop(axisTop) {
     // Make sure the axis is actually an axis
     if (!(axisTop instanceof EJSC['sparkline'].Axis)) {
       axisTop = new EJSC['sparkline'].LinearAxis(axisTop);
@@ -214,13 +215,27 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     this.axisTop = axisTop;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
   /* not-sparkline:end */
 
-  // TODO:
+  /**
+   * Defines the color of the chart area background.
+   *
+   * @example
+   *
+   *   // Create a chart in the element with the id 'chart-container'
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
+   *     // Set the background color of the chart to white (using hex)
+   *     background: '#ffffff'
+   *   });
+   *
+   * @attribute String background
+   * @default 'rgba(0, 0, 0, 0)'
+   * @since @todo
+   */
 
   // getter
   getBackground() {
@@ -229,12 +244,12 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   // setter
-  setBackground(background, apply) {
+  setBackground(background) {
     // Store the new background
     this.background = background;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -245,14 +260,14 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the default colors as [red, green, blue]
    *     colors: ['rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)']
    *   });
    *
    * @attribute {Array} colors
    * @default [...]
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -262,12 +277,12 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   // setter
-  setColors(colors, apply) {
+  setColors(colors) {
     // Store the new colors
     this.colors = colors;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -279,14 +294,14 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the title as 'My Chart'
    *     title: 'My Chart'
    *   });
    *
    * @attribute {String} title
    * @default 'Emprise JavaScript Charts'
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -296,12 +311,12 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   // setter
-  setTitle(title, apply) {
+  setTitle(title) {
     // Store the new title
     this.title = title;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -314,7 +329,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container', {
+   *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Center align the title
    *     titlebar: {
    *       align: 'center'
@@ -330,7 +345,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @property {Integer} titlebar.lineHeight The line-height of the text in the titlebar (Default: 20)
    * @property {Integer} titlebar.padding The horizontal padding of the titlebar (Default: 5)
    * @property {Boolean} titlebar.visible If the titlebar is visible or not (Default: true)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -340,51 +355,12 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   // setter
-  setTitlebar(titlebar, apply) {
+  setTitlebar(titlebar) {
     // Update the current titlebar
-    this.update(this.titlebar, titlebar);
+    $Object.merge(this.titlebar, titlebar);
 
     // Redraw the chart if needed
-    if (apply !== false) {
-      this.update();
-    }
-  }
-  /* not-sparkline:end */
-
-  /* not-sparkline:start */
-  /**
-   * Defines the user zooming.
-   *
-   * @example
-   *
-   *   // TODO: Example
-   *
-   * @attribute {EJSC.UserZoom|Object} zoom
-   * @default null
-   * @since 3.0.0
-   */
-
-  // getter
-  getZoom() {
-    // Return the current zoom
-    return this.zoom;
-  }
-
-  // setter
-  setZoom(zoom, apply) {
-    // Turn the zoom into a user zoom if needed
-    if (!(zoom instanceof EJSC.UserZoom)) {
-      zoom = new EJSC.UserZoom(zoom);
-    }
-
-    // Prepare the zoom
-    zoom.prepare(this);
-
-    // Update the current zoom
-    this.zoom = zoom;
-
-    // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -396,7 +372,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @property {Array} series
    * @protected
    * @default []
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -411,7 +387,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @property {Array} axisList
    * @private
    * @default ['axisBottom', 'axisLeft', 'axisRight', 'axisTop']
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -420,7 +396,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @property {Integer} colorIndex
    * @private
    * @default 0
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -432,7 +408,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @property {Integer} drawArea.right The right coordinate of the chart's draw area (Default: null)
    * @property {Integer} drawArea.top The top coordinate of the chart's draw area (Default: null)
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -441,87 +417,117 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @property {Array} sidesList
    * @private
    * @default ['bottom', 'left', 'righ', 'top']
-   * @since 3.0.0
+   * @since @todo
    */
 
   /* not-sparkline:start */
-  // TODO:
+  /**
+   * Handles when the user clicks the mouse button.
+   *
+   * @method handleClick
+   * @private
+   * @param WindowEvent event The window event
+   * @since @todo
+   */
   handleClick(/* event */) {
     // TODO:
   }
   /* not-sparkline:end */
 
   /* not-sparkline:start */
-  // TODO:
-  handleGlobalMouseMove(/* event */) {
-    // TODO:
-  }
-  /* not-sparkline:end */
-
-  /* not-sparkline:start */
-  // TODO:
-  handleGlobalMouseUp(/* event */) {
-    // TODO:
-  }
-  /* not-sparkline:end */
-
-  /* not-sparkline:start */
-  // TODO:
+  /**
+   * Handles when the user presses a key.
+   *
+   * @method handleKeyDown
+   * @private
+   * @param WindowEvent event The window event
+   * @since @todo
+   */
   handleKeyDown(/* event */) {
     // TODO:
   }
   /* not-sparkline:end */
 
   /* not-sparkline:start */
-  // TODO:
+  /**
+   * Handles when the user releases a key.
+   *
+   * @method handleKeyUp
+   * @private
+   * @param WindowEvent event The window event
+   * @since @todo
+   */
   handleKeyUp(/* event */) {
     // TODO:
   }
   /* not-sparkline:end */
 
   /* not-sparkline:start */
-  // TODO:
+  /**
+   * Handles when the user presses the mouse button.
+   *
+   * @method handleMouseDown
+   * @private
+   * @param WindowEvent event The window event
+   * @since @todo
+   */
   handleMouseDown(/* event */) {
     // TODO:
   }
   /* not-sparkline:end */
 
   /* not-sparkline:start */
-  // TODO:
+  /**
+   * Handles when the user moves the mouse.
+   *
+   * @method handleMouseMove
+   * @private
+   * @param WindowEvent event The window event
+   * @since @todo
+   */
   handleMouseMove(/* event */) {
     // TODO:
   }
   /* not-sparkline:end */
 
   /* not-sparkline:start */
-  // TODO:
+  /**
+   * Handles when the user releases the mouse button.
+   *
+   * @method handleMouseUp
+   * @private
+   * @param WindowEvent event The window event
+   * @since @todo
+   */
   handleMouseUp(/* event */) {
     // TODO:
   }
   /* not-sparkline:end */
 
   /* not-sparkline:start */
-  // TODO:
+  /**
+   * Handles when the user scrolls the mouse wheel.
+   *
+   * @method handleMouseWheel
+   * @private
+   * @param WindowEvent event The window event
+   * @since @todo
+   */
   handleMouseWheel(/* event */) {
     // TODO:
   }
   /* not-sparkline:end */
 
   /**
-   * Adds a new series to the chart.
-   * Optionally (true by default) redraws the chart.
-   *
-   * **Note:** If you are adding multiple series at one time,
-   * you may wish to not redraw the chart until all of
-   * the series have been added to speed things up.
+   * Adds a new series to the chart and (optionally) redraws the chart.
    *
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart(document.getElementById('chart-container'));
+   *   let chart = new EJSC['sparkline'].Chart(document.getElementById('chart-container'));
    *
    *   // Add a scatter series to the chart
-   *   var series1 = chart.addSeries(
+   *   let series = chart.addSeries(
    *     new EJSC['sparkline'].ScatterSeries(...)
    *   );
    *
@@ -529,7 +535,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @param {EJSC['sparkline'].Series} series The series to add to the chart
    * @param {Boolean} [redraw=true] Whether to redraw the chart or not
    * @return {EJSC['sparkline'].Series} The series that was added
-   * @since 3.0.0
+   * @since @todo
    */
   addSeries(series, redraw) {
     // If the series is not actually a series, back out
@@ -560,16 +566,16 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * @example
    *
    *   // Create a chart in the element with the id 'chart-container'
-   *   var chart = new EJSC['sparkline'].Chart('chart-container');
+   *   let chart = new EJSC['sparkline'].Chart('chart-container');
    *
    *   // Add a scatter series to the chart without redrawing the chart
-   *   var series1 = chart.addSeries(
+   *   let series1 = chart.addSeries(
    *     new EJSC['sparkline'].ScatterSeries(...),
    *     false
    *   );
    *
    *   // Add a line series to the chart without redrawing the chart
-   *   var series2 = chart.addSeries(
+   *   let series2 = chart.addSeries(
    *     new EJSC['sparkline'].LineSeries(...),
    *     false
    *   );
@@ -578,7 +584,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *   chart.redraw();
    *
    * @method redraw
-   * @since 3.0.0
+   * @since @todo
    */
   redraw() {
     // Reset the draw area
@@ -670,7 +676,6 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
       padding: 5,
       visible: true
     };
-    this.zoom = null;
     /* not-sparkline:start */
 
     // Initialize some protected properties
@@ -692,13 +697,11 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *
    * @method drawAxes
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   drawAxes() {
     // Draw the axes
-    this.axisList.forEach(axis => {
-      this[axis].draw();
-    });
+    $Array.forEach(this.axisList, axis => this[axis].draw());
 
     /* not-sparkline:start */
     // Update the draw area
@@ -714,7 +717,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *
    * @method drawBackground
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   drawBackground() {
     // Draw a rectangle that covers the whole draw area
@@ -729,7 +732,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *
    * @method drawSeries
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   drawSeries() {
     // Begin clipping the drawing area
@@ -741,9 +744,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     );
 
     // Loop through the visible series and draw each
-    this.getVisibleSeries().forEach(series => {
-      series.draw();
-    });
+    $Array.forEach(this.getVisibleSeries(), series => series.draw());
 
     // End clipping the drawing area
     this.endClip();
@@ -755,7 +756,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *
    * @method drawTitlebar
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   drawTitlebar() {
     // If the titlebar isn't visible, don't do anything
@@ -789,10 +790,17 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
   /* not-sparkline:end */
 
-  // TODO:
+  /**
+   * Gets the next available series color.
+   *
+   * @method getNextColor
+   * @private
+   * @return {String} The next available color
+   * @since @todo
+   */
   getNextColor() {
     // Grab the next available color
-    var color = this.colors[this.colorIndex++];
+    let color = this.colors[this.colorIndex++];
 
     // Reset the color index if needed
     if (this.colorIndex === this.colors.length) {
@@ -803,18 +811,26 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     return color;
   }
 
-  // TODO:
+  /**
+   * Gets the list of currently visible series.
+   *
+   * @method getVisibleSeries
+   * @private
+   * @return {Array} The list of visible series
+   * @since @todo
+   */
   getVisibleSeries() {
-    // Get the list of visible series
-    let visibleSeries = this.series.filter(series => {
-      return series.isVisible();
-    });
-
     // Return the list of visible series
-    return visibleSeries;
+    return $Array.filter(this.series, series => series.isVisible());
   }
 
-  // TODO:
+  /**
+   * Prepares the chart for first use.
+   *
+   * @method prepare
+   * @private
+   * @since @todo
+   */
   prepare() {
     /* not-sparkline:start */
     // Attach the listeners
@@ -824,12 +840,18 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
     this.prepareAxes();
   }
 
-  // TODO:
+  /**
+   * Prepares the chart's axes for first use.
+   *
+   * @method prepareAxes
+   * @private
+   * @since @todo
+   */
   prepareAxes() {
     // Loop through each of the sides
-    this.sidesList.forEach(side => {
+    $Array.forEach(this.sidesList, side => {
       // Create some temporary variables
-      var axis = 'axis' + $String.capitalize(side);
+      let axis = 'axis' + $String.capitalize(side);
 
       // Turn the axis into a class if not already one
       if (!(this[axis] instanceof EJSC['sparkline'].Axis)) {
@@ -842,33 +864,45 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
   }
 
   /* not-sparkline:start */
-  // TODO:
+  /**
+   * Prepares the chart's listeners.
+   *
+   * @method prepareListeners
+   * @private
+   * @since @todo
+   */
   prepareListeners() {
     // Grab the engine's element
-    var element = this.engine.element;
-    var $element = DOM(element);
-    var $document = DOM(document);
+    let element = this.engine.element;
 
     // Set the tabIndex so the chart can gain focus
     element.tabIndex = 0;
     element.style.outline = 'none';
 
     // Add local event listeners
-    $element.on('click', this.handleClick.bind(this));
-    $element.on('keydown', this.handleKeyDown.bind(this));
-    $element.on('keyup', this.handleKeyUp.bind(this));
-    $element.on('mousedown', this.handleMouseDown.bind(this));
-    $element.on('mousemove', this.handleMouseMove.bind(this));
-    $element.on('mouseup', this.handleMouseUp.bind(this));
-    $element.on(['mousewheel', 'DOMMouseScroll'], this.handleMouseWheel.bind(this));
+    $Element(element)
+      .on('click', this.handleClick.bind(this))
+      .on('keydown', this.handleKeyDown.bind(this))
+      .on('keyup', this.handleKeyUp.bind(this))
+      .on('mousedown', this.handleMouseDown.bind(this))
+      .on('mousemove', this.handleMouseMove.bind(this))
+      .on('mouseup', this.handleMouseUp.bind(this))
+      .on(['mousewheel', 'DOMMouseScroll'], this.handleMouseWheel.bind(this));
 
     // Add global event listeners
-    $document.on('mousemove', this.handleGlobalMouseMove.bind(this));
-    $document.on('mouseup', this.handleGlobalMouseUp.bind(this));
+    $Element(document)
+      .on('mousemove', this.handleMouseMove.bind(this))
+      .on('mouseup', this.handleMouseUp.bind(this));
   }
   /* not-sparkline:end */
 
-  // TODO:
+  /**
+   * Resets the stored draw area.
+   *
+   * @method resetDrawArea
+   * @private
+   * @since @todo
+   */
   resetDrawArea() {
     // Reset the current draw area
     this.drawArea = {
@@ -884,7 +918,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *
    * @method update
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   update() {
     // Redraw the chart

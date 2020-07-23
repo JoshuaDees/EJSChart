@@ -1,103 +1,36 @@
-import EJSC from '../EJSC.es6';
-import $Variable from './Variable.es6';
+import $Array from './Array.es6';
+import $Object from './Object.es6';
 
-/**
- * Houses all of the utility methods for dealing with numbers.
- *
- * @class EJSC.Number
- * @private
- * @since 3.0.0
- */
-export default EJSC.Number = new class {
+// TODO: $Number documentation
+let $Number = (number) => new class {
+  // constructor
+  constructor($number) {
+    this.result = $number;
+  }
+
   /**
    * Clamps number within the inclusive lower and upper bounds.
    *
    * @example
    *
-   *   EJSC.Number.clamp(-10, -5, 5);
+   *   $Number(-10).clamp(-5, 5).result;
    *   // => -5
    *
-   *   EJSC.Number.clamp(10, -5, 5);
+   *   $Number(10).clamp(-5, 5).result;
    *   // => 5
    *
-   * @method capitalize
-   * @param {Number} number The number to clamp
+   * @method clamp
    * @param {Number} lower The lower bound
    * @param {Number} uppser The upper bound
-   * @return {String} The clamped number
-   * @since 3.0.0
+   * @chainable
+   * @since @todo
    */
-  clamp(number, lower, upper) {
+  clamp(lower, upper) {
     // Return the clamped number
-    return this.max(lower, this.min(upper, number));
-  }
+    this.result = $Number.max(lower, $Number.min(upper, this.result));
 
-  /**
-   * Computes the maximum value of array.
-   * If array is empty or falsey, undefined is returned.
-   *
-   * @example
-   *
-   *   EJSC.Number.max(4, 2, 8, 6);
-   *   // => 8
-   *
-   *   EJSC.Number.max();
-   *   // => null
-   *
-   * @method max
-   * @param {...Array} numbers The numbers to iterate over
-   * @return {Number} The maximum value
-   * @since 3.0.0
-   */
-  max(...numbers) {
-    // Define some local variables
-    let max = null;
-
-    // Loop through the arguments
-    numbers.forEach(value => {
-      // If there is no current max, or the new value is greater than the current max
-      if ($Variable.isNil(max) || max < value) {
-        // Update the max
-        max = value;
-      }
-    });
-
-    // Return the max
-    return max;
-  }
-
-  /**
-   * Computes the minimum value of array.
-   * If array is empty or falsey, undefined is returned.
-   *
-   * @example
-   *
-   *   EJSC.Number.min(4, 2, 8, 6);
-   *   // => 2
-   *
-   *   EJSC.Number.min();
-   *   // => null
-   *
-   * @method min
-   * @param {...Array} numbers The numbers to iterate over
-   * @return {Number} The minimum value
-   * @since 3.0.0
-   */
-  min(...numbers) {
-    // Define some local variables
-    let min = null;
-
-    // Loop through the arguments
-    numbers.forEach(value => {
-      // If there is no current min, or the new value is less than the current min
-      if ($Variable.isNil(min) || min > value) {
-        // Update the min
-        min = value;
-      }
-    });
-
-    // Return the min
-    return min;
+    // Chain
+    return this;
   }
 
   /**
@@ -105,23 +38,129 @@ export default EJSC.Number = new class {
    *
    * @example
    *
-   *   EJSC.Number.round(4.006);
+   *   $Number(4.006).round().result;
    *   // => 4
    *
-   *   EJSC.Number.round(4.006, 2);
+   *   $Number(4.006).round(2).result;
    *   // => 4.01
    *
-   *   EJSC.Number.round(4060, -2);
+   *   $Number(4060).round(-2).result;
    *   // => 4100
    *
    * @method round
-   * @param {Number} number The number to round
    * @param {Number} [precision=0] The precision to round to
-   * @return {Number} The rounded number
-   * @since 3.0.0
+   * @chainable
+   * @since @todo
    */
-  round(number, precision = 0) {
+  round(precision = 0) {
     // Return the rounded number
-    return Number(Math.round(number + 'e' + precision) + 'e-' + precision);
+    this.result = Number(Math.round(this.result + 'e' + precision) + 'e' + (-precision));
+
+    // Chain
+    return this;
   }
-}();
+}(number);
+
+/**
+ * Clamps number within the inclusive lower and upper bounds.
+ *
+ * @example
+ *
+ *   $Number.clamp(-10, -5, 5);
+ *   // => -5
+ *
+ *   $Number.clamp(10, -5, 5);
+ *   // => 5
+ *
+ * @static
+ * @method clamp
+ * @param {Number} number The number to clamp
+ * @param {Number} lower The lower bound
+ * @param {Number} uppser The upper bound
+ * @return {Number} The clamped value
+ * @since @todo
+ */
+$Number.clamp = (number, lower, upper) => number && $Number(number).clamp(lower, upper).result;
+
+/**
+ * Computes the maximum value of array.
+ * If array is empty or falsey, undefined is returned.
+ *
+ * @example
+ *
+ *   $Number.max(4, 2, 8, 6);
+ *   // => 8
+ *
+ *   $Number.max();
+ *   // => null
+ *
+ * @static
+ * @method max
+ * @param {...Array} numbers The numbers to iterate over
+ * @return {Number} The maximum value
+ * @since @todo
+ */
+$Number.max = (...numbers) => {
+    // Determine the max
+    let max = $Array(numbers)
+      .filter(value => !isNaN(value) && $Object.isNumber(value))
+      .sort((a, b) => a - b)
+      .last();
+
+    // Return the max
+    return $Object.isNil(max) ? null : max;
+};
+
+/**
+ * Computes the minimum value of array.
+ * If array is empty or falsey, undefined is returned.
+ *
+ * @example
+ *
+ *   $Number.min(4, 2, 8, 6);
+ *   // => 2
+ *
+ *   $Number.min();
+ *   // => null
+ *
+ * @static
+ * @method min
+ * @param {...Array} numbers The numbers to iterate over
+ * @return {Number} The minimum value
+ * @since @todo
+ */
+$Number.min = (...numbers) => {
+  // Determine the min
+  let min = $Array(numbers)
+    .filter(value => !isNaN(value) && $Object.isNumber(value))
+    .sort((a, b) => a - b)
+    .first();
+
+  // Return the min
+  return $Object.isNil(min) ? null : min;
+};
+
+/**
+ * Computes number rounded to precision.
+ *
+ * @example
+ *
+ *   $Number.round(4.006);
+ *   // => 4
+ *
+ *   $Number.round(4.006, 2);
+ *   // => 4.01
+ *
+ *   $Number.round(4060, -2);
+ *   // => 4100
+ *
+ * @static
+ * @method round
+ * @param {Number} number The number to round
+ * @param {Number} [precision=0] The precision to round to
+ * @return {Number} The rounded value
+ * @since @todo
+ */
+$Number.round = (number, precision = 0) => number && $Number(number).round(precision).result;
+
+export default $Number;

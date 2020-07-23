@@ -1,8 +1,7 @@
+import $Object from '../../util/Object.es6';
 import EJSC from '../../EJSC.es6';
 import Drawing from '../Drawing.es6';
-import Engine from './Engine.es6';
-import $Object from '../../util/Object.es6';
-import $Variable from '../../util/Variable.es6';
+import Engine from './base/Engine.es6';
 
 /**
  * Defines the SVG rendering engine for EJSCharts.
@@ -11,16 +10,16 @@ import $Variable from '../../util/Variable.es6';
  * @constructor
  * @private
  * @extends EJSC.Engine
- * @since 3.0.0
+ * @since @todo
  */
 export default EJSC.SVG = class SVG extends Engine {
   /**
    * Holds a pointer to the engine's background dom element.
    *
-   * @property {DOM.Element} background.
+   * @property {Element} background.
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -29,7 +28,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @property {String} clipId
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -38,16 +37,16 @@ export default EJSC.SVG = class SVG extends Engine {
    * @property {Integer} clipIndex
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
    * Holds a pointer to the engine's definitions dom element.
    *
-   * @property {DOM.Element} definitions
+   * @property {Element} definitions
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -56,7 +55,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @property {Array} path
    * @private
    * @default []
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -69,7 +68,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} startAngle The start angle (in radians)
    * @param {Number} endAngle The end angle (in radians)
    * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
-   * @since 3.0.0
+   * @since @todo
    */
   arc(cx, cy, radius, startAngle, endAngle, counterClockwise) {
     // Define needed points
@@ -86,7 +85,7 @@ export default EJSC.SVG = class SVG extends Engine {
     let sweep = (counterClockwise ? 0 : 1);
 
     // Move to starting point
-    this.path.push(($Variable.isNull(this.drawing.lastPoint[0]) ? 'M' : 'L') + ' ' + x1 + ',' + y1);
+    this.path.push(($Object.isNull(this.drawing.lastPoint[0]) ? 'M' : 'L') + ' ' + x1 + ',' + y1);
 
     // Append to path object
     this.path.push('A ' + radius + ',' + radius + ' ' + 0 + ' ' + largeArc + ' ' + sweep + ' ' + x2 + ',' + y2);
@@ -101,7 +100,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} x The x coordinate of the end point
    * @param {Number} y The y coordinate of the end point
    * @param {Number} radius The radius of the arc
-   * @since 3.0.0
+   * @since @todo
    */
   arcTo(cpx, cpy, x, y, radius) {
     // Grab last points
@@ -132,7 +131,7 @@ export default EJSC.SVG = class SVG extends Engine {
     let endAngle = Math.atan2((cy2 - cy), (cx2 - cx));
 
     // Draw the connecting line
-    this[($Variable.isNull(this.drawing.lastPoint[0]) ? 'moveTo' : 'lineTo')](cx1, cy1);
+    this[($Object.isNull(this.drawing.lastPoint[0]) ? 'moveTo' : 'lineTo')](cx1, cy1);
 
     // Draw the arc
     this.arc(cx, cy, radius, startAngle, endAngle, firstAngle > secondAngle);
@@ -146,7 +145,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} top The top coordinate of the clip area
    * @param {Number} width The width of the clip area
    * @param {Number} height The height of the clip area
-   * @since 3.0.0
+   * @since @todo
    */
   beginClip(x, y, width, height) {
     // Build the clip id
@@ -159,10 +158,10 @@ export default EJSC.SVG = class SVG extends Engine {
 
     // Append the clip area
     clipPath.appendChild(this.createElement('rect', {
-      x: x,
-      y: y,
-      width: width,
-      height: height
+      x,
+      y,
+      width,
+      height
     }));
 
     // Store the clip id
@@ -173,7 +172,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * Begins a new path.
    *
    * @method beginPath
-   * @since 3.0.0
+   * @since @todo
    */
   beginPath() {
     // Reset the current path
@@ -190,7 +189,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} cp2y The y coordinate of the second control point
    * @param {Number} x The end x coordinate of the curve
    * @param {Number} y The end y coordinate of the curve
-   * @since 3.0.0
+   * @since @todo
    */
   bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) {
     // Append to path object
@@ -205,13 +204,13 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} y The y coordinate for the center of the circle
    * @param {Number} radius The radius (in px) of the circle
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   circle(cx, cy, radius, styles) {
     // Create the circle element
     this.element.appendChild(this.createElement('circle', $Object.merge(this.stylize(styles), {
-      cx: cx,
-      cy: cy,
+      cx,
+      cy,
       r: radius
     })));
   }
@@ -220,7 +219,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * Clears the canvas.
    *
    * @method clear
-   * @since 3.0.0
+   * @since @todo
    */
   clear() {
     // Clear out all of the elements (except for the definitions and background)
@@ -242,7 +241,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * Closes the current path.
    *
    * @method clear
-   * @since 3.0.0
+   * @since @todo
    */
   closePath() {
     // Append to path object
@@ -254,7 +253,7 @@ export default EJSC.SVG = class SVG extends Engine {
    *
    * @method draw
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   draw(styles) {
     this.drawPath(this.stylize(styles));
@@ -269,15 +268,15 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} rx The x radius of the ellipse
    * @param {Number} ry The y radius of the ellipse
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   ellipse(cx, cy, rx, ry, styles) {
     // Create the ellipse element
     this.element.appendChild(this.createElement('ellipse', $Object.merge(this.stylize(styles), {
-      cx: cx,
-      cy: cy,
-      rx: rx,
-      ry: ry
+      cx,
+      cy,
+      rx,
+      ry
     })));
   }
 
@@ -285,7 +284,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * Ends the current clipping of the canvas' drawing area.
    *
    * @method endClip
-   * @since 3.0.0
+   * @since @todo
    */
   endClip() {
     // Clear the clip id
@@ -297,7 +296,7 @@ export default EJSC.SVG = class SVG extends Engine {
    *
    * @method fill
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   fill(styles) {
     this.drawPath($Object.merge(this.stylize(styles), {
@@ -310,7 +309,7 @@ export default EJSC.SVG = class SVG extends Engine {
    *
    * @method horizontalTo
    * @param {Number} x The x coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   horizontalTo(x) {
     // Append to path object
@@ -326,15 +325,15 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} x2 The x coordinate for the ending point
    * @param {Number} y2 The y coordinate for the ending point
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   line(x1, y1, x2, y2, styles) {
     // Create the line element
     this.element.appendChild(this.createElement('line', $Object.merge(this.stylize(styles), {
-      x1: x1,
-      y1: y1,
-      x2: x2,
-      y2: y2
+      x1,
+      y1,
+      x2,
+      y2
     })));
   }
 
@@ -344,7 +343,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @method lineTo
    * @param {Number} x The x coordinate to draw to
    * @param {Number} y The y coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   lineTo(x, y) {
     // Append to path object
@@ -357,7 +356,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @method measureText
    * @param {String} text The text
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   measureText(text, styles) {
     // TODO:
@@ -370,7 +369,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @method moveTo
    * @param {Number} x The x coordinate to move to
    * @param {Number} y The y coordinate to move to
-   * @since 3.0.0
+   * @since @todo
    */
   moveTo(x, y) {
     // Append to path object
@@ -385,7 +384,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} cpy The y coordinate of the control point
    * @param {Number} x The end x coordinate of the curve
    * @param {Number} y The end y coordinate of the curve
-   * @since 3.0.0
+   * @since @todo
    */
   quadraticCurveTo(cpx, cpy, x, y) {
     // Append to path object
@@ -401,15 +400,15 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} width The width of the rectangle
    * @param {Number} height The height of the rectangle
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   rect(x, y, width, height, styles) {
     // Create the rect element
     this.element.appendChild(this.createElement('rect', $Object.merge(this.stylize(styles), {
-      x: x,
-      y: y,
-      width: width,
-      height: height
+      x,
+      y,
+      width,
+      height
     })));
   }
 
@@ -419,7 +418,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @method resize
    * @param {Integer} width The new width for the canvas
    * @param {Integer} height The new height for the canvas
-   * @since 3.0.0
+   * @since @todo
    */
   resize(width, height) {
     // Set the width and height attributes of the main element
@@ -439,7 +438,7 @@ export default EJSC.SVG = class SVG extends Engine {
    *
    * @method stroke
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   stroke(styles) {
     // Stroke the path
@@ -456,14 +455,14 @@ export default EJSC.SVG = class SVG extends Engine {
    * @param {Number} x The x coordinate to draw the text at
    * @param {Number} y The y coordinate to draw the text at
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   text(text, x, y, styles) {
     // Build the correct styles object
     styles = $Object.merge({}, this.stylize(styles), {
       strokeStyle: 'none',
-      x: x,
-      y: y
+      x,
+      y
     });
 
     // Create the text element
@@ -477,7 +476,7 @@ export default EJSC.SVG = class SVG extends Engine {
    *
    * @method verticalTo
    * @param {Number} y The y coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   verticalTo(y) {
     // Append to path object
@@ -515,7 +514,7 @@ export default EJSC.SVG = class SVG extends Engine {
 
   // init
   init() {
-    // Initialize some private properties
+    // Initialize the private properties
     this.background = null;
     this.clipId = null;
     this.clipIndex = 0;
@@ -529,8 +528,8 @@ export default EJSC.SVG = class SVG extends Engine {
    * @method createElement
    * @param {String} tagName The type of element to create
    * @param {Object} attributes The attributes to add to the element
-   * @return {DOM.Element}
-   * @since 3.0.0
+   * @return {Element}
+   * @since @todo
    */
   createElement(tagName, attributes) {
     // Create an element using the given tagName
@@ -596,7 +595,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @method drawPath
    * @private
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   drawPath(styles) {
     // Create the path element
@@ -612,7 +611,7 @@ export default EJSC.SVG = class SVG extends Engine {
    * @private
    * @param {Object} styles The styles to apply
    * @return {Object}
-   * @since 3.0.0
+   * @since @todo
    */
   stylize(styles) {
     // Apply the default and user styles to the context
@@ -629,7 +628,7 @@ EJSC.SVG.css = 'svg { overflow: hidden; } svg, svg * { user-select: none; -moz-u
  * @property {Object} styles
  * @private
  * @static
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.SVG.styles = {
   fillStyle: 'fill',
@@ -651,7 +650,7 @@ EJSC.SVG.styles = {
  * @private
  * @static
  * @default null
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.SVG.stylesheet = null;
 
@@ -662,7 +661,7 @@ EJSC.SVG.stylesheet = null;
  * @private
  * @static
  * @default 'http://www.w3.org/2000/svg'
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.SVG.svgns = 'http://www.w3.org/2000/svg';
 
@@ -673,7 +672,7 @@ EJSC.SVG.svgns = 'http://www.w3.org/2000/svg';
  * @private
  * @static
  * @default 'http://www.w3.org/2000/xmlns/'
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.SVG.xmlns = 'http://www.w3.org/2000/xmlns/';
 
@@ -684,7 +683,7 @@ EJSC.SVG.xmlns = 'http://www.w3.org/2000/xmlns/';
  * @private
  * @static
  * @default 'http://www.w3.org/2000/xlink'
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.SVG.xlink = 'http://www.w3.org/1999/xlink';
 
@@ -694,11 +693,11 @@ EJSC.SVG.xlink = 'http://www.w3.org/1999/xlink';
  * @method buildStylesheet
  * @private
  * @static
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.SVG.buildStylesheet = () => {
   // Only run once
-  if ($Variable.isNull(EJSC.SVG.stylesheet)) {
+  if ($Object.isNull(EJSC.SVG.stylesheet)) {
     // Grab the page header
     let head = document.head || document.getElementsByTagName('head')[0];
 
@@ -729,7 +728,7 @@ EJSC.SVG.buildStylesheet = () => {
  * @static
  * @private
  * @return {Boolean} If the browser supports SVG
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.SVG.isSupported = () => document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1');
 

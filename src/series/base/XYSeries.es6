@@ -3,16 +3,23 @@ import PlotSeries from './PlotSeries.es6';
 import DataSeries from './DataSeries.es6';
 
 /**
- * TODO;
+ * Holds the common properties of series types that use XY data.
  *
  * @class EJSC['sparkline'].XYSeries
  * @extends EJSC['sparkline'].PlotSeries
  * @uses EJSC['sparkline'].DataSeries
  * @private
- * @since 3.0.0
+ * @since @todo
  */
 export default EJSC['sparkline'].XYSeries = class XYSeries extends DataSeries(PlotSeries) {
-  // TODO: document XYSeries.dataPoints
+  /**
+  * Holds the list of data points for each axis type.
+  *
+  * @property {Array} dataPoints
+  * @private
+  * @default { x: ['x'], y: ['y'] }
+  * @since @todo
+  */
 
   // init
   init() {

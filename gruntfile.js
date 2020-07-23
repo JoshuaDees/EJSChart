@@ -26,6 +26,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // grunt-contrib-watch
     watch: {
       src: {
         files: ['src/**/*.es6'],

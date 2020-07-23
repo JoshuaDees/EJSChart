@@ -1,9 +1,24 @@
-import EJSC from '../EJSC.es6';
-import ScatterSeries from './ScatterSeries.es6';
+import $Array from '../util/Array.es6';
 import $Number from '../util/Number.es6';
 import $Object from '../util/Object.es6';
-import $Variable from '../util/Variable.es6';
+import EJSC from '../EJSC.es6';
+import ScatterSeries from './ScatterSeries.es6';
+// TODO:
 
+/**
+ * BarSeries renders its points as vertical or horizontal bars which are fixed to a baseline.
+ *
+ * @example
+ *
+ *   // TODO:
+ *
+ * @class EJSC['sparkline'].BarSeries
+ * @extends EJSC['sparkline'].ScatterSeries
+ * @constructor
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
+ */
 export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeries {
   /**
    * Defines the styles for the bar.
@@ -18,7 +33,7 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    * @property {String} bar.style.fillStyle The background color of the bar. (Default: null)
    * @property {Integer} bar.style.lineWidth The border width of the bar. (Default: 1)
    * @property {String} bar.style.strokeStyle The border color of the bar. (Default: null)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -28,12 +43,12 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
   }
 
   // setter
-  setBar(bar, apply) {
+  setBar(bar) {
     // Update the current bar
     $Object.merge(this.bar, bar);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -47,7 +62,7 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    *
    * @attribute {Number} zeroCoordinate
    * @default 0
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -57,12 +72,12 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
   }
 
   // setter
-  setZeroCoordinate(zeroCoordinate, apply) {
+  setZeroCoordinate(zeroCoordinate) {
     // Update the current zeroCoordinate
     this.zeroCoordinate = zeroCoordinate;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -90,7 +105,7 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    * @method calculateBarPoints
    * @private
    * @return {Object} The boundary points
-   * @since 3.0.0
+   * @since @todo
    */
   calculateBarPoints(point) {
     // Grab some local pointers
@@ -98,14 +113,12 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
     let zeroCoordinate = this.zeroCoordinate;
 
     // Return the bar points
-    let barPoints = {
+    return {
       xMax: point.x + (barSize / 2),
       xMin: point.x - (barSize / 2),
       yMax: $Number.max(point.y, zeroCoordinate),
       yMin: $Number.min(point.y, zeroCoordinate)
     };
-
-    return barPoints;
   }
 
   /**
@@ -114,7 +127,7 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    * @method calculateBarPixels
    * @private
    * @return {Object} The boundary pixels
-   * @since 3.0.0
+   * @since @todo
    */
   calculateBarPixels(point) {
     // Grab some local pointers
@@ -158,35 +171,22 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    * @method calculateBarPixels
    * @private
    * @return {Number} The size of the bar
-   * @since 3.0.0
+   * @since @todo
    */
   calculateBarSize() {
     // Grab some local pointers
     let data = this.data;
 
     // Define some local variables
-    let xs = [];
     let barSize = 1;
 
     // If there are more than 1 points, determine the min distance between the points
     if (data.length > 1) {
-      // Add each point's x value to the array
-      data.forEach(point => {
-        xs.push(point.x);
-      });
-
-      // Sort the array
-      xs.sort();
-
-      // Find the minimum difference
-      xs.forEach((x, index) => {
-        if (index === 0) {
-          barSize = null;
-        }
-        else {
-          barSize = $Number.min(barSize, x - xs[index - 1]);
-        }
-      });
+      $Array(data)
+        .sort((point1, point2) => point1.x - point2.x)
+        .forEach((point, index, points) => {
+          barSize = index === 0 ? null : $Number.min(barSize, point.x - points[index - 1].x);
+        });
     }
 
     // Finalize the bar size
@@ -201,8 +201,8 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    *
    * @method calculateExtremes
    * @private
-   * @return {Object<Number xMin, Number xMax, Number yMin, Number yMin>} The calculated extremes
-   * @since 3.0.0
+   * @return {Object} The calculated extremes
+   * @since @todo
    */
   calculateExtremes() {
     // Grab some local pointers
@@ -227,7 +227,7 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    *
    * @method draw
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   draw() {
     // Grab some local pointers
@@ -240,16 +240,16 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
     });
 
     // Loop through the visible points
-    this.getVisiblePoints().forEach(point => {
+    $Array.forEach(this.getVisiblePoints(), point => {
       // Calculate the bar points
       let barPixels = this.calculateBarPixels(point);
 
       // Draw the bar
       chart.rect(
-        Math.round(barPixels.xMin) + 0.5,
-        Math.round(barPixels.yMin) + 0.5,
-        Math.round(barPixels.xMax - barPixels.xMin),
-        Math.round(barPixels.yMax - barPixels.yMin),
+        $Number.round(barPixels.xMin) + 0.5,
+        $Number.round(barPixels.yMin) + 0.5,
+        $Number.round(barPixels.xMax) - $Number.round(barPixels.xMin),
+        $Number.round(barPixels.yMax) - $Number.round(barPixels.yMin),
         style
       );
     });
@@ -263,21 +263,26 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
   /**
    * Calculates the spacing needed for the series.
    *
-   * @method getSpacing
+   * @method calculateSpacing
    * @private
    * @return {Number} The spacing needed for the series
-   * @since 3.0.0
+   * @since @todo
    */
-  getSpacing() {
+  calculateSpacing() {
     // Declare some local variables
     let pointSpacing = this.points.visible ? super.getSpacing() : 0;
     let lineSpacing = Math.ceil(this.bar.style.lineWidth / 2);
 
-    // Calculate the spacing
+    // Define some local variables
     let spacing = $Number.max(pointSpacing, lineSpacing);
 
-    // Return the spacing
-    return spacing;
+    // Return the spacing needed for the series
+    return {
+      xMin: lineSpacing,
+      xMax: lineSpacing,
+      yMin: spacing,
+      yMax: spacing
+    };
   }
 
   /**
@@ -288,7 +293,7 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    * @param {EJSC.Point} point The point
    * @param {MouseEvent} event The mouse event
    * @return {Boolean} If the point is in range or not
-   * @since 3.0.0
+   * @since @todo
    */
   isPointInRange(point, event) {
     // Grab some local pointers
@@ -318,9 +323,9 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    *
    * @method isPointVisible
    * @private
-   * @param {Array<Number, Number>} point The point to determine
+   * @param {Array} point The point to determine
    * @return {Boolean} If the point is currently visible or not
-   * @since 3.0.0
+   * @since @todo
    */
   isPointVisible(point) {
     // Grab some local pointers
@@ -331,8 +336,8 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
 
     // Determine if the bar is visible or not
     let barVisible = (
-      $Variable.isNil(point.x) === false &&
-      $Variable.isNil(point.y) === false &&
+      $Object.isNil(point.x) === false &&
+      $Object.isNil(point.y) === false &&
       barPoints.xMax >= xAxisZoom.min &&
       barPoints.xMin <= xAxisZoom.max &&
       barPoints.yMax >= yAxisZoom.min &&

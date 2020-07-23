@@ -1,6 +1,6 @@
 /*!
  * Emprise JavaScript Charts v3.0.0 http://www.ejschart.com/
- * Copyright (C) 2006-2019 Emprise Corporation. All Rights Reserved.
+ * Copyright (C) 2006-2020 Emprise Corporation. All Rights Reserved.
  *
  * WARNING: This software program is protected by copyright law
  * and international treaties. Unauthorized reproduction or
@@ -105,29 +105,27 @@ __webpack_require__(1);
 __webpack_require__(10);
 __webpack_require__(11);
 __webpack_require__(12);
-__webpack_require__(3);
+__webpack_require__(9);
 __webpack_require__(13);
+__webpack_require__(14);
 __webpack_require__(15);
 __webpack_require__(16);
 __webpack_require__(17);
+__webpack_require__(7);
 __webpack_require__(18);
-__webpack_require__(2);
-__webpack_require__(19);
-__webpack_require__(26);
 __webpack_require__(25);
-__webpack_require__(23);
 __webpack_require__(24);
 __webpack_require__(22);
-__webpack_require__(20);
+__webpack_require__(23);
 __webpack_require__(21);
-__webpack_require__(5);
-__webpack_require__(6);
-__webpack_require__(14);
-__webpack_require__(27);
-__webpack_require__(9);
-__webpack_require__(4);
+__webpack_require__(19);
+__webpack_require__(20);
+__webpack_require__(3);
+__webpack_require__(2);
 __webpack_require__(8);
-module.exports = __webpack_require__(7);
+__webpack_require__(4);
+__webpack_require__(5);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
@@ -143,29 +141,29 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Array2 = _interopRequireDefault(_Array);
 
-var _Class2 = __webpack_require__(3);
-
-var _Class3 = _interopRequireDefault(_Class2);
-
-var _Number = __webpack_require__(9);
+var _Number = __webpack_require__(4);
 
 var _Number2 = _interopRequireDefault(_Number);
 
-var _Object = __webpack_require__(4);
+var _Object = __webpack_require__(5);
 
 var _Object2 = _interopRequireDefault(_Object);
 
-var _String = __webpack_require__(8);
+var _String = __webpack_require__(6);
 
 var _String2 = _interopRequireDefault(_String);
 
-var _Variable = __webpack_require__(7);
+var _EJSC = __webpack_require__(7);
 
-var _Variable2 = _interopRequireDefault(_Variable);
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _Inheritable2 = __webpack_require__(9);
+
+var _Inheritable3 = _interopRequireDefault(_Inheritable2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -179,13 +177,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * Holds the code common to all Axis types.
  *
  * @class EJSC.Axis
- * @extends EJSC.Class
+ * @extends EJSC.Inheritable
  * @constructor
  * @private
- * @since 3.0.0
+ * @since @todo
  */
-exports.default = _EJSC2.default.Axis = function (_Class) {
-  _inherits(Axis, _Class);
+exports.default = _EJSC2.default.Axis = function (_Inheritable) {
+  _inherits(Axis, _Inheritable);
 
   function Axis() {
     _classCallCheck(this, Axis);
@@ -209,7 +207,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @property {String} border.style.color The color of the border in rgb, rgba, or hex form (Default: 'rgb(200, 200, 200)')
      * @property {Integer} border.style.width The width of the border (Default: 1)
      * @property {Boolean} border.visible Whether to show the border or not (Default: true)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -222,12 +220,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setBorder',
-    value: function setBorder(border, apply) {
+    value: function setBorder(border) {
       // Update the current border
       _Object2.default.merge(this.border, border);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -248,7 +246,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @property {String} caption.style.textAlign The horizontal alignment of the caption (Default: 'center') (Values: 'left', 'center', 'right')
      * @property {String} caption.style.textBaseline The vertical baseline of the caption (Default: 'middle') (Values: 'top', 'middle', 'bottom')
      * @property {Boolean} caption.visible If the caption should be displayed (Default: true)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -264,12 +262,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setCaption',
-    value: function setCaption(caption, apply) {
+    value: function setCaption(caption) {
       // Update the current caption
       _Object2.default.merge(this.caption, caption);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -283,9 +281,9 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *   // TODO:
      *
      * @attribute {Object} extremes
-     * @property {Number} caption.max The max extreme (Default: null)
-     * @property {Number} caption.min The min extreme (Default: null)
-     * @since 3.0.0
+     * @property {Number} extremes.max The max extreme (Default: null)
+     * @property {Number} extremes.min The min extreme (Default: null)
+     * @since @todo
      */
 
     // getter
@@ -301,12 +299,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setExtremes',
-    value: function setExtremes(extremes, apply) {
+    value: function setExtremes(extremes) {
       // Update the current extremes
-      this.update(this.extremes, extremes);
+      _Object2.default.merge(this.extremes, extremes);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -325,7 +323,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @property {Integer} grid.style.lineWidth The width of the zero plane (Default: 1)
      * @property {String} grid.style.strokeStyle The color of the zero plane (Default: 'rgb(230, 230, 230)')
      * @property {Boolean} grid.visible If the grid should be displayed (Default: true)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -341,12 +339,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setGrid',
-    value: function setGrid(grid, apply) {
+    value: function setGrid(grid) {
       // Update the current grid
-      this.update(this.grid, grid);
+      _Object2.default.merge(this.grid, grid);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -354,7 +352,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
     /* not-sparkline:start */
     /**
-     * TODO:
+     * Defines the major ticks to be displayed on the axis.
      *
      * @example
      *
@@ -366,7 +364,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @property {Integer} majorTicks.style.lineWidth The width of the major ticks (Default: 1)
      * @property {String} majorTicks.style.strokeStyle The color of the major ticks (Default: 'rgb(200, 200, 200)')
      * @property {Boolean} majorTicks.visible If the major ticks should be displayed (Default: true)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -382,20 +380,19 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setMajorTicks',
-    value: function setMajorTicks(majorTicks, apply) {
+    value: function setMajorTicks(majorTicks) {
       // Update the current major ticks
-      this.update(this.majorTicks, majorTicks);
+      _Object2.default.merge(this.majorTicks, majorTicks);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
     /* not-sparkline:end */
 
     /**
-     * Defines the padding between the ends of the axis and
-     * the start and end of the data displayed when zoomed out.
+     * Defines the padding between the ends of the axis and the start and end of the data displayed when zoomed out.
      *
      * @example
      *
@@ -403,7 +400,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *
      * @attribute {Integer} padding
      * @default 5
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -419,18 +416,18 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setPadding',
-    value: function setPadding(padding, apply) {
+    value: function setPadding(padding) {
       // Update the current padding
       this.padding = padding;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
 
     /**
-     * TODO:
+     * Defines if the order of the ticks on the axis are reversed or not.
      *
      * @example
      *
@@ -438,7 +435,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *
      * @attribute {Boolean} reverse
      * @default false
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -454,12 +451,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setReverse',
-    value: function setReverse(reverse, apply) {
+    value: function setReverse(reverse) {
       // Update the current reverse
       this.reverse = reverse;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -471,7 +468,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
     *
     * @property {Integer} size
     * @default null
-    * @since 3.0.0
+    * @since @todo
     */
 
     // getter
@@ -487,19 +484,25 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setSize',
-    value: function setSize(size, apply) {
+    value: function setSize(size) {
       // Update the current size
       this.size = size;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
     /* not-sparkline:end */
 
     /* not-sparkline:start */
-    // TODO: visible
+    /**
+     * Defines if the axis is visible or not.
+     *
+     * @attribute {Boolean} visible
+     * @default true
+     * @since @todo
+     */
 
     // getter
 
@@ -514,12 +517,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setVisible',
-    value: function setVisible(visible, apply) {
+    value: function setVisible(visible) {
       // Update the current size
       this.visible = visible;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -530,12 +533,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * Defines the zero plane of the axis.
      *
      * @property {Object} zeroPlane
-     * @property {Number} coordinate The coordinate of the zero plane (Default: 0)
+     * @property {Number} zeroPlane.coordinate The coordinate of the zero plane (Default: 0)
      * @property {Object} zeroPlane.style
      * @property {Integer} zeroPlane.style.lineWidth The width of the zero plane (Default: 1)
      * @property {String} zeroPlane.style.strokeStyle The color of the zero plane (Default: 'rgb(170, 170, 170)')
      * @property {Boolean} zeroPlane.style.visible If the zero plane is visible (Default: false)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -551,12 +554,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setZeroPlane',
-    value: function setZeroPlane(zeroPlane, apply) {
+    value: function setZeroPlane(zeroPlane) {
       // Update the current zeroPlane
-      this.update(this.zeroPlane, zeroPlane);
+      _Object2.default.merge(this.zeroPlane, zeroPlane);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -568,7 +571,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @property {Object} zoom
      * @property {Number} zoom.min The min coordinate (Default: null)
      * @property {Number} zoom.max The max coordinate (Default: null)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -584,12 +587,12 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
   }, {
     key: 'setZoom',
-    value: function setZoom(zoom, apply) {
+    value: function setZoom(zoom) {
       // Update the current zoom
-      this.update(this.zoom, zoom);
+      _Object2.default.merge(this.zoom, zoom);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -600,7 +603,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @property {EJSC.Chart} chart
      * @protected
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -620,17 +623,18 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @property {Number} drawArea.right The right coordinate of the draw area (Default: null)
      * @property {Number} drawArea.top The top coordinate of the draw area (Default: null)
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
      * Holds the orientation of the axis.
-     * (Values: 'horizontal', 'vertical')
+     *
+     * Values: 'horizontal', 'vertical'
      *
      * @property {String} orientation
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -639,17 +643,18 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @property {Number} scale
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
      * Holds the side of the axis.
-     * (Values: 'left', 'top', 'right', 'bottom')
+     *
+     * Values: 'left', 'top', 'right', 'bottom'
      *
      * @property {String} side
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // init
@@ -712,7 +717,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
           lineWidth: 1,
           strokeStyle: 'rgb(170, 170, 170)'
         },
-        visible: false
+        visible: true
       };
       /* not-sparkline:end */
 
@@ -736,7 +741,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *
      * @method calculateDrawArea
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -799,7 +804,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *
      * @method calculateExtremes
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -809,11 +814,11 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
 
     /**
-     * TODO:
+     * Calculates the scale for the axis.
      *
      * @method calculateScale
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -840,7 +845,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *
      * @method calculateTicks
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -850,7 +855,15 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
       return [];
     }
 
-    // TODO:
+    /**
+     * Converts a linear point to a logarithmic point.
+     *
+     * @method convertLinearToPoint
+     * @private
+     * @param {Number} linear The linear point
+     * @return {Number} The logarithmic point
+     * @since @todo
+     */
 
   }, {
     key: 'convertLinearToPoint',
@@ -866,7 +879,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @private
      * @param {Number} pixel The pixel to convert
      * @return {Number} The point
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -876,7 +889,15 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
       return pixel;
     }
 
-    // TODO:
+    /**
+     * Converts a logarithmic point to a linear point.
+     *
+     * @method convertPointToLinear
+     * @private
+     * @param {Number} point The logarithmic point
+     * @return {Number} The linear point
+     * @since @todo
+     */
 
   }, {
     key: 'convertPointToLinear',
@@ -892,7 +913,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @private
      * @param {Number} point The point to convert
      * @return {Number} The pixel
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -902,7 +923,13 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
       return point;
     }
 
-    // TODO:
+    /**
+     * Draws the axis.
+     *
+     * @method draw
+     * @private
+     * @since @todo
+     */
 
   }, {
     key: 'draw',
@@ -957,7 +984,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
       // TODO: Move before drawCaption
       // Draw the axis ticks
-      this.drawTicks(ticks);
+      this.drawMajorTickCaptions(ticks);
       /* not-sparkline:end */
     }
 
@@ -967,7 +994,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *
      * @method drawBorder
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -1040,7 +1067,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *
      * @method drawCaption
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -1051,7 +1078,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
       var caption = this.caption;
 
       // Define some local variables
-      var text = _Variable2.default.isNull(caption.text) ? _String2.default.capitalize(this.side) + ' Axis' : caption.text;
+      var text = _Object2.default.isNull(caption.text) ? _String2.default.capitalize(this.side) + ' Axis' : caption.text;
       var x = void 0;
       var y = void 0;
 
@@ -1098,10 +1125,10 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
     /**
      * Draws the axis' grid.
      *
-     * @method drawTicks
+     * @method drawGrid
      * @private
      * @param {Array} ticks The current list of ticks
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -1114,7 +1141,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
       var gridStyle = axis.grid.style;
 
       // Loop through the ticks
-      ticks.forEach(function (tick) {
+      _Array2.default.forEach(ticks, function (tick) {
         // Define some local variables
         var pixel = _Number2.default.round(axis.convertPointToPixel(tick));
         var x1 = void 0;
@@ -1146,76 +1173,18 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
     /* not-sparkline:end */
 
     /* not-sparkline:start */
-
-  }, {
-    key: 'drawMajorTicks',
-    value: function drawMajorTicks(ticks) {
-      // Grab some local pointers
-      var axis = this;
-      var chart = axis.chart;
-      var drawArea = axis.drawArea;
-      var majorTicks = axis.majorTicks;
-      var majorTicksStyle = majorTicks.style;
-
-      // Loop through the ticks
-      ticks.forEach(function (tick) {
-        // Define some local variables
-        var pixel = _Number2.default.round(axis.convertPointToPixel(tick));
-        var x1 = void 0;
-        var x2 = void 0;
-        var y1 = void 0;
-        var y2 = void 0;
-
-        // Calculte the coordinates based on the axis' orientation
-        switch (axis.side) {
-          case 'bottom':
-            x1 = pixel + 0.5;
-            x2 = pixel + 0.5;
-            y1 = drawArea.top;
-            y2 = drawArea.top + majorTicks.size;
-            break;
-
-          case 'left':
-            x1 = drawArea.right - majorTicks.size;
-            x2 = drawArea.right;
-            y1 = pixel + 0.5;
-            y2 = pixel + 0.5;
-            break;
-
-          case 'right':
-            x1 = drawArea.left;
-            x2 = drawArea.left + majorTicks.size;
-            y1 = pixel + 0.5;
-            y2 = pixel + 0.5;
-            break;
-
-          case 'top':
-            x1 = pixel + 0.5;
-            x2 = pixel + 0.5;
-            y1 = drawArea.bottom - majorTicks.size;
-            y2 = drawArea.bottom;
-            break;
-        }
-
-        // Draw the grid line
-        chart.line(x1, y1, x2, y2, majorTicksStyle);
-      });
-    }
-    /* not-sparkline:end */
-
-    /* not-sparkline:start */
     /**
-     * Draws the axis' tick marks.
+     * Draws the axis' tick captions.
      *
-     * @method drawTicks
+     * @method drawMajorTickCaptions
      * @private
      * @param {Array} ticks The current list of ticks
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
-    key: 'drawTicks',
-    value: function drawTicks(ticks) {
+    key: 'drawMajorTickCaptions',
+    value: function drawMajorTickCaptions(ticks) {
       // Grab some local pointers
       var axis = this;
       var chart = this.chart;
@@ -1228,7 +1197,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
       }
 
       // Loop through the ticks
-      ticks.forEach(function (tick) {
+      _Array2.default.forEach(ticks, function (tick) {
         // Define some local variables
         var pixel = _Number2.default.round(axis.convertPointToPixel(tick));
         var text = _Number2.default.round(tick, 12);
@@ -1279,11 +1248,77 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
 
     /* not-sparkline:start */
     /**
-     * Draws the axis' zeroPlane.
+     * Draws the axis' major ticks.
+     *
+     * @method drawMajorTicks
+     * @private
+     * @param {Array} ticks The current list of ticks
+     * @since @todo
+     */
+
+  }, {
+    key: 'drawMajorTicks',
+    value: function drawMajorTicks(ticks) {
+      // Grab some local pointers
+      var axis = this;
+      var chart = axis.chart;
+      var drawArea = axis.drawArea;
+      var majorTicks = axis.majorTicks;
+      var majorTicksStyle = majorTicks.style;
+
+      // Loop through the ticks
+      _Array2.default.forEach(ticks, function (tick) {
+        // Define some local variables
+        var pixel = _Number2.default.round(axis.convertPointToPixel(tick));
+        var x1 = void 0;
+        var x2 = void 0;
+        var y1 = void 0;
+        var y2 = void 0;
+
+        // Calculte the coordinates based on the axis' orientation
+        switch (axis.side) {
+          case 'bottom':
+            x1 = pixel + 0.5;
+            x2 = pixel + 0.5;
+            y1 = drawArea.top;
+            y2 = drawArea.top + majorTicks.size;
+            break;
+
+          case 'left':
+            x1 = drawArea.right - majorTicks.size;
+            x2 = drawArea.right;
+            y1 = pixel + 0.5;
+            y2 = pixel + 0.5;
+            break;
+
+          case 'right':
+            x1 = drawArea.left;
+            x2 = drawArea.left + majorTicks.size;
+            y1 = pixel + 0.5;
+            y2 = pixel + 0.5;
+            break;
+
+          case 'top':
+            x1 = pixel + 0.5;
+            x2 = pixel + 0.5;
+            y1 = drawArea.bottom - majorTicks.size;
+            y2 = drawArea.bottom;
+            break;
+        }
+
+        // Draw the grid line
+        chart.line(x1, y1, x2, y2, majorTicksStyle);
+      });
+    }
+    /* not-sparkline:end */
+
+    /* not-sparkline:start */
+    /**
+     * Draws the axis' zero plane.
      *
      * @method drawZeroPlane
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -1325,7 +1360,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
       }
 
       // Draw the axis zeroPlane
-      if (x1 && y1 && x2 && y2) {
+      if (!_Object2.default.isNil(x1) && !_Object2.default.isNil(y1) && !_Object2.default.isNil(x2) && !_Object2.default.isNil(y2)) {
         chart.line(x1, y1, x2, y2, zeroPlane.style);
       }
     }
@@ -1337,28 +1372,27 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
     * @method getCurrentZoom
     * @private
     * @param {Integer} spacing The additional spacing to include
-    * @since 3.0.0
+    * @since @todo
     */
 
   }, {
     key: 'getCurrentZoom',
     value: function getCurrentZoom(spacing) {
       // Grab some local pointers
-      var zoom = this.zoom;
-      var extremes = this.extremes;
-      var scale = this.scale;
+      var extremes = this.extremes,
+          orientation = this.orientation,
+          scale = this.scale,
+          zoom = this.zoom;
 
-      // Update some variables with default values
-      spacing = spacing || 0;
+      // Define some local variables
 
-      // Calculate the current zoom
-      var currentZoom = {
-        min: (zoom.min || extremes.min) - spacing * scale,
-        max: (zoom.max || extremes.max) + spacing * scale
-      };
+      var dataPoint = orientation === 'vertical' ? 'y' : 'x';
 
       // Return the current zoom
-      return currentZoom;
+      return {
+        min: (zoom.min || extremes.min) - _Number2.default.max(0, _Object2.default.getProperty(spacing, dataPoint + 'Min')) * scale,
+        max: (zoom.max || extremes.max) + _Number2.default.max(0, _Object2.default.getProperty(spacing, dataPoint + 'Max')) * scale
+      };
     }
 
     /**
@@ -1367,17 +1401,14 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @method getOffsetSize
      * @private
      * @return {Integer} The offset size of the axis
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'getOffsetSize',
     value: function getOffsetSize() {
-      // Determine the size of the axis if shown
-      var size = this.isVisible() ? this.size : 0;
-
       // Return the size
-      return size;
+      return this.isVisible() ? this.size : 0;
     }
 
     /**
@@ -1386,7 +1417,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @method getVisibleSeries
      * @private
      * @return {Array} The visible series
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -1394,25 +1425,26 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
     value: function getVisibleSeries() {
       var _this2 = this;
 
-      // Grab the list of visible attached series
-      var visibleSeries = this.chart.series.filter(function (series) {
+      // Return the list of visible series
+      return _Array2.default.filter(this.chart.series, function (series) {
         return _this2.orientation === 'horizontal' && series.xAxis === _this2.side && series.isVisible() || _this2.orientation === 'vertical' && series.yAxis === _this2.side && series.isVisible();
       });
-
-      // Return the list of visible series
-      return visibleSeries;
     }
 
-    // TODO:
+    /**
+     * Returns if the axis has currently visible series.
+     *
+     * @method hasVisibleSeries
+     * @private
+     * @return {Boolean} If there are visible series
+     * @since @todo
+     */
 
   }, {
     key: 'hasVisibleSeries',
     value: function hasVisibleSeries() {
-      // Determine if there are any visible attached series
-      var hasVisibleSeries = this.getVisibleSeries().length > 0;
-
       // Return if there are any visible attached series
-      return hasVisibleSeries;
+      return this.getVisibleSeries().length > 0;
     }
 
     /**
@@ -1421,17 +1453,14 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @method isVisible
      * @private
      * @return {Boolean} If the axis is currently visible
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'isVisible',
     value: function isVisible() {
-      // Determine if the axis is visible
-      var visible = _Variable2.default.isNil(this.visible) ? this.hasVisibleSeries() : this.visible;
-
       // Return if the axis is visible
-      return visible;
+      return _Object2.default.isNil(this.visible) ? this.hasVisibleSeries() : this.visible;
     }
 
     /**
@@ -1441,7 +1470,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      * @private
      * @param {EJSC.Chart} chart The owner chart
      * @param {String} side The axis' side
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -1455,7 +1484,7 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
       });
 
       // Update the size if needed
-      if (_Variable2.default.isNil(this.size)) {
+      if (_Object2.default.isNil(this.size)) {
         this.size = _EJSC2.default.Axis.sizes[this.orientation];
       }
     }
@@ -1465,23 +1494,32 @@ exports.default = _EJSC2.default.Axis = function (_Class) {
      *
      * @method update
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'update',
     value: function update() {
       // Redraw the chart
-      if (_Object2.default.has(this, 'chart.redraw')) {
-        this.chart.redraw();
-      }
+      (0, _Object2.default)(this).invoke('chart.redraw');
     }
   }]);
 
   return Axis;
-}(_Class3.default);
+}(_Inheritable3.default);
 
-// Define the default values for orientation
+/**
+ * Defines the default values for orientation or axes.
+ *
+ * @property {Object} orientations
+ * @property {Number} sizes.bottom (Default: 'horizontal')
+ * @property {Number} sizes.left (Default: 'vertical')
+ * @property {Number} sizes.right (Default: 'vertical')
+ * @property {Number} sizes.top (Default: 'horizontal)
+ * @static
+ * @private
+ * @since @todo
+ */
 
 
 _EJSC2.default.Axis.orientations = {
@@ -1491,7 +1529,16 @@ _EJSC2.default.Axis.orientations = {
   top: 'horizontal'
 };
 
-// Define the default values for size
+/**
+ * Defines the default values for size of axes.
+ *
+ * @property {Object} sizes
+ * @property {Number} sizes.horizontal (Default: 45)
+ * @property {Number} sizes.vertical (Default: 70)
+ * @static
+ * @private
+ * @since @todo
+ */
 _EJSC2.default.Axis.sizes = {
   horizontal: 45,
   vertical: 70
@@ -1510,84 +1557,354 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _Helpers = __webpack_require__(3);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * Houses all of the code for the EJSChart project.
- *
- * @module EJSC
- * @since 3.0.0
- */
-exports.default = window.EJSC = new (function () {
-  _createClass(EJSC, [{
-    key: 'prepare',
-
-    /**
-     * Holds the list of callback functions to run whne the window loads.
-     *
-     * @property {Array} prepared
-     * @private
-     * @default []
-     * @since 3.0.0
-     */
-
-    /**
-     * Prepares a callback function to be called when the window loads.
-     *
-     * @method prepare
-     * @param {Function} callback The callback function
-     * @since 3.0.0
-     */
-    value: function prepare(callback) {
-      // Add the callback function to the prepared list
-      if (callback && {}.toString.call(callback) === '[object Function]') {
-        this.prepared.push(callback);
-      }
-    }
-
+// TODO: $Array documentation
+var $Array = function $Array(array) {
+  return new (function () {
     // constructor
+    function _class($array) {
+      _classCallCheck(this, _class);
 
-  }]);
-
-  function EJSC() {
-    _classCallCheck(this, EJSC);
-
-    // Initialize some private properties
-    this.prepared = [];
-
-    // Attach the load method to the window load event
-    if (window.attachEvent) {
-      window.attachEvent('onload', this.load.bind(this));
-    } else {
-      window.addEventListener('load', this.load.bind(this), true);
+      this.result = $array;
     }
+
+    /**
+     * Iterates over elements of array, returning an array of all elements predicate returns truthy for.
+     * The predicate is invoked with three arguments: (value, key, array).
+     *
+     * @example
+     *
+     *   $Array([0, 1, 2]).filter((value, key, array) => value > 0).result;
+     *   // => [1, 2]
+     *
+     * @method filter
+     * @param {Function} predicate The function invoked per iteration
+     * @chainable
+     * @since @todo
+     */
+
+
+    _createClass(_class, [{
+      key: 'filter',
+      value: function filter() {
+        var predicate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _Helpers.identity;
+
+        // TODO: Cover if no built-in method
+        this.result = Array.prototype.filter.call(this.result, predicate);
+
+        // Chain
+        return this;
+      }
+
+      /**
+       * Iterates over elements of array and invokes iteratee for each element.
+       * The iteratee is invoked with three arguments: (value, key, array).
+       * Iteratee functions may exit iteration early by explicitly returning false.
+       *
+       * @example
+       *
+       *   $Array([1, 2]).forEach((value, key, array) => console.log(value));
+       *   // => Logs '1' then '2'.
+       *
+       * @method forEach
+       * @param {Function} predicate The function invoked per iteration
+       * @chainable
+       * @since @todo
+       */
+
+    }, {
+      key: 'forEach',
+      value: function forEach() {
+        var predicate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _Helpers.identity;
+
+        // TODO: Cover if no built-in method
+        Array.prototype.forEach.call(this.result, predicate);
+
+        // Chain
+        return this;
+      }
+
+      // TODO: $Array().first documentation
+
+    }, {
+      key: 'first',
+      value: function first() {
+        // Return the first item in the array
+        return this.result[0];
+      }
+
+      /**
+       * Checks if the given value exists in the given array.
+       *
+       * @example
+       *
+       *   $Array([1, 2, 3]).includes(1);
+       *   // => true
+       *
+       * @method includes
+       * @param {*} valueToFind The value to search for
+       * @param {Number} [fromIndex=0] The index to search from (for arrays)
+       * @return {Boolean} If value is found
+       * @since @todo
+       */
+
+    }, {
+      key: 'includes',
+      value: function includes(valueToFind) {
+        var fromIndex = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+        // TODO: Cover if no built-in method
+        return Array.prototype.includes.call(this.result, valueToFind, fromIndex);
+      }
+
+      // TODO: $Array().last documentation
+
+    }, {
+      key: 'last',
+      value: function last() {
+        return this.result[this.result.length - 1];
+      }
+
+      // TODO: $Array().slice documentation
+
+    }, {
+      key: 'slice',
+      value: function slice() {
+        var start = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        var end = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.result.length;
+
+        // TODO: Cover if no built-in method
+        this.result = Array.prototype.slice.call(this.result, start, end);
+
+        // Chain
+        return this;
+      }
+
+      // TODO: $Array().sort documentation
+
+    }, {
+      key: 'sort',
+      value: function sort() {
+        var predicate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _Helpers.identity;
+
+        // TODO: Cover if no built-in method
+        this.result = Array.prototype.sort.call(this.result, predicate);
+
+        // Chain
+        return this;
+      }
+
+      /**
+       * Transforms an array into a new accumulator array.
+       *
+       * @example
+       *
+       *   $Array([2, 3, 4]).transform((result, n) => {
+       *     result.push(n *= n);
+       *     return n % 2 == 0;
+       *   }, []).result;
+       *   // => [4, 9]
+       *
+       * @method transform
+       * @param {Function} [predicate=identity] The function invoked per iteration
+       * @param {*} [accumulator=[]] The custom accumulator
+       * @chainable
+       * @since @todo
+       */
+
+    }, {
+      key: 'transform',
+      value: function transform() {
+        var predicate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _Helpers.identity;
+        var accumulator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+        // Usese the built in forEach method
+        $Array.forEach(this.result, function (value, index, object) {
+          return predicate(accumulator, value, index, object);
+        });
+
+        // Store the accumulator
+        this.result = accumulator;
+
+        // Chain
+        return this;
+      }
+
+      /**
+       * Creates an array excluding all given values using SameValueZero for equality comparisons.
+       *
+       * @example
+       *
+       *   $Array([2, 1, 2, 3]).without(1, 2).result;
+       *   // => [3]
+       *
+       * @method without
+       * @param {*} [...values] The values to exclude
+       * @chainable
+       * @since @todo
+       */
+
+    }, {
+      key: 'without',
+      value: function without() {
+        for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
+          values[_key] = arguments[_key];
+        }
+
+        // Filter out the unwanted values
+        this.result = $Array.filter(this.result, function (value) {
+          return !$Array.includes(values, value);
+        });
+
+        // Chain
+        return this;
+      }
+    }]);
+
+    return _class;
+  }())(array);
+};
+
+/**
+ * Iterates over elements of array, returning an array of all elements predicate returns truthy for.
+ * The predicate is invoked with three arguments: (value, key, array).
+ *
+ * @example
+ *
+ *   $Array.filter([0, 1, 2], (value, key, array) => value > 0);
+ *   // => [1, 2]
+ *
+ * @static
+ * @method filter
+ * @param {Array} array The array to iterate over
+ * @param {Function} [predicate=identity] The function invoked per iteration
+ * @return {Array} The new filterd array
+ * @since @todo
+ */
+$Array.filter = function (array) {
+  var predicate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Helpers.identity;
+  return array && $Array(array).filter(predicate).result;
+};
+
+/**
+ * Iterates over elements of array and invokes iteratee for each element.
+ * The iteratee is invoked with three arguments: (value, key, array).
+ * Iteratee functions may exit iteration early by explicitly returning false.
+ *
+ * @example
+ *
+ *   $Array.forEach([1, 2], (value, key, array) => console.log(value));
+ *   // => Logs '1' then '2'.
+ *
+ * @static
+ * @method forEach
+ * @param {Array} array The array to iterate over
+ * @param {Function} [predicate=identity] The function invoked per iteration
+ * @return {Array} The array
+ * @since @todo
+ */
+$Array.forEach = function (array) {
+  var predicate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Helpers.identity;
+  return array && $Array(array).forEach(predicate).result;
+};
+
+// TODO: $Array.first documentation
+$Array.first = function (array) {
+  return array && $Array(array).first();
+};
+
+/**
+ * Checks if the given value exists in the given array.
+ *
+ * @example
+ *
+ *   $Array.includes([1, 2, 3], 1);
+ *   // => true
+ *
+ * @static
+ * @method includes
+ * @param {Array} array The array to inspect
+ * @param {*} valueToFind The value to search for
+ * @param {Number} [fromIndex=0] The index to search from (for arrays)
+ * @return {Boolean} If value is found
+ * @since @todo
+ */
+$Array.includes = function (array, valueToFind) {
+  var fromIndex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  return array && $Array(array).includes(valueToFind, fromIndex);
+};
+
+// TODO: $Array.last documentation
+$Array.last = function (array) {
+  return array && $Array(array).last();
+};
+
+// TODO: $Array.slice documentation
+$Array.slice = function (array) {
+  var start = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var end = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : array.length;
+  return array && $Array(array).slice(start, end).result;
+};
+
+// TODO: $Array.sort documentation
+$Array.sort = function (array) {
+  var predicate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Helpers.identity;
+  return array && $Array(array).sort(predicate).result;
+};
+
+/**
+ * Transforms an array into a new accumulator array.
+ *
+ * @example
+ *
+ *   $Array.transform([2, 3, 4], (result, n) => {
+ *     result.push(n *= n);
+ *     return n % 2 == 0;
+ *   }, []);
+ *   // => [4, 9]
+ *
+ * @method transform
+ * @param {Array} array The array to iterate over
+ * @param {Function} [predicate=identity] The function invoked per iteration
+ * @param {*} [accumulator=[]] The custom accumulator
+ * @return {*} The accumulated value
+ * @since @todo
+ */
+$Array.transform = function (array) {
+  var predicate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Helpers.identity;
+  var accumulator = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  return array && $Array(array).transform(predicate, accumulator).result;
+};
+
+/**
+ * Creates an array excluding all given values using SameValueZero for equality comparisons.
+ *
+ * @example
+ *
+ *   $Array.without([2, 1, 2, 3], 1, 2);
+ *   // => [3]
+ *
+ * @static
+ * @method without
+ * @param {Array} array The array to inspect
+ * @param {*} [...values] The values to exclude
+ * @return {Array} The new array of filtered values
+ * @since @todo
+ */
+$Array.without = function (array) {
+  var _$Array;
+
+  for (var _len2 = arguments.length, values = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    values[_key2 - 1] = arguments[_key2];
   }
 
-  /**
-   * Runs all of the prepared callback functions when the page loads.
-   *
-   * @method load
-   * @private
-   * @since 3.0.0
-   */
+  return array && (_$Array = $Array(array)).without.apply(_$Array, values).result;
+};
 
-
-  _createClass(EJSC, [{
-    key: 'load',
-    value: function load() {
-      var _this = this;
-
-      // Run all of the prepared callback functions
-      this.prepared.forEach(function (callback) {
-        return callback.call(_this);
-      });
-    }
-  }]);
-
-  return EJSC;
-}())();
-
-
+exports.default = $Array;
 
 /***/ }),
 /* 3 */
@@ -1599,135 +1916,30 @@ exports.default = window.EJSC = new (function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _EJSC = __webpack_require__(2);
-
-var _EJSC2 = _interopRequireDefault(_EJSC);
-
-var _Object = __webpack_require__(4);
-
-var _Object2 = _interopRequireDefault(_Object);
-
-var _String = __webpack_require__(8);
-
-var _String2 = _interopRequireDefault(_String);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Holds the base functionality of all constructable classes.
+/*
+ * Returns the item that was sent in.
+ * Used as a default conversion method.
  *
- * @class EJSC.Class
- * @private
- * @since 3.0.0
+ * @method identity
+ * @param {Variable} item The item to convert
+ * @return {Variable} The converted item
  */
-exports.default = _EJSC2.default.Class = function () {
-  /**
-   * Defines if the class is currently listening for changes.
-   *
-   * @property {Boolean} listening
-   * @default true
-   * @since 3.0.0
-   */
+var identity = function identity(item) {
+  return item;
+};
 
-  // constructor
-  function Class() {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+/*
+ * Blank function that does nothing and returns nothing.
+ * Used to make sure undefined is returned correctly.
+ *
+ * @method noop
+ */
+var noop = function noop() {
+  // no-op
+};
 
-    _classCallCheck(this, Class);
-
-    // Initialize the properties
-    this.init();
-
-    // Apply the given options
-    this.apply(options);
-  }
-
-  /**
-   * Applies new options to the class.
-   *
-   * @example
-   *
-   *   // Create a class
-   *   var myClass = new EJSC.SomeClass();
-   *
-   *   // Apply some new options
-   *   myClass.apply({
-   *     newProperty: 'newValue'
-   *   });
-   *
-   * @method apply
-   * @public
-   * @param {Object} [options={}] The options to apply
-   * @since 3.0.0
-   */
-
-
-  _createClass(Class, [{
-    key: 'apply',
-    value: function apply() {
-      var _this = this;
-
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      // Store listening
-      var listening = this.listening;
-
-      // Stop listening
-      this.listening = false;
-
-      // Loop through each of the options
-      Object.entries(options).forEach(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            name = _ref2[0],
-            value = _ref2[1];
-
-        // Grab the setter
-        var setter = _this['set' + _String2.default.upperFirst(name)];
-
-        // Use the setter if defined
-        if (setter) {
-          // Call the setter
-          setter.call(_this, value, false);
-        }
-
-        // Otherwise use merge
-        else {
-            // Merge the object into the class
-            _Object2.default.merge(_this, _defineProperty({}, name, value));
-          }
-      });
-
-      // Restore listening
-      this.listening = listening;
-    }
-
-    /**
-     * Initializes the variable properties of the class.
-     *
-     * @method init
-     * @private
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'init',
-    value: function init() {
-      // Initialize some private properties
-      this.listening = true;
-    }
-  }]);
-
-  return Class;
-}();
+exports.identity = identity;
+exports.noop = noop;
 
 /***/ }),
 /* 4 */
@@ -1742,154 +1954,212 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
-
-var _EJSC2 = _interopRequireDefault(_EJSC);
-
-var _Array = __webpack_require__(5);
+var _Array = __webpack_require__(2);
 
 var _Array2 = _interopRequireDefault(_Array);
 
-var _Collection = __webpack_require__(6);
+var _Object = __webpack_require__(5);
 
-var _Collection2 = _interopRequireDefault(_Collection);
-
-var _Variable = __webpack_require__(7);
-
-var _Variable2 = _interopRequireDefault(_Variable);
+var _Object2 = _interopRequireDefault(_Object);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * Houses all of the utility methods for dealing with objects.
- *
- * @class EJSC.Object
- * @private
- * @since 3.0.0
- */
-exports.default = _EJSC2.default.Object = new (function () {
-  function _class() {
-    _classCallCheck(this, _class);
-  }
+// TODO: $Number documentation
+var $Number = function $Number(number) {
+  return new (function () {
+    // constructor
+    function _class($number) {
+      _classCallCheck(this, _class);
 
-  _createClass(_class, [{
-    key: 'has',
-
-    /**
-     * Checks if path is a direct property of object.
-     *
-     * @example
-     *
-     *   var object = { a: { b: 2 } };
-     *
-     *   EJSC.Object.has(object, 'a');
-     *   // => true
-     *
-     *   EJSC.Object.has(object, 'a.b');
-     *   // => true
-     *
-     *   EJSC.Object.has(object, ['a', 'b']);
-     *   // => true
-     *
-     *   EJSC.Object.has(object, 'c');
-     *   // => false
-     *
-     * @method has
-     * @param {Object} object The object to query
-     * @param {Array|String} path The path to check
-     * @return {Boolean} If path exists
-     * @since 3.0.0
-     */
-    value: function has(object, path) {
-      // Make sure the path is in array form
-      path = _Variable2.default.isString(path) ? path.split('.') : path;
-
-      // Define some local variables
-      var owner = object;
-      var has = true;
-
-      // Loop through each of the parts of the path
-      path.forEach(function (step) {
-        // If the next step exists
-        if (owner[step]) {
-          // Move to the next piece
-          owner = owner[step];
-
-          // Return true to continue the loop
-          return true;
-        }
-
-        // If the next step doesn't exist
-        else {
-            // Mark has as false
-            has = false;
-
-            // Return false to stop the loop
-            return false;
-          }
-      });
-
-      // Rreturn if the object has the path
-      return has;
+      this.result = $number;
     }
 
     /**
-     * This method is like EJSC.Object.assign except that it recursively merges own and inherited
-     * enumerable string keyed properties of source objects into the destination object.
-     * Source properties that resolve to undefined are skipped if a destination value exists.
-     * Array and plain object properties are merged recursively.
-     * Other objects and value types are overridden by assignment.
-     * Source objects are applied from left to right.
-     * Subsequent sources overwrite property assignments of previous sources.
+     * Clamps number within the inclusive lower and upper bounds.
      *
      * @example
      *
-     *   // @todo
+     *   $Number(-10).clamp(-5, 5).result;
+     *   // => -5
      *
-     * @method max
-     * @param {Object} object The destination object
-     * @param {Object} ...sources The source objects
-     * @return {Object} The object
-     * @since 3.0.0
+     *   $Number(10).clamp(-5, 5).result;
+     *   // => 5
+     *
+     * @method clamp
+     * @param {Number} lower The lower bound
+     * @param {Number} uppser The upper bound
+     * @chainable
+     * @since @todo
      */
 
-  }, {
-    key: 'merge',
-    value: function merge(object) {
-      var _this = this;
 
-      // Make sure destination is defined
-      object = object || {};
+    _createClass(_class, [{
+      key: 'clamp',
+      value: function clamp(lower, upper) {
+        // Return the clamped number
+        this.result = $Number.max(lower, $Number.min(upper, this.result));
 
-      // Loop through each of the sources
-
-      for (var _len = arguments.length, sources = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        sources[_key - 1] = arguments[_key];
+        // Chain
+        return this;
       }
 
-      _Array2.default.without(sources, null, undefined).forEach(function (source) {
-        // Loop through each of the properties of the current source
-        _Collection2.default.forEach(source, function (variable, name) {
-          // Deep copy the property from the source to the destination
-          if (_Variable2.default.isArray(variable)) {
-            _this.merge(object[name] = object[name] || [], variable);
-          } else if (_Variable2.default.isPlainObject(variable)) {
-            _this.merge(object[name] = object[name] || {}, variable);
-          } else {
-            object[name] = _Variable2.default.isUndefined(variable) ? object[name] : variable;
-          }
-        });
-      });
+      /**
+       * Computes number rounded to precision.
+       *
+       * @example
+       *
+       *   $Number(4.006).round().result;
+       *   // => 4
+       *
+       *   $Number(4.006).round(2).result;
+       *   // => 4.01
+       *
+       *   $Number(4060).round(-2).result;
+       *   // => 4100
+       *
+       * @method round
+       * @param {Number} [precision=0] The precision to round to
+       * @chainable
+       * @since @todo
+       */
 
-      // Return the destination object
-      return object;
-    }
-  }]);
+    }, {
+      key: 'round',
+      value: function round() {
+        var precision = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-  return _class;
-}())();
+        // Return the rounded number
+        this.result = Number(Math.round(this.result + 'e' + precision) + 'e' + -precision);
+
+        // Chain
+        return this;
+      }
+    }]);
+
+    return _class;
+  }())(number);
+};
+
+/**
+ * Clamps number within the inclusive lower and upper bounds.
+ *
+ * @example
+ *
+ *   $Number.clamp(-10, -5, 5);
+ *   // => -5
+ *
+ *   $Number.clamp(10, -5, 5);
+ *   // => 5
+ *
+ * @static
+ * @method clamp
+ * @param {Number} number The number to clamp
+ * @param {Number} lower The lower bound
+ * @param {Number} uppser The upper bound
+ * @return {Number} The clamped value
+ * @since @todo
+ */
+$Number.clamp = function (number, lower, upper) {
+  return number && $Number(number).clamp(lower, upper).result;
+};
+
+/**
+ * Computes the maximum value of array.
+ * If array is empty or falsey, undefined is returned.
+ *
+ * @example
+ *
+ *   $Number.max(4, 2, 8, 6);
+ *   // => 8
+ *
+ *   $Number.max();
+ *   // => null
+ *
+ * @static
+ * @method max
+ * @param {...Array} numbers The numbers to iterate over
+ * @return {Number} The maximum value
+ * @since @todo
+ */
+$Number.max = function () {
+  for (var _len = arguments.length, numbers = Array(_len), _key = 0; _key < _len; _key++) {
+    numbers[_key] = arguments[_key];
+  }
+
+  // Determine the max
+  var max = (0, _Array2.default)(numbers).filter(function (value) {
+    return !isNaN(value) && _Object2.default.isNumber(value);
+  }).sort(function (a, b) {
+    return a - b;
+  }).last();
+
+  // Return the max
+  return _Object2.default.isNil(max) ? null : max;
+};
+
+/**
+ * Computes the minimum value of array.
+ * If array is empty or falsey, undefined is returned.
+ *
+ * @example
+ *
+ *   $Number.min(4, 2, 8, 6);
+ *   // => 2
+ *
+ *   $Number.min();
+ *   // => null
+ *
+ * @static
+ * @method min
+ * @param {...Array} numbers The numbers to iterate over
+ * @return {Number} The minimum value
+ * @since @todo
+ */
+$Number.min = function () {
+  for (var _len2 = arguments.length, numbers = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    numbers[_key2] = arguments[_key2];
+  }
+
+  // Determine the min
+  var min = (0, _Array2.default)(numbers).filter(function (value) {
+    return !isNaN(value) && _Object2.default.isNumber(value);
+  }).sort(function (a, b) {
+    return a - b;
+  }).first();
+
+  // Return the min
+  return _Object2.default.isNil(min) ? null : min;
+};
+
+/**
+ * Computes number rounded to precision.
+ *
+ * @example
+ *
+ *   $Number.round(4.006);
+ *   // => 4
+ *
+ *   $Number.round(4.006, 2);
+ *   // => 4.01
+ *
+ *   $Number.round(4060, -2);
+ *   // => 4100
+ *
+ * @static
+ * @method round
+ * @param {Number} number The number to round
+ * @param {Number} [precision=0] The precision to round to
+ * @return {Number} The rounded value
+ * @since @todo
+ */
+$Number.round = function (number) {
+  var precision = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  return number && $Number(number).round(precision).result;
+};
+
+exports.default = $Number;
 
 /***/ }),
 /* 5 */
@@ -1902,115 +2172,598 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _Helpers = __webpack_require__(3);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Array = __webpack_require__(2);
+
+var _Array2 = _interopRequireDefault(_Array);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * Houses all of the utility methods for dealing with arrays.
- *
- * @class EJSC.Array
- * @private
- * @since 3.0.0
- */
-exports.default = _EJSC2.default.Array = new (function () {
-  function _class() {
-    _classCallCheck(this, _class);
-  }
+// TODO: $Object documentation
+var $Object = function $Object(object) {
+  return new (function () {
+    // constructor
+    function _class($object) {
+      _classCallCheck(this, _class);
 
-  _createClass(_class, [{
-    key: 'compact',
-
-    /**
-     * Creates an array with all falsey values removed.
-     * The values false, null, 0, "", undefined, and NaN are falsey.
-     *
-     * @example
-     *
-     *   EJSC.Array.compact([0, 1, false, 2, '', 3]);
-     *   // => [1, 2, 3]
-     *
-     * @method compact
-     * @param {Array} array The array to compact
-     * @return {Array} The new array of filtered values
-     * @since 3.0.0
-     */
-    value: function compact(array) {
-      // Returned the compacted array
-      return this.without(array, false, null, 0, '', undefined, NaN);
+      this.result = $object;
     }
 
     /**
-     * Creates a slice of array from start up to, but not including, end.
+     * Iterates over elements of object, returning an array of all elements predicate returns truthy for.
+     * The predicate is invoked with three arguments: (value, key, object).
      *
      * @example
      *
-     *   // TODO: example
+     *   $Object({ a: 0, b: 1, c: 2 }).filter((value, key, object) => value > 0).result;
+     *   // => { b: 1, c: 2 }
      *
-     * @method slice
-     * @param {Array} array The array to slice
-     * @param {Number} [start=0] The start position
-     * @param {Number} [end=array.length] The end position
-     * @return {Array} The slice of array
-     * @since 3.0.0
+     * @method filter
+     * @param {Function} predicate The function invoked per iteration
+     * @chainable
+     * @since @todo
      */
 
-  }, {
-    key: 'slice',
-    value: function slice(array) {
-      var start = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var end = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : array.length;
 
-      // Return the sliced array
-      return array && [].slice.call(array, start, end);
-    }
+    _createClass(_class, [{
+      key: 'filter',
+      value: function filter() {
+        var _this = this;
 
-    /**
-     * Creates an array excluding all given values using SameValueZero for equality comparisons.
-     *
-     * @example
-     *
-     *   EJSC.Array.without([2, 1, 2, 3], 1, 2);
-     *   // => [3]
-     *
-     * @method without
-     * @param {Array} array The array to inspect
-     * @param {*} [...values] The values to exclude
-     * @return {Array} The new array of filtered values
-     * @since 3.0.0
-     */
+        var predicate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _Helpers.identity;
 
-  }, {
-    key: 'without',
-    value: function without(array) {
-      for (var _len = arguments.length, values = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        values[_key - 1] = arguments[_key];
+        // Use Object.entries to convert to an array, then use the built in filter method
+        this.result = Object.entries(this.result).filter(function (_ref) {
+          var _ref2 = _slicedToArray(_ref, 2),
+              key = _ref2[0],
+              value = _ref2[1];
+
+          return predicate(value, key, _this.result);
+        }).reduce(function (accumulator, _ref3) {
+          var _ref4 = _slicedToArray(_ref3, 2),
+              key = _ref4[0],
+              value = _ref4[1];
+
+          accumulator[key] = value;
+          return accumulator;
+        }, {});
+
+        // Chain
+        return this;
       }
 
-      // Define some variables
-      var results = [];
+      /**
+       * Iterates over elements of object and invokes iteratee for each element.
+       * The iteratee is invoked with three arguments: (value, key, object).
+       * Iteratee functions may exit iteration early by explicitly returning false.
+       *
+       * @example
+       *
+       *   $Object({ a: 1, b: 2 }).forEach((value, key, object) => console.log(key));
+       *   // => Logs 'a' then 'b' (iteration order is not guaranteed).
+       *
+       * @method forEach
+       * @param {Function} predicate The function invoked per iteration
+       * @since @todo
+       */
 
-      // Loop through the items
-      array.forEach(function (value) {
-        // If the current item does not need to be removed, push it onto the results array
-        if (!values.includes(value)) {
-          results.push(value);
+    }, {
+      key: 'forEach',
+      value: function forEach(predicate) {
+        var _this2 = this;
+
+        // Use Object.entries to convert to an array, then use the built in forEach method
+        Object.entries(this.result).forEach(function (_ref5) {
+          var _ref6 = _slicedToArray(_ref5, 2),
+              key = _ref6[0],
+              value = _ref6[1];
+
+          return predicate(value, key, _this2.result);
+        });
+
+        // Chain
+        return this;
+      }
+
+      // TODO: Object.protype.getProperty documentation
+
+    }, {
+      key: 'getProperty',
+      value: function getProperty(path) {
+        var value = null;
+
+        if ($Object.has(this.result, path)) {
+          // Define some local variables
+          path = $Object.isString(path) ? path.replace(/[[\]]/g, '').split('.') : path;
+          value = this.result;
+
+          // Loop through each of the parts of the path
+          (0, _Array2.default)(path).forEach(function (step) {
+            // Move to the next piece
+            value = value[step];
+          });
         }
-      });
 
-      // Return the results array
-      return results;
-    }
-  }]);
+        // Return the final value
+        return value;
+      }
 
-  return _class;
-}())();
+      /**
+       * Checks if path is a direct property of object.
+       *
+       * @example
+       *
+       *   $Object({ a: { b: 2 } }).has('a');
+       *   // => true
+       *
+       *   $Object({ a: { b: 2 } }).has('a.b');
+       *   // => true
+       *
+       *   $Object({ a: { b: 2 } }).has(['a', 'b']);
+       *   // => true
+       *
+       *   $Object({ a: { b: 2 } }).has('c');
+       *   // => false
+       *
+       * @method has
+       * @param {Array|String} path The path to check
+       * @return {Boolean} If path exists
+       * @since @todo
+       */
+
+    }, {
+      key: 'has',
+      value: function has(path) {
+        // Make sure the path is in array form
+        path = $Object.isString(path) ? path.replace(/[[\]]/g, '').split('.') : path;
+
+        // Define some local variables
+        var owner = this.result;
+        var has = true;
+
+        // Loop through each of the parts of the path
+        (0, _Array2.default)(path).forEach(function (step) {
+          // If the next step exists
+          if (!$Object.isNil(owner[step])) {
+            // Move to the next piece
+            owner = owner[step];
+
+            // Return true to continue the loop
+            return true;
+          }
+
+          // If the next step doesn't exist
+          else {
+              // Mark has as false
+              has = false;
+
+              // Return false to stop the loop
+              return false;
+            }
+        });
+
+        // Rreturn if the object has the path
+        return has;
+      }
+
+      // TODO: Object.protype.invoke documentation
+
+    }, {
+      key: 'invoke',
+      value: function invoke(path) {
+        var steps = $Object.isString(path) ? path.replace(/[[\]]/g, '').split('.') : path;
+        var method = $Object.getProperty(this.result, path);
+        var reference = $Object.getProperty(this.result, _Array2.default.slice(steps, 0, steps.length - 1));
+
+        if ($Object.isFunction(method)) {
+          for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+            args[_key - 1] = arguments[_key];
+          }
+
+          return method.apply(reference, args);
+        }
+
+        return undefined;
+      }
+    }]);
+
+    return _class;
+  }())(object);
+};
+
+/**
+ * Iterates over elements of object, returning an array of all elements predicate returns truthy for.
+ * The predicate is invoked with three arguments: (value, key, object).
+ *
+ * @example
+ *
+ *   $Object.filter({ a: 0, b: 1, c: 2 }, (value, key, object) => value > 0);
+ *   // => { b: 1, c: 2 }
+ *
+ * @static
+ * @method filter
+ * @param {Object} object The object to iterate over
+ * @param {Function} [predicate=identity] The function invoked per iteration
+ * @return {Object} The filtered values
+ * @since @todo
+ */
+$Object.filter = function (object) {
+  var predicate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Helpers.identity;
+  return object && $Object(object).filter(predicate).result;
+};
+
+/**
+ * Iterates over elements of object and invokes iteratee for each element.
+ * The iteratee is invoked with three arguments: (value, key, object).
+ * Iteratee functions may exit iteration early by explicitly returning false.
+ *
+ * @example
+ *
+ *   $Object.forEach({ a: 1, b: 2 }, (value, key, object) => console.log(key));
+ *   // => Logs 'a' then 'b' (iteration order is not guaranteed).
+ *
+ * @static
+ * @method forEach
+ * @param {Object} object The object to iterate over
+ * @param {Function} [predicate=identity] The function invoked per iteration
+ * @since @todo
+ */
+$Object.forEach = function (object) {
+  var predicate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _Helpers.identity;
+  return object && $Object(object).forEach(predicate);
+};
+
+// TODO: Object.getProperty documentation
+$Object.getProperty = function (object, path) {
+  return object && $Object(object).getProperty(path);
+};
+
+/**
+ * Checks if path is a direct property of object.
+ *
+ * @example
+ *
+ *   $Object.has({ a: { b: 2 } }, 'a');
+ *   // => true
+ *
+ *   $Object.has({ a: { b: 2 } }, 'a.b');
+ *   // => true
+ *
+ *   $Object.has({ a: { b: 2 } }, ['a', 'b']);
+ *   // => true
+ *
+ *   $Object.has({ a: { b: 2 } }, 'c');
+ *   // => false
+ *
+ * @static
+ * @method has
+ * @param {Object} object The object to query
+ * @param {Array|String} path The path to check
+ * @return {Boolean} If path exists
+ * @since @todo
+ */
+$Object.has = function (object, path) {
+  return object && $Object(object).has(path);
+};
+
+/**
+ * Checks if value is likely an arguments object.
+ *
+ * @example
+ *
+ *   $Object.isArguments(function() { return arguments; }());
+ *   // => true
+ *
+ *   $Object.isArguments([1, 2, 3]);
+ *   // => false
+ *
+ * @static
+ * @method isArguments
+ * @param {*} value The value to test
+ * @return {Boolean} If value is an arguments array
+ * @since @todo
+ */
+$Object.isArguments = function (value) {
+  return !$Object.isNil(value) && value.hasOwnProperty('callee') && !value.propertyIsEnumerable('callee');
+};
+
+/**
+ * Checks if value is classified as an Array object.
+ *
+ * @example
+ *
+ *   $Object.isArray([1, 2, 3]);
+ *   // => true
+ *
+ *   $Object.isArray(document.body.children);
+ *   // => false
+ *
+ *   $Object.isArray('abc');
+ *   // => false
+ *
+ *   $Object.isArray(function() {});
+ *   // => false
+ *
+ * @static
+ * @method isArray
+ * @param {*} value The value to test
+ * @return {Boolean} If value is an array
+ * @since @todo
+ */
+$Object.isArray = function (value) {
+  return !$Object.isNil(value) && value instanceof Array && !$Object.isArguments(value);
+};
+
+/**
+ * Checks if value is likely a DOM element.
+ *
+ * @example
+ *
+ *   $Object.isElement(document.body);
+ *   // => true
+ *
+ *   $Object.isElement('<body>');
+ *   // => false
+ *
+ * @static
+ * @method isElement
+ * @param {*} value The value to test
+ * @return {Boolean} If value is a DOM element
+ * @since @todo
+ */
+$Object.isElement = function (value) {
+  return !$Object.isNil(value) && $Object.isObjectLike(value) && value.nodeType === 1 && !$Object.isPlainObject(value);
+};
+
+/**
+ * Checks if value is classified as a Function object.
+ *
+ * @example
+ *
+ *   $Object.isFunction(function() {});
+ *   // => true
+ *
+ *   $Object.isFunction(/abc/);
+ *   // => false
+ *
+ * @static
+ * @method isFunction
+ * @param {*} value The value to test
+ * @return {Boolean} If value is a function
+ * @since @todo
+ */
+$Object.isFunction = function (value) {
+  return !$Object.isNil(value) && {}.toString.call(value) === '[object Function]';
+};
+
+/**
+ * Checks if value is null or undefined.
+ *
+ * @example
+ *
+ *   $Object.isNil(null);
+ *   // => true
+ *
+ *   $Object.isNil(void 0);
+ *   // => true
+ *
+ *   $Object.isNil(NaN);
+ *   // => false
+ *
+ * @static
+ * @method isNil
+ * @param {*} value The value to test
+ * @return {Boolean} If value is nullish.
+ * @since @todo
+ */
+$Object.isNil = function (value) {
+  return $Object.isNull(value) || $Object.isUndefined(value);
+};
+
+/**
+ * Checks if value is null.
+ *
+ * @example
+ *
+ *   $Object.isNull(null);
+ *   // => true
+ *
+ *   $Object.isNull(void 0);
+ *   // => false
+ *
+ * @static
+ * @method isNull
+ * @param {*} value The value to test
+ * @return {Boolean} If value is null.
+ * @since @todo
+ */
+$Object.isNull = function (value) {
+  return value === null;
+};
+
+// TODO: $Object.isNumber documentation
+$Object.isNumber = function (value) {
+  return !$Object.isNil(value) && (typeof value === 'number' || Object.prototype.toString.call(value) === '[object Number]');
+};
+
+/**
+ * Checks if value is the language type of Object.
+ *
+ * @example
+ *
+ *   $Object.isObject({});
+ *   // => true
+ *
+ *   $Object.isObject([1, 2, 3]);
+ *   // => true
+ *
+ *   $Object.isObject(function() {});
+ *   // => true
+ *
+ *   $Object.isObject(null);
+ *   // => false
+ *
+ * @static
+ * @method isObject
+ * @param {*} value The value to test
+ * @return {Boolean} If value is an object.
+ * @since @todo
+ */
+$Object.isObject = function (value) {
+  return !$Object.isNil(value) && ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' || typeof value === 'function');
+};
+
+/**
+ * Checks if value is object-like.
+ * A value is object-like if it's not null and has a typeof result of "object".
+ *
+ * @example
+ *
+ *   $Object.isObjectLike({});
+ *   // => true
+ *
+ *   $Object.isObjectLike([1, 2, 3]);
+ *   // => true
+ *
+ *   $Object.isObjectLike(function() {});
+ *   // => false
+ *
+ *   $Object.isObjectLike(null);
+ *   // => false
+ *
+ * @static
+ * @method isObjectLike
+ * @param {*} value The value to test
+ * @return {Boolean} If value is object-like.
+ * @since @todo
+ */
+$Object.isObjectLike = function (value) {
+  return !$Object.isNil(value) && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
+};
+
+/**
+ * Checks if value is a plain object.
+ *
+ * @example
+ *
+ *   $Object.isPlainObject(new function() {}());
+ *   // => false
+ *
+ *   $Object.isPlainObject([1, 2, 3]);
+ *   // => false
+ *
+ *   $Object.isPlainObject({ x: 0, y: 0 });
+ *   // => true
+ *
+ *   $Object.isPlainObject(Object.create(null));
+ *   // => true
+ *
+ * @static
+ * @method isPlainObject
+ * @param {*} value The value to test
+ * @return {Boolean} If value is a plain object
+ * @since @todo
+ */
+$Object.isPlainObject = function (value) {
+  return !$Object.isNil(value) && value.constructor === Object;
+};
+
+/**
+ * Checks if the variable is a string.
+ *
+ * @example
+ *
+ *   $Object.isString('abc');
+ *   // => true
+ *
+ *   $Object.isString(1);
+ *   // => false
+ *
+ * @static
+ * @method isString
+ * @param {*} value The value to test
+ * @return {Boolean} If value is a string
+ * @since @todo
+ */
+$Object.isString = function (value) {
+  return !$Object.isNil(value) && typeof value === 'string';
+};
+
+/**
+ * Checks if value is undefined.
+ *
+ * @example
+ *
+ *   $Object.isUndefined(void 0);
+ *   // => true
+ *
+ *   $Object.isUndefined(null);
+ *   // => false
+ *
+ * @static
+ * @method isUndefined
+ * @param {*} value The value to test
+ * @return {Boolean} If value is undefined.
+ * @since @todo
+ */
+$Object.isUndefined = function (value) {
+  return value === (0, _Helpers.noop)();
+};
+
+/**
+ * This method is like $Object.assign except that it recursively merges own and inherited
+ * enumerable string keyed properties of source objects into the destination object.
+ * Source properties that resolve to undefined are skipped if a destination value exists.
+ * Array and plain object properties are merged recursively.
+ * Other objects and value types are overridden by assignment.
+ * Source objects are applied from left to right.
+ * Subsequent sources overwrite property assignments of previous sources.
+ *
+ * @example
+ *
+ *   // @todo
+ *
+ * @static
+ * @method merge
+ * @param {Object} object The destination object
+ * @param {Object} ...sources The source objects
+ * @return {Object} The destination object with merged values
+ * @since @todo
+ */
+$Object.merge = function (object) {
+  for (var _len2 = arguments.length, sources = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    sources[_key2 - 1] = arguments[_key2];
+  }
+
+  // Loop through each of the sources
+  (0, _Array2.default)(sources).without(null, undefined).forEach(function (source) {
+    // Loop through each of the properties of the current source
+    $Object(source).forEach(function (value, key) {
+      // Deep copy the property from the source to the destination
+      if ($Object.isArray(value)) {
+        $Object.merge(object[key] = object[key] || [], value);
+      } else if ($Object.isPlainObject(value)) {
+        $Object.merge(object[key] = object[key] || {}, value);
+      } else {
+        object[key] = $Object.isUndefined(value) ? object[key] : value;
+      }
+    });
+  });
+
+  // Return the destination object
+  return object;
+};
+
+exports.default = $Object;
 
 /***/ }),
 /* 6 */
@@ -2025,330 +2778,111 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
-
-var _EJSC2 = _interopRequireDefault(_EJSC);
-
-var _Variable = __webpack_require__(7);
-
-var _Variable2 = _interopRequireDefault(_Variable);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+// TODO: $String documentation
+var $String = function $String(string) {
+  return new (function () {
+    // constructor
+    function _class($string) {
+      _classCallCheck(this, _class);
+
+      this.result = $string;
+    }
+
+    /**
+    * Converts the first character of string to upper case and the remaining to lower case.
+    *
+    * @example
+    *
+    *   $String('FRED').capitalize().result;
+    *   // => 'Fred'
+    *
+    * @method capitalize
+    * @chainable
+    * @since @todo
+    */
+
+
+    _createClass(_class, [{
+      key: "capitalize",
+      value: function capitalize() {
+        // Return the capitalized string
+        this.result = this.result.substr(0, 1).toUpperCase() + this.result.substr(1).toLowerCase();
+
+        // Chain
+        return this;
+      }
+
+      /**
+       * Converts the first character of string to upper case.
+       *
+       * @example
+       *
+       *   $String('fred').upperFirst().result;
+       *   // => 'Fred'
+       *
+       *   $String('FRED').upperFirst().result;
+       *   // => 'FRED'
+       *
+       * @method upperFirst
+       * @chainable
+       * @since @todo
+       */
+
+    }, {
+      key: "upperFirst",
+      value: function upperFirst() {
+        // Return the string with the first character in upper case
+        this.result = this.result.substr(0, 1).toUpperCase() + this.result.substr(1);
+
+        // Chain
+        return this;
+      }
+    }]);
+
+    return _class;
+  }())(string);
+};
+
 /**
- * Houses all of the utility methods for dealing with collections.
+* Converts the first character of string to upper case and the remaining to lower case.
+*
+* @example
+*
+*   $String.capitalize('FRED');
+*   // => 'Fred'
+*
+* @static
+* @method capitalize
+* @return {String} The capitalized value
+* @since @todo
+*/
+$String.capitalize = function (string) {
+  return string && $String(string).capitalize().result;
+};
+
+/**
+ * Converts the first character of string to upper case.
  *
- * @class EJSC.Collection
- * @private
- * @since 3.0.0
+ * @example
+ *
+ *   $String.upperFirst('fred');
+ *   // => 'Fred'
+ *
+ *   $String.upperFirst('FRED');
+ *   // => 'FRED'
+ *
+ * @static
+ * @method upperFirst
+ * @return {String} The upper cased value
+ * @since @todo
  */
-exports.default = _EJSC2.default.Collection = new (function () {
-  function _class() {
-    _classCallCheck(this, _class);
-  }
+$String.upperFirst = function (string) {
+  return string && $String(string).upperFirst().result;
+};
 
-  _createClass(_class, [{
-    key: 'filter',
-
-    /**
-     * Iterates over elements of collection, returning an array of all elements predicate returns truthy for.
-     * The predicate is invoked with three arguments: (value, index|key, collection).
-     *
-     * @example
-     *
-     *   var users = [
-     *     { user: 'barney', age: 36, active: true },
-     *     { user: 'fred', age: 40, active: false }
-     *   ];
-     *
-     *   EJSC.Collection.filter(users, o => { return !o.active; });
-     *   // => objects for ['fred']
-     *
-     *   // The 'matches' iteratee shorthand.
-     *   EJSC.Collection.filter(users, { age: 36, active: true });
-     *   // => objects for ['barney']
-     *
-     *   // The 'matchesProperty' iteratee shorthand.
-     *   EJSC.Collection.filter(users, ['active', false]);
-     *   // => objects for ['fred']
-     *
-     *   // The 'property' iteratee shorthand.
-     *   EJSC.Collection.filter(users, 'active');
-     *   // => objects for ['barney']
-     *
-     * // TODO: EJSC.Collection.matches iteratee shorthand
-     * // TODO: EJSC.Collection.matchesProperty iteratee shorthand
-     * // TODO: EJSC.Collection.property iteratee shorthand
-     *
-     * @method filter
-     * @param {Array|Object} collection The collection to iterate over
-     * @param {Function} predicate The function invoked per iteration
-     * @return {Array|Object} The new filterd collection
-     * @since 3.0.0
-     */
-    value: function filter(collection, predicate) {
-      // Start with the filtered result as the collection
-      var results = collection;
-
-      // Handle arrays
-      if (_Variable2.default.isArray(collection)) {
-        // Restart with a blank array
-        results = [];
-
-        // Loop through the collection adding each item that matches the predicate to the results
-        this.forEach(collection, function (value, index) {
-          if (predicate(value, index, collection)) {
-            results.push(value);
-          }
-        });
-      }
-
-      // Handle objects
-      else if (_Variable2.default.isObject(collection)) {
-          // Restart with a blank object
-          results = {};
-
-          // Loop through the collection adding each item that matches the predicate to the results
-          this.forEach(collection, function (value, name) {
-            if (predicate(value, name, collection)) {
-              results[name] = value;
-            }
-          });
-        }
-
-      // Return the filtered results
-      return results;
-    }
-
-    /**
-     * Iterates over elements of collection, returning the first element predicate returns truthy for.
-     * The predicate is invoked with three arguments: (value, index|key, collection).
-     *
-     * @example
-     *
-     *   var users = [
-     *     { user: 'barney', age: 36, active: true },
-     *     { user: 'fred', age: 40, active: false },
-     *     { user: 'pebbles', age: 1, active: true }
-     *   ];
-     *
-     *   EJSC.Collection.find(users, function(o) { return o.age < 40; });
-     *   // => object for 'barney'
-     *
-     *   // The 'matches' iteratee shorthand.
-     *   EJSC.Collection.find(users, { age: 1, active: true });
-     *   // => object for 'pebbles'
-     *
-     *   // The 'matchesProperty' iteratee shorthand.
-     *   EJSC.Collection.find(users, ['active', false]);
-     *   // => object for 'fred'
-     *
-     *   // The 'property' iteratee shorthand.
-     *   EJSC.Collection.find(users, 'active');
-     *   // => object for 'barney'
-     *
-     * @method find
-     * @param {Array|Object} collection The collection to iterate over
-     * @param {Function} predicate The function invoked per iteration
-     * // TODO: @param {Number} [fromIndex=0] The index to search from
-     * @return {*} The matched element, else undefined
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'find',
-    value: function find(collection, predicate /* , fromIndex = 0 */) {
-      // Start with the matched result as undefined
-      var result = void 0;
-
-      // Loop through the collection
-      this.forEach(collection, function (value, id) {
-        // If the predicate passes
-        if (predicate(value, id, collection)) {
-          // Set the result to the current value
-          result = value;
-
-          // Return false to stop the loop
-          return false;
-        }
-
-        // Return true to continue the loop
-        return true;
-      });
-
-      // Return the matched result
-      return result;
-    }
-
-    /**
-     * Iterates over elements of collection and invokes iteratee for each element.
-     * The iteratee is invoked with three arguments: (value, index|key, collection).
-     * Iteratee functions may exit iteration early by explicitly returning false.
-     *
-     * @example
-     *
-     *   EJSC.Collection.forEach([1, 2], function(value) {
-     *     console.log(value);
-     *   });
-     *   // => Logs '1' then '2'.
-     *
-     *   EJSC.Collection.forEach({ a: 1, b: 2 }, function(value, key) {
-     *     console.log(key);
-     *   });
-     *   // => Logs 'a' then 'b' (iteration order is not guaranteed).
-     *
-     * @method forEach
-     * @param {Array|Object} collection The collection to iterate over
-     * @param {Function} iteratee The function invoked per iteration
-     * @return {Array|Object} The collection
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'forEach',
-    value: function forEach(collection, iteratee) {
-      // Handle arrays
-      if (_Variable2.default.isArray(collection)) {
-        // Loop through the collection calling the callback function for each item
-        for (var index = 0; index < collection.length; index++) {
-          if (iteratee(collection[index], index, collection) === false) {
-            break;
-          }
-        }
-      }
-
-      // Handle everything else
-      else if (_Variable2.default.isObject(collection)) {
-          // Loop through the collection calling the callback function for each item
-          for (var name in collection) {
-            if (iteratee(collection[name], name, collection) === false) {
-              break;
-            }
-          }
-        }
-
-      // Return the collection
-      return collection;
-    }
-
-    /**
-     * Checks if value is in collection.
-     * If collection is a string, it's checked for a substring of value.
-     * Otherwise SameValueZero is used for equality comparisons.
-     * If fromIndex is negative, it's used as the offset from the end of collection.
-     *
-     * @example
-     *
-     *   EJSC.Collection.includes([1, 2, 3], 1);
-     *   // => true
-     *
-     *   EJSC.Collection.includes([1, 2, 3], 1, 2);
-     *   // => false
-     *
-     *   EJSC.Collection.includes({ a: 1, b: 2 }, 1);
-     *   // => true
-     *
-     *   EJSC.Collection.includes('abcd', 'bc');
-     *   // => true
-     *
-     * @method includes
-     * @param {Array|Object|String} collection The collection to inspect
-     * @param {*} value The value to search for
-     * @param {Number} [fromIndex=0] The index to search from
-     * @return {Boolean} If value is found
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'includes',
-    value: function includes(collection, value) {
-      var fromIndex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-
-      // Start with the found flag as false
-      var found = false;
-
-      // Handle a string
-      if (_Variable2.default.isString(collection)) {
-        // Store if the value string was found in the collection string
-        found = collection.indexOf(value) > -1;
-      }
-
-      // Handle an array
-      else if (_Variable2.default.isArray(collection)) {
-          // Loop through the collection and set the flag If the given value is found
-          collection.slice(fromIndex).forEach(function (val) {
-            if (val === value) {
-              found = true;
-            }
-          });
-        }
-
-        // Handle everything else
-        else {
-            // Loop through the collection and set the flag If the given value is found
-            this.forEach(collection, function (val) {
-              if (val === value) {
-                found = true;
-              }
-            });
-          }
-
-      // Return the found flag
-      return found;
-    }
-
-    /**
-     * Creates an array of values by running each element in collection thru iteratee.
-     * The iteratee is invoked with three arguments: (value, index|key, collection).
-     *
-     * @example
-     *
-     *   function square(n) {
-     *     return n * n;
-     *   }
-     *
-     *   EJSC.Collection.map([4, 8], square);
-     *   // => [16, 64]
-     *
-     *   EJSC.Collection.map({ a: 4, b: 8 }, square);
-     *   // => [16, 64] (iteration order is not guaranteed)
-     *
-     *   var users = [
-     *     { user: 'barney' },
-     *     { user: 'fred' }
-     *   ];
-     *
-     *   // The 'property' iteratee shorthand.
-     *   EJSC.Collection.map(users, 'user');
-     *   // => ['barney', 'fred']
-     *
-     * @method map
-     * @param {Array|Object} collection The collection to iterate over
-     * @param {Function} iteratee The function invoked per iteration
-     * @return {Array} The new mapped array
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'map',
-    value: function map(collection, iteratee) {
-      // Start with a blank results array
-      var results = [];
-
-      // Iterate over each item adding its iteratee result to the results array
-      this.forEach(collection, function (value, id) {
-        results.push(iteratee(value, id, collection));
-      });
-
-      // Return the results array
-      return results;
-    }
-  }]);
-
-  return _class;
-}())();
+exports.default = $String;
 
 /***/ }),
 /* 7 */
@@ -2361,331 +2895,104 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Array2 = _interopRequireDefault(_Array);
+
+var _Element = __webpack_require__(8);
+
+var _Element2 = _interopRequireDefault(_Element);
+
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Houses all of the utility methods for dealing with variables.
+ * Top level namespace for all classes and variables used by the Emprise JavaScript Charts package.
+ * Use of this namespace prevents variable name collisions with other available JavaScript packages.
  *
- * @class EJSC.Variable
- * @private
- * @since 3.0.0
+ * @module EJSC
+ * @since 1.0.0
  */
-exports.default = _EJSC2.default.Variable = new (function () {
-  function _class() {
-    _classCallCheck(this, _class);
+exports.default = window.EJSC = new (function () {
+  _createClass(EJSC, [{
+    key: 'prepare',
+
+    /**
+     * Array of prepared functions to be called when the window loads.
+     *
+     * @property {Array} prepared
+     * @private
+     * @default []
+     * @since 3.0.0
+     */
+
+    /**
+     * Prepares a callback function to be called when the window loads.
+     *
+     * @example
+     *
+     *   // Prepare code for EJSC to run on window load
+     *   EJSC.prepare(() => {
+     *     // Do something...
+     *   });
+     *
+     * @method prepare
+     * @param {Function} callback The callback function
+     * @since 3.0.0
+     */
+    value: function prepare(callback) {
+      // Add the callback function to the prepared list
+      if (_Object2.default.isFunction(callback)) {
+        this.prepared.push(callback);
+      }
+    }
+
+    // constructor
+
+  }]);
+
+  function EJSC() {
+    _classCallCheck(this, EJSC);
+
+    // Initialize the private properties
+    this.prepared = [];
+
+    // Attach the load method to the window load event
+    _Element2.default.on(window, 'load', this.load.bind(this));
   }
 
-  _createClass(_class, [{
-    key: 'isArguments',
+  /**
+   * Runs each of the prepared callback functions when the page loads.
+   *
+   * @method load
+   * @private
+   * @since 3.0.0
+   */
 
-    /**
-     * Checks if value is likely an arguments object.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isArguments(function() { return arguments; }());
-     *   // => true
-     *
-     *   EJSC.Variable.isArguments([1, 2, 3]);
-     *   // => false
-     *
-     * @method isArguments
-     * @param {*} value The value to test
-     * @return {Boolean} If value is an arguments array
-     * @since 3.0.0
-     */
-    value: function isArguments(value) {
-      // Return if value is an arguments array
-      return value && value.hasOwnProperty('callee') && !value.propertyIsEnumerable('callee');
-    }
 
-    /**
-     * Checks if value is classified as an Array object.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isArray([1, 2, 3]);
-     *   // => true
-     *
-     *   EJSC.Variable.isArray(document.body.children);
-     *   // => false
-     *
-     *   EJSC.Variable.isArray('abc');
-     *   // => false
-     *
-     *   EJSC.Variable.isArray(function() {});
-     *   // => false
-     *
-     * @method isArray
-     * @param {*} value The value to test
-     * @return {Boolean} If value is an array
-     * @since 3.0.0
-     */
+  _createClass(EJSC, [{
+    key: 'load',
+    value: function load() {
+      var _this = this;
 
-  }, {
-    key: 'isArray',
-    value: function isArray(value) {
-      // Return if value is an array
-      return value && value instanceof Array && !this.isArguments(value);
-    }
-
-    /**
-     * Checks if value is likely a DOM element.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isElement(document.body);
-     *   // => true
-     *
-     *   EJSC.Variable.isElement('<body>');
-     *   // => false
-     *
-     * @method isElement
-     * @param {*} value The value to test
-     * @return {Boolean} If value is a DOM element
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isElement',
-    value: function isElement(value) {
-      // Return if value is a DOM element
-      return value && this.isObjectLike(value) && value.nodeType === 1 && !this.isPlainObject(value);
-    }
-
-    /**
-     * Checks if value is classified as a Function object.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isFunction(function() {});
-     *   // => true
-     *
-     *   EJSC.Variable.isFunction(/abc/);
-     *   // => false
-     *
-     * @method isFunction
-     * @param {*} value  The value to test
-     * @return {Boolean} If value is a function
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isFunction',
-    value: function isFunction(value) {
-      // Return if value is a function
-      return value && {}.toString.call(value) === '[object Function]';
-    }
-
-    /**
-     * Checks if value is null or undefined.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isNil(null);
-     *   // => true
-     *
-     *   EJSC.Variable.isNil(void 0);
-     *   // => true
-     *
-     *   EJSC.Variable.isNil(NaN);
-     *   // => false
-     *
-     * @method isNil
-     * @param {*} value The value to check
-     * @return {Boolean} If value is nullish.
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isNil',
-    value: function isNil(value) {
-      // Return if value is null or undefined
-      return this.isNull(value) || this.isUndefined(value);
-    }
-
-    /**
-     * Checks if value is null.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isNull(null);
-     *   // => true
-     *
-     *   EJSC.Variable.isNull(void 0);
-     *   // => false
-     *
-     * @method isNull
-     * @param {*} value The value to check
-     * @return {Boolean} If value is null.
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isNull',
-    value: function isNull(value) {
-      // Return if value is null
-      return value === null;
-    }
-
-    /**
-     * Checks if value is the language type of Object.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isObject({});
-     *   // => true
-     *
-     *   EJSC.Variable.isObject([1, 2, 3]);
-     *   // => true
-     *
-     *   EJSC.Variable.isObject(function() {});
-     *   // => true
-     *
-     *   EJSC.Variable.isObject(null);
-     *   // => false
-     *
-     * @method isObject
-     * @param {*} value The value to check
-     * @return {Boolean} If value is an object.
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isObject',
-    value: function isObject(value) {
-      // Return if value is an object
-      return value && ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' || typeof value === 'function');
-    }
-
-    /**
-     * Checks if value is object-like.
-     * A value is object-like if it's not null and has a typeof result of "object".
-     *
-     * @example
-     *
-     *   EJSC.Variable.isObjectLike({});
-     *   // => true
-     *
-     *   EJSC.Variable.isObjectLike([1, 2, 3]);
-     *   // => true
-     *
-     *   EJSC.Variable.isObjectLike(function() {});
-     *   // => false
-     *
-     *   EJSC.Variable.isObjectLike(null);
-     *   // => false
-     *
-     * @method isObjectLike
-     * @param {*} value The value to check
-     * @return {Boolean} If value is object-like.
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isObjectLike',
-    value: function isObjectLike(value) {
-      // Return if value is object-like
-      return value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
-    }
-
-    /**
-     * Checks if value is a plain object.
-     *
-     * @example
-     *
-     *   EJSC.function Foo() {
-     *     this.a = 1;
-     *   }
-     *
-     *   EJSC.Variable.isPlainObject(new Foo);
-     *   // => false
-     *
-     *   EJSC.Variable.isPlainObject([1, 2, 3]);
-     *   // => false
-     *
-     *   EJSC.Variable.isPlainObject({ x: 0, y: 0 });
-     *   // => true
-     *
-     *   EJSC.Variable.isPlainObject(Object.create(null));
-     *   // => true
-     *
-     * @method isPlainObject
-     * @param {*} value The value to test
-     * @return {Boolean} If value is a plain object
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isPlainObject',
-    value: function isPlainObject(value) {
-      // Return if value is a plain object
-      return value && value.constructor === Object;
-    }
-
-    /**
-     * Checks if the variable is a string.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isString('abc');
-     *   // => true
-     *
-     *   EJSC.Variable.isString(1);
-     *   // => false
-     *
-     * @method isString
-     * @param {*} value The value to test
-     * @return {Boolean} If value is a string
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isString',
-    value: function isString(value) {
-      // Return if value is a string
-      return value && typeof value === 'string';
-    }
-
-    /**
-     * Checks if value is undefined.
-     *
-     * @example
-     *
-     *   EJSC.Variable.isUndefined(void 0);
-     *   // => true
-     *
-     *   EJSC.Variable.isUndefined(null);
-     *   // => false
-     *
-     * @method isUndefined
-     * @param {*} value The value to check
-     * @return {Boolean} If value is undefined.
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'isUndefined',
-    value: function isUndefined(value) {
-      // Return if value is undefined
-      return value === function () {
-        // noop
-      }();
+      // Run all of the prepared callback functions
+      (0, _Array2.default)(this.prepared).forEach(function (callback) {
+        return callback.call(_this);
+      });
     }
   }]);
 
-  return _class;
+  return EJSC;
 }())();
+
+
 
 /***/ }),
 /* 8 */
@@ -2700,74 +3007,106 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Array2 = _interopRequireDefault(_Array);
+
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * Houses all of the utility methods for dealing with strings.
- *
- * @class EJSC.String
- * @private
- * @since 3.0.0
- */
-exports.default = _EJSC2.default.String = new (function () {
-  function _class() {
-    _classCallCheck(this, _class);
+// TODO: $Element documentation
+var $Element = function $Element(element) {
+  return new (function () {
+    // constructor
+    function _class($element) {
+      _classCallCheck(this, _class);
+
+      this.result = $element;
+    }
+
+    /**
+     * Attach an event handler function for one or more events to the element.
+     *
+     * @example
+     *
+     *   // TODO: $Element().on example
+     *
+     * @method on
+     * @param {Array|String} events The event(s) to listen for
+     * @param {Function} callback The function to call when the event occurs
+     * @chainable
+     * @since @todo
+     */
+
+
+    _createClass(_class, [{
+      key: 'on',
+      value: function on(events, callback) {
+        var _this = this;
+
+        // Convert the events to an array if it's not already
+        if (!_Object2.default.isArray(events)) {
+          events = [events];
+        }
+
+        // Loop through each of the events
+        _Array2.default.forEach(events, function (event) {
+          // Attach the event handler function for the current event to the element
+          if (_this.result.attachEvent) {
+            _this.result.attachEvent('on' + event, callback.bind(_this.result));
+          } else {
+            _this.result.addEventListener(event, callback.bind(_this.result), true);
+          }
+        });
+
+        // Chain
+        return this;
+      }
+    }]);
+
+    return _class;
+  }())(element);
+};
+
+// TODO: $Element.find documentation
+$Element.find = function (selector) {
+  var element = null;
+
+  if (_Object2.default.isElement(selector)) {
+    element = [selector];
+  } else if (_Object2.default.isString(selector)) {
+    element = document.querySelectorAll(selector);
+  } else if (_Object2.default.isArray(selector)) {
+    // TODO: $Element.find $Object.isArray
   }
 
-  _createClass(_class, [{
-    key: 'capitalize',
+  return element;
+};
 
-    /**
-     * Converts the first character of string to upper case and the remaining to lower case.
-     *
-     * @example
-     *
-     *   EJSC.String.capitalize('FRED');
-     *   // => 'Fred'
-     *
-     * @method capitalize
-     * @param {String} string The string to capitalize
-     * @return {String} The capitalized string
-     * @since 3.0.0
-     */
-    value: function capitalize(string) {
-      // Return the capitalized string
-      return string && string.substr(0, 1).toUpperCase() + string.substr(1).toLowerCase();
-    }
+/**
+ * Attach an event handler function for one or more events to the element.
+ *
+ * @example
+ *
+ *   // TODO: $Element.on example
+ *
+ * @method on
+ * @param {Element}
+ * @param {Array|String} events The event(s) to listen for
+ * @param {Function} callback The function to call when the event occurs
+ * @return {Element} The element
+ * @since @todo
+ */
+$Element.on = function (element, events, callback) {
+  return element && $Element(element).on(events, callback).result;
+};
 
-    /**
-     * Converts the first character of string to upper case.
-     *
-     * @example
-     *
-     *   EJSC.String.upperFirst('fred');
-     *   // => 'Fred'
-     *
-     *   EJSC.String.upperFirst('FRED');
-     *   // => 'FRED'
-     *
-     * @method upperFirst
-     * @param {String} string The string to convert
-     * @return {String} The converted string
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'upperFirst',
-    value: function upperFirst(string) {
-      // Return the string with the first character in upper case
-      return string && string.substr(0, 1).toUpperCase() + string.substr(1);
-    }
-  }]);
-
-  return _class;
-}())();
+exports.default = $Element;
 
 /***/ }),
 /* 9 */
@@ -2782,173 +3121,160 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Variable = __webpack_require__(7);
+var _Object = __webpack_require__(5);
 
-var _Variable2 = _interopRequireDefault(_Variable);
+var _Object2 = _interopRequireDefault(_Object);
+
+var _String = __webpack_require__(6);
+
+var _String2 = _interopRequireDefault(_String);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Houses all of the utility methods for dealing with numbers.
+ * Base class from which all EJSC classes descend.
  *
- * @class EJSC.Number
+ * @class EJSC.Inheritable
  * @private
- * @since 3.0.0
+ * @constructor
+ * @param {Object} [options={}] The options to apply
+ * @since @todo
  */
-exports.default = _EJSC2.default.Number = new (function () {
-  function _class() {
-    _classCallCheck(this, _class);
+exports.default = _EJSC2.default.Inheritable = function () {
+  /**
+   * Defines if the class is initialized.
+   *
+   * @property {Boolean} initialized
+   * @private
+   * @default false
+   * @since @todo
+   */
+
+  /**
+   * Defines if the class is currently listening for property changes.
+   *
+   * @property {Boolean} listening
+   * @private
+   * @default true
+   * @since @todo
+   */
+
+  // constructor
+  function Inheritable() {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, Inheritable);
+
+    // Initialize the properties
+    this.init();
+
+    // Apply the given options
+    this.apply(options);
+
+    // Mark the class as initialized
+    this.initialized = true;
   }
 
-  _createClass(_class, [{
-    key: 'clamp',
+  /**
+   * Applies new options to the class.
+   *
+   * @example
+   *
+   *   // Create a class
+   *   let myClass = new EJSC.SomeClass();
+   *
+   *   // Apply some new options
+   *   myClass.apply({
+   *     newProperty: 'newValue'
+   *   });
+   *
+   * @method apply
+   * @param {Object} [options={}] The options to apply
+   * @since @todo
+   */
 
-    /**
-     * Clamps number within the inclusive lower and upper bounds.
-     *
-     * @example
-     *
-     *   EJSC.Number.clamp(-10, -5, 5);
-     *   // => -5
-     *
-     *   EJSC.Number.clamp(10, -5, 5);
-     *   // => 5
-     *
-     * @method capitalize
-     * @param {Number} number The number to clamp
-     * @param {Number} lower The lower bound
-     * @param {Number} uppser The upper bound
-     * @return {String} The clamped number
-     * @since 3.0.0
-     */
-    value: function clamp(number, lower, upper) {
-      // Return the clamped number
-      return this.max(lower, this.min(upper, number));
-    }
 
-    /**
-     * Computes the maximum value of array.
-     * If array is empty or falsey, undefined is returned.
-     *
-     * @example
-     *
-     *   EJSC.Number.max(4, 2, 8, 6);
-     *   // => 8
-     *
-     *   EJSC.Number.max();
-     *   // => null
-     *
-     * @method max
-     * @param {...Array} numbers The numbers to iterate over
-     * @return {Number} The maximum value
-     * @since 3.0.0
-     */
+  _createClass(Inheritable, [{
+    key: 'apply',
+    value: function apply() {
+      var _this = this;
 
-  }, {
-    key: 'max',
-    value: function max() {
-      // Define some local variables
-      var max = null;
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-      // Loop through the arguments
+      // Store listening
+      var listening = this.listening;
 
-      for (var _len = arguments.length, numbers = Array(_len), _key = 0; _key < _len; _key++) {
-        numbers[_key] = arguments[_key];
-      }
+      // Stop listening
+      this.listening = false;
 
-      numbers.forEach(function (value) {
-        // If there is no current max, or the new value is greater than the current max
-        if (_Variable2.default.isNil(max) || max < value) {
-          // Update the max
-          max = value;
+      // Loop through each of the options
+      (0, _Object2.default)(options).forEach(function (value, key) {
+        // Grab the setter
+        var setter = _this['set' + _String2.default.upperFirst(key)];
+
+        // Use the setter if defined
+        if (_Object2.default.isFunction(setter)) {
+          // Call the setter
+          setter.call(_this, value, false);
         }
+
+        // Otherwise use merge
+        else {
+            // Merge the object into the class
+            _Object2.default.merge(_this, _defineProperty({}, key, value));
+          }
       });
 
-      // Return the max
-      return max;
-    }
+      // Restore listening
+      this.listening = listening;
 
-    /**
-     * Computes the minimum value of array.
-     * If array is empty or falsey, undefined is returned.
-     *
-     * @example
-     *
-     *   EJSC.Number.min(4, 2, 8, 6);
-     *   // => 2
-     *
-     *   EJSC.Number.min();
-     *   // => null
-     *
-     * @method min
-     * @param {...Array} numbers The numbers to iterate over
-     * @return {Number} The minimum value
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'min',
-    value: function min() {
-      // Define some local variables
-      var min = null;
-
-      // Loop through the arguments
-
-      for (var _len2 = arguments.length, numbers = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        numbers[_key2] = arguments[_key2];
+      // Run the update method
+      if (this.initialized) {
+        this.update();
       }
-
-      numbers.forEach(function (value) {
-        // If there is no current min, or the new value is less than the current min
-        if (_Variable2.default.isNil(min) || min > value) {
-          // Update the min
-          min = value;
-        }
-      });
-
-      // Return the min
-      return min;
     }
 
     /**
-     * Computes number rounded to precision.
+     * Initializes the variable properties of the class.
      *
-     * @example
-     *
-     *   EJSC.Number.round(4.006);
-     *   // => 4
-     *
-     *   EJSC.Number.round(4.006, 2);
-     *   // => 4.01
-     *
-     *   EJSC.Number.round(4060, -2);
-     *   // => 4100
-     *
-     * @method round
-     * @param {Number} number The number to round
-     * @param {Number} [precision=0] The precision to round to
-     * @return {Number} The rounded number
-     * @since 3.0.0
+     * @method init
+     * @private
+     * @since @todo
      */
 
   }, {
-    key: 'round',
-    value: function round(number) {
-      var precision = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    key: 'init',
+    value: function init() {
+      // Initialize the private properties
+      this.initialized = false;
+      this.listening = true;
+    }
 
-      // Return the rounded number
-      return Number(Math.round(number + 'e' + precision) + 'e-' + precision);
+    /**
+     * Updates the class after properties have changed.
+     *
+     * @method update
+     * @private
+     * @since @todo
+     */
+
+  }, {
+    key: 'update',
+    value: function update() {
+      // no-op
     }
   }]);
 
-  return _class;
-}())();
+  return Inheritable;
+}();
 
 /***/ }),
 /* 10 */
@@ -2963,21 +3289,25 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
+
+var _Array2 = _interopRequireDefault(_Array);
+
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
+
+var _Number = __webpack_require__(4);
+
+var _Number2 = _interopRequireDefault(_Number);
+
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
 var _Axis2 = __webpack_require__(1);
 
 var _Axis3 = _interopRequireDefault(_Axis2);
-
-var _Number = __webpack_require__(9);
-
-var _Number2 = _interopRequireDefault(_Number);
-
-var _Object = __webpack_require__(4);
-
-var _Object2 = _interopRequireDefault(_Object);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2988,13 +3318,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * TODO:
+ * LinearAxis is an axis using a linear scale.
+ *
+ * @example
+ *
+ *   // TODO:
  *
  * @class EJSC.LinearAxis
  * @extends EJSC.Axis
  * @constructor
+ * @param {Object} options The config options
  * @private
- * @since 3.0.0
+ * @since // TODO:
  */
 exports.default = _EJSC2.default.LinearAxis = function (_Axis) {
   _inherits(LinearAxis, _Axis);
@@ -3009,6 +3344,17 @@ exports.default = _EJSC2.default.LinearAxis = function (_Axis) {
     key: 'calculateCross',
 
     /* not-sparkline:start */
+    /**
+     * Calculates where a line segment between two given points croses the axis at a given coordinate.
+     *
+     * @method calculateCross
+     * @private
+     * @param {Object} point1 The first point
+     * @param {Object} point2 The second point
+     * @param {Number} coordinate The coordinate to cross at
+     * @return {Object} The crossed coordinates
+     * @since // TODO:
+     */
     value: function calculateCross(point1, point2, coordinate) {
       // Define some local variables
       var x = coordinate;
@@ -3040,7 +3386,7 @@ exports.default = _EJSC2.default.LinearAxis = function (_Axis) {
      *
      * @method calculateExtremes
      * @private
-     * @since 3.0.0
+     * @since // TODO:
      */
 
   }, {
@@ -3052,58 +3398,54 @@ exports.default = _EJSC2.default.LinearAxis = function (_Axis) {
           padding = this.padding,
           extremes = this.extremes;
 
-      var visibleSeries = this.getVisibleSeries();
-
       // Define some local variables
+
       var dataPoint = orientation === 'vertical' ? 'y' : 'x';
-      var spacing = 0;
-      var min = null;
-      var max = null;
-      var scale = void 0;
 
       // Reset the extremes
-      _Object2.default.merge(extremes, { min: min, max: max });
-
-      // If there are no visible series, we can't calculate the extremes
-      if (visibleSeries.length <= 0) {
-        return;
-      }
-
-      // Loop through each of the visible series
-      visibleSeries.forEach(function (series) {
-        // Calculate the min and max range
-        series.data.forEach(function (point) {
-          series.dataPoints[dataPoint].forEach(function (property) {
-            // Calculate the extremes
-            min = _Number2.default.min(min, point[property]);
-            max = _Number2.default.max(max, point[property]);
-          });
-        });
-
-        // Calculate the series spacing
-        spacing = _Number2.default.max(spacing, series.calculateSpacing());
+      _Object2.default.merge(extremes, {
+        min: null,
+        max: null
       });
 
-      // Add the series spacing to the padding
-      padding += spacing - 1;
+      // Loop through each of the visible series
+      (0, _Array2.default)(this.getVisibleSeries()).filter(function (series) {
+        return _Object2.default.has(series, 'calculateExtremes');
+      }).forEach(function (series) {
+        // Calculate the series' extremes
+        var seriesExtremes = series.calculateExtremes();
 
-      // Determine the scale based on the axis' orientation
-      switch (orientation) {
-        case 'horizontal':
-          scale = (max - min) / (drawArea.right - drawArea.left - padding * 2);
-          break;
+        // Update the min and max range
+        var min = seriesExtremes[dataPoint + 'Min'];
+        var max = seriesExtremes[dataPoint + 'Max'];
 
-        case 'vertical':
-          scale = (max - min) / (drawArea.bottom - drawArea.top - padding * 2);
-          break;
-      }
+        // Calculate the series spacing
+        var spacing = series.calculateSpacing();
+        var paddingMin = padding + spacing[dataPoint + 'Max'] - 1;
+        var paddingMax = padding + spacing[dataPoint + 'Min'] - 1;
 
-      // Update the extremes with padding
-      min = min - scale * padding;
-      max = max + scale * padding;
+        // Determine the scale based on the axis' orientation
+        var scale = void 0;
+        switch (orientation) {
+          case 'horizontal':
+            scale = (max - min) / (drawArea.right - drawArea.left - (paddingMin + paddingMax));
+            break;
 
-      // Store the extremes
-      _Object2.default.merge(extremes, { min: min, max: max });
+          case 'vertical':
+            scale = (max - min) / (drawArea.bottom - drawArea.top - (paddingMin + paddingMax));
+            break;
+        }
+
+        // Update the values with padding
+        min = min - scale * paddingMin;
+        max = max + scale * paddingMax;
+
+        // Update the extremes
+        _Object2.default.merge(extremes, {
+          min: _Number2.default.min(extremes.min, min),
+          max: _Number2.default.max(extremes.max, max)
+        });
+      });
     }
 
     /**
@@ -3112,7 +3454,7 @@ exports.default = _EJSC2.default.LinearAxis = function (_Axis) {
      * @method calculateTicks
      * @private
      * @return {Array} The list of ticks
-     * @since 3.0.0
+     * @since // TODO:
      */
 
   }, {
@@ -3161,7 +3503,7 @@ exports.default = _EJSC2.default.LinearAxis = function (_Axis) {
      * @private
      * @param {Number} pixel The pixel to convert
      * @return {Number} The point
-     * @since 3.0.0
+     * @since // TODO:
      */
 
   }, {
@@ -3227,7 +3569,7 @@ exports.default = _EJSC2.default.LinearAxis = function (_Axis) {
      * @private
      * @param {Number} point The point to convert
      * @return {Number} The pixel
-     * @since 3.0.0
+     * @since // TODO:
      */
 
   }, {
@@ -3302,25 +3644,25 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
+
+var _Array2 = _interopRequireDefault(_Array);
+
+var _Number = __webpack_require__(4);
+
+var _Number2 = _interopRequireDefault(_Number);
+
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
+
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
 var _Axis2 = __webpack_require__(1);
 
 var _Axis3 = _interopRequireDefault(_Axis2);
-
-var _Number = __webpack_require__(9);
-
-var _Number2 = _interopRequireDefault(_Number);
-
-var _Object = __webpack_require__(4);
-
-var _Object2 = _interopRequireDefault(_Object);
-
-var _Variable = __webpack_require__(7);
-
-var _Variable2 = _interopRequireDefault(_Variable);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3331,13 +3673,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * TODO:
+ * LogarithmicAxis is an axis using a logarithmic scale.
+ *
+ * @example
+ *
+ *   // TODO:
  *
  * @class EJSC.LogarithmicAxis
  * @extends EJSC.Axis
  * @constructor
+ * @param {Object} options The config options
  * @private
- * @since 3.0.0
+ * @since // TODO:
  */
 exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
   _inherits(LogarithmicAxis, _Axis);
@@ -3351,6 +3698,14 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
   _createClass(LogarithmicAxis, [{
     key: 'getBase',
 
+    /**
+     * Defines the base for the logarithmic scale.
+     *
+     * @attribute {Number} base
+     * @default 10
+     * @since // TODO:
+     */
+
     // getter
     value: function getBase() {
       // Return the current base
@@ -3361,15 +3716,28 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
 
   }, {
     key: 'setBase',
-    value: function setBase(base, apply) {
+    value: function setBase(base) {
       // Update the current base
       this.base = base;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
+
+    /**
+     *
+     *
+     * @property {Object} logPoints
+     * @property {Number} logPoints.maxPositive (Default: null)
+     * @property {Number} logPoints.minPositive (Default: null)
+     * @property {Number} logPoints.zeroValue (Default: null)
+     * @property {Number} logPoints.maxNegative (Default: null)
+     * @property {Number} logPoints.minNegative (Default: null)
+     * @private
+     * @since // TODO:
+     */
 
     // init
 
@@ -3392,7 +3760,13 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
       };
     }
 
-    // TODO:
+    /**
+     * Calculates the extremes for the axis.
+     *
+     * @method calculateExtremes
+     * @private
+     * @since // TODO:
+     */
 
   }, {
     key: 'calculateExtremes',
@@ -3441,10 +3815,10 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
       }
 
       // Loop through each of the visible series
-      visibleSeries.forEach(function (series) {
+      _Array2.default.forEach(visibleSeries, function (series) {
         // Calculate the min and max range
-        series.data.forEach(function (point) {
-          series.dataPoints[dataPoint].forEach(function (property) {
+        _Array2.default.forEach(series.data, function (point) {
+          (0, _Object2.default)(series.dataPoints[dataPoint]).forEach(function (property) {
             // Calculate the extremes
             min = _Number2.default.min(min, point[property]);
             max = _Number2.default.max(max, point[property]);
@@ -3466,7 +3840,7 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
         spacing = _Number2.default.max(spacing, series.calculateSpacing());
       });
 
-      if (!_Variable2.default.isNil(zeroValue) || !_Variable2.default.isNil(minPositive) && !_Variable2.default.isNil(maxNegative)) {
+      if (!_Object2.default.isNil(zeroValue) || !_Object2.default.isNil(minPositive) && !_Object2.default.isNil(maxNegative)) {
         // Make sure the zero value is defined
         zeroValue = 0;
 
@@ -3503,7 +3877,14 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
       _Object2.default.merge(extremes, { min: min, max: max });
     }
 
-    // TODO:
+    /**
+     * Calculates the axis' ticks based on the attached series' data.
+     *
+     * @method calculateTicks
+     * @private
+     * @return {Array} The list of ticks
+     * @since // TODO:
+     */
 
   }, {
     key: 'calculateTicks',
@@ -3526,7 +3907,15 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
       return ticks;
     }
 
-    // TODO:
+    /**
+     * Converts a linear point to a logarithmic point.
+     *
+     * @method convertLinearToPoint
+     * @private
+     * @param {Number} linear The linear point
+     * @return {Number} The logarithmic point
+     * @since // TODO:
+     */
 
   }, {
     key: 'convertLinearToPoint',
@@ -3569,7 +3958,15 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
       return point;
     }
 
-    // TODO:
+    /**
+     * Converts a chart pixel to a logarithmic point.
+     *
+     * @method convertPixelToPoint
+     * @private
+     * @param {Number} pixel The chart pixel
+     * @return {Number} The logarithmic point
+     * @since // TODO:
+     */
 
   }, {
     key: 'convertPixelToPoint',
@@ -3626,7 +4023,15 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
       return point;
     }
 
-    // TODO:
+    /**
+     * Converts a logarithmic point to a linear point.
+     *
+     * @method convertPointToLinear
+     * @private
+     * @param {Number} point The logarithmic point
+     * @return {Number} The linear point
+     * @since // TODO:
+     */
 
   }, {
     key: 'convertPointToLinear',
@@ -3669,7 +4074,15 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
       return linear;
     }
 
-    // TODO:
+    /**
+     * Converts a logarithmic point to a chart pixel.
+     *
+     * @method convertPointToPixel
+     * @private
+     * @param {Number} point The logarithmic point
+     * @return {Number} The chart pixel
+     * @since // TODO:
+     */
 
   }, {
     key: 'convertPointToPixel',
@@ -3723,28 +4136,38 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
       return pixel;
     }
 
-    // TODO:
+    /**
+     * Converts a logarithmic point to a power of the base.
+     *
+     * @method convertPointToPower
+     * @private
+     * @param {Number} point The logarithmic point
+     * @return {Number} The poser of the base
+     * @since // TODO:
+     */
 
   }, {
     key: 'convertPointToPower',
     value: function convertPointToPower(point) {
-      // Calculate the power value
-      var power = Math.log(point) / Math.log(this.base);
-
       // Return the power value
-      return power;
+      return Math.log(point) / Math.log(this.base);
     }
 
-    // TODO:
+    /**
+     * Converts a logarithmic point to a power of the base.
+     *
+     * @method convertPowerToPoint
+     * @private
+     * @param {Number} power The poser of the base
+     * @return {Number} The logarithmic point
+     * @since // TODO:
+     */
 
   }, {
     key: 'convertPowerToPoint',
     value: function convertPowerToPoint(power) {
-      // Calculate the point value
-      var point = Math.pow(this.base, power);
-
       // Return the point value
-      return point;
+      return Math.pow(this.base, power);
     }
   }]);
 
@@ -3764,21 +4187,29 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
+
+var _Array2 = _interopRequireDefault(_Array);
+
+var _Element = __webpack_require__(8);
+
+var _Element2 = _interopRequireDefault(_Element);
+
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
+
+var _String = __webpack_require__(6);
+
+var _String2 = _interopRequireDefault(_String);
+
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
 var _Drawing2 = __webpack_require__(13);
 
 var _Drawing3 = _interopRequireDefault(_Drawing2);
-
-var _DOM = __webpack_require__(14);
-
-var _DOM2 = _interopRequireDefault(_DOM);
-
-var _String = __webpack_require__(8);
-
-var _String2 = _interopRequireDefault(_String);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3790,23 +4221,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /**
  * Defines a basic chart that can display a variety of series types on it.
- *
  * A container must be defined in the config options in order for the chart to be rendered to the page.
  *
  * @example
  *
  *   // Create a chart sending in the id of the container
- *   var chart = new EJSC.Chart('chart-container');
+ *   let chart = new EJSC.Chart('chart-container', { ... });
  *
  *   // Create a chart sending in a reference to the container's element
- *   var chart = new EJSC.Chart(document.getElementById('chart-container'));
+ *   let chart = new EJSC.Chart(document.getElementById('chart-container'), { ... });
  *
  * @class EJSC.Chart
  * @extends EJSC.Drawing
  * @constructor
- * @param {DOMElement|String} container The container to render the chart in
+ * @param {Element|String} container The container to render the chart in
  * @param {Object} [options] The config options to apply to the chart
- * @since 3.0.0
+ * @since @todo
  */
 exports.default = _EJSC2.default.Chart = function (_Drawing) {
   _inherits(Chart, _Drawing);
@@ -3821,20 +4251,20 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the bottom axis by sending in the config options
-     *     axisBottom: { ... }
+     *     axisBottom: { ... }}
      *   });
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the bottom axis by sending in an Axis class
      *     axisBottom: new EJSC.LinearAxis({ ... })
      *   });
      *
      * @attribute {EJSC.Axis|Object} axisBottom
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -3847,7 +4277,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 
   }, {
     key: 'setAxisBottom',
-    value: function setAxisBottom(axisBottom, apply) {
+    value: function setAxisBottom(axisBottom) {
       // Make sure the axis is actually an axis
       if (!(axisBottom instanceof _EJSC2.default.Axis)) {
         axisBottom = new _EJSC2.default.LinearAxis(axisBottom);
@@ -3860,7 +4290,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       this.axisBottom = axisBottom;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -3873,20 +4303,20 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the left axis by sending in the config options
      *     axisLeft: { ... }
      *   });
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the left axis by sending in an Axis class
      *     axisLeft: new EJSC.LinearAxis({ ... })
      *   });
      *
      * @attribute {EJSC.Axis|Object} axisLeft
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -3902,7 +4332,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 
   }, {
     key: 'setAxisLeft',
-    value: function setAxisLeft(axisLeft, apply) {
+    value: function setAxisLeft(axisLeft) {
       // Make sure the axis is actually an axis
       if (!(axisLeft instanceof _EJSC2.default.Axis)) {
         axisLeft = new _EJSC2.default.LinearAxis(axisLeft);
@@ -3915,7 +4345,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       this.axisLeft = axisLeft;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -3928,20 +4358,20 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the right axis by sending in the config options
      *     axisRight: { ... }
      *   });
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the right axis by sending in an Axis class
      *     axisRight: new EJSC.LinearAxis({ ... })
      *   });
      *
      * @attribute {EJSC.Axis|Object} axisRight
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -3957,7 +4387,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 
   }, {
     key: 'setAxisRight',
-    value: function setAxisRight(axisRight, apply) {
+    value: function setAxisRight(axisRight) {
       // Make sure the axis is actually an axis
       if (!(axisRight instanceof _EJSC2.default.Axis)) {
         axisRight = new _EJSC2.default.LinearAxis(axisRight);
@@ -3970,7 +4400,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       this.axisRight = axisRight;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -3983,20 +4413,20 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the top axis by sending in the config options
      *     axisTop: { ... }
      *   });
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the top axis by sending in an Axis class
      *     axisTop: new EJSC.LinearAxis({ ... })
      *   });
      *
      * @attribute {EJSC.Axis|Object} axisTop
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -4012,7 +4442,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 
   }, {
     key: 'setAxisTop',
-    value: function setAxisTop(axisTop, apply) {
+    value: function setAxisTop(axisTop) {
       // Make sure the axis is actually an axis
       if (!(axisTop instanceof _EJSC2.default.Axis)) {
         axisTop = new _EJSC2.default.LinearAxis(axisTop);
@@ -4025,13 +4455,27 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       this.axisTop = axisTop;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
     /* not-sparkline:end */
 
-    // TODO:
+    /**
+     * Defines the color of the chart area background.
+     *
+     * @example
+     *
+     *   // Create a chart in the element with the id 'chart-container'
+     *   let chart = new EJSC.Chart('chart-container', {
+     *     // Set the background color of the chart to white (using hex)
+     *     background: '#ffffff'
+     *   });
+     *
+     * @attribute String background
+     * @default 'rgba(0, 0, 0, 0)'
+     * @since @todo
+     */
 
     // getter
 
@@ -4046,12 +4490,12 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 
   }, {
     key: 'setBackground',
-    value: function setBackground(background, apply) {
+    value: function setBackground(background) {
       // Store the new background
       this.background = background;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -4062,14 +4506,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the default colors as [red, green, blue]
      *     colors: ['rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)']
      *   });
      *
      * @attribute {Array} colors
      * @default [...]
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -4085,12 +4529,12 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 
   }, {
     key: 'setColors',
-    value: function setColors(colors, apply) {
+    value: function setColors(colors) {
       // Store the new colors
       this.colors = colors;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -4102,14 +4546,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Define the title as 'My Chart'
      *     title: 'My Chart'
      *   });
      *
      * @attribute {String} title
      * @default 'Emprise JavaScript Charts'
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -4125,12 +4569,12 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 
   }, {
     key: 'setTitle',
-    value: function setTitle(title, apply) {
+    value: function setTitle(title) {
       // Store the new title
       this.title = title;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -4143,7 +4587,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container', {
+     *   let chart = new EJSC.Chart('chart-container', {
      *     // Center align the title
      *     titlebar: {
      *       align: 'center'
@@ -4159,7 +4603,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @property {Integer} titlebar.lineHeight The line-height of the text in the titlebar (Default: 20)
      * @property {Integer} titlebar.padding The horizontal padding of the titlebar (Default: 5)
      * @property {Boolean} titlebar.visible If the titlebar is visible or not (Default: true)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -4175,57 +4619,12 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 
   }, {
     key: 'setTitlebar',
-    value: function setTitlebar(titlebar, apply) {
+    value: function setTitlebar(titlebar) {
       // Update the current titlebar
-      this.update(this.titlebar, titlebar);
+      _Object2.default.merge(this.titlebar, titlebar);
 
       // Redraw the chart if needed
-      if (apply !== false) {
-        this.update();
-      }
-    }
-    /* not-sparkline:end */
-
-    /* not-sparkline:start */
-    /**
-     * Defines the user zooming.
-     *
-     * @example
-     *
-     *   // TODO: Example
-     *
-     * @attribute {EJSC.UserZoom|Object} zoom
-     * @default null
-     * @since 3.0.0
-     */
-
-    // getter
-
-  }, {
-    key: 'getZoom',
-    value: function getZoom() {
-      // Return the current zoom
-      return this.zoom;
-    }
-
-    // setter
-
-  }, {
-    key: 'setZoom',
-    value: function setZoom(zoom, apply) {
-      // Turn the zoom into a user zoom if needed
-      if (!(zoom instanceof _EJSC2.default.UserZoom)) {
-        zoom = new _EJSC2.default.UserZoom(zoom);
-      }
-
-      // Prepare the zoom
-      zoom.prepare(this);
-
-      // Update the current zoom
-      this.zoom = zoom;
-
-      // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -4237,7 +4636,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @property {Array} series
      * @protected
      * @default []
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -4255,7 +4654,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @property {Array} axisList
      * @private
      * @default ['axisBottom', 'axisLeft', 'axisRight', 'axisTop']
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -4264,7 +4663,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @property {Integer} colorIndex
      * @private
      * @default 0
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -4276,7 +4675,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @property {Integer} drawArea.right The right coordinate of the chart's draw area (Default: null)
      * @property {Integer} drawArea.top The top coordinate of the chart's draw area (Default: null)
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -4285,11 +4684,18 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @property {Array} sidesList
      * @private
      * @default ['bottom', 'left', 'righ', 'top']
-     * @since 3.0.0
+     * @since @todo
      */
 
     /* not-sparkline:start */
-    // TODO:
+    /**
+     * Handles when the user clicks the mouse button.
+     *
+     * @method handleClick
+     * @private
+     * @param WindowEvent event The window event
+     * @since @todo
+     */
 
   }, {
     key: 'handleClick',
@@ -4299,27 +4705,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     /* not-sparkline:end */
 
     /* not-sparkline:start */
-    // TODO:
-
-  }, {
-    key: 'handleGlobalMouseMove',
-    value: function handleGlobalMouseMove() /* event */{}
-    // TODO:
-
-    /* not-sparkline:end */
-
-    /* not-sparkline:start */
-    // TODO:
-
-  }, {
-    key: 'handleGlobalMouseUp',
-    value: function handleGlobalMouseUp() /* event */{}
-    // TODO:
-
-    /* not-sparkline:end */
-
-    /* not-sparkline:start */
-    // TODO:
+    /**
+     * Handles when the user presses a key.
+     *
+     * @method handleKeyDown
+     * @private
+     * @param WindowEvent event The window event
+     * @since @todo
+     */
 
   }, {
     key: 'handleKeyDown',
@@ -4329,7 +4722,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     /* not-sparkline:end */
 
     /* not-sparkline:start */
-    // TODO:
+    /**
+     * Handles when the user releases a key.
+     *
+     * @method handleKeyUp
+     * @private
+     * @param WindowEvent event The window event
+     * @since @todo
+     */
 
   }, {
     key: 'handleKeyUp',
@@ -4339,7 +4739,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     /* not-sparkline:end */
 
     /* not-sparkline:start */
-    // TODO:
+    /**
+     * Handles when the user presses the mouse button.
+     *
+     * @method handleMouseDown
+     * @private
+     * @param WindowEvent event The window event
+     * @since @todo
+     */
 
   }, {
     key: 'handleMouseDown',
@@ -4349,7 +4756,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     /* not-sparkline:end */
 
     /* not-sparkline:start */
-    // TODO:
+    /**
+     * Handles when the user moves the mouse.
+     *
+     * @method handleMouseMove
+     * @private
+     * @param WindowEvent event The window event
+     * @since @todo
+     */
 
   }, {
     key: 'handleMouseMove',
@@ -4359,7 +4773,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     /* not-sparkline:end */
 
     /* not-sparkline:start */
-    // TODO:
+    /**
+     * Handles when the user releases the mouse button.
+     *
+     * @method handleMouseUp
+     * @private
+     * @param WindowEvent event The window event
+     * @since @todo
+     */
 
   }, {
     key: 'handleMouseUp',
@@ -4369,7 +4790,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     /* not-sparkline:end */
 
     /* not-sparkline:start */
-    // TODO:
+    /**
+     * Handles when the user scrolls the mouse wheel.
+     *
+     * @method handleMouseWheel
+     * @private
+     * @param WindowEvent event The window event
+     * @since @todo
+     */
 
   }, {
     key: 'handleMouseWheel',
@@ -4379,20 +4807,15 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     /* not-sparkline:end */
 
     /**
-     * Adds a new series to the chart.
-     * Optionally (true by default) redraws the chart.
-     *
-     * **Note:** If you are adding multiple series at one time,
-     * you may wish to not redraw the chart until all of
-     * the series have been added to speed things up.
+     * Adds a new series to the chart and (optionally) redraws the chart.
      *
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart(document.getElementById('chart-container'));
+     *   let chart = new EJSC.Chart(document.getElementById('chart-container'));
      *
      *   // Add a scatter series to the chart
-     *   var series1 = chart.addSeries(
+     *   let series = chart.addSeries(
      *     new EJSC.ScatterSeries(...)
      *   );
      *
@@ -4400,7 +4823,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @param {EJSC.Series} series The series to add to the chart
      * @param {Boolean} [redraw=true] Whether to redraw the chart or not
      * @return {EJSC.Series} The series that was added
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4434,16 +4857,16 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      * @example
      *
      *   // Create a chart in the element with the id 'chart-container'
-     *   var chart = new EJSC.Chart('chart-container');
+     *   let chart = new EJSC.Chart('chart-container');
      *
      *   // Add a scatter series to the chart without redrawing the chart
-     *   var series1 = chart.addSeries(
+     *   let series1 = chart.addSeries(
      *     new EJSC.ScatterSeries(...),
      *     false
      *   );
      *
      *   // Add a line series to the chart without redrawing the chart
-     *   var series2 = chart.addSeries(
+     *   let series2 = chart.addSeries(
      *     new EJSC.LineSeries(...),
      *     false
      *   );
@@ -4452,7 +4875,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      *   chart.redraw();
      *
      * @method redraw
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4535,7 +4958,6 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
         padding: 5,
         visible: true
       };
-      this.zoom = null;
       /* not-sparkline:start */
 
       // Initialize some protected properties
@@ -4557,7 +4979,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      *
      * @method drawAxes
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4566,8 +4988,8 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       var _this2 = this;
 
       // Draw the axes
-      this.axisList.forEach(function (axis) {
-        _this2[axis].draw();
+      _Array2.default.forEach(this.axisList, function (axis) {
+        return _this2[axis].draw();
       });
 
       /* not-sparkline:start */
@@ -4584,7 +5006,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      *
      * @method drawBackground
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4602,7 +5024,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      *
      * @method drawSeries
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4612,8 +5034,8 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       this.beginClip(this.drawArea.left, this.drawArea.top, this.drawArea.right - this.drawArea.left, this.drawArea.bottom - this.drawArea.top);
 
       // Loop through the visible series and draw each
-      this.getVisibleSeries().forEach(function (series) {
-        series.draw();
+      _Array2.default.forEach(this.getVisibleSeries(), function (series) {
+        return series.draw();
       });
 
       // End clipping the drawing area
@@ -4626,7 +5048,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      *
      * @method drawTitlebar
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4654,7 +5076,14 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     }
     /* not-sparkline:end */
 
-    // TODO:
+    /**
+     * Gets the next available series color.
+     *
+     * @method getNextColor
+     * @private
+     * @return {String} The next available color
+     * @since @todo
+     */
 
   }, {
     key: 'getNextColor',
@@ -4671,21 +5100,31 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       return color;
     }
 
-    // TODO:
+    /**
+     * Gets the list of currently visible series.
+     *
+     * @method getVisibleSeries
+     * @private
+     * @return {Array} The list of visible series
+     * @since @todo
+     */
 
   }, {
     key: 'getVisibleSeries',
     value: function getVisibleSeries() {
-      // Get the list of visible series
-      var visibleSeries = this.series.filter(function (series) {
+      // Return the list of visible series
+      return _Array2.default.filter(this.series, function (series) {
         return series.isVisible();
       });
-
-      // Return the list of visible series
-      return visibleSeries;
     }
 
-    // TODO:
+    /**
+     * Prepares the chart for first use.
+     *
+     * @method prepare
+     * @private
+     * @since @todo
+     */
 
   }, {
     key: 'prepare',
@@ -4698,7 +5137,13 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       this.prepareAxes();
     }
 
-    // TODO:
+    /**
+     * Prepares the chart's axes for first use.
+     *
+     * @method prepareAxes
+     * @private
+     * @since @todo
+     */
 
   }, {
     key: 'prepareAxes',
@@ -4706,7 +5151,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
       var _this3 = this;
 
       // Loop through each of the sides
-      this.sidesList.forEach(function (side) {
+      _Array2.default.forEach(this.sidesList, function (side) {
         // Create some temporary variables
         var axis = 'axis' + _String2.default.capitalize(side);
 
@@ -4721,36 +5166,39 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
     }
 
     /* not-sparkline:start */
-    // TODO:
+    /**
+     * Prepares the chart's listeners.
+     *
+     * @method prepareListeners
+     * @private
+     * @since @todo
+     */
 
   }, {
     key: 'prepareListeners',
     value: function prepareListeners() {
       // Grab the engine's element
       var element = this.engine.element;
-      var $element = (0, _DOM2.default)(element);
-      var $document = (0, _DOM2.default)(document);
 
       // Set the tabIndex so the chart can gain focus
       element.tabIndex = 0;
       element.style.outline = 'none';
 
       // Add local event listeners
-      $element.on('click', this.handleClick.bind(this));
-      $element.on('keydown', this.handleKeyDown.bind(this));
-      $element.on('keyup', this.handleKeyUp.bind(this));
-      $element.on('mousedown', this.handleMouseDown.bind(this));
-      $element.on('mousemove', this.handleMouseMove.bind(this));
-      $element.on('mouseup', this.handleMouseUp.bind(this));
-      $element.on(['mousewheel', 'DOMMouseScroll'], this.handleMouseWheel.bind(this));
+      (0, _Element2.default)(element).on('click', this.handleClick.bind(this)).on('keydown', this.handleKeyDown.bind(this)).on('keyup', this.handleKeyUp.bind(this)).on('mousedown', this.handleMouseDown.bind(this)).on('mousemove', this.handleMouseMove.bind(this)).on('mouseup', this.handleMouseUp.bind(this)).on(['mousewheel', 'DOMMouseScroll'], this.handleMouseWheel.bind(this));
 
       // Add global event listeners
-      $document.on('mousemove', this.handleGlobalMouseMove.bind(this));
-      $document.on('mouseup', this.handleGlobalMouseUp.bind(this));
+      (0, _Element2.default)(document).on('mousemove', this.handleMouseMove.bind(this)).on('mouseup', this.handleMouseUp.bind(this));
     }
     /* not-sparkline:end */
 
-    // TODO:
+    /**
+     * Resets the stored draw area.
+     *
+     * @method resetDrawArea
+     * @private
+     * @since @todo
+     */
 
   }, {
     key: 'resetDrawArea',
@@ -4769,7 +5217,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
      *
      * @method update
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4796,29 +5244,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _Element = __webpack_require__(8);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Element2 = _interopRequireDefault(_Element);
 
-var _Class2 = __webpack_require__(3);
-
-var _Class3 = _interopRequireDefault(_Class2);
-
-var _DOM = __webpack_require__(14);
-
-var _DOM2 = _interopRequireDefault(_DOM);
-
-var _Collection = __webpack_require__(6);
-
-var _Collection2 = _interopRequireDefault(_Collection);
-
-var _Object = __webpack_require__(4);
+var _Object = __webpack_require__(5);
 
 var _Object2 = _interopRequireDefault(_Object);
 
-var _Variable = __webpack_require__(7);
+var _EJSC = __webpack_require__(7);
 
-var _Variable2 = _interopRequireDefault(_Variable);
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _Inheritable2 = __webpack_require__(9);
+
+var _Inheritable3 = _interopRequireDefault(_Inheritable2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4829,16 +5269,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * // TODO:
+ * Defines a drawing that uses an engine (Canvas, SVG, VML, etc.) to draw on the page.
+ *
+ * @example
+ *
+ *   // Create a chart sending in the id of the container
+ *   let chart = new EJSC['.sparkline'].Chart('#chart-container');
  *
  * @class EJSC.Drawing
+ * @extends EJSC.Inheritable
  * @constructor
  * @param {Element|String} The container element or id
  * @param {Object} [options={}] The config options
- * @since 3.0.0
+ * @since @todo
  */
-exports.default = _EJSC2.default.Drawing = function (_Class) {
-  _inherits(Drawing, _Class);
+exports.default = _EJSC2.default.Drawing = function (_Inheritable) {
+  _inherits(Drawing, _Inheritable);
 
   _createClass(Drawing, [{
     key: 'getContainer',
@@ -4849,7 +5295,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @example
      *
      *   // Create a chart sending in the id of the container
-     *   let chart = new EJSC['.sparkline'].Chart('chart-container');
+     *   let chart = new EJSC['.sparkline'].Chart('#chart-container');
      *
      *   // Create a chart sending in a reference to the container's element
      *   let chart = new EJSC['.sparkline'].Chart(document.getElementById('chart-container'));
@@ -4857,7 +5303,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @attribute {Element|String} container
      * @default null
      * @required
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -4871,7 +5317,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     key: 'setContainer',
     value: function setContainer(container) {
       // Save the new container
-      this.container = (0, _DOM2.default)(container)[0];
+      this.container = _Element2.default.find(container)[0];
 
       // Move the engine's element into the container
       if (_Object2.default.has(this, 'engine.element')) {
@@ -4879,7 +5325,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
       }
 
       // Run any update methods if needed
-      if (this.listening && this.engine) {
+      if (this.listening) {
         this.resize();
       }
     }
@@ -4889,7 +5335,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      *
      * @property {EJSC.Engine} engine
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -4897,7 +5343,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      *
      * @property {Array} lastPoint
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -4905,11 +5351,15 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      *
      * @property {Array} lastControlPoint
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
      * Draws an arc at a point.
+     *
+     * @example
+     *
+     *   // TODO:
      *
      * @method arc
      * @param {Number} cx The x coordinate of the center
@@ -4919,7 +5369,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @param {Number} endAngle The end angle (in radians)
      * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4943,6 +5393,10 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws an arc stemming using a control point to an end point.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method arcTo
      * @param {Number} cpx The x coordinate of the control point
      * @param {Number} cpy The y coordinate of the control point
@@ -4950,7 +5404,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @param {Number} y The y coordinate of the end point
      * @param {Number} radius The radius of the arc
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -4987,13 +5441,17 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Begins clippig the given area.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method beginClip
      * @param {Number} left The left coordinate of the clip area
      * @param {Number} top The top coordinate of the clip area
      * @param {Number} width The width of the clip area
      * @param {Number} height The height of the clip area
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5009,9 +5467,13 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Begins a new path.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method beginPath
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5031,6 +5493,10 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a bezier curve.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method bezierCurveTo
      * @param {Number} cp1x The x coordinate of the first control point
      * @param {Number} cp1y The y coordinate of the first control point
@@ -5039,7 +5505,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5059,13 +5525,17 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a circle on the canvas.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method circle
      * @param {Number} x The x coordinate for the center of the circle
      * @param {Number} y The y coordinate for the center of the circle
      * @param {Number} radius The radius (in px) of the circle
      * @param {Object} styles The styles to apply to the circle
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5081,9 +5551,13 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Clears the canvas.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method clear
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5099,9 +5573,13 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Closes the current path.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method clear
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5117,10 +5595,14 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Fills and strokes the given path on the canvas.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method draw
      * @param {Object} styles The styles to apply to the fill
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5136,6 +5618,10 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a ellipse.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method ellipse
      * @param {Number} x The x coordinate to start the ellipse at
      * @param {Number} y The y coordinate to start the ellipse at
@@ -5143,7 +5629,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @param {Number} ry The y radius of the ellipse
      * @param {Object} styles The set of attributes to apply to the ellipse
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5159,9 +5645,13 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Ends the current clipping of the canvas' drawing area.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method endClip
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5177,10 +5667,14 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Fills the given path on the canvas.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method fill
      * @param {Object} styles The styles to apply to the fill
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5196,10 +5690,14 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a horizontal line to a new position.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method horizontalTo
      * @param {Number} x The x coordinate to draw to
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5219,6 +5717,10 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a line between two points.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method line
      * @param {Number} x1 The x coordinate for the starting point
      * @param {Number} y1 The y coordinate for the starting point
@@ -5226,7 +5728,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @param {Number} y2 The y coordinate for the ending point
      * @param {Object} attributes The set of attributes to apply to the line
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5242,11 +5744,15 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a line to a new position.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method lineTo
      * @param {Number} x The x coordinate to draw to
      * @param {Number} y The y coordinate to draw to
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5266,11 +5772,15 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Measures the width of the given text.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method measureText
      * @param {String} text The text
      * @param {Object} styles The styles to apply
      * @return {Number} The width of the text
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5283,11 +5793,15 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Moves the pen to a new position.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method moveTo
      * @param {Number} x The x coordinate to move to
      * @param {Number} y The y coordinate to move to
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5307,13 +5821,17 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a quadratic curve.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method quadraticCurveTo
      * @param {Number} cpx The x coordinate of the control point
      * @param {Number} cpy The y coordinate of the control point
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5333,6 +5851,10 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a rectanle on the canvas.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method rect
      * @param {Number} x The x coordinate to start at
      * @param {Number} y The y coordinate to start at
@@ -5340,7 +5862,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @param {Number} height The height of the rectangle
      * @param {Object} styles The styles to apply to the rectangle
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5356,15 +5878,24 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Resizes the canvas.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method resize
      * @param {Integer} [width] The new width for the canvas
      * @param {Integer} [height] The new height for the canvas
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'resize',
     value: function resize(width, height) {
+      // If no engine, break out
+      if (!this.engine) {
+        return;
+      }
+
       // Resize the drawing engine
       this.engine.resize(width || this.container.clientWidth, height || this.container.clientHeight);
 
@@ -5375,24 +5906,28 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a bezier curve stemming from a control point from a previous bezier curve.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method smoothBezierCurveTo
      * @param {Number} cpx The x coordinate of the next control point
      * @param {Number} cpy The y coordinate of the next control point
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'smoothBezierCurveTo',
     value: function smoothBezierCurveTo(cpx, cpy, x, y) {
       // Build needed variables
-      var cp1x = _Variable2.default.isNull(this.lastControlPoint[0]) ? null : 2 * this.lastPoint[0] - this.lastControlPoint[0];
-      var cp1y = _Variable2.default.isNull(this.lastControlPoint[1]) ? null : 2 * this.lastPoint[1] - this.lastControlPoint[1];
+      var cp1x = _Object2.default.isNull(this.lastControlPoint[0]) ? null : 2 * this.lastPoint[0] - this.lastControlPoint[0];
+      var cp1y = _Object2.default.isNull(this.lastControlPoint[1]) ? null : 2 * this.lastPoint[1] - this.lastControlPoint[1];
 
       // Call internal method
-      if (_Variable2.default.isNull(cp1x) || _Variable2.default.isNull(cp1y)) {
+      if (_Object2.default.isNull(cp1x) || _Object2.default.isNull(cp1y)) {
         this.quadraticCurveTo(cpx, cpy, x, y);
       } else {
         this.bezierCurveTo(cp1x, cp1y, cpx, cpy, x, y);
@@ -5405,22 +5940,26 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a quadratic curve stemming from a control point from a previous quadratic curve.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method smoothQuadraticCurveTo
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'smoothQuadraticCurveTo',
     value: function smoothQuadraticCurveTo(x, y) {
       // Build needed variables
-      var cpx = _Variable2.default.isNull(this.lastControlPoint[0]) ? null : 2 * this.lastPoint[0] - this.lastControlPoint[0];
-      var cpy = _Variable2.default.isNull(this.lastControlPoint[1]) ? null : 2 * this.lastPoint[1] - this.lastControlPoint[1];
+      var cpx = _Object2.default.isNull(this.lastControlPoint[0]) ? null : 2 * this.lastPoint[0] - this.lastControlPoint[0];
+      var cpy = _Object2.default.isNull(this.lastControlPoint[1]) ? null : 2 * this.lastPoint[1] - this.lastControlPoint[1];
 
       // Call internal method
-      if (_Variable2.default.isNull(cpx) || _Variable2.default.isNull(cpy)) {
+      if (_Object2.default.isNull(cpx) || _Object2.default.isNull(cpy)) {
         this.lineTo(x, y);
       } else {
         this.quadraticCurveTo(cpx, cpy, x, y);
@@ -5433,10 +5972,14 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a stroke along the current drawing path.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method stroke
      * @param {Object} attributes The set of attributes to apply to the stroke
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5452,13 +5995,17 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws text on the canvas.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method text
      * @param {String} text The text to draw on the canvas
      * @param {Number} x The x coordinate to draw the text at
      * @param {Number} y The y coordinate to draw the text at
      * @param {Object} styles The styles to apply to the text
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5474,10 +6021,14 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     /**
      * Draws a vertical line to a new position.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @method verticalTo
      * @param {Number} y The y coordinate to draw to
      * @chainable
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5499,7 +6050,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      *
      * @property {Array} path
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
     // constructor
@@ -5521,7 +6072,6 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
     // Set the container
     _this.setContainer(container);
 
-    // TOOD: remove this.resize() as it should be done in this.setContainer()
     // Resize the drawing
     _this.resize();
     return _this;
@@ -5533,10 +6083,10 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
   _createClass(Drawing, [{
     key: 'init',
     value: function init() {
-      // Initialize some public properties
+      // Initialize the public properties
       this.container = null;
 
-      // Initialize some private properties
+      // Initialize the private properties
       this.engine = null;
       this.lastPoint = [null, null];
       this.lastControlPoint = [null, null];
@@ -5548,23 +6098,21 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      *
      * @method selectEngine
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'selectEngine',
     value: function selectEngine() {
       // Find and select the first supported engine
-      if (_Variable2.default.isNil(this.engine)) {
-        this.engine = new (_Collection2.default.find(_EJSC2.default.Drawing.engines, function (engine) {
+      if (_Object2.default.isNil(this.engine)) {
+        this.engine = new (_EJSC2.default.Drawing.engines.find(function (engine) {
           return engine.isSupported();
         }))();
       }
 
       // Link the engine back to the drawing
-      if (this.engine) {
-        this.engine.link(this);
-      }
+      (0, _Object2.default)(this).invoke('engine.link', this);
     }
 
     /**
@@ -5575,7 +6123,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
      * @private
      * @param {String} name Then engine name
      * @param {EJSC.Engine} engine The drawing engine
-     * @since 3.0.0
+     * @since @todo
      */
 
   }], [{
@@ -5586,7 +6134,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
   }]);
 
   return Drawing;
-}(_Class3.default);
+}(_Inheritable3.default);
 
 /**
  * Holds the default styles for drawings.
@@ -5594,7 +6142,7 @@ exports.default = _EJSC2.default.Drawing = function (_Class) {
  * @property {Object} defaults
  * @static
  * @protected
- * @since 3.0.0
+ * @since @todo
  */
 
 
@@ -5617,7 +6165,7 @@ _EJSC2.default.Drawing.defaults = {
  * @property {Object} engines
  * @static
  * @private
- * @since 3.0.0
+ * @since @todo
  */
 _EJSC2.default.Drawing.engines = {};
 
@@ -5634,172 +6182,475 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Variable = __webpack_require__(7);
+var _Inheritable2 = __webpack_require__(9);
 
-var _Variable2 = _interopRequireDefault(_Variable);
+var _Inheritable3 = _interopRequireDefault(_Inheritable2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Houses all of the utility methods for dealing with DOM elements.
+ * Defines the abstract class for rendering engines for EJSCharts.
  *
- * @class EJSC.dom
+ * @class EJSC.Engine
  * @private
- * @param {Array|Element|String} selector The CSS selector or DOM element
- * @since 3.0.0
+ * @extends EJSC.Inheritable
+ * @since @todo
  */
-var _DOM_ = function () {
-  _createClass(_DOM_, [{
-    key: 'find',
+exports.default = _EJSC2.default.Engine = function (_Inheritable) {
+  _inherits(Engine, _Inheritable);
+
+  function Engine() {
+    _classCallCheck(this, Engine);
+
+    return _possibleConstructorReturn(this, (Engine.__proto__ || Object.getPrototypeOf(Engine)).apply(this, arguments));
+  }
+
+  _createClass(Engine, [{
+    key: 'arc',
 
     /**
-     * Holds the list of elements to be manipulated.
+     * The owner drawing.
      *
-     *
-     * @property {Array} elements
+     * @property {EJSC.Drawing} drawing
      * @private
-     * @since 3.0.0
+     * @default null
+     * @since @todo
      */
 
     /**
-     * Get the descendants of each element in the current set of matched elements, filtered by a selector or element.
+     * Holds a pointer to the engine's dom element.
      *
-     * @example
-     *
-     *   // TODO: example
-     *
-     * @method find
-     * @param {Array|Element|String} selector The CSS selector or DOM element
-     * @return {Array} The matching elements
-     * @chainable
-     * @since 3.0.0
+     * @property {Element} element
+     * @private
+     * @default null
+     * @since @todo
      */
-    value: function find(selector) {
-      // Declare some local variables
-      var elements = [];
-
-      // Convert the selector to an array if it's not already
-      if (!_Variable2.default.isArray(selector)) {
-        selector = [selector];
-      }
-
-      // Loop through the selectors
-      selector.forEach(function (selection) {
-        // If the current selector is a DOM element
-        if (_Variable2.default.isElement(selection)) {
-          // TODO: Make sure this element is a child of one of the existing elements in this.elements
-          // Append the element to the list of matches
-          elements.push(selection);
-        }
-
-        // TODO: Handle strings
-        else if (_Variable2.default.isString(selection)) {
-            // TODO: Handle strings
-          }
-      });
-
-      // Fix the elements list
-      this.elements = this.fix(elements);
-
-      // Return the new list of elements
-      return this.elements;
-    }
 
     /**
-     * Attach an event handler function for one or more events to the selected elements.
+     * Draws an arc at a point.
      *
-     * @example
+     * @method arc
+     * @param {Number} cx The x coordinate of the center
+     * @param {Number} cy The y coordinate of the center
+     * @param {Number} radius The radius of the arc
+     * @param {Number} startAngle The start angle (in radians)
+     * @param {Number} endAngle The end angle (in radians)
+     * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
+     * @since @todo
+     */
+    value: function arc() /* cx, cy, radius, startAngle, endAngle, counterClockwise */{}
+    // Placeholder
+
+
+    /**
+     * Draws an arc stemming using a control point to an end point.
      *
-     *   // TODO: example
-     *
-     * @method on
-     * @param {Array|String} events The event(s) to listen for
-     * @param {Function} callback The function to call when the event occurs
-     * @return {Array} The list of element
-     * @chainable
-     * @since 3.0.0
+     * @method arcTo
+     * @param {Number} cpx The x coordinate of the control point
+     * @param {Number} cpy The y coordinate of the control point
+     * @param {Number} x The x coordinate of the end point
+     * @param {Number} y The y coordinate of the end point
+     * @param {Number} radius The radius of the arc
+     * @since @todo
      */
 
   }, {
-    key: 'on',
-    value: function on(events, callback) {
-      // Convert the events to an array if it's not already
-      if (!_Variable2.default.isArray(events)) {
-        events = [events];
-      }
+    key: 'arcTo',
+    value: function arcTo() /* cpx, cpy, x, y, radius */{}
+    // Placeholder
 
-      // Loop through each of the elements
-      this.elements.forEach(function (element) {
-        // Loop through each of the events
-        events.forEach(function (event) {
-          // Attach the event handler function for the current event to the current element
-          if (element.attachEvent) {
-            element.attachEvent('on' + event, callback.bind(element));
-          } else {
-            element.addEventListener(event, callback.bind(element), true);
-          }
-        });
-      });
 
-      // Return the new list of elements
-      return this.elements;
+    /**
+     * Begins clippig the given area.
+     *
+     * @method beginClip
+     * @param {Number} left The left coordinate of the clip area
+     * @param {Number} top The top coordinate of the clip area
+     * @param {Number} width The width of the clip area
+     * @param {Number} height The height of the clip area
+     * @since @todo
+     */
+
+  }, {
+    key: 'beginClip',
+    value: function beginClip() /* left, top, width, height */{}
+    // Placeholder
+
+
+    /**
+     * Begins a new path.
+     *
+     * @method beginPath
+     * @since @todo
+     */
+
+  }, {
+    key: 'beginPath',
+    value: function beginPath() {}
+    // Placeholder
+
+
+    /**
+     * Draws a bezier curve.
+     *
+     * @method bezierCurveTo
+     * @param {Number} cp1x The x coordinate of the first control point
+     * @param {Number} cp1y The y coordinate of the first control point
+     * @param {Number} cp2x The x coordinate of the second control point
+     * @param {Number} cp2y The y coordinate of the second control point
+     * @param {Number} x The end x coordinate of the curve
+     * @param {Number} y The end y coordinate of the curve
+     * @since @todo
+     */
+
+  }, {
+    key: 'bezierCurveTo',
+    value: function bezierCurveTo() /* cp1x, cp1y, cp2x, cp2y, x, y */{}
+    // Placeholder
+
+
+    /**
+     * Draws a circle on the canvas.
+     *
+     * @method circle
+     * @param {Number} cx The x coordinate for the center of the circle
+     * @param {Number} cy The y coordinate for the center of the circle
+     * @param {Number} radius The radius (in px) of the circle
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'circle',
+    value: function circle() /* cx, cy, radius, styles */{}
+    // Placeholder
+
+
+    /**
+     * Clears the canvas.
+     *
+     * @method clear
+     * @since @todo
+     */
+
+  }, {
+    key: 'clear',
+    value: function clear() {}
+    // Placeholder
+
+
+    /**
+     * Closes the current path.
+     *
+     * @method clear
+     * @since @todo
+     */
+
+  }, {
+    key: 'closePath',
+    value: function closePath() {}
+    // Placeholder
+
+
+    /**
+     * Fills and strokes the given path on the canvas.
+     *
+     * @method draw
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'draw',
+    value: function draw() /* styles */{}
+    // Placeholder
+
+
+    /**
+     * Draws a ellipse.
+     *
+     * @method ellipse
+     * @param {Number} x The x coordinate to start the ellipse at
+     * @param {Number} y The y coordinate to start the ellipse at
+     * @param {Number} rx The x radius of the ellipse
+     * @param {Number} ry The y radius of the ellipse
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'ellipse',
+    value: function ellipse() /* cx, cy, rx, ry, styles */{}
+    // Placeholder
+
+
+    /**
+     * Ends the current clipping of the canvas' drawing area.
+     *
+     * @method endClip
+     * @since @todo
+     */
+
+  }, {
+    key: 'endClip',
+    value: function endClip() {}
+    // Placeholder
+
+
+    /**
+     * Fills the given path on the canvas.
+     *
+     * @method fill
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'fill',
+    value: function fill() /* styles */{}
+    // Placeholder
+
+
+    /**
+     * Draws a horizontal line to a new position.
+     *
+     * @method horizontalTo
+     * @param {Number} x The x coordinate to draw to
+     * @since @todo
+     */
+
+  }, {
+    key: 'horizontalTo',
+    value: function horizontalTo() /* x */{}
+    // Placeholder
+
+
+    /**
+     * Draws a line between two points.
+     *
+     * @method line
+     * @param {Number} x1 The x coordinate for the starting point
+     * @param {Number} y1 The y coordinate for the starting point
+     * @param {Number} x2 The x coordinate for the ending point
+     * @param {Number} y2 The y coordinate for the ending point
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'line',
+    value: function line() /* x1, y1, x2, y2, styles */{}
+    // Placeholder
+
+
+    /**
+     * Draws a line to a new position.
+     *
+     * @method lineTo
+     * @param {Number} x The x coordinate to draw to
+     * @param {Number} y The y coordinate to draw to
+     * @since @todo
+     */
+
+  }, {
+    key: 'lineTo',
+    value: function lineTo() /* x, y */{}
+    // Placeholder
+
+
+    /**
+     * Measures the width of the given text.
+     *
+     * @method measureText
+     * @param {String} text The text
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'measureText',
+    value: function measureText() /* text, styles */{}
+    // Placeholder
+
+
+    /**
+     * Moves the pen to a new position.
+     *
+     * @method moveTo
+     * @param {Number} x The x coordinate to move to
+     * @param {Number} y The y coordinate to move to
+     * @since @todo
+     */
+
+  }, {
+    key: 'moveTo',
+    value: function moveTo() /* x, y */{}
+    // Placeholder
+
+
+    /**
+     * Draws a quadratic curve.
+     *
+     * @method quadraticCurveTo
+     * @param {Number} cpx The x coordinate of the control point
+     * @param {Number} cpy The y coordinate of the control point
+     * @param {Number} x The end x coordinate of the curve
+     * @param {Number} y The end y coordinate of the curve
+     * @since @todo
+     */
+
+  }, {
+    key: 'quadraticCurveTo',
+    value: function quadraticCurveTo() /* cpx, cpy, x, y */{}
+    // Placeholder
+
+
+    /**
+     * Draws a rectanle on the canvas.
+     *
+     * @method rect
+     * @param {Number} x The x coordinate to start at
+     * @param {Number} y The y coordinate to start at
+     * @param {Number} width The width of the rectangle
+     * @param {Number} height The height of the rectangle
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'rect',
+    value: function rect() /* x, y, width, height, styles */{}
+    // Placeholder
+
+
+    /**
+     * Resizes the canvas.
+     *
+     * @method resize
+     * @param {Integer} width The new width for the canvas
+     * @param {Integer} height The new height for the canvas
+     * @since @todo
+     */
+
+  }, {
+    key: 'resize',
+    value: function resize() /* width, height */{}
+    // Placeholder
+
+
+    /**
+     * Draws a stroke along the current drawing path.
+     *
+     * @method stroke
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'stroke',
+    value: function stroke() /* styles */{}
+    // Placeholder
+
+
+    /**
+     * Draws text on the canvas.
+     *
+     * @method text
+     * @param {String} text The text to draw on the canvas
+     * @param {Number} x The x coordinate to draw the text at
+     * @param {Number} y The y coordinate to draw the text at
+     * @param {Object} styles The styles to apply
+     * @since @todo
+     */
+
+  }, {
+    key: 'text',
+    value: function text() /* text, x, y, styles */{}
+    // Placeholder
+
+
+    /**
+     * Draws a vertical line to a new position.
+     *
+     * @method verticalTo
+     * @param {Number} y The y coordinate to draw to
+     * @since @todo
+     */
+
+  }, {
+    key: 'verticalTo',
+    value: function verticalTo() /* y */{}
+    // Placeholder
+
+
+    // init
+
+  }, {
+    key: 'init',
+    value: function init() {
+      // super
+      _get(Engine.prototype.__proto__ || Object.getPrototypeOf(Engine.prototype), 'init', this).call(this);
+
+      // Initialize the private properties
+      this.drawing = null;
+      this.element = null;
     }
 
-    // constructor
+    /**
+     * Draws the given path.
+     *
+     * @method drawPath
+     * @private
+     * @param {Array} path The path to draw
+     * @since @todo
+     */
 
-  }]);
-
-  function _DOM_(selector) {
-    _classCallCheck(this, _DOM_);
-
-    // Initialize some private properties
-    this.elements = [];
-
-    // Find the given elements
-    this.elements = this.find(selector);
-
-    // Return the new list of elements
-    return this.elements;
-  }
-
-  /**
-   * Fixes the list of elements to include all of the class' methods.
-   *
-   * @method fix
-   * @private
-   * @param {Array} elements The list of elements
-   * @return {Array} The fixed list of elements
-   * @since 3.0.0
-   */
+  }, {
+    key: 'drawPath',
+    value: function drawPath() /* path */{}
+    // Placeholder
 
 
-  _createClass(_DOM_, [{
-    key: 'fix',
-    value: function fix(elements) {
-      var _this = this;
+    // TODO:
 
-      // Loop through each method in this class and attach it to the list of elements
-      ['find', 'fix', 'on'].forEach(function (name) {
-        elements[name] = _this[name].bind(_this);
-      });
+  }, {
+    key: 'link',
+    value: function link(drawing) {
+      // Link back to the drawing
+      this.drawing = drawing;
+    }
 
-      // Return the fixed list of elements
-      return elements;
+    /**
+     * Applies the given styles to the drawing context.
+     *
+     * @method stylize
+     * @private
+     * @param {Object} styles The styles to apply
+     * @return {Object}
+     * @since @todo
+     */
+
+  }, {
+    key: 'stylize',
+    value: function stylize() /* styles */{
+      // Placeholder
     }
   }]);
 
-  return _DOM_;
-}();
-
-exports.default = _EJSC2.default.DOM = function (selector) {
-  return new _DOM_(selector);
-};
+  return Engine;
+}(_Inheritable3.default);
 
 /***/ }),
 /* 15 */
@@ -5816,7 +6667,15 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
+
+var _Array2 = _interopRequireDefault(_Array);
+
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
+
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
@@ -5824,13 +6683,9 @@ var _Drawing = __webpack_require__(13);
 
 var _Drawing2 = _interopRequireDefault(_Drawing);
 
-var _Engine2 = __webpack_require__(16);
+var _Engine2 = __webpack_require__(14);
 
 var _Engine3 = _interopRequireDefault(_Engine2);
-
-var _Object = __webpack_require__(4);
-
-var _Object2 = _interopRequireDefault(_Object);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5847,7 +6702,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @constructor
  * @private
  * @extends EJSC.Engine
- * @since 3.0.0
+ * @since @todo
  */
 exports.default = _EJSC2.default.Canvas = function (_Engine) {
   _inherits(Canvas, _Engine);
@@ -5861,7 +6716,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @property {CanvasRenderingContext2D} ctx
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -5874,7 +6729,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} startAngle The start angle (in radians)
      * @param {Number} endAngle The end angle (in radians)
      * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
-     * @since 3.0.0
+     * @since @todo
      */
     value: function arc(cx, cy, radius, startAngle, endAngle, counterClockwise) {
       // Call the canvas' arc method
@@ -5890,7 +6745,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} x The x coordinate of the end point
      * @param {Number} y The y coordinate of the end point
      * @param {Number} radius The radius of the arc
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5908,7 +6763,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} top The top coordinate of the clip area
      * @param {Number} width The width of the clip area
      * @param {Number} height The height of the clip area
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5924,7 +6779,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * Begins a new path.
      *
      * @method beginPath
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5944,7 +6799,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} cp2y The y coordinate of the second control point
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5962,7 +6817,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} y The y coordinate for the center of the circle
      * @param {Number} radius The radius (in px) of the circle
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -5991,7 +6846,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * Clears the canvas.
      *
      * @method clear
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6005,7 +6860,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * Closes the current path.
      *
      * @method clear
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6020,7 +6875,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      *
      * @method draw
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6050,7 +6905,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} rx The x radius of the ellipse
      * @param {Number} ry The y radius of the ellipse
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6085,7 +6940,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * Ends the current clipping of the canvas' drawing area.
      *
      * @method endClip
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6100,7 +6955,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      *
      * @method fill
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6121,7 +6976,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      *
      * @method horizontalTo
      * @param {Number} x The x coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6140,7 +6995,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} x2 The x coordinate for the ending point
      * @param {Number} y2 The y coordinate for the ending point
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6169,7 +7024,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @method lineTo
      * @param {Number} x The x coordinate to draw to
      * @param {Number} y The y coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6185,7 +7040,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @method measureText
      * @param {String} text The text
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6210,7 +7065,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @method moveTo
      * @param {Number} x The x coordinate to move to
      * @param {Number} y The y coordinate to move to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6228,7 +7083,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} cpy The y coordinate of the control point
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6247,7 +7102,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} width The width of the rectangle
      * @param {Number} height The height of the rectangle
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6278,7 +7133,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @method resize
      * @param {Integer} width The new width for the canvas
      * @param {Integer} height The new height for the canvas
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6294,7 +7149,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      *
      * @method stroke
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6320,7 +7175,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @param {Number} x The x coordinate to draw the text at
      * @param {Number} y The y coordinate to draw the text at
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6346,7 +7201,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      *
      * @method verticalTo
      * @param {Number} y The y coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6384,7 +7239,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
       // super
       _get(Canvas.prototype.__proto__ || Object.getPrototypeOf(Canvas.prototype), 'init', this).call(this);
 
-      // Initialize some private properties
+      // Initialize the private properties
       this.ctx = null;
     }
 
@@ -6394,7 +7249,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @method drawPath
      * @private
      * @param {Array} path The path to draw
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6403,8 +7258,8 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
       var _this2 = this;
 
       // Run path methods
-      path.forEach(function (segment) {
-        segment[0].apply(_this2, segment[1]);
+      _Array2.default.forEach(path, function (segment) {
+        return segment[0].apply(_this2, segment[1]);
       });
     }
 
@@ -6414,7 +7269,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      * @method stylize
      * @private
      * @param {Object} [styles={}] The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6434,7 +7289,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
      *
      * @method unstylize
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -6458,7 +7313,7 @@ exports.default = _EJSC2.default.Canvas = function (_Engine) {
  * @static
  * @private
  * @return {Boolean} If the browser supports CANVAS
- * @since 3.0.0
+ * @since @todo
  */
 
 
@@ -6486,490 +7341,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _Object = __webpack_require__(5);
 
-var _EJSC = __webpack_require__(2);
+var _Object2 = _interopRequireDefault(_Object);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
-
-var _Class2 = __webpack_require__(3);
-
-var _Class3 = _interopRequireDefault(_Class2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Defines the abstract class for rendering engines for EJSCharts.
- *
- * @class EJSC.Engine
- * @private
- * @extends EJSC.Class
- * @since 3.0.0
- */
-exports.default = _EJSC2.default.Engine = function (_Class) {
-  _inherits(Engine, _Class);
-
-  function Engine() {
-    _classCallCheck(this, Engine);
-
-    return _possibleConstructorReturn(this, (Engine.__proto__ || Object.getPrototypeOf(Engine)).apply(this, arguments));
-  }
-
-  _createClass(Engine, [{
-    key: 'arc',
-
-    /**
-     * The owner drawing.
-     *
-     * @property {EJSC.Drawing} drawing
-     * @private
-     * @default null
-     * @since 3.0.0
-     */
-
-    /**
-     * Holds a pointer to the engine's dom element.
-     *
-     * @property {DOMElement} element
-     * @private
-     * @default null
-     * @since 3.0.0
-     */
-
-    /**
-     * Draws an arc at a point.
-     *
-     * @method arc
-     * @param {Number} cx The x coordinate of the center
-     * @param {Number} cy The y coordinate of the center
-     * @param {Number} radius The radius of the arc
-     * @param {Number} startAngle The start angle (in radians)
-     * @param {Number} endAngle The end angle (in radians)
-     * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
-     * @since 3.0.0
-     */
-    value: function arc() /* cx, cy, radius, startAngle, endAngle, counterClockwise */{}
-    // Placeholder
-
-
-    /**
-     * Draws an arc stemming using a control point to an end point.
-     *
-     * @method arcTo
-     * @param {Number} cpx The x coordinate of the control point
-     * @param {Number} cpy The y coordinate of the control point
-     * @param {Number} x The x coordinate of the end point
-     * @param {Number} y The y coordinate of the end point
-     * @param {Number} radius The radius of the arc
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'arcTo',
-    value: function arcTo() /* cpx, cpy, x, y, radius */{}
-    // Placeholder
-
-
-    /**
-     * Begins clippig the given area.
-     *
-     * @method beginClip
-     * @param {Number} left The left coordinate of the clip area
-     * @param {Number} top The top coordinate of the clip area
-     * @param {Number} width The width of the clip area
-     * @param {Number} height The height of the clip area
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'beginClip',
-    value: function beginClip() /* left, top, width, height */{}
-    // Placeholder
-
-
-    /**
-     * Begins a new path.
-     *
-     * @method beginPath
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'beginPath',
-    value: function beginPath() {}
-    // Placeholder
-
-
-    /**
-     * Draws a bezier curve.
-     *
-     * @method bezierCurveTo
-     * @param {Number} cp1x The x coordinate of the first control point
-     * @param {Number} cp1y The y coordinate of the first control point
-     * @param {Number} cp2x The x coordinate of the second control point
-     * @param {Number} cp2y The y coordinate of the second control point
-     * @param {Number} x The end x coordinate of the curve
-     * @param {Number} y The end y coordinate of the curve
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'bezierCurveTo',
-    value: function bezierCurveTo() /* cp1x, cp1y, cp2x, cp2y, x, y */{}
-    // Placeholder
-
-
-    /**
-     * Draws a circle on the canvas.
-     *
-     * @method circle
-     * @param {Number} cx The x coordinate for the center of the circle
-     * @param {Number} cy The y coordinate for the center of the circle
-     * @param {Number} radius The radius (in px) of the circle
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'circle',
-    value: function circle() /* cx, cy, radius, styles */{}
-    // Placeholder
-
-
-    /**
-     * Clears the canvas.
-     *
-     * @method clear
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'clear',
-    value: function clear() {}
-    // Placeholder
-
-
-    /**
-     * Closes the current path.
-     *
-     * @method clear
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'closePath',
-    value: function closePath() {}
-    // Placeholder
-
-
-    /**
-     * Fills and strokes the given path on the canvas.
-     *
-     * @method draw
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'draw',
-    value: function draw() /* styles */{}
-    // Placeholder
-
-
-    /**
-     * Draws a ellipse.
-     *
-     * @method ellipse
-     * @param {Number} x The x coordinate to start the ellipse at
-     * @param {Number} y The y coordinate to start the ellipse at
-     * @param {Number} rx The x radius of the ellipse
-     * @param {Number} ry The y radius of the ellipse
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'ellipse',
-    value: function ellipse() /* cx, cy, rx, ry, styles */{}
-    // Placeholder
-
-
-    /**
-     * Ends the current clipping of the canvas' drawing area.
-     *
-     * @method endClip
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'endClip',
-    value: function endClip() {}
-    // Placeholder
-
-
-    /**
-     * Fills the given path on the canvas.
-     *
-     * @method fill
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'fill',
-    value: function fill() /* styles */{}
-    // Placeholder
-
-
-    /**
-     * Draws a horizontal line to a new position.
-     *
-     * @method horizontalTo
-     * @param {Number} x The x coordinate to draw to
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'horizontalTo',
-    value: function horizontalTo() /* x */{}
-    // Placeholder
-
-
-    /**
-     * Draws a line between two points.
-     *
-     * @method line
-     * @param {Number} x1 The x coordinate for the starting point
-     * @param {Number} y1 The y coordinate for the starting point
-     * @param {Number} x2 The x coordinate for the ending point
-     * @param {Number} y2 The y coordinate for the ending point
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'line',
-    value: function line() /* x1, y1, x2, y2, styles */{}
-    // Placeholder
-
-
-    /**
-     * Draws a line to a new position.
-     *
-     * @method lineTo
-     * @param {Number} x The x coordinate to draw to
-     * @param {Number} y The y coordinate to draw to
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'lineTo',
-    value: function lineTo() /* x, y */{}
-    // Placeholder
-
-
-    /**
-     * Measures the width of the given text.
-     *
-     * @method measureText
-     * @param {String} text The text
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'measureText',
-    value: function measureText() /* text, styles */{}
-    // Placeholder
-
-
-    /**
-     * Moves the pen to a new position.
-     *
-     * @method moveTo
-     * @param {Number} x The x coordinate to move to
-     * @param {Number} y The y coordinate to move to
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'moveTo',
-    value: function moveTo() /* x, y */{}
-    // Placeholder
-
-
-    /**
-     * Draws a quadratic curve.
-     *
-     * @method quadraticCurveTo
-     * @param {Number} cpx The x coordinate of the control point
-     * @param {Number} cpy The y coordinate of the control point
-     * @param {Number} x The end x coordinate of the curve
-     * @param {Number} y The end y coordinate of the curve
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'quadraticCurveTo',
-    value: function quadraticCurveTo() /* cpx, cpy, x, y */{}
-    // Placeholder
-
-
-    /**
-     * Draws a rectanle on the canvas.
-     *
-     * @method rect
-     * @param {Number} x The x coordinate to start at
-     * @param {Number} y The y coordinate to start at
-     * @param {Number} width The width of the rectangle
-     * @param {Number} height The height of the rectangle
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'rect',
-    value: function rect() /* x, y, width, height, styles */{}
-    // Placeholder
-
-
-    /**
-     * Resizes the canvas.
-     *
-     * @method resize
-     * @param {Integer} width The new width for the canvas
-     * @param {Integer} height The new height for the canvas
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'resize',
-    value: function resize() /* width, height */{}
-    // Placeholder
-
-
-    /**
-     * Draws a stroke along the current drawing path.
-     *
-     * @method stroke
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'stroke',
-    value: function stroke() /* styles */{}
-    // Placeholder
-
-
-    /**
-     * Draws text on the canvas.
-     *
-     * @method text
-     * @param {String} text The text to draw on the canvas
-     * @param {Number} x The x coordinate to draw the text at
-     * @param {Number} y The y coordinate to draw the text at
-     * @param {Object} styles The styles to apply
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'text',
-    value: function text() /* text, x, y, styles */{}
-    // Placeholder
-
-
-    /**
-     * Draws a vertical line to a new position.
-     *
-     * @method verticalTo
-     * @param {Number} y The y coordinate to draw to
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'verticalTo',
-    value: function verticalTo() /* y */{}
-    // Placeholder
-
-
-    // init
-
-  }, {
-    key: 'init',
-    value: function init() {
-      // super
-      _get(Engine.prototype.__proto__ || Object.getPrototypeOf(Engine.prototype), 'init', this).call(this);
-
-      // Initialize some private properties
-      this.drawing = null;
-      this.element = null;
-    }
-
-    /**
-     * Draws the given path.
-     *
-     * @method drawPath
-     * @private
-     * @param {Array} path The path to draw
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'drawPath',
-    value: function drawPath() /* path */{}
-    // Placeholder
-
-
-    // TODO:
-
-  }, {
-    key: 'link',
-    value: function link(drawing) {
-      // Link back to the drawing
-      this.drawing = drawing;
-    }
-
-    /**
-     * Applies the given styles to the drawing context.
-     *
-     * @method stylize
-     * @private
-     * @param {Object} styles The styles to apply
-     * @return {Object}
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'stylize',
-    value: function stylize() /* styles */{
-      // Placeholder
-    }
-  }]);
-
-  return Engine;
-}(_Class3.default);
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _EJSC = __webpack_require__(2);
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
@@ -6977,17 +7353,9 @@ var _Drawing = __webpack_require__(13);
 
 var _Drawing2 = _interopRequireDefault(_Drawing);
 
-var _Engine2 = __webpack_require__(16);
+var _Engine2 = __webpack_require__(14);
 
 var _Engine3 = _interopRequireDefault(_Engine2);
-
-var _Object = __webpack_require__(4);
-
-var _Object2 = _interopRequireDefault(_Object);
-
-var _Variable = __webpack_require__(7);
-
-var _Variable2 = _interopRequireDefault(_Variable);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7004,7 +7372,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @constructor
  * @private
  * @extends EJSC.Engine
- * @since 3.0.0
+ * @since @todo
  */
 exports.default = _EJSC2.default.SVG = function (_Engine) {
   _inherits(SVG, _Engine);
@@ -7015,10 +7383,10 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
     /**
      * Holds a pointer to the engine's background dom element.
      *
-     * @property {DOM.Element} background.
+     * @property {Element} background.
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -7027,7 +7395,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @property {String} clipId
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -7036,16 +7404,16 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @property {Integer} clipIndex
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
      * Holds a pointer to the engine's definitions dom element.
      *
-     * @property {DOM.Element} definitions
+     * @property {Element} definitions
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -7054,7 +7422,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @property {Array} path
      * @private
      * @default []
-     * @since 3.0.0
+     * @since @todo
      */
 
     /**
@@ -7067,7 +7435,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} startAngle The start angle (in radians)
      * @param {Number} endAngle The end angle (in radians)
      * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
-     * @since 3.0.0
+     * @since @todo
      */
     value: function arc(cx, cy, radius, startAngle, endAngle, counterClockwise) {
       // Define needed points
@@ -7084,7 +7452,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
       var sweep = counterClockwise ? 0 : 1;
 
       // Move to starting point
-      this.path.push((_Variable2.default.isNull(this.drawing.lastPoint[0]) ? 'M' : 'L') + ' ' + x1 + ',' + y1);
+      this.path.push((_Object2.default.isNull(this.drawing.lastPoint[0]) ? 'M' : 'L') + ' ' + x1 + ',' + y1);
 
       // Append to path object
       this.path.push('A ' + radius + ',' + radius + ' ' + 0 + ' ' + largeArc + ' ' + sweep + ' ' + x2 + ',' + y2);
@@ -7099,7 +7467,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} x The x coordinate of the end point
      * @param {Number} y The y coordinate of the end point
      * @param {Number} radius The radius of the arc
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7133,7 +7501,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
       var endAngle = Math.atan2(cy2 - cy, cx2 - cx);
 
       // Draw the connecting line
-      this[_Variable2.default.isNull(this.drawing.lastPoint[0]) ? 'moveTo' : 'lineTo'](cx1, cy1);
+      this[_Object2.default.isNull(this.drawing.lastPoint[0]) ? 'moveTo' : 'lineTo'](cx1, cy1);
 
       // Draw the arc
       this.arc(cx, cy, radius, startAngle, endAngle, firstAngle > secondAngle);
@@ -7147,7 +7515,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} top The top coordinate of the clip area
      * @param {Number} width The width of the clip area
      * @param {Number} height The height of the clip area
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7177,7 +7545,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * Begins a new path.
      *
      * @method beginPath
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7197,7 +7565,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} cp2y The y coordinate of the second control point
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7215,7 +7583,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} y The y coordinate for the center of the circle
      * @param {Number} radius The radius (in px) of the circle
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7233,7 +7601,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * Clears the canvas.
      *
      * @method clear
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7258,7 +7626,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * Closes the current path.
      *
      * @method clear
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7273,7 +7641,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      *
      * @method draw
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7291,7 +7659,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} rx The x radius of the ellipse
      * @param {Number} ry The y radius of the ellipse
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7310,7 +7678,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * Ends the current clipping of the canvas' drawing area.
      *
      * @method endClip
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7325,7 +7693,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      *
      * @method fill
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7341,7 +7709,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      *
      * @method horizontalTo
      * @param {Number} x The x coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7360,7 +7728,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} x2 The x coordinate for the ending point
      * @param {Number} y2 The y coordinate for the ending point
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7381,7 +7749,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @method lineTo
      * @param {Number} x The x coordinate to draw to
      * @param {Number} y The y coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7397,7 +7765,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @method measureText
      * @param {String} text The text
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7413,7 +7781,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @method moveTo
      * @param {Number} x The x coordinate to move to
      * @param {Number} y The y coordinate to move to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7431,7 +7799,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} cpy The y coordinate of the control point
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7450,7 +7818,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} width The width of the rectangle
      * @param {Number} height The height of the rectangle
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7471,7 +7839,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @method resize
      * @param {Integer} width The new width for the canvas
      * @param {Integer} height The new height for the canvas
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7494,7 +7862,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      *
      * @method stroke
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7514,7 +7882,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @param {Number} x The x coordinate to draw the text at
      * @param {Number} y The y coordinate to draw the text at
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7538,7 +7906,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      *
      * @method verticalTo
      * @param {Number} y The y coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7590,7 +7958,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
   _createClass(SVG, [{
     key: 'init',
     value: function init() {
-      // Initialize some private properties
+      // Initialize the private properties
       this.background = null;
       this.clipId = null;
       this.clipIndex = 0;
@@ -7604,8 +7972,8 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @method createElement
      * @param {String} tagName The type of element to create
      * @param {Object} attributes The attributes to add to the element
-     * @return {DOM.Element}
-     * @since 3.0.0
+     * @return {Element}
+     * @since @todo
      */
 
   }, {
@@ -7674,7 +8042,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @method drawPath
      * @private
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7693,7 +8061,7 @@ exports.default = _EJSC2.default.SVG = function (_Engine) {
      * @private
      * @param {Object} styles The styles to apply
      * @return {Object}
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7718,7 +8086,7 @@ _EJSC2.default.SVG.css = 'svg { overflow: hidden; } svg, svg * { user-select: no
  * @property {Object} styles
  * @private
  * @static
- * @since 3.0.0
+ * @since @todo
  */
 _EJSC2.default.SVG.styles = {
   fillStyle: 'fill',
@@ -7740,7 +8108,7 @@ _EJSC2.default.SVG.styles = {
  * @private
  * @static
  * @default null
- * @since 3.0.0
+ * @since @todo
  */
 _EJSC2.default.SVG.stylesheet = null;
 
@@ -7751,7 +8119,7 @@ _EJSC2.default.SVG.stylesheet = null;
  * @private
  * @static
  * @default 'http://www.w3.org/2000/svg'
- * @since 3.0.0
+ * @since @todo
  */
 _EJSC2.default.SVG.svgns = 'http://www.w3.org/2000/svg';
 
@@ -7762,7 +8130,7 @@ _EJSC2.default.SVG.svgns = 'http://www.w3.org/2000/svg';
  * @private
  * @static
  * @default 'http://www.w3.org/2000/xmlns/'
- * @since 3.0.0
+ * @since @todo
  */
 _EJSC2.default.SVG.xmlns = 'http://www.w3.org/2000/xmlns/';
 
@@ -7773,7 +8141,7 @@ _EJSC2.default.SVG.xmlns = 'http://www.w3.org/2000/xmlns/';
  * @private
  * @static
  * @default 'http://www.w3.org/2000/xlink'
- * @since 3.0.0
+ * @since @todo
  */
 _EJSC2.default.SVG.xlink = 'http://www.w3.org/1999/xlink';
 
@@ -7783,11 +8151,11 @@ _EJSC2.default.SVG.xlink = 'http://www.w3.org/1999/xlink';
  * @method buildStylesheet
  * @private
  * @static
- * @since 3.0.0
+ * @since @todo
  */
 _EJSC2.default.SVG.buildStylesheet = function () {
   // Only run once
-  if (_Variable2.default.isNull(_EJSC2.default.SVG.stylesheet)) {
+  if (_Object2.default.isNull(_EJSC2.default.SVG.stylesheet)) {
     // Grab the page header
     var head = document.head || document.getElementsByTagName('head')[0];
 
@@ -7817,7 +8185,7 @@ _EJSC2.default.SVG.buildStylesheet = function () {
  * @static
  * @private
  * @return {Boolean} If the browser supports SVG
- * @since 3.0.0
+ * @since @todo
  */
 _EJSC2.default.SVG.isSupported = function () {
   return document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#BasicStructure', '1.1');
@@ -7827,7 +8195,7 @@ _EJSC2.default.SVG.isSupported = function () {
 _Drawing2.default.register('SVG', _EJSC2.default.SVG);
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7841,11 +8209,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _EJSC = __webpack_require__(2);
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Engine2 = __webpack_require__(16);
+var _Engine2 = __webpack_require__(14);
 
 var _Engine3 = _interopRequireDefault(_Engine2);
 
@@ -7856,7 +8224,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import Util from '../../util/Util.es6';
 // import Drawing from '../Drawing.es6';
 
 
@@ -7867,7 +8234,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @constructor
  * @private
  * @extends EJSC.Engine
- * @since 3.0.0
+ * @since @todo
  */
 exports.default = _EJSC2.default.VML = function (_Engine) {
   _inherits(VML, _Engine);
@@ -7885,7 +8252,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} startAngle The start angle (in radians)
      * @param {Number} endAngle The end angle (in radians)
      * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
-     * @since 3.0.0
+     * @since @todo
      */
     value: function arc() /* cx, cy, r, startAngle, endAngle, counterClockwise */{}
     // TODO:
@@ -7900,7 +8267,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} x The x coordinate of the end point
      * @param {Number} y The y coordinate of the end point
      * @param {Number} radius The radius of the arc
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7917,7 +8284,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} top The top coordinate of the clip area
      * @param {Number} width The width of the clip area
      * @param {Number} height The height of the clip area
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7930,7 +8297,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * Begins a new path.
      *
      * @method beginPath
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7949,7 +8316,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} cp2y The y coordinate of the second control point
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7966,7 +8333,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} y The y coordinate for the center of the circle
      * @param {Number} radius The radius (in px) of the circle
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7979,7 +8346,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * Clears the canvas.
      *
      * @method clear
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -7992,7 +8359,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * Closes the current path.
      *
      * @method clear
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8007,7 +8374,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @method draw
      * @param {Array} path The coordinates of the path
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8025,7 +8392,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} rx The x radius of the ellipse
      * @param {Number} ry The y radius of the ellipse
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8038,7 +8405,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * Ends the current clipping of the canvas' drawing area.
      *
      * @method endClip
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8052,7 +8419,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      *
      * @method fill
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8066,7 +8433,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      *
      * @method horizontalTo
      * @param {Number} x The x coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8084,7 +8451,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} x2 The x coordinate for the ending point
      * @param {Number} y2 The y coordinate for the ending point
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8099,7 +8466,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @method lineTo
      * @param {Number} x The x coordinate to draw to
      * @param {Number} y The y coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8114,7 +8481,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @method measureText
      * @param {String} text The text
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8129,7 +8496,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @method moveTo
      * @param {Number} x The x coordinate to move to
      * @param {Number} y The y coordinate to move to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8146,7 +8513,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} cpy The y coordinate of the control point
      * @param {Number} x The end x coordinate of the curve
      * @param {Number} y The end y coordinate of the curve
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8164,7 +8531,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} width The width of the rectangle
      * @param {Number} height The height of the rectangle
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8179,7 +8546,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @method resize
      * @param {Integer} width The new width for the canvas
      * @param {Integer} height The new height for the canvas
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8194,7 +8561,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @method stroke
      * @param {Array} path The path
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8211,7 +8578,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @param {Number} x The x coordinate to draw the text at
      * @param {Number} y The y coordinate to draw the text at
      * @param {Object} styles The styles to apply
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8225,7 +8592,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      *
      * @method verticalTo
      * @param {Number} y The y coordinate to draw to
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8253,7 +8620,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
    * @method drawPath
    * @private
    * @param {Array} path The path to draw
-   * @since 3.0.0
+   * @since @todo
    */
 
 
@@ -8270,7 +8637,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
      * @private
      * @param {Object} styles The styles to apply
      * @return {Object}
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8290,7 +8657,7 @@ exports.default = _EJSC2.default.VML = function (_Engine) {
  * @static
  * @private
  * @return {Boolean} If the browser supports VML
- * @since 3.0.0
+ * @since @todo
  */
 
 
@@ -8320,7 +8687,7 @@ _EJSC2.default.VML.isSupported = function () {
 // EJSC.Drawing.register('VML', EJSC.VML);
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8334,21 +8701,25 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Array2 = _interopRequireDefault(_Array);
 
-var _LineSeries2 = __webpack_require__(20);
-
-var _LineSeries3 = _interopRequireDefault(_LineSeries2);
-
-var _Number = __webpack_require__(9);
+var _Number = __webpack_require__(4);
 
 var _Number2 = _interopRequireDefault(_Number);
 
-var _Object = __webpack_require__(4);
+var _Object = __webpack_require__(5);
 
 var _Object2 = _interopRequireDefault(_Object);
+
+var _EJSC = __webpack_require__(7);
+
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _LineSeries2 = __webpack_require__(19);
+
+var _LineSeries3 = _interopRequireDefault(_LineSeries2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8359,7 +8730,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * // TODO:
+ * AreaSeries is rendered by drawing a line from point to point and then filling the area defined.
  *
  * @example
  *
@@ -8368,7 +8739,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class EJSC.AreaSeries
  * @extends EJSC.LineSeries
  * @constructor
- * @since 3.0.0
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
  */
 exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
   _inherits(AreaSeries, _LineSeries);
@@ -8387,11 +8760,26 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
      *
      * @example
      *
-     *   // TODO:
+     *   // Create a chart in the element with the id 'chart-container'
+     *   let chart = EJSC.Chart('chart-container');
+     *
+     *   // Define a new AreaSeries with the area's background color as light grey
+     *   let series = new EJSC.AreaSeries([[0, 0], [1, 2], [2, 1]], {
+     *     area: { fillStyle: 'rgb(200, 200, 200)' }
+     *   });
+     *
+     *   // Update the area's background color to light blue
+     *   series.setArea({
+     *     fillStyle: 'rgb(200, 200, 255)'
+     *   });
+     *
+     *   // Log out the current area styles
+     *   console.log(series.getArea());
+     *   // => { fillStyle: 'rgb(200, 200, 255)' }
      *
      * @attribute {Object} area
      * @property {String} area.fillStyle The background color of the area fill. (Default: null)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -8404,12 +8792,12 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
 
   }, {
     key: 'setArea',
-    value: function setArea(area, apply) {
+    value: function setArea(area) {
       // Update the current area
       _Object2.default.merge(this.area, area);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -8423,7 +8811,7 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
      *
      * @attribute {Number} zeroCoordinate
      * @default 0
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -8439,12 +8827,12 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
 
   }, {
     key: 'setZeroCoordinate',
-    value: function setZeroCoordinate(zeroCoordinate, apply) {
+    value: function setZeroCoordinate(zeroCoordinate) {
       // Update the current zero coordinate
       this.zeroCoordinate = zeroCoordinate;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -8470,14 +8858,14 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
      * @method calculateExtremes
      * @private
      * @return {Object} The calculated extremes
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'calculateExtremes',
     value: function calculateExtremes() {
       // Grab some local pointers
-      var extremes = this.point.calculateExtremes(this.handler.data);
+      var extremes = _get(AreaSeries.prototype.__proto__ || Object.getPrototypeOf(AreaSeries.prototype), 'calculateExtremes', this).call(this);
       var zeroCoordinate = this.zeroCoordinate;
 
       // Update extremes to the zero coordinate
@@ -8493,7 +8881,7 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
      *
      * @method draw
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8511,13 +8899,13 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
       chart.beginPath();
 
       // Loop through the points of data adding them to the path array
-      points.forEach(function (point, index) {
-        chart[index === 0 ? 'moveTo' : 'lineTo'](xAxis.convertPointToPixel(point.x), yAxis.convertPointToPixel(point.y));
+      _Array2.default.forEach(points, function (point, index) {
+        return chart[index === 0 ? 'moveTo' : 'lineTo'](xAxis.convertPointToPixel(point.x), yAxis.convertPointToPixel(point.y));
       });
 
       // Loop through the points of data adding them to the path array
-      points.reverse().forEach(function (point) {
-        chart.lineTo(xAxis.convertPointToPixel(point.x), zeroCoordinate);
+      _Array2.default.forEach(points.reverse(), function (point) {
+        return chart.lineTo(xAxis.convertPointToPixel(point.x), zeroCoordinate);
       });
 
       // Close the path
@@ -8537,7 +8925,7 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
 }(_LineSeries3.default);
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8551,21 +8939,25 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Array2 = _interopRequireDefault(_Array);
 
-var _ScatterSeries2 = __webpack_require__(21);
-
-var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
-
-var _Number = __webpack_require__(9);
+var _Number = __webpack_require__(4);
 
 var _Number2 = _interopRequireDefault(_Number);
 
-var _Object = __webpack_require__(4);
+var _Object = __webpack_require__(5);
 
 var _Object2 = _interopRequireDefault(_Object);
+
+var _EJSC = __webpack_require__(7);
+
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _ScatterSeries2 = __webpack_require__(20);
+
+var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8576,7 +8968,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * // TODO:
+ * LineSeries is rendered by drawing a line from point to point.
  *
  * @example
  *
@@ -8585,7 +8977,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class EJSC.LineSeries
  * @extends EJSC.ScatterSeries
  * @constructor
- * @since 3.0.0
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
  */
 exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
   _inherits(LineSeries, _ScatterSeries);
@@ -8609,7 +9003,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
      * @attribute {Object} line
      * @property {Integer} line.lineWidth Defines the width of the line. (Default: 1)
      * @property {String} line.strokeStyle Defines the color of the line. (Default: null)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -8622,12 +9016,12 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
 
   }, {
     key: 'setLine',
-    value: function setLine(line, apply) {
+    value: function setLine(line) {
       // Update the current line
       _Object2.default.merge(this.line, line);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -8641,7 +9035,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
      *
      * @attribute {Boolean} step
      * @default false
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -8657,12 +9051,12 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
 
   }, {
     key: 'setStep',
-    value: function setStep(step, apply) {
+    value: function setStep(step) {
       // Update the current step
       this.step = step;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -8689,7 +9083,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
      * @method buildPath
      * @private
      * @return {Array} The path to draw
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -8700,7 +9094,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
       var path = [];
 
       // Build the drawing path
-      this.data.forEach(function (point, index) {
+      _Array2.default.forEach(this.data, function (point, index) {
         // Add the previous step (if needed)
         if (index > 0 && step) {
           path.push({
@@ -8731,28 +9125,45 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
      * @method calculateSpacing
      * @private
      * @return {Number} The spacing needed for the series
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'calculateSpacing',
     value: function calculateSpacing() {
       // Define some local variables
-      var pointSpacing = this.points.visible ? _get(LineSeries.prototype.__proto__ || Object.getPrototypeOf(LineSeries.prototype), 'calculateSpacing', this).call(this) : 0;
-      var lineSpacing = Math.ceil(this.line.width / 2);
+      var pointSpacing = this.points.visible ? _get(LineSeries.prototype.__proto__ || Object.getPrototypeOf(LineSeries.prototype), 'calculateSpacing', this).call(this) : {
+        xMin: 0,
+        xMax: 0,
+        yMin: 0,
+        yMax: 0
+      };
+      var lineSpacing = Math.ceil(this.line.lineWidth / 2);
 
       // Return the larger spacing
-      return _Number2.default.max(pointSpacing, lineSpacing);
+      return {
+        xMin: _Number2.default.max(pointSpacing.xMin, lineSpacing),
+        xMax: _Number2.default.max(pointSpacing.xMax, lineSpacing),
+        yMin: _Number2.default.max(pointSpacing.yMin, lineSpacing),
+        yMax: _Number2.default.max(pointSpacing.yMax, lineSpacing)
+      };
     }
 
     /* not-sparkline:start */
-    // TODO:
+    /**
+     * Clips the draw path to the given zoom.
+     *
+     * @method clipPath
+     * @private
+     * @param {Array} path The draw path
+     * @since @todo
+     */
 
   }, {
     key: 'clipPath',
     value: function clipPath(path) {
       // Grab some local pointers
-      var isPointInBounds = this.isPointInBounds;
+      var isPointVisible = this.isPointVisible;
       var spacing = this.calculateSpacing();
       var xAxis = this.referenceXAxis();
       var xAxisZoom = xAxis.getCurrentZoom(spacing);
@@ -8768,12 +9179,12 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
 
       var clip = [];
       var lastPoint = void 0;
-      var lastPointInBounds = void 0;
+      var lastPointIsVisible = void 0;
 
       // Loop through each of the data points
-      path.forEach(function (point, index) {
+      _Array2.default.forEach(path, function (point, index) {
         // Define some local variables
-        var pointIsInBounds = isPointInBounds(point, xAxisZoom, yAxisZoom);
+        var pointIsInBounds = isPointVisible(point, xAxisZoom, yAxisZoom);
         var xMinCross = void 0;
         var xMaxCross = void 0;
         var yMinCross = void 0;
@@ -8789,7 +9200,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
 
           /* eslint-disable max-depth */
           // If this point and the next are both in bounds
-          if (pointIsInBounds && lastPointInBounds) {}
+          if (pointIsInBounds && lastPointIsVisible) {}
           // Do nothing...
 
 
@@ -9138,7 +9549,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
 
         // Update the last point and if it's in bounds
         lastPoint = point;
-        lastPointInBounds = isPointInBounds(lastPoint, xAxisZoom, yAxisZoom);
+        lastPointIsVisible = isPointVisible(lastPoint, xAxisZoom, yAxisZoom);
       });
 
       // console.log(JSON.stringify(clip));
@@ -9152,7 +9563,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
      *
      * @method draw
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -9168,8 +9579,8 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
       chart.beginPath();
 
       // Loop through the points of data adding them to the path array
-      points.forEach(function (point, index) {
-        chart[index === 0 ? 'moveTo' : 'lineTo'](xAxis.convertPointToPixel(point.x), yAxis.convertPointToPixel(point.y));
+      _Array2.default.forEach(points, function (point, index) {
+        return chart[index === 0 ? 'moveTo' : 'lineTo'](xAxis.convertPointToPixel(point.x), yAxis.convertPointToPixel(point.y));
       });
 
       // Draw the line
@@ -9182,25 +9593,13 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
         _get(LineSeries.prototype.__proto__ || Object.getPrototypeOf(LineSeries.prototype), 'draw', this).call(this);
       }
     }
-
-    /* not-sparkline:start */
-    // TODO:
-
-  }, {
-    key: 'isPointInBounds',
-    value: function isPointInBounds(point, xAxisZoom, yAxisZoom) {
-      // Return if the given point is inside the current zoom area
-      return point.x >= xAxisZoom.min && point.x <= xAxisZoom.max && point.y >= yAxisZoom.min && point.y <= yAxisZoom.max;
-    }
-    /* not-sparkline:end */
-
   }]);
 
   return LineSeries;
 }(_ScatterSeries3.default);
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9214,25 +9613,25 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Array2 = _interopRequireDefault(_Array);
 
-var _XYSeries2 = __webpack_require__(22);
-
-var _XYSeries3 = _interopRequireDefault(_XYSeries2);
-
-var _Number = __webpack_require__(9);
+var _Number = __webpack_require__(4);
 
 var _Number2 = _interopRequireDefault(_Number);
 
-var _Object = __webpack_require__(4);
+var _Object = __webpack_require__(5);
 
 var _Object2 = _interopRequireDefault(_Object);
 
-var _Variable = __webpack_require__(7);
+var _EJSC = __webpack_require__(7);
 
-var _Variable2 = _interopRequireDefault(_Variable);
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _XYSeries2 = __webpack_require__(21);
+
+var _XYSeries3 = _interopRequireDefault(_XYSeries2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9243,7 +9642,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * // TODO:
+ * ScatterSeries is rendered by drawing a styled point for each x,y coordinate in the dataset.
  *
  * @example
  *
@@ -9252,7 +9651,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class EJSC.ScatterSeries
  * @extends EJSC.XYSeries
  * @constructor
- * @since 3.0.0
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
  */
 exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
   _inherits(ScatterSeries, _XYSeries);
@@ -9281,7 +9682,7 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
      * @property {Integer} points.style.lineWidth Defines the width of the line. (Default: 2)
      * @property {String} points.style.strokeStyle Defines the color of the line. (Default: null)
      * @property {Boolean} points.visible Defines if the points should be drawn. Only applies to child classes of ScatterSeries. (Default: false)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -9294,12 +9695,12 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
 
   }, {
     key: 'setPoints',
-    value: function setPoints(points, apply) {
+    value: function setPoints(points) {
       // Update the current points
       _Object2.default.merge(this.points, points);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -9331,33 +9732,26 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
      * @method calculateExtremes
      * @private
      * @return {Object} The new extremes
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'calculateExtremes',
     value: function calculateExtremes() {
-      // Define some local variables
-      var extremes = {
-        xMin: null,
-        xMax: null,
-        yMin: null,
-        yMax: null
-      };
-
-      // Loop through the associated data
-      this.data.forEach(function (point) {
-        // Update the xMin value if needed
-        _Object2.default.merge(extremes, {
+      // Return the calculated extremes
+      return _Array2.default.transform(this.data, function (extremes, point) {
+        return _Object2.default.merge(extremes, {
           xMin: _Number2.default.min(extremes.xMin, point.x),
           xMax: _Number2.default.max(extremes.xMax, point.x),
           yMin: _Number2.default.min(extremes.yMin, point.y),
           yMax: _Number2.default.max(extremes.yMax, point.y)
         });
+      }, {
+        xMin: null,
+        xMax: null,
+        yMin: null,
+        yMax: null
       });
-
-      // Return the extremes
-      return extremes;
     }
 
     /**
@@ -9366,7 +9760,7 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
      * @method calculateSpacing
      * @private
      * @return {Number} The spacing needed for the series
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -9375,11 +9769,16 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
       // Grab some local pointers
       var points = this.points;
 
-      // Determine the spacing needed for the series
+      // Define some local variables
       var spacing = Math.ceil(points.size + points.style.lineWidth / 2);
 
       // Return the spacing needed for the series
-      return spacing;
+      return {
+        xMin: spacing,
+        xMax: spacing,
+        yMin: spacing,
+        yMax: spacing
+      };
     }
 
     /**
@@ -9387,7 +9786,7 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
      *
      * @method draw
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -9410,7 +9809,7 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
       style.strokeStyle = style.strokeStyle || color;
 
       // Draw the visible points
-      this.getVisiblePoints().forEach(function (point) {
+      _Array2.default.forEach(this.getVisiblePoints(), function (point) {
         // Define the pixel values
         var dx = xAxis.convertPointToPixel(point.x) + 0.5;
         var dy = yAxis.convertPointToPixel(point.y) + 0.5;
@@ -9458,22 +9857,17 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
      * @private
      * @param {Array<Number, Number>} point The point to determine
      * @return {Boolean} If the point is currently visible or not
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'isPointVisible',
     value: function isPointVisible(point) {
-      // Grab some local pointers
-      var spacing = this.calculateSpacing();
-      var xAxisZoom = this.referenceXAxis().getCurrentZoom(spacing);
-      var yAxisZoom = this.referenceYAxis().getCurrentZoom(spacing);
+      var xAxisZoom = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.referenceXAxis().getCurrentZoom(this.calculateSpacing());
+      var yAxisZoom = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.referenceYAxis().getCurrentZoom(this.calculateSpacing());
 
-      // Determine if the point should be drawn or not
-      var isPointVisible = _Variable2.default.isNil(point.x) === false && _Variable2.default.isNil(point.y) === false && point.x >= xAxisZoom.min && point.x <= xAxisZoom.max && point.y >= yAxisZoom.min && point.y <= yAxisZoom.max;
-
-      // Return if the point should be drawn or not
-      return isPointVisible;
+      // Return if the point is visible in the current zoom
+      return _Object2.default.isNil(point.x) === false && _Object2.default.isNil(point.y) === false && point.x >= xAxisZoom.min && point.x <= xAxisZoom.max && point.y >= yAxisZoom.min && point.y <= yAxisZoom.max;
     }
   }]);
 
@@ -9481,7 +9875,7 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
 }(_XYSeries3.default);
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9495,15 +9889,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _PlotSeries = __webpack_require__(23);
+var _PlotSeries = __webpack_require__(22);
 
 var _PlotSeries2 = _interopRequireDefault(_PlotSeries);
 
-var _DataSeries2 = __webpack_require__(25);
+var _DataSeries2 = __webpack_require__(24);
 
 var _DataSeries3 = _interopRequireDefault(_DataSeries2);
 
@@ -9516,13 +9910,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * TODO;
+ * Holds the common properties of series types that use XY data.
  *
  * @class EJSC.XYSeries
  * @extends EJSC.PlotSeries
  * @uses EJSC.DataSeries
  * @private
- * @since 3.0.0
+ * @since @todo
  */
 exports.default = _EJSC2.default.XYSeries = function (_DataSeries) {
   _inherits(XYSeries, _DataSeries);
@@ -9536,7 +9930,14 @@ exports.default = _EJSC2.default.XYSeries = function (_DataSeries) {
   _createClass(XYSeries, [{
     key: 'init',
 
-    // TODO: document XYSeries.dataPoints
+    /**
+    * Holds the list of data points for each axis type.
+    *
+    * @property {Array} dataPoints
+    * @private
+    * @default { x: ['x'], y: ['y'] }
+    * @since @todo
+    */
 
     // init
     value: function init() {
@@ -9555,7 +9956,7 @@ exports.default = _EJSC2.default.XYSeries = function (_DataSeries) {
 }((0, _DataSeries3.default)(_PlotSeries2.default));
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9569,17 +9970,21 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
+
+var _Array2 = _interopRequireDefault(_Array);
+
+var _String = __webpack_require__(6);
+
+var _String2 = _interopRequireDefault(_String);
+
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Series2 = __webpack_require__(24);
+var _Series2 = __webpack_require__(23);
 
 var _Series3 = _interopRequireDefault(_Series2);
-
-var _String = __webpack_require__(8);
-
-var _String2 = _interopRequireDefault(_String);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9595,7 +10000,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class EJSC.PlotSeries
  * @extends EJSC.Series
  * @private
- * @since 3.0.0
+ * @since @todo
  */
 exports.default = _EJSC2.default.PlotSeries = function (_Series) {
   _inherits(PlotSeries, _Series);
@@ -9609,7 +10014,17 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
   _createClass(PlotSeries, [{
     key: 'getSpacing',
 
-    // TODO:
+    /**
+     * Defines the spacing around the series.
+     *
+     * @example
+     *
+     *   // TODO:
+     *
+     * @attribute {Number} spacing
+     * @default 0
+     * @since @todo
+     */
 
     // getter
     value: function getSpacing() {
@@ -9621,17 +10036,20 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
 
   }, {
     key: 'setSpacing',
-    value: function setSpacing(spacing, apply) {
+    value: function setSpacing(spacing) {
       // Update the current spacing
       this.spacing = spacing;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
+
     /**
      * Defines the x axis to draw on.
+     *
+     * Valid values are: 'bottom', 'top'.
      *
      * @example
      *
@@ -9639,8 +10057,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
      *
      * @attribute {String} xAxis
      * @default 'bottom'
-     * @values 'bottom', 'top'
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -9656,12 +10073,12 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
 
   }, {
     key: 'setXAxis',
-    value: function setXAxis(xAxis, apply) {
+    value: function setXAxis(xAxis) {
       // Update the current x axis
       this.xAxis = xAxis;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -9669,14 +10086,15 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
     /**
      * Defines the y axis to draw on.
      *
+     * Valid values are: 'left', 'right'.
+     *
      * @example
      *
      *   // TODO:
      *
      * @attribute {String} yAxis
      * @default 'left'
-     * @values 'left', 'right'
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -9692,12 +10110,12 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
 
   }, {
     key: 'setYAxis',
-    value: function setYAxis(yAxis, apply) {
+    value: function setYAxis(yAxis) {
       // Update the current y axis
       this.yAxis = yAxis;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -9722,7 +10140,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
      * @method calculateExtremes
      * @private
      * @return {Object} The new extremes
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -9746,7 +10164,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
      * @method getVisiblePoints
      * @private
      * @return {Array} The list of visible points
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -9754,13 +10172,10 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
     value: function getVisiblePoints() {
       var _this2 = this;
 
-      // Get the list of visible points
-      var visiblePoints = this.data.filter(function (point) {
+      // Return the list of visible points
+      return _Array2.default.filter(this.data, function (point) {
         return _this2.isPointVisible(point);
       });
-
-      // Return the list of visible points
-      return visiblePoints;
     }
 
     /**
@@ -9769,7 +10184,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
      * @method referenceXAxis
      * @private
      * @return {EJSC.Axis} The x axis
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -9785,7 +10200,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
      * @method referenceXAxis
      * @private
      * @return {EJSC.Axis} The y axis
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -9800,7 +10215,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
 }(_Series3.default);
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9814,17 +10229,17 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
+
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Class2 = __webpack_require__(3);
+var _Inheritable2 = __webpack_require__(9);
 
-var _Class3 = _interopRequireDefault(_Class2);
-
-var _Object = __webpack_require__(4);
-
-var _Object2 = _interopRequireDefault(_Object);
+var _Inheritable3 = _interopRequireDefault(_Inheritable2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9839,11 +10254,11 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @class EJSC.Series
  * @private
- * @extends EJSC.Class
- * @since 3.0.0
+ * @extends EJSC.Inheritable
+ * @since @todo
  */
-exports.default = _EJSC2.default.Series = function (_Class) {
-  _inherits(Series, _Class);
+exports.default = _EJSC2.default.Series = function (_Inheritable) {
+  _inherits(Series, _Inheritable);
 
   function Series() {
     _classCallCheck(this, Series);
@@ -9857,9 +10272,13 @@ exports.default = _EJSC2.default.Series = function (_Class) {
     /**
      * Defines the color of the series.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @attribute {String} color
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -9872,12 +10291,12 @@ exports.default = _EJSC2.default.Series = function (_Class) {
 
   }, {
     key: 'setColor',
-    value: function setColor(color, apply) {
+    value: function setColor(color) {
       // Update the current color
       this.color = color;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -9885,9 +10304,13 @@ exports.default = _EJSC2.default.Series = function (_Class) {
     /**
      * Defines the title of the series.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @attribute {String} title
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -9903,12 +10326,12 @@ exports.default = _EJSC2.default.Series = function (_Class) {
 
   }, {
     key: 'setTitle',
-    value: function setTitle(title, apply) {
+    value: function setTitle(title) {
       // Update the current title
       this.title = title;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -9916,9 +10339,13 @@ exports.default = _EJSC2.default.Series = function (_Class) {
     /**
      * Defines if the series if visible or not.
      *
+     * @example
+     *
+     *   // TODO:
+     *
      * @attribute {Boolean} visible
      * @default true
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -9934,12 +10361,12 @@ exports.default = _EJSC2.default.Series = function (_Class) {
 
   }, {
     key: 'setVisible',
-    value: function setVisible(visible, apply) {
+    value: function setVisible(visible) {
       // Store the current visible
       this.visible = visible;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -9950,7 +10377,7 @@ exports.default = _EJSC2.default.Series = function (_Class) {
      * @property {EJSC.Chart} chart
      * @private
      * @default null
-     * @since 3.0.0
+     * @since @todo
      */
 
     // init
@@ -9975,13 +10402,13 @@ exports.default = _EJSC2.default.Series = function (_Class) {
      *
      * @method draw
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'draw',
     value: function draw() {}
-    // Placeholder
+    // no-op
 
 
     /**
@@ -9990,7 +10417,7 @@ exports.default = _EJSC2.default.Series = function (_Class) {
      * @method isVisible
      * @private
      * @return {Boolean} If the series is visible or not
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -10007,7 +10434,7 @@ exports.default = _EJSC2.default.Series = function (_Class) {
      * @private
      * @param {EJSC.Chart} chart The owner chart
      * @param {Object} options Default options to apply if not defined
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -10020,7 +10447,16 @@ exports.default = _EJSC2.default.Series = function (_Class) {
       _Object2.default.merge(this, options);
     }
 
-    // TODO: document Series.setOpacity
+    /**
+     * Sets the given opacity of a given color.
+     *
+     * @method setOpacity
+     * @private
+     * @param {String} color The color
+     * @param {Number} opacity The opacity
+     * @return {String} The final color
+     * @since @todo
+     */
 
   }, {
     key: 'setOpacity',
@@ -10034,24 +10470,22 @@ exports.default = _EJSC2.default.Series = function (_Class) {
      *
      * @method update
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
     key: 'update',
     value: function update() {
       // Redraw the chart
-      if (_Object2.default.has(this, 'chart.redraw')) {
-        this.chart.redraw();
-      }
+      (0, _Object2.default)(this).invoke('chart.redraw');
     }
   }]);
 
   return Series;
-}(_Class3.default);
+}(_Inheritable3.default);
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10061,11 +10495,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
@@ -10081,17 +10515,78 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * Defines a series that requires data.
  *
  * @class EJSC.DataSeries
- * @extends EJSC.Class
+ * @extends TODO:
  * @private
- * @since 3.0.0
+ * @constructor
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
  */
 exports.default = _EJSC2.default.DataSeries = function (superclass) {
   return function (_superclass) {
     _inherits(DataSeries, _superclass);
 
-    // TODO: document this.data
+    _createClass(DataSeries, [{
+      key: 'getData',
 
-    // constructor
+      /**
+       * Holds the data for the series.
+       *
+       * This is required, and therefore defined outside of the options array in the constructor.
+       *
+       * @example
+       *
+       *   // Create a chart in the element with the id 'chart-container'
+       *   let chart = new EJSC.Chart('chart-container');
+       *
+       *   // Define a new LineSeries with a data set
+       *   let series = new EJSC.LineSeries([[0, 0], [1, 2], [2, 1]]);
+       *
+       *   // Update the data set
+       *   series.setData([[0, 1], [1, 2], [2, 0]]);
+       *
+       *   // Log out the current data set
+       *   console.log(series.getData());
+       *   // => [[0, 1], [1, 2], [2, 0]]
+       *
+       * @property {Array} data
+       * @default []
+       * @since @todo
+       */
+
+      // getter
+      value: function getData() {
+        // Return the current data
+        return this.data;
+      }
+
+      // setter
+
+    }, {
+      key: 'setData',
+      value: function setData(data) {
+        // Store the new data
+        this.data = data;
+
+        // Redraw the chart if needed
+        if (this.listening) {
+          this.update();
+        }
+      }
+
+      /**
+      * Holds the list of data points for each axis type.
+      *
+      * @property {Object} dataPoints
+      * @private
+      * @default {}
+      * @since @todo
+      */
+
+      // constructor
+
+    }]);
+
     function DataSeries(data, options) {
       _classCallCheck(this, DataSeries);
 
@@ -10113,8 +10608,11 @@ exports.default = _EJSC2.default.DataSeries = function (superclass) {
         // super
         _get(DataSeries.prototype.__proto__ || Object.getPrototypeOf(DataSeries.prototype), 'init', this).call(this);
 
-        // Initialize some private properties
+        // Initialize some public properties
         this.data = [];
+
+        // Initialize some private properties
+        this.dataPoints = {};
       }
     }]);
 
@@ -10123,7 +10621,7 @@ exports.default = _EJSC2.default.DataSeries = function (superclass) {
 };
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10137,25 +10635,25 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EJSC = __webpack_require__(2);
+var _Array = __webpack_require__(2);
 
-var _EJSC2 = _interopRequireDefault(_EJSC);
+var _Array2 = _interopRequireDefault(_Array);
 
-var _ScatterSeries2 = __webpack_require__(21);
-
-var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
-
-var _Number = __webpack_require__(9);
+var _Number = __webpack_require__(4);
 
 var _Number2 = _interopRequireDefault(_Number);
 
-var _Object = __webpack_require__(4);
+var _Object = __webpack_require__(5);
 
 var _Object2 = _interopRequireDefault(_Object);
 
-var _Variable = __webpack_require__(7);
+var _EJSC = __webpack_require__(7);
 
-var _Variable2 = _interopRequireDefault(_Variable);
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _ScatterSeries2 = __webpack_require__(20);
+
+var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10165,6 +10663,22 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// TODO:
+
+/**
+ * BarSeries renders its points as vertical or horizontal bars which are fixed to a baseline.
+ *
+ * @example
+ *
+ *   // TODO:
+ *
+ * @class EJSC.BarSeries
+ * @extends EJSC.ScatterSeries
+ * @constructor
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
+ */
 exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
   _inherits(BarSeries, _ScatterSeries);
 
@@ -10190,7 +10704,7 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      * @property {String} bar.style.fillStyle The background color of the bar. (Default: null)
      * @property {Integer} bar.style.lineWidth The border width of the bar. (Default: 1)
      * @property {String} bar.style.strokeStyle The border color of the bar. (Default: null)
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -10203,12 +10717,12 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
 
   }, {
     key: 'setBar',
-    value: function setBar(bar, apply) {
+    value: function setBar(bar) {
       // Update the current bar
       _Object2.default.merge(this.bar, bar);
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -10222,7 +10736,7 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      *
      * @attribute {Number} zeroCoordinate
      * @default 0
-     * @since 3.0.0
+     * @since @todo
      */
 
     // getter
@@ -10238,12 +10752,12 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
 
   }, {
     key: 'setZeroCoordinate',
-    value: function setZeroCoordinate(zeroCoordinate, apply) {
+    value: function setZeroCoordinate(zeroCoordinate) {
       // Update the current zeroCoordinate
       this.zeroCoordinate = zeroCoordinate;
 
       // Redraw the chart if needed
-      if (apply !== false) {
+      if (this.listening) {
         this.update();
       }
     }
@@ -10274,7 +10788,7 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      * @method calculateBarPoints
      * @private
      * @return {Object} The boundary points
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -10285,14 +10799,12 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
       var zeroCoordinate = this.zeroCoordinate;
 
       // Return the bar points
-      var barPoints = {
+      return {
         xMax: point.x + barSize / 2,
         xMin: point.x - barSize / 2,
         yMax: _Number2.default.max(point.y, zeroCoordinate),
         yMin: _Number2.default.min(point.y, zeroCoordinate)
       };
-
-      return barPoints;
     }
 
     /**
@@ -10301,7 +10813,7 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      * @method calculateBarPixels
      * @private
      * @return {Object} The boundary pixels
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -10348,7 +10860,7 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      * @method calculateBarPixels
      * @private
      * @return {Number} The size of the bar
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -10358,26 +10870,14 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
       var data = this.data;
 
       // Define some local variables
-      var xs = [];
       var barSize = 1;
 
       // If there are more than 1 points, determine the min distance between the points
       if (data.length > 1) {
-        // Add each point's x value to the array
-        data.forEach(function (point) {
-          xs.push(point.x);
-        });
-
-        // Sort the array
-        xs.sort();
-
-        // Find the minimum difference
-        xs.forEach(function (x, index) {
-          if (index === 0) {
-            barSize = null;
-          } else {
-            barSize = _Number2.default.min(barSize, x - xs[index - 1]);
-          }
+        (0, _Array2.default)(data).sort(function (point1, point2) {
+          return point1.x - point2.x;
+        }).forEach(function (point, index, points) {
+          barSize = index === 0 ? null : _Number2.default.min(barSize, point.x - points[index - 1].x);
         });
       }
 
@@ -10393,8 +10893,8 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      *
      * @method calculateExtremes
      * @private
-     * @return {Object<Number xMin, Number xMax, Number yMin, Number yMin>} The calculated extremes
-     * @since 3.0.0
+     * @return {Object} The calculated extremes
+     * @since @todo
      */
 
   }, {
@@ -10422,7 +10922,7 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      *
      * @method draw
      * @private
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -10443,12 +10943,12 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
       });
 
       // Loop through the visible points
-      this.getVisiblePoints().forEach(function (point) {
+      _Array2.default.forEach(this.getVisiblePoints(), function (point) {
         // Calculate the bar points
         var barPixels = _this2.calculateBarPixels(point);
 
         // Draw the bar
-        chart.rect(Math.round(barPixels.xMin) + 0.5, Math.round(barPixels.yMin) + 0.5, Math.round(barPixels.xMax - barPixels.xMin), Math.round(barPixels.yMax - barPixels.yMin), style);
+        chart.rect(_Number2.default.round(barPixels.xMin) + 0.5, _Number2.default.round(barPixels.yMin) + 0.5, _Number2.default.round(barPixels.xMax) - _Number2.default.round(barPixels.xMin), _Number2.default.round(barPixels.yMax) - _Number2.default.round(barPixels.yMin), style);
       });
 
       // Draw the points if needed
@@ -10460,24 +10960,29 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
     /**
      * Calculates the spacing needed for the series.
      *
-     * @method getSpacing
+     * @method calculateSpacing
      * @private
      * @return {Number} The spacing needed for the series
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
-    key: 'getSpacing',
-    value: function getSpacing() {
+    key: 'calculateSpacing',
+    value: function calculateSpacing() {
       // Declare some local variables
       var pointSpacing = this.points.visible ? _get(BarSeries.prototype.__proto__ || Object.getPrototypeOf(BarSeries.prototype), 'getSpacing', this).call(this) : 0;
       var lineSpacing = Math.ceil(this.bar.style.lineWidth / 2);
 
-      // Calculate the spacing
+      // Define some local variables
       var spacing = _Number2.default.max(pointSpacing, lineSpacing);
 
-      // Return the spacing
-      return spacing;
+      // Return the spacing needed for the series
+      return {
+        xMin: lineSpacing,
+        xMax: lineSpacing,
+        yMin: spacing,
+        yMax: spacing
+      };
     }
 
     /**
@@ -10488,7 +10993,7 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      * @param {EJSC.Point} point The point
      * @param {MouseEvent} event The mouse event
      * @return {Boolean} If the point is in range or not
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -10518,9 +11023,9 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
      *
      * @method isPointVisible
      * @private
-     * @param {Array<Number, Number>} point The point to determine
+     * @param {Array} point The point to determine
      * @return {Boolean} If the point is currently visible or not
-     * @since 3.0.0
+     * @since @todo
      */
 
   }, {
@@ -10533,7 +11038,7 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
       var barPoints = this.calculateBarPoints(point);
 
       // Determine if the bar is visible or not
-      var barVisible = _Variable2.default.isNil(point.x) === false && _Variable2.default.isNil(point.y) === false && barPoints.xMax >= xAxisZoom.min && barPoints.xMin <= xAxisZoom.max && barPoints.yMax >= yAxisZoom.min && barPoints.yMin <= yAxisZoom.max;
+      var barVisible = _Object2.default.isNil(point.x) === false && _Object2.default.isNil(point.y) === false && barPoints.xMax >= xAxisZoom.min && barPoints.xMin <= xAxisZoom.max && barPoints.yMax >= yAxisZoom.min && barPoints.yMin <= yAxisZoom.max;
 
       // Determine if the point is visible or not
       var pointVisible = this.points.visible ? _get(BarSeries.prototype.__proto__ || Object.getPrototypeOf(BarSeries.prototype), 'isPointVisible', this).call(this, point) : false;
@@ -10545,104 +11050,6 @@ exports.default = _EJSC2.default.BarSeries = function (_ScatterSeries) {
 
   return BarSeries;
 }(_ScatterSeries3.default);
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _EJSC = __webpack_require__(2);
-
-var _EJSC2 = _interopRequireDefault(_EJSC);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Houses all of the utility methods for dealing with variables.
- *
- * @class EJSC.Math
- * @private
- * @since 3.0.0
- */
-exports.default = _EJSC2.default.Math = new (function () {
-  function _class() {
-    _classCallCheck(this, _class);
-  }
-
-  _createClass(_class, [{
-    key: 'distance',
-
-    /**
-     * Calculates the distance between two points.
-     *
-     * @example
-     *
-     *   // TODO: example
-     *
-     * @method distance
-     * @param {Array} point1 The first point
-     * @param {Array} point2 The second point
-     * @return {Number} The distance
-     * @since 3.0.0
-     */
-    value: function distance(point1, point2) {
-      // Return the calculated distance
-      return Math.sqrt(Math.pow(Math.abs(point2[0] - point1[0]), 2) + Math.pow(Math.abs(point2[1] - point1[1]), 2));
-    }
-
-    /**
-     * Converts radians to degrees.
-     *
-     * @example
-     *
-     *   // TODO: example
-     *
-     * @method toDegrees
-     * @param {Number} radians The radians
-     * @return {Number} The degrees
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'toDegrees',
-    value: function toDegrees(radians) {
-      // Return the converted degrees
-      return radians / Math.PI * 180;
-    }
-
-    /**
-     * Converts degrees to radians.
-     *
-     * @example
-     *
-     *   // TODO: example
-     *
-     * @method toRadians
-     * @param {Number} degrees The degrees
-     * @return {Number} The radians
-     * @since 3.0.0
-     */
-
-  }, {
-    key: 'toRadians',
-    value: function toRadians(degrees) {
-      // Return the converted radians
-      return degrees / 180 * Math.PI;
-    }
-  }]);
-
-  return _class;
-}())();
 
 /***/ })
 /******/ ]);

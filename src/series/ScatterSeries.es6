@@ -1,11 +1,11 @@
-import EJSC from '../EJSC.es6';
-import XYSeries from './base/XYSeries.es6';
+import $Array from '../util/Array.es6';
 import $Number from '../util/Number.es6';
 import $Object from '../util/Object.es6';
-import $Variable from '../util/Variable.es6';
+import EJSC from '../EJSC.es6';
+import XYSeries from './base/XYSeries.es6';
 
 /**
- * // TODO:
+ * ScatterSeries is rendered by drawing a styled point for each x,y coordinate in the dataset.
  *
  * @example
  *
@@ -14,7 +14,9 @@ import $Variable from '../util/Variable.es6';
  * @class EJSC['sparkline'].ScatterSeries
  * @extends EJSC['sparkline'].XYSeries
  * @constructor
- * @since 3.0.0
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
  */
 export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYSeries {
   /**
@@ -32,7 +34,7 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    * @property {Integer} points.style.lineWidth Defines the width of the line. (Default: 2)
    * @property {String} points.style.strokeStyle Defines the color of the line. (Default: null)
    * @property {Boolean} points.visible Defines if the points should be drawn. Only applies to child classes of ScatterSeries. (Default: false)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -42,12 +44,12 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
   }
 
   // setter
-  setPoints(points, apply) {
+  setPoints(points) {
     // Update the current points
     $Object.merge(this.points, points);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -76,30 +78,21 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    * @method calculateExtremes
    * @private
    * @return {Object} The new extremes
-   * @since 3.0.0
+   * @since @todo
    */
   calculateExtremes() {
-    // Define some local variables
-    let extremes = {
+    // Return the calculated extremes
+    return $Array.transform(this.data, (extremes, point) => $Object.merge(extremes, {
+      xMin: $Number.min(extremes.xMin, point.x),
+      xMax: $Number.max(extremes.xMax, point.x),
+      yMin: $Number.min(extremes.yMin, point.y),
+      yMax: $Number.max(extremes.yMax, point.y)
+    }), {
       xMin: null,
       xMax: null,
       yMin: null,
       yMax: null
-    };
-
-    // Loop through the associated data
-    this.data.forEach(point => {
-      // Update the xMin value if needed
-      $Object.merge(extremes, {
-        xMin: $Number.min(extremes.xMin, point.x),
-        xMax: $Number.max(extremes.xMax, point.x),
-        yMin: $Number.min(extremes.yMin, point.y),
-        yMax: $Number.max(extremes.yMax, point.y)
-      });
     });
-
-    // Return the extremes
-    return extremes;
   }
 
   /**
@@ -108,17 +101,22 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    * @method calculateSpacing
    * @private
    * @return {Number} The spacing needed for the series
-   * @since 3.0.0
+   * @since @todo
    */
   calculateSpacing() {
     // Grab some local pointers
     let points = this.points;
 
-    // Determine the spacing needed for the series
+    // Define some local variables
     let spacing = Math.ceil(points.size + (points.style.lineWidth / 2));
 
     // Return the spacing needed for the series
-    return spacing;
+    return {
+      xMin: spacing,
+      xMax: spacing,
+      yMin: spacing,
+      yMax: spacing
+    };
   }
 
   /**
@@ -126,7 +124,7 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    *
    * @method draw
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   draw() {
     // Grab some local pointers
@@ -143,7 +141,7 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
     style.strokeStyle = style.strokeStyle || color;
 
     // Draw the visible points
-    this.getVisiblePoints().forEach(point => {
+    $Array.forEach(this.getVisiblePoints(), point => {
       // Define the pixel values
       let dx = xAxis.convertPointToPixel(point.x) + 0.5;
       let dy = yAxis.convertPointToPixel(point.y) + 0.5;
@@ -191,25 +189,20 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    * @private
    * @param {Array<Number, Number>} point The point to determine
    * @return {Boolean} If the point is currently visible or not
-   * @since 3.0.0
+   * @since @todo
    */
-  isPointVisible(point) {
-    // Grab some local pointers
-    let spacing = this.calculateSpacing();
-    let xAxisZoom = this.referenceXAxis().getCurrentZoom(spacing);
-    let yAxisZoom = this.referenceYAxis().getCurrentZoom(spacing);
-
-    // Determine if the point should be drawn or not
-    let isPointVisible = (
-      $Variable.isNil(point.x) === false &&
-      $Variable.isNil(point.y) === false &&
+  isPointVisible(point,
+    xAxisZoom = this.referenceXAxis().getCurrentZoom(this.calculateSpacing()),
+    yAxisZoom = this.referenceYAxis().getCurrentZoom(this.calculateSpacing())
+  ) {
+    // Return if the point is visible in the current zoom
+    return (
+      $Object.isNil(point.x) === false &&
+      $Object.isNil(point.y) === false &&
       point.x >= xAxisZoom.min &&
       point.x <= xAxisZoom.max &&
       point.y >= yAxisZoom.min &&
       point.y <= yAxisZoom.max
     );
-
-    // Return if the point should be drawn or not
-    return isPointVisible;
   }
 };

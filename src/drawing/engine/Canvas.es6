@@ -1,7 +1,8 @@
+import $Array from '../../util/Array.es6';
+import $Object from '../../util/Object.es6';
 import EJSC from '../../EJSC.es6';
 import Drawing from '../Drawing.es6';
-import Engine from './Engine.es6';
-import $Object from '../../util/Object.es6';
+import Engine from './base/Engine.es6';
 
 /**
  * Defines the CANVAS rendering engine for EJSCharts.
@@ -10,7 +11,7 @@ import $Object from '../../util/Object.es6';
  * @constructor
  * @private
  * @extends EJSC.Engine
- * @since 3.0.0
+ * @since @todo
  */
 export default EJSC.Canvas = class Canvas extends Engine {
   /**
@@ -19,7 +20,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @property {CanvasRenderingContext2D} ctx
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -32,7 +33,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} startAngle The start angle (in radians)
    * @param {Number} endAngle The end angle (in radians)
    * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
-   * @since 3.0.0
+   * @since @todo
    */
   arc(cx, cy, radius, startAngle, endAngle, counterClockwise) {
     // Call the canvas' arc method
@@ -48,7 +49,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} x The x coordinate of the end point
    * @param {Number} y The y coordinate of the end point
    * @param {Number} radius The radius of the arc
-   * @since 3.0.0
+   * @since @todo
    */
   arcTo(cpx, cpy, x, y, radius) {
     // Call the canvas' arcTo method
@@ -63,7 +64,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} top The top coordinate of the clip area
    * @param {Number} width The width of the clip area
    * @param {Number} height The height of the clip area
-   * @since 3.0.0
+   * @since @todo
    */
   beginClip(left, top, width, height) {
     // Set the new clip area
@@ -76,7 +77,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * Begins a new path.
    *
    * @method beginPath
-   * @since 3.0.0
+   * @since @todo
    */
   beginPath() {
     // Call the canvas' clearPath method
@@ -93,7 +94,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} cp2y The y coordinate of the second control point
    * @param {Number} x The end x coordinate of the curve
    * @param {Number} y The end y coordinate of the curve
-   * @since 3.0.0
+   * @since @todo
    */
   bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) {
     // Call the canvas' bezierCurveTo method
@@ -108,7 +109,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} y The y coordinate for the center of the circle
    * @param {Number} radius The radius (in px) of the circle
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   circle(x, y, radius, styles) {
     // Apply the given styles
@@ -134,7 +135,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * Clears the canvas.
    *
    * @method clear
-   * @since 3.0.0
+   * @since @todo
    */
   clear() {
     // Clear the canvas
@@ -145,7 +146,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * Closes the current path.
    *
    * @method clear
-   * @since 3.0.0
+   * @since @todo
    */
   closePath() {
     // Call the canvas' closePath method
@@ -157,7 +158,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    *
    * @method draw
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   draw(styles) {
     // Apply the given styles
@@ -184,7 +185,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} rx The x radius of the ellipse
    * @param {Number} ry The y radius of the ellipse
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   ellipse(cx, cy, rx, ry, styles) {
     // Apply the given styles
@@ -216,7 +217,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * Ends the current clipping of the canvas' drawing area.
    *
    * @method endClip
-   * @since 3.0.0
+   * @since @todo
    */
   endClip() {
     // Clear the current clip area
@@ -228,7 +229,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    *
    * @method fill
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   fill(styles) {
     // Apply the given styles
@@ -246,7 +247,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    *
    * @method horizontalTo
    * @param {Number} x The x coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   horizontalTo(x) {
     // Call the internal lineTo method
@@ -262,7 +263,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} x2 The x coordinate for the ending point
    * @param {Number} y2 The y coordinate for the ending point
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   line(x1, y1, x2, y2, styles) {
     // Apply the given styles
@@ -288,7 +289,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @method lineTo
    * @param {Number} x The x coordinate to draw to
    * @param {Number} y The y coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   lineTo(x, y) {
     // Call the canvas' lineTo method
@@ -301,7 +302,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @method measureText
    * @param {String} text The text
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   measureText(text, styles) {
     // Apply the given styles
@@ -323,7 +324,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @method moveTo
    * @param {Number} x The x coordinate to move to
    * @param {Number} y The y coordinate to move to
-   * @since 3.0.0
+   * @since @todo
    */
   moveTo(x, y) {
     // Call the canvas' moveTo method
@@ -338,7 +339,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} cpy The y coordinate of the control point
    * @param {Number} x The end x coordinate of the curve
    * @param {Number} y The end y coordinate of the curve
-   * @since 3.0.0
+   * @since @todo
    */
   quadraticCurveTo(cpx, cpy, x, y) {
     // Call the canvas' bezierCurveTo method
@@ -354,7 +355,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} width The width of the rectangle
    * @param {Number} height The height of the rectangle
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   rect(x, y, width, height, styles) {
     // Apply the given styles
@@ -382,7 +383,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @method resize
    * @param {Integer} width The new width for the canvas
    * @param {Integer} height The new height for the canvas
-   * @since 3.0.0
+   * @since @todo
    */
   resize(width, height) {
     // Resize the canvas
@@ -395,7 +396,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    *
    * @method stroke
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   stroke(styles) {
     // Apply the given styles
@@ -418,7 +419,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @param {Number} x The x coordinate to draw the text at
    * @param {Number} y The y coordinate to draw the text at
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   text(text, x, y, styles) {
     // Apply the given styles
@@ -442,7 +443,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    *
    * @method verticalTo
    * @param {Number} y The y coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   verticalTo(y) {
     // Call the internal lineTo method
@@ -466,7 +467,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
     // super
     super.init();
 
-    // Initialize some private properties
+    // Initialize the private properties
     this.ctx = null;
   }
 
@@ -476,13 +477,11 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @method drawPath
    * @private
    * @param {Array} path The path to draw
-   * @since 3.0.0
+   * @since @todo
    */
   drawPath(path) {
     // Run path methods
-    path.forEach(segment => {
-      segment[0].apply(this, segment[1]);
-    });
+    $Array.forEach(path, segment => segment[0].apply(this, segment[1]));
   }
 
   /**
@@ -491,7 +490,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    * @method stylize
    * @private
    * @param {Object} [styles={}] The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   stylize(styles = {}) {
     // Apply the default and user styles to the context
@@ -506,7 +505,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
    *
    * @method unstylize
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   unstylize() {
     // Apply the default styles to the context
@@ -524,7 +523,7 @@ export default EJSC.Canvas = class Canvas extends Engine {
  * @static
  * @private
  * @return {Boolean} If the browser supports CANVAS
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.Canvas.isSupported = () => {
   // Create a CANVAS element

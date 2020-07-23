@@ -1,22 +1,26 @@
-import EJSC from '../../EJSC.es6';
-import Class from '../../class/Class.es6';
 import $Object from '../../util/Object.es6';
+import EJSC from '../../EJSC.es6';
+import Inheritable from '../../class/Inheritable.es6';
 
 /**
  * Holds all of the common code to all of the series.
  *
  * @class EJSC['sparkline'].Series
  * @private
- * @extends EJSC.Class
- * @since 3.0.0
+ * @extends EJSC.Inheritable
+ * @since @todo
  */
-export default EJSC['sparkline'].Series = class Series extends Class {
+export default EJSC['sparkline'].Series = class Series extends Inheritable {
   /**
    * Defines the color of the series.
    *
+   * @example
+   *
+   *   // TODO:
+   *
    * @attribute {String} color
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -26,12 +30,12 @@ export default EJSC['sparkline'].Series = class Series extends Class {
   }
 
   // setter
-  setColor(color, apply) {
+  setColor(color) {
     // Update the current color
     this.color = color;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -39,9 +43,13 @@ export default EJSC['sparkline'].Series = class Series extends Class {
   /**
    * Defines the title of the series.
    *
+   * @example
+   *
+   *   // TODO:
+   *
    * @attribute {String} title
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -51,12 +59,12 @@ export default EJSC['sparkline'].Series = class Series extends Class {
   }
 
   // setter
-  setTitle(title, apply) {
+  setTitle(title) {
     // Update the current title
     this.title = title;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -64,9 +72,13 @@ export default EJSC['sparkline'].Series = class Series extends Class {
   /**
    * Defines if the series if visible or not.
    *
+   * @example
+   *
+   *   // TODO:
+   *
    * @attribute {Boolean} visible
    * @default true
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -76,12 +88,12 @@ export default EJSC['sparkline'].Series = class Series extends Class {
   }
 
   // setter
-  setVisible(visible, apply) {
+  setVisible(visible) {
     // Store the current visible
     this.visible = visible;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -92,7 +104,7 @@ export default EJSC['sparkline'].Series = class Series extends Class {
    * @property {EJSC['sparkline'].Chart} chart
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // init
@@ -114,10 +126,10 @@ export default EJSC['sparkline'].Series = class Series extends Class {
    *
    * @method draw
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   draw() {
-    // Placeholder
+    // no-op
   }
 
   /**
@@ -126,7 +138,7 @@ export default EJSC['sparkline'].Series = class Series extends Class {
    * @method isVisible
    * @private
    * @return {Boolean} If the series is visible or not
-   * @since 3.0.0
+   * @since @todo
    */
   isVisible() {
     // Return if this series is visible or not
@@ -138,9 +150,9 @@ export default EJSC['sparkline'].Series = class Series extends Class {
    *
    * @method prepare
    * @private
-   * @param {EJSC.Chart} chart The owner chart
+   * @param {EJSC['sparkline'].Chart} chart The owner chart
    * @param {Object} options Default options to apply if not defined
-   * @since 3.0.0
+   * @since @todo
    */
   prepare(chart, options) {
     // Store the owner chart
@@ -150,7 +162,16 @@ export default EJSC['sparkline'].Series = class Series extends Class {
     $Object.merge(this, options);
   }
 
-  // TODO: document Series.setOpacity
+  /**
+   * Sets the given opacity of a given color.
+   *
+   * @method setOpacity
+   * @private
+   * @param {String} color The color
+   * @param {Number} opacity The opacity
+   * @return {String} The final color
+   * @since @todo
+   */
   setOpacity(color, opacity) {
     // Return the string with the updated opacity
     return color
@@ -167,12 +188,10 @@ export default EJSC['sparkline'].Series = class Series extends Class {
    *
    * @method update
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   update() {
     // Redraw the chart
-    if ($Object.has(this, 'chart.redraw')) {
-      this.chart.redraw();
-    }
+    $Object(this).invoke('chart.redraw');
   }
 };

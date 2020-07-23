@@ -1,19 +1,32 @@
-import EJSC from '../EJSC.es6';
-import Axis from './base/Axis.es6';
+import $Array from '../util/Array.es6';
 import $Number from '../util/Number.es6';
 import $Object from '../util/Object.es6';
-import $Variable from '../util/Variable.es6';
+import EJSC from '../EJSC.es6';
+import Axis from './base/Axis.es6';
 
 /**
- * TODO:
+ * LogarithmicAxis is an axis using a logarithmic scale.
+ *
+ * @example
+ *
+ *   // TODO:
  *
  * @class EJSC['sparkline'].LogarithmicAxis
  * @extends EJSC.Axis
  * @constructor
+ * @param {Object} options The config options
  * @private
- * @since 3.0.0
+ * @since // TODO:
  */
 export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends Axis {
+  /**
+   * Defines the base for the logarithmic scale.
+   *
+   * @attribute {Number} base
+   * @default 10
+   * @since // TODO:
+   */
+
   // getter
   getBase() {
     // Return the current base
@@ -21,15 +34,28 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
   }
 
   // setter
-  setBase(base, apply) {
+  setBase(base) {
     // Update the current base
     this.base = base;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
+
+  /**
+   *
+   *
+   * @property {Object} logPoints
+   * @property {Number} logPoints.maxPositive (Default: null)
+   * @property {Number} logPoints.minPositive (Default: null)
+   * @property {Number} logPoints.zeroValue (Default: null)
+   * @property {Number} logPoints.maxNegative (Default: null)
+   * @property {Number} logPoints.minNegative (Default: null)
+   * @private
+   * @since // TODO:
+   */
 
   // init
   init() {
@@ -49,7 +75,13 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     };
   }
 
-  // TODO:
+  /**
+   * Calculates the extremes for the axis.
+   *
+   * @method calculateExtremes
+   * @private
+   * @since // TODO:
+   */
   calculateExtremes() {
     // Grab some local pointers
     let { drawArea, orientation, padding, extremes, logPoints } = this;
@@ -90,10 +122,10 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     }
 
     // Loop through each of the visible series
-    visibleSeries.forEach(series => {
+    $Array.forEach(visibleSeries, series => {
       // Calculate the min and max range
-      series.data.forEach(point => {
-        series.dataPoints[dataPoint].forEach(property => {
+      $Array.forEach(series.data, point => {
+        $Object(series.dataPoints[dataPoint]).forEach(property => {
           // Calculate the extremes
           min = $Number.min(min, point[property]);
           max = $Number.max(max, point[property]);
@@ -117,7 +149,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
       spacing = $Number.max(spacing, series.calculateSpacing());
     });
 
-    if (!$Variable.isNil(zeroValue) || (!$Variable.isNil(minPositive) && !$Variable.isNil(maxNegative))) {
+    if (!$Object.isNil(zeroValue) || (!$Object.isNil(minPositive) && !$Object.isNil(maxNegative))) {
       // Make sure the zero value is defined
       zeroValue = 0;
 
@@ -154,7 +186,14 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     $Object.merge(extremes, { min, max });
   }
 
-  // TODO:
+    /**
+     * Calculates the axis' ticks based on the attached series' data.
+     *
+     * @method calculateTicks
+     * @private
+     * @return {Array} The list of ticks
+     * @since // TODO:
+     */
   calculateTicks() {
     // Grab some local pointers
     let zoom = this.getCurrentZoom();
@@ -174,7 +213,15 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     return ticks;
   }
 
-  // TODO:
+  /**
+   * Converts a linear point to a logarithmic point.
+   *
+   * @method convertLinearToPoint
+   * @private
+   * @param {Number} linear The linear point
+   * @return {Number} The logarithmic point
+   * @since // TODO:
+   */
   convertLinearToPoint(linear) {
     // TODO:
     let { minPositive, maxNegative } = this.logPoints;
@@ -211,7 +258,15 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     return point;
   }
 
-  // TODO:
+  /**
+   * Converts a chart pixel to a logarithmic point.
+   *
+   * @method convertPixelToPoint
+   * @private
+   * @param {Number} pixel The chart pixel
+   * @return {Number} The logarithmic point
+   * @since // TODO:
+   */
   convertPixelToPoint(pixel) {
     // Grab some local pointers
     let drawArea = this.drawArea;
@@ -267,7 +322,15 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     return point;
   }
 
-  // TODO:
+  /**
+   * Converts a logarithmic point to a linear point.
+   *
+   * @method convertPointToLinear
+   * @private
+   * @param {Number} point The logarithmic point
+   * @return {Number} The linear point
+   * @since // TODO:
+   */
   convertPointToLinear(point) {
     // TODO:
     let { minPositive, maxNegative } = this.logPoints;
@@ -304,7 +367,15 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     return linear;
   }
 
-  // TODO:
+  /**
+   * Converts a logarithmic point to a chart pixel.
+   *
+   * @method convertPointToPixel
+   * @private
+   * @param {Number} point The logarithmic point
+   * @return {Number} The chart pixel
+   * @since // TODO:
+   */
   convertPointToPixel(point) {
     // Grab some local pointers
     let drawArea = this.drawArea;
@@ -357,21 +428,31 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
     return pixel;
   }
 
-  // TODO:
+  /**
+   * Converts a logarithmic point to a power of the base.
+   *
+   * @method convertPointToPower
+   * @private
+   * @param {Number} point The logarithmic point
+   * @return {Number} The poser of the base
+   * @since // TODO:
+   */
   convertPointToPower(point) {
-    // Calculate the power value
-    let power = Math.log(point) / Math.log(this.base);
-
     // Return the power value
-    return power;
+    return Math.log(point) / Math.log(this.base);
   }
 
-  // TODO:
+  /**
+   * Converts a logarithmic point to a power of the base.
+   *
+   * @method convertPowerToPoint
+   * @private
+   * @param {Number} power The poser of the base
+   * @return {Number} The logarithmic point
+   * @since // TODO:
+   */
   convertPowerToPoint(power) {
-    // Calculate the point value
-    let point = Math.pow(this.base, power);
-
     // Return the point value
-    return point;
+    return Math.pow(this.base, power);
   }
 };

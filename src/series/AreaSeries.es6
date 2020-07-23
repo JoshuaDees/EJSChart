@@ -1,10 +1,11 @@
-import EJSC from '../EJSC.es6';
-import LineSeries from './LineSeries.es6';
+import $Array from '../util/Array.es6';
 import $Number from '../util/Number.es6';
 import $Object from '../util/Object.es6';
+import EJSC from '../EJSC.es6';
+import LineSeries from './LineSeries.es6';
 
 /**
- * // TODO:
+ * AreaSeries is rendered by drawing a line from point to point and then filling the area defined.
  *
  * @example
  *
@@ -13,7 +14,9 @@ import $Object from '../util/Object.es6';
  * @class EJSC['sparkline'].AreaSeries
  * @extends EJSC['sparkline'].LineSeries
  * @constructor
- * @since 3.0.0
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
  */
 export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSeries {
   /**
@@ -21,11 +24,26 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    *
    * @example
    *
-   *   // TODO:
+   *   // Create a chart in the element with the id 'chart-container'
+   *   let chart = EJSC['sparkline'].Chart('chart-container');
+   *
+   *   // Define a new AreaSeries with the area's background color as light grey
+   *   let series = new EJSC['sparkline'].AreaSeries([[0, 0], [1, 2], [2, 1]], {
+   *     area: { fillStyle: 'rgb(200, 200, 200)' }
+   *   });
+   *
+   *   // Update the area's background color to light blue
+   *   series.setArea({
+   *     fillStyle: 'rgb(200, 200, 255)'
+   *   });
+   *
+   *   // Log out the current area styles
+   *   console.log(series.getArea());
+   *   // => { fillStyle: 'rgb(200, 200, 255)' }
    *
    * @attribute {Object} area
    * @property {String} area.fillStyle The background color of the area fill. (Default: null)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -35,12 +53,12 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
   }
 
   // setter
-  setArea(area, apply) {
+  setArea(area) {
     // Update the current area
     $Object.merge(this.area, area);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -54,7 +72,7 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    *
    * @attribute {Number} zeroCoordinate
    * @default 0
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -64,12 +82,12 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
   }
 
   // setter
-  setZeroCoordinate(zeroCoordinate, apply) {
+  setZeroCoordinate(zeroCoordinate) {
     // Update the current zero coordinate
     this.zeroCoordinate = zeroCoordinate;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -92,11 +110,11 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    * @method calculateExtremes
    * @private
    * @return {Object} The calculated extremes
-   * @since 3.0.0
+   * @since @todo
    */
   calculateExtremes() {
     // Grab some local pointers
-    let extremes = this.point.calculateExtremes(this.handler.data);
+    let extremes = super.calculateExtremes();
     let zeroCoordinate = this.zeroCoordinate;
 
     // Update extremes to the zero coordinate
@@ -112,7 +130,7 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    *
    * @method draw
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   draw() {
     // Grab some local pointers
@@ -127,20 +145,16 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
     chart.beginPath();
 
     // Loop through the points of data adding them to the path array
-    points.forEach((point, index) => {
-      chart[index === 0 ? 'moveTo' : 'lineTo'](
-        xAxis.convertPointToPixel(point.x),
-        yAxis.convertPointToPixel(point.y)
-      );
-    });
+    $Array.forEach(points, (point, index) => chart[index === 0 ? 'moveTo' : 'lineTo'](
+      xAxis.convertPointToPixel(point.x),
+      yAxis.convertPointToPixel(point.y)
+    ));
 
     // Loop through the points of data adding them to the path array
-    points.reverse().forEach(point => {
-      chart.lineTo(
-        xAxis.convertPointToPixel(point.x),
-        zeroCoordinate
-      );
-    });
+    $Array.forEach(points.reverse(), point => chart.lineTo(
+      xAxis.convertPointToPixel(point.x),
+      zeroCoordinate
+    ));
 
     // Close the path
     chart.closePath();

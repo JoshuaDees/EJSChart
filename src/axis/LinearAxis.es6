@@ -1,19 +1,36 @@
+import $Array from '../util/Array.es6';
+import $Object from '../util/Object.es6';
+import $Number from '../util/Number.es6';
 import EJSC from '../EJSC.es6';
 import Axis from './base/Axis.es6';
-import $Number from '../util/Number.es6';
-import $Object from '../util/Object.es6';
 
 /**
- * TODO:
+ * LinearAxis is an axis using a linear scale.
+ *
+ * @example
+ *
+ *   // TODO:
  *
  * @class EJSC['sparkline'].LinearAxis
- * @extends EJSC.Axis
+ * @extends EJSC['sparkline'].Axis
  * @constructor
+ * @param {Object} options The config options
  * @private
- * @since 3.0.0
+ * @since // TODO:
  */
 export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
   /* not-sparkline:start */
+  /**
+   * Calculates where a line segment between two given points croses the axis at a given coordinate.
+   *
+   * @method calculateCross
+   * @private
+   * @param {Object} point1 The first point
+   * @param {Object} point2 The second point
+   * @param {Number} coordinate The coordinate to cross at
+   * @return {Object} The crossed coordinates
+   * @since // TODO:
+   */
   calculateCross(point1, point2, coordinate) {
     // Define some local variables
     let x = coordinate;
@@ -42,63 +59,59 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    *
    * @method calculateExtremes
    * @private
-   * @since 3.0.0
+   * @since // TODO:
    */
   calculateExtremes() {
     // Grab some local pointers
     let { drawArea, orientation, padding, extremes } = this;
-    let visibleSeries = this.getVisibleSeries();
 
     // Define some local variables
     let dataPoint = orientation === 'vertical' ? 'y' : 'x';
-    let spacing = 0;
-    let min = null;
-    let max = null;
-    let scale;
 
     // Reset the extremes
-    $Object.merge(extremes, { min, max });
-
-    // If there are no visible series, we can't calculate the extremes
-    if (visibleSeries.length <= 0) {
-      return;
-    }
-
-    // Loop through each of the visible series
-    visibleSeries.forEach(series => {
-      // Calculate the min and max range
-      series.data.forEach(point => {
-        series.dataPoints[dataPoint].forEach(property => {
-          // Calculate the extremes
-          min = $Number.min(min, point[property]);
-          max = $Number.max(max, point[property]);
-        });
-      });
-
-      // Calculate the series spacing
-      spacing = $Number.max(spacing, series.calculateSpacing());
+    $Object.merge(extremes, {
+      min: null,
+      max: null
     });
 
-    // Add the series spacing to the padding
-    padding += spacing - 1;
+    // Loop through each of the visible series
+    $Array(this.getVisibleSeries())
+      .filter(series => $Object.has(series, 'calculateExtremes'))
+      .forEach(series => {
+        // Calculate the series' extremes
+        let seriesExtremes = series.calculateExtremes();
 
-    // Determine the scale based on the axis' orientation
-    switch (orientation) {
-      case 'horizontal':
-        scale = ((max - min) / (drawArea.right - drawArea.left - (padding * 2)));
-        break;
+        // Update the min and max range
+        let min = seriesExtremes[dataPoint + 'Min'];
+        let max = seriesExtremes[dataPoint + 'Max'];
 
-      case 'vertical':
-        scale = ((max - min) / (drawArea.bottom - drawArea.top - (padding * 2)));
-        break;
-    }
+        // Calculate the series spacing
+        let spacing = series.calculateSpacing();
+        let paddingMin = padding + spacing[dataPoint + 'Max'] - 1;
+        let paddingMax = padding + spacing[dataPoint + 'Min'] - 1;
 
-    // Update the extremes with padding
-    min = min - (scale * padding);
-    max = max + (scale * padding);
+        // Determine the scale based on the axis' orientation
+        let scale;
+        switch (orientation) {
+          case 'horizontal':
+            scale = ((max - min) / (drawArea.right - drawArea.left - (paddingMin + paddingMax)));
+            break;
 
-    // Store the extremes
-    $Object.merge(extremes, { min, max });
+          case 'vertical':
+            scale = ((max - min) / (drawArea.bottom - drawArea.top - (paddingMin + paddingMax)));
+            break;
+        }
+
+        // Update the values with padding
+        min = min - (scale * paddingMin);
+        max = max + (scale * paddingMax);
+
+        // Update the extremes
+        $Object.merge(extremes, {
+          min: $Number.min(extremes.min, min),
+          max: $Number.max(extremes.max, max)
+        });
+      });
   }
 
   /**
@@ -107,7 +120,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    * @method calculateTicks
    * @private
    * @return {Array} The list of ticks
-   * @since 3.0.0
+   * @since // TODO:
    */
   calculateTicks() {
     // Grab some local pointers
@@ -153,7 +166,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    * @private
    * @param {Number} pixel The pixel to convert
    * @return {Number} The point
-   * @since 3.0.0
+   * @since // TODO:
    */
   convertPixelToPoint(pixel) {
     // Grab some local pointers
@@ -216,7 +229,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    * @private
    * @param {Number} point The point to convert
    * @return {Number} The pixel
-   * @since 3.0.0
+   * @since // TODO:
    */
   convertPointToPixel(point) {
     // Grab some local pointers

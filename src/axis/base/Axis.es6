@@ -1,20 +1,20 @@
-import EJSC from '../../EJSC.es6';
-import Class from '../../class/Class.es6';
+import $Array from '../../util/Array.es6';
 import $Number from '../../util/Number.es6';
 import $Object from '../../util/Object.es6';
 import $String from '../../util/String.es6';
-import $Variable from '../../util/Variable.es6';
+import EJSC from '../../EJSC.es6';
+import Inheritable from '../../class/Inheritable.es6';
 
 /**
  * Holds the code common to all Axis types.
  *
  * @class EJSC['sparkline'].Axis
- * @extends EJSC.Class
+ * @extends EJSC.Inheritable
  * @constructor
  * @private
- * @since 3.0.0
+ * @since @todo
  */
-export default EJSC['sparkline'].Axis = class Axis extends Class {
+export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
   /* not-sparkline:start */
   /**
    * Defines the border of the axis.
@@ -28,7 +28,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @property {String} border.style.color The color of the border in rgb, rgba, or hex form (Default: 'rgb(200, 200, 200)')
    * @property {Integer} border.style.width The width of the border (Default: 1)
    * @property {Boolean} border.visible Whether to show the border or not (Default: true)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -38,12 +38,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setBorder(border, apply) {
+  setBorder(border) {
     // Update the current border
     $Object.merge(this.border, border);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -64,7 +64,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @property {String} caption.style.textAlign The horizontal alignment of the caption (Default: 'center') (Values: 'left', 'center', 'right')
    * @property {String} caption.style.textBaseline The vertical baseline of the caption (Default: 'middle') (Values: 'top', 'middle', 'bottom')
    * @property {Boolean} caption.visible If the caption should be displayed (Default: true)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -74,12 +74,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setCaption(caption, apply) {
+  setCaption(caption) {
     // Update the current caption
     $Object.merge(this.caption, caption);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -93,9 +93,9 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *   // TODO:
    *
    * @attribute {Object} extremes
-   * @property {Number} caption.max The max extreme (Default: null)
-   * @property {Number} caption.min The min extreme (Default: null)
-   * @since 3.0.0
+   * @property {Number} extremes.max The max extreme (Default: null)
+   * @property {Number} extremes.min The min extreme (Default: null)
+   * @since @todo
    */
 
   // getter
@@ -105,12 +105,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setExtremes(extremes, apply) {
+  setExtremes(extremes) {
     // Update the current extremes
-    this.update(this.extremes, extremes);
+    $Object.merge(this.extremes, extremes);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -129,7 +129,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @property {Integer} grid.style.lineWidth The width of the zero plane (Default: 1)
    * @property {String} grid.style.strokeStyle The color of the zero plane (Default: 'rgb(230, 230, 230)')
    * @property {Boolean} grid.visible If the grid should be displayed (Default: true)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -139,12 +139,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setGrid(grid, apply) {
+  setGrid(grid) {
     // Update the current grid
-    this.update(this.grid, grid);
+    $Object.merge(this.grid, grid);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -152,7 +152,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
 
   /* not-sparkline:start */
   /**
-   * TODO:
+   * Defines the major ticks to be displayed on the axis.
    *
    * @example
    *
@@ -164,7 +164,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @property {Integer} majorTicks.style.lineWidth The width of the major ticks (Default: 1)
    * @property {String} majorTicks.style.strokeStyle The color of the major ticks (Default: 'rgb(200, 200, 200)')
    * @property {Boolean} majorTicks.visible If the major ticks should be displayed (Default: true)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -174,20 +174,19 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setMajorTicks(majorTicks, apply) {
+  setMajorTicks(majorTicks) {
     // Update the current major ticks
-    this.update(this.majorTicks, majorTicks);
+    $Object.merge(this.majorTicks, majorTicks);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
   /* not-sparkline:end */
 
   /**
-   * Defines the padding between the ends of the axis and
-   * the start and end of the data displayed when zoomed out.
+   * Defines the padding between the ends of the axis and the start and end of the data displayed when zoomed out.
    *
    * @example
    *
@@ -195,7 +194,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *
    * @attribute {Integer} padding
    * @default 5
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -205,18 +204,18 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setPadding(padding, apply) {
+  setPadding(padding) {
     // Update the current padding
     this.padding = padding;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
 
   /**
-   * TODO:
+   * Defines if the order of the ticks on the axis are reversed or not.
    *
    * @example
    *
@@ -224,7 +223,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *
    * @attribute {Boolean} reverse
    * @default false
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -234,12 +233,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setReverse(reverse, apply) {
+  setReverse(reverse) {
     // Update the current reverse
     this.reverse = reverse;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -251,7 +250,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   *
   * @property {Integer} size
   * @default null
-  * @since 3.0.0
+  * @since @todo
   */
 
   // getter
@@ -261,19 +260,25 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setSize(size, apply) {
+  setSize(size) {
     // Update the current size
     this.size = size;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
   /* not-sparkline:end */
 
   /* not-sparkline:start */
-  // TODO: visible
+  /**
+   * Defines if the axis is visible or not.
+   *
+   * @attribute {Boolean} visible
+   * @default true
+   * @since @todo
+   */
 
   // getter
   getVisible() {
@@ -282,12 +287,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setVisible(visible, apply) {
+  setVisible(visible) {
     // Update the current size
     this.visible = visible;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -298,12 +303,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * Defines the zero plane of the axis.
    *
    * @property {Object} zeroPlane
-   * @property {Number} coordinate The coordinate of the zero plane (Default: 0)
+   * @property {Number} zeroPlane.coordinate The coordinate of the zero plane (Default: 0)
    * @property {Object} zeroPlane.style
    * @property {Integer} zeroPlane.style.lineWidth The width of the zero plane (Default: 1)
    * @property {String} zeroPlane.style.strokeStyle The color of the zero plane (Default: 'rgb(170, 170, 170)')
    * @property {Boolean} zeroPlane.style.visible If the zero plane is visible (Default: false)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -313,12 +318,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setZeroPlane(zeroPlane, apply) {
+  setZeroPlane(zeroPlane) {
     // Update the current zeroPlane
-    this.update(this.zeroPlane, zeroPlane);
+    $Object.merge(this.zeroPlane, zeroPlane);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -330,7 +335,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @property {Object} zoom
    * @property {Number} zoom.min The min coordinate (Default: null)
    * @property {Number} zoom.max The max coordinate (Default: null)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -340,12 +345,12 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   }
 
   // setter
-  setZoom(zoom, apply) {
+  setZoom(zoom) {
     // Update the current zoom
-    this.update(this.zoom, zoom);
+    $Object.merge(this.zoom, zoom);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -356,7 +361,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @property {EJSC['sparkline'].Chart} chart
    * @protected
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -373,17 +378,18 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @property {Number} drawArea.right The right coordinate of the draw area (Default: null)
    * @property {Number} drawArea.top The top coordinate of the draw area (Default: null)
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
    * Holds the orientation of the axis.
-   * (Values: 'horizontal', 'vertical')
+   *
+   * Values: 'horizontal', 'vertical'
    *
    * @property {String} orientation
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
@@ -392,17 +398,18 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @property {Number} scale
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   /**
    * Holds the side of the axis.
-   * (Values: 'left', 'top', 'right', 'bottom')
+   *
+   * Values: 'left', 'top', 'right', 'bottom'
    *
    * @property {String} side
    * @private
    * @default null
-   * @since 3.0.0
+   * @since @todo
    */
 
   // init
@@ -462,7 +469,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
         lineWidth: 1,
         strokeStyle: 'rgb(170, 170, 170)'
       },
-      visible: false
+      visible: true
     };
     /* not-sparkline:end */
 
@@ -486,7 +493,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *
    * @method calculateDrawArea
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   calculateDrawArea() {
     // Grab some local pointers
@@ -546,18 +553,18 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *
    * @method calculateExtremes
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   calculateExtremes() {
     // Placeholder
   }
 
   /**
-   * TODO:
+   * Calculates the scale for the axis.
    *
    * @method calculateScale
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   calculateScale() {
     // Grab some local pointers
@@ -581,14 +588,22 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *
    * @method calculateTicks
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   calculateTicks() {
     // Return the list of ticks
     return [];
   }
 
-  // TODO:
+  /**
+   * Converts a linear point to a logarithmic point.
+   *
+   * @method convertLinearToPoint
+   * @private
+   * @param {Number} linear The linear point
+   * @return {Number} The logarithmic point
+   * @since @todo
+   */
   convertLinearToPoint(linear) {
     // Return the linear value
     return linear;
@@ -601,14 +616,22 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @private
    * @param {Number} pixel The pixel to convert
    * @return {Number} The point
-   * @since 3.0.0
+   * @since @todo
    */
   convertPixelToPoint(pixel) {
     // Return the point
     return pixel;
   }
 
-  // TODO:
+  /**
+   * Converts a logarithmic point to a linear point.
+   *
+   * @method convertPointToLinear
+   * @private
+   * @param {Number} point The logarithmic point
+   * @return {Number} The linear point
+   * @since @todo
+   */
   convertPointToLinear(point) {
     // Return the point
     return point;
@@ -621,14 +644,20 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @private
    * @param {Number} point The point to convert
    * @return {Number} The pixel
-   * @since 3.0.0
+   * @since @todo
    */
   convertPointToPixel(point) {
     // Return the pixel
     return point;
   }
 
-  // TODO:
+  /**
+   * Draws the axis.
+   *
+   * @method draw
+   * @private
+   * @since @todo
+   */
   draw() {
     // Grab some local pointers
     let chart = this.chart;
@@ -680,7 +709,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
 
     // TODO: Move before drawCaption
     // Draw the axis ticks
-    this.drawTicks(ticks);
+    this.drawMajorTickCaptions(ticks);
     /* not-sparkline:end */
   }
 
@@ -690,7 +719,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *
    * @method drawBorder
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   drawBorder() {
     // Grab some local pointers
@@ -760,7 +789,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *
    * @method drawCaption
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   drawCaption() {
     // Grab some local pointers
@@ -768,7 +797,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     let caption = this.caption;
 
     // Define some local variables
-    let text = ($Variable.isNull(caption.text) ? $String.capitalize(this.side) + ' Axis' : caption.text);
+    let text = ($Object.isNull(caption.text) ? $String.capitalize(this.side) + ' Axis' : caption.text);
     let x;
     let y;
 
@@ -815,10 +844,10 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   /**
    * Draws the axis' grid.
    *
-   * @method drawTicks
+   * @method drawGrid
    * @private
    * @param {Array} ticks The current list of ticks
-   * @since 3.0.0
+   * @since @todo
    */
   drawGrid(ticks) {
     // Grab some local pointers
@@ -828,7 +857,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     let gridStyle = axis.grid.style;
 
     // Loop through the ticks
-    ticks.forEach(tick => {
+    $Array.forEach(ticks, tick => {
       // Define some local variables
       let pixel = $Number.round(axis.convertPointToPixel(tick));
       let x1;
@@ -860,70 +889,15 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   /* not-sparkline:end */
 
   /* not-sparkline:start */
-  drawMajorTicks(ticks) {
-    // Grab some local pointers
-    let axis = this;
-    let chart = axis.chart;
-    let drawArea = axis.drawArea;
-    let majorTicks = axis.majorTicks;
-    let majorTicksStyle = majorTicks.style;
-
-    // Loop through the ticks
-    ticks.forEach(tick => {
-      // Define some local variables
-      let pixel = $Number.round(axis.convertPointToPixel(tick));
-      let x1;
-      let x2;
-      let y1;
-      let y2;
-
-      // Calculte the coordinates based on the axis' orientation
-      switch (axis.side) {
-        case 'bottom':
-          x1 = pixel + 0.5;
-          x2 = pixel + 0.5;
-          y1 = drawArea.top;
-          y2 = drawArea.top + majorTicks.size;
-          break;
-
-        case 'left':
-          x1 = drawArea.right - majorTicks.size;
-          x2 = drawArea.right;
-          y1 = pixel + 0.5;
-          y2 = pixel + 0.5;
-          break;
-
-        case 'right':
-          x1 = drawArea.left;
-          x2 = drawArea.left + majorTicks.size;
-          y1 = pixel + 0.5;
-          y2 = pixel + 0.5;
-          break;
-
-        case 'top':
-          x1 = pixel + 0.5;
-          x2 = pixel + 0.5;
-          y1 = drawArea.bottom - majorTicks.size;
-          y2 = drawArea.bottom;
-          break;
-      }
-
-      // Draw the grid line
-      chart.line(x1, y1, x2, y2, majorTicksStyle);
-    });
-  }
-  /* not-sparkline:end */
-
-  /* not-sparkline:start */
   /**
-   * Draws the axis' tick marks.
+   * Draws the axis' tick captions.
    *
-   * @method drawTicks
+   * @method drawMajorTickCaptions
    * @private
    * @param {Array} ticks The current list of ticks
-   * @since 3.0.0
+   * @since @todo
    */
-  drawTicks(ticks) {
+  drawMajorTickCaptions(ticks) {
     // Grab some local pointers
     let axis = this;
     let chart = this.chart;
@@ -936,7 +910,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     }
 
     // Loop through the ticks
-    ticks.forEach(tick => {
+    $Array.forEach(ticks, tick => {
       // Define some local variables
       let pixel = $Number.round(axis.convertPointToPixel(tick));
       let text = $Number.round(tick, 12);
@@ -987,11 +961,74 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
 
   /* not-sparkline:start */
   /**
-   * Draws the axis' zeroPlane.
+   * Draws the axis' major ticks.
+   *
+   * @method drawMajorTicks
+   * @private
+   * @param {Array} ticks The current list of ticks
+   * @since @todo
+   */
+  drawMajorTicks(ticks) {
+    // Grab some local pointers
+    let axis = this;
+    let chart = axis.chart;
+    let drawArea = axis.drawArea;
+    let majorTicks = axis.majorTicks;
+    let majorTicksStyle = majorTicks.style;
+
+    // Loop through the ticks
+    $Array.forEach(ticks, tick => {
+      // Define some local variables
+      let pixel = $Number.round(axis.convertPointToPixel(tick));
+      let x1;
+      let x2;
+      let y1;
+      let y2;
+
+      // Calculte the coordinates based on the axis' orientation
+      switch (axis.side) {
+        case 'bottom':
+          x1 = pixel + 0.5;
+          x2 = pixel + 0.5;
+          y1 = drawArea.top;
+          y2 = drawArea.top + majorTicks.size;
+          break;
+
+        case 'left':
+          x1 = drawArea.right - majorTicks.size;
+          x2 = drawArea.right;
+          y1 = pixel + 0.5;
+          y2 = pixel + 0.5;
+          break;
+
+        case 'right':
+          x1 = drawArea.left;
+          x2 = drawArea.left + majorTicks.size;
+          y1 = pixel + 0.5;
+          y2 = pixel + 0.5;
+          break;
+
+        case 'top':
+          x1 = pixel + 0.5;
+          x2 = pixel + 0.5;
+          y1 = drawArea.bottom - majorTicks.size;
+          y2 = drawArea.bottom;
+          break;
+      }
+
+      // Draw the grid line
+      chart.line(x1, y1, x2, y2, majorTicksStyle);
+    });
+  }
+  /* not-sparkline:end */
+
+  /* not-sparkline:start */
+  /**
+   * Draws the axis' zero plane.
    *
    * @method drawZeroPlane
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   drawZeroPlane() {
     // Grab some local pointers
@@ -1030,7 +1067,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     }
 
     // Draw the axis zeroPlane
-    if (x1 && y1 && x2 && y2) {
+    if (!$Object.isNil(x1) && !$Object.isNil(y1) && !$Object.isNil(x2) && !$Object.isNil(y2)) {
       chart.line(x1, y1, x2, y2, zeroPlane.style);
     }
   }
@@ -1042,25 +1079,20 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
   * @method getCurrentZoom
   * @private
   * @param {Integer} spacing The additional spacing to include
-  * @since 3.0.0
+  * @since @todo
   */
   getCurrentZoom(spacing) {
     // Grab some local pointers
-    let zoom = this.zoom;
-    let extremes = this.extremes;
-    let scale = this.scale;
+    let { extremes, orientation, scale, zoom } = this;
 
-    // Update some variables with default values
-    spacing = spacing || 0;
-
-    // Calculate the current zoom
-    let currentZoom = {
-      min: (zoom.min || extremes.min) - (spacing * scale),
-      max: (zoom.max || extremes.max) + (spacing * scale)
-    };
+    // Define some local variables
+    let dataPoint = orientation === 'vertical' ? 'y' : 'x';
 
     // Return the current zoom
-    return currentZoom;
+    return {
+      min: (zoom.min || extremes.min) - ($Number.max(0, $Object.getProperty(spacing, dataPoint + 'Min')) * scale),
+      max: (zoom.max || extremes.max) + ($Number.max(0, $Object.getProperty(spacing, dataPoint + 'Max')) * scale)
+    };
   }
 
   /**
@@ -1069,14 +1101,11 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @method getOffsetSize
    * @private
    * @return {Integer} The offset size of the axis
-   * @since 3.0.0
+   * @since @todo
    */
   getOffsetSize() {
-    // Determine the size of the axis if shown
-    let size = (this.isVisible() ? this.size : 0);
-
     // Return the size
-    return size;
+    return (this.isVisible() ? this.size : 0);
   }
 
   /**
@@ -1085,26 +1114,27 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @method getVisibleSeries
    * @private
    * @return {Array} The visible series
-   * @since 3.0.0
+   * @since @todo
    */
   getVisibleSeries() {
-    // Grab the list of visible attached series
-    let visibleSeries = this.chart.series.filter(series => (
+    // Return the list of visible series
+    return $Array.filter(this.chart.series, series => (
       (this.orientation === 'horizontal' && series.xAxis === this.side && series.isVisible()) ||
       (this.orientation === 'vertical' && series.yAxis === this.side && series.isVisible())
     ));
-
-    // Return the list of visible series
-    return visibleSeries;
   }
 
-  // TODO:
+  /**
+   * Returns if the axis has currently visible series.
+   *
+   * @method hasVisibleSeries
+   * @private
+   * @return {Boolean} If there are visible series
+   * @since @todo
+   */
   hasVisibleSeries() {
-    // Determine if there are any visible attached series
-    let hasVisibleSeries = this.getVisibleSeries().length > 0;
-
     // Return if there are any visible attached series
-    return hasVisibleSeries;
+    return this.getVisibleSeries().length > 0;
   }
 
   /**
@@ -1113,14 +1143,11 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @method isVisible
    * @private
    * @return {Boolean} If the axis is currently visible
-   * @since 3.0.0
+   * @since @todo
    */
   isVisible() {
-    // Determine if the axis is visible
-    let visible = ($Variable.isNil(this.visible) ? this.hasVisibleSeries() : this.visible);
-
     // Return if the axis is visible
-    return visible;
+    return ($Object.isNil(this.visible) ? this.hasVisibleSeries() : this.visible);
   }
 
   /**
@@ -1130,7 +1157,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    * @private
    * @param {EJSC.Chart} chart The owner chart
    * @param {String} side The axis' side
-   * @since 3.0.0
+   * @since @todo
    */
   prepare(chart, side) {
     // Update the axis properties
@@ -1141,7 +1168,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
     });
 
     // Update the size if needed
-    if ($Variable.isNil(this.size)) {
+    if ($Object.isNil(this.size)) {
       this.size = EJSC['sparkline'].Axis.sizes[this.orientation];
     }
   }
@@ -1151,17 +1178,26 @@ export default EJSC['sparkline'].Axis = class Axis extends Class {
    *
    * @method update
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   update() {
     // Redraw the chart
-    if ($Object.has(this, 'chart.redraw')) {
-      this.chart.redraw();
-    }
+    $Object(this).invoke('chart.redraw');
   }
 };
 
-// Define the default values for orientation
+/**
+ * Defines the default values for orientation or axes.
+ *
+ * @property {Object} orientations
+ * @property {Number} sizes.bottom (Default: 'horizontal')
+ * @property {Number} sizes.left (Default: 'vertical')
+ * @property {Number} sizes.right (Default: 'vertical')
+ * @property {Number} sizes.top (Default: 'horizontal)
+ * @static
+ * @private
+ * @since @todo
+ */
 EJSC['sparkline'].Axis.orientations = {
   bottom: 'horizontal',
   left: 'vertical',
@@ -1169,7 +1205,16 @@ EJSC['sparkline'].Axis.orientations = {
   top: 'horizontal'
 };
 
-// Define the default values for size
+/**
+ * Defines the default values for size of axes.
+ *
+ * @property {Object} sizes
+ * @property {Number} sizes.horizontal (Default: 45)
+ * @property {Number} sizes.vertical (Default: 70)
+ * @static
+ * @private
+ * @since @todo
+ */
 EJSC['sparkline'].Axis.sizes = {
   horizontal: 45,
   vertical: 70

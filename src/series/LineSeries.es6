@@ -1,10 +1,11 @@
-import EJSC from '../EJSC.es6';
-import ScatterSeries from './ScatterSeries.es6';
+import $Array from '../util/Array.es6';
 import $Number from '../util/Number.es6';
 import $Object from '../util/Object.es6';
+import EJSC from '../EJSC.es6';
+import ScatterSeries from './ScatterSeries.es6';
 
 /**
- * // TODO:
+ * LineSeries is rendered by drawing a line from point to point.
  *
  * @example
  *
@@ -13,7 +14,9 @@ import $Object from '../util/Object.es6';
  * @class EJSC['sparkline'].LineSeries
  * @extends EJSC['sparkline'].ScatterSeries
  * @constructor
- * @since 3.0.0
+ * @param {Array} data The data array
+ * @param {Object} options The config options
+ * @since @todo
  */
 export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSeries {
   /**
@@ -26,7 +29,7 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
    * @attribute {Object} line
    * @property {Integer} line.lineWidth Defines the width of the line. (Default: 1)
    * @property {String} line.strokeStyle Defines the color of the line. (Default: null)
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -36,12 +39,12 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
   }
 
   // setter
-  setLine(line, apply) {
+  setLine(line) {
     // Update the current line
     $Object.merge(this.line, line);
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -55,7 +58,7 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
    *
    * @attribute {Boolean} step
    * @default false
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -65,12 +68,12 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
   }
 
   // setter
-  setStep(step, apply) {
+  setStep(step) {
     // Update the current step
     this.step = step;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -94,7 +97,7 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
    * @method buildPath
    * @private
    * @return {Array} The path to draw
-   * @since 3.0.0
+   * @since @todo
    */
   buildPath() {
     // Grab some local pointers
@@ -102,7 +105,7 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
     let path = [];
 
     // Build the drawing path
-    this.data.forEach((point, index) => {
+    $Array.forEach(this.data, (point, index) => {
       // Add the previous step (if needed)
       if (index > 0 && step) {
         path.push({
@@ -133,22 +136,41 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
    * @method calculateSpacing
    * @private
    * @return {Number} The spacing needed for the series
-   * @since 3.0.0
+   * @since @todo
    */
   calculateSpacing() {
     // Define some local variables
-    let pointSpacing = this.points.visible ? super.calculateSpacing() : 0;
-    let lineSpacing = Math.ceil(this.line.width / 2);
+    let pointSpacing = this.points.visible ?
+      super.calculateSpacing() :
+      {
+        xMin: 0,
+        xMax: 0,
+        yMin: 0,
+        yMax: 0
+      };
+    let lineSpacing = Math.ceil(this.line.lineWidth / 2);
 
     // Return the larger spacing
-    return $Number.max(pointSpacing, lineSpacing);
+    return {
+      xMin: $Number.max(pointSpacing.xMin, lineSpacing),
+      xMax: $Number.max(pointSpacing.xMax, lineSpacing),
+      yMin: $Number.max(pointSpacing.yMin, lineSpacing),
+      yMax: $Number.max(pointSpacing.yMax, lineSpacing)
+    };
   }
 
   /* not-sparkline:start */
-  // TODO:
+  /**
+   * Clips the draw path to the given zoom.
+   *
+   * @method clipPath
+   * @private
+   * @param {Array} path The draw path
+   * @since @todo
+   */
   clipPath(path) {
     // Grab some local pointers
-    let isPointInBounds = this.isPointInBounds;
+    let isPointVisible = this.isPointVisible;
     let spacing = this.calculateSpacing();
     let xAxis = this.referenceXAxis();
     let xAxisZoom = xAxis.getCurrentZoom(spacing);
@@ -160,12 +182,12 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
     // Define some local variables
     let clip = [];
     let lastPoint;
-    let lastPointInBounds;
+    let lastPointIsVisible;
 
     // Loop through each of the data points
-    path.forEach((point, index) => {
+    $Array.forEach(path, (point, index) => {
       // Define some local variables
-      let pointIsInBounds = isPointInBounds(point, xAxisZoom, yAxisZoom);
+      let pointIsInBounds = isPointVisible(point, xAxisZoom, yAxisZoom);
       let xMinCross;
       let xMaxCross;
       let yMinCross;
@@ -181,7 +203,7 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
 
         /* eslint-disable max-depth */
         // If this point and the next are both in bounds
-        if (pointIsInBounds && lastPointInBounds) {
+        if (pointIsInBounds && lastPointIsVisible) {
           // Do nothing...
         }
 
@@ -550,7 +572,7 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
 
       // Update the last point and if it's in bounds
       lastPoint = point;
-      lastPointInBounds = isPointInBounds(lastPoint, xAxisZoom, yAxisZoom);
+      lastPointIsVisible = isPointVisible(lastPoint, xAxisZoom, yAxisZoom);
     });
 
     // console.log(JSON.stringify(clip));
@@ -564,7 +586,7 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
    *
    * @method draw
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   draw() {
     // Grab some local pointers
@@ -577,12 +599,10 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
     chart.beginPath();
 
     // Loop through the points of data adding them to the path array
-    points.forEach((point, index) => {
-      chart[index === 0 ? 'moveTo' : 'lineTo'](
-        xAxis.convertPointToPixel(point.x),
-        yAxis.convertPointToPixel(point.y)
-      );
-    });
+    $Array.forEach(points, (point, index) => chart[index === 0 ? 'moveTo' : 'lineTo'](
+      xAxis.convertPointToPixel(point.x),
+      yAxis.convertPointToPixel(point.y)
+    ));
 
     // Draw the line
     chart.stroke($Object.merge({}, this.line, {
@@ -594,17 +614,4 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
       super.draw();
     }
   }
-
-  /* not-sparkline:start */
-  // TODO:
-  isPointInBounds(point, xAxisZoom, yAxisZoom) {
-    // Return if the given point is inside the current zoom area
-    return (
-      point.x >= xAxisZoom.min &&
-      point.x <= xAxisZoom.max &&
-      point.y >= yAxisZoom.min &&
-      point.y <= yAxisZoom.max
-    );
-  }
-  /* not-sparkline:end */
 };

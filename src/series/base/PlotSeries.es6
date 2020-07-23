@@ -1,6 +1,7 @@
+import $Array from '../../util/Array.es6';
+import $String from '../../util/String.es6';
 import EJSC from '../../EJSC.es6';
 import Series from './Series.es6';
-import $String from '../../util/String.es6';
 
 /**
  * Defines a series that will plot its data using the chart's axes.
@@ -8,10 +9,20 @@ import $String from '../../util/String.es6';
  * @class EJSC['sparkline'].PlotSeries
  * @extends EJSC['sparkline'].Series
  * @private
- * @since 3.0.0
+ * @since @todo
  */
 export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
-  // TODO:
+  /**
+   * Defines the spacing around the series.
+   *
+   * @example
+   *
+   *   // TODO:
+   *
+   * @attribute {Number} spacing
+   * @default 0
+   * @since @todo
+   */
 
   // getter
   getSpacing() {
@@ -20,17 +31,20 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
   }
 
   // setter
-  setSpacing(spacing, apply) {
+  setSpacing(spacing) {
     // Update the current spacing
     this.spacing = spacing;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
+
   /**
    * Defines the x axis to draw on.
+   *
+   * Valid values are: 'bottom', 'top'.
    *
    * @example
    *
@@ -38,8 +52,7 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    *
    * @attribute {String} xAxis
    * @default 'bottom'
-   * @values 'bottom', 'top'
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -49,12 +62,12 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
   }
 
   // setter
-  setXAxis(xAxis, apply) {
+  setXAxis(xAxis) {
     // Update the current x axis
     this.xAxis = xAxis;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -62,14 +75,15 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
   /**
    * Defines the y axis to draw on.
    *
+   * Valid values are: 'left', 'right'.
+   *
    * @example
    *
    *   // TODO:
    *
    * @attribute {String} yAxis
    * @default 'left'
-   * @values 'left', 'right'
-   * @since 3.0.0
+   * @since @todo
    */
 
   // getter
@@ -79,12 +93,12 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
   }
 
   // setter
-  setYAxis(yAxis, apply) {
+  setYAxis(yAxis) {
     // Update the current y axis
     this.yAxis = yAxis;
 
     // Redraw the chart if needed
-    if (apply !== false) {
+    if (this.listening) {
       this.update();
     }
   }
@@ -106,7 +120,7 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    * @method calculateExtremes
    * @private
    * @return {Object} The new extremes
-   * @since 3.0.0
+   * @since @todo
    */
   calculateExtremes() {
     // Define some local variables
@@ -127,14 +141,11 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    * @method getVisiblePoints
    * @private
    * @return {Array} The list of visible points
-   * @since 3.0.0
+   * @since @todo
    */
   getVisiblePoints() {
-    // Get the list of visible points
-    let visiblePoints = this.data.filter(point => this.isPointVisible(point));
-
     // Return the list of visible points
-    return visiblePoints;
+    return $Array.filter(this.data, point => this.isPointVisible(point));
   }
 
   /**
@@ -143,7 +154,7 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    * @method referenceXAxis
    * @private
    * @return {EJSC['sparkline'].Axis} The x axis
-   * @since 3.0.0
+   * @since @todo
    */
   referenceXAxis() {
     // Return a reference to the x axis
@@ -156,7 +167,7 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    * @method referenceXAxis
    * @private
    * @return {EJSC['sparkline'].Axis} The y axis
-   * @since 3.0.0
+   * @since @todo
    */
   referenceYAxis() {
     // Return a reference to the y axis

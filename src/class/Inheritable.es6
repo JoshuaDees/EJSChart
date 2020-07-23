@@ -3,19 +3,31 @@ import $Object from '../util/Object.es6';
 import $String from '../util/String.es6';
 
 /**
- * Holds the base functionality of all constructable classes.
+ * Base class from which all EJSC classes descend.
  *
- * @class EJSC.Class
+ * @class EJSC.Inheritable
  * @private
- * @since 3.0.0
+ * @constructor
+ * @param {Object} [options={}] The options to apply
+ * @since @todo
  */
-export default EJSC.Class = class Class {
+export default EJSC.Inheritable = class Inheritable {
   /**
-   * Defines if the class is currently listening for changes.
+   * Defines if the class is initialized.
+   *
+   * @property {Boolean} initialized
+   * @private
+   * @default false
+   * @since @todo
+   */
+
+  /**
+   * Defines if the class is currently listening for property changes.
    *
    * @property {Boolean} listening
+   * @private
    * @default true
-   * @since 3.0.0
+   * @since @todo
    */
 
   // constructor
@@ -25,6 +37,9 @@ export default EJSC.Class = class Class {
 
     // Apply the given options
     this.apply(options);
+
+    // Mark the class as initialized
+    this.initialized = true;
   }
 
   /**
@@ -33,7 +48,7 @@ export default EJSC.Class = class Class {
    * @example
    *
    *   // Create a class
-   *   var myClass = new EJSC.SomeClass();
+   *   let myClass = new EJSC.SomeClass();
    *
    *   // Apply some new options
    *   myClass.apply({
@@ -41,9 +56,8 @@ export default EJSC.Class = class Class {
    *   });
    *
    * @method apply
-   * @public
    * @param {Object} [options={}] The options to apply
-   * @since 3.0.0
+   * @since @todo
    */
   apply(options = {}) {
     // Store listening
@@ -53,12 +67,12 @@ export default EJSC.Class = class Class {
     this.listening = false;
 
     // Loop through each of the options
-    Object.entries(options).forEach(([name, value]) => {
+    $Object(options).forEach((value, key) => {
       // Grab the setter
-      let setter = this['set' + $String.upperFirst(name)];
+      let setter = this['set' + $String.upperFirst(key)];
 
       // Use the setter if defined
-      if (setter) {
+      if ($Object.isFunction(setter)) {
         // Call the setter
         setter.call(this, value, false);
       }
@@ -67,13 +81,18 @@ export default EJSC.Class = class Class {
       else {
         // Merge the object into the class
         $Object.merge(this, {
-          [name]: value
+          [key]: value
         });
       }
     });
 
     // Restore listening
     this.listening = listening;
+
+    // Run the update method
+    if (this.initialized) {
+      this.update();
+    }
   }
 
   /**
@@ -81,10 +100,22 @@ export default EJSC.Class = class Class {
    *
    * @method init
    * @private
-   * @since 3.0.0
+   * @since @todo
    */
   init() {
-    // Initialize some private properties
+    // Initialize the private properties
+    this.initialized = false;
     this.listening = true;
+  }
+
+  /**
+   * Updates the class after properties have changed.
+   *
+   * @method update
+   * @private
+   * @since @todo
+   */
+  update() {
+    // no-op
   }
 };

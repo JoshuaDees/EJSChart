@@ -1,7 +1,6 @@
 import EJSC from '../../EJSC.es6';
-// import Util from '../../util/Util.es6';
 // import Drawing from '../Drawing.es6';
-import Engine from './Engine.es6';
+import Engine from './base/Engine.es6';
 
 /**
  * Defines the VML rendering engine for EJSCharts.
@@ -10,7 +9,7 @@ import Engine from './Engine.es6';
  * @constructor
  * @private
  * @extends EJSC.Engine
- * @since 3.0.0
+ * @since @todo
  */
 export default EJSC.VML = class VML extends Engine {
   /**
@@ -23,7 +22,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} startAngle The start angle (in radians)
    * @param {Number} endAngle The end angle (in radians)
    * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
-   * @since 3.0.0
+   * @since @todo
    */
   arc(/* cx, cy, r, startAngle, endAngle, counterClockwise */) {
     // TODO:
@@ -38,7 +37,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} x The x coordinate of the end point
    * @param {Number} y The y coordinate of the end point
    * @param {Number} radius The radius of the arc
-   * @since 3.0.0
+   * @since @todo
    */
   arcTo(/* cpx, cpy, x, y, radius */) {
     // TODO:
@@ -52,7 +51,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} top The top coordinate of the clip area
    * @param {Number} width The width of the clip area
    * @param {Number} height The height of the clip area
-   * @since 3.0.0
+   * @since @todo
    */
   beginClip(/* x, y, width, height */) {
     // TODO:
@@ -62,7 +61,7 @@ export default EJSC.VML = class VML extends Engine {
    * Begins a new path.
    *
    * @method beginPath
-   * @since 3.0.0
+   * @since @todo
    */
   beginPath() {
     // TODO:
@@ -78,7 +77,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} cp2y The y coordinate of the second control point
    * @param {Number} x The end x coordinate of the curve
    * @param {Number} y The end y coordinate of the curve
-   * @since 3.0.0
+   * @since @todo
    */
   bezierCurveTo(/* cp1x, cp1y, cp2x, cp2y, x, y */) {
     // TODO:
@@ -92,7 +91,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} y The y coordinate for the center of the circle
    * @param {Number} radius The radius (in px) of the circle
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   circle(/* cx, cy, radius, styles */) {
     // TODO:
@@ -102,7 +101,7 @@ export default EJSC.VML = class VML extends Engine {
    * Clears the canvas.
    *
    * @method clear
-   * @since 3.0.0
+   * @since @todo
    */
   clear() {
     // TODO:
@@ -112,7 +111,7 @@ export default EJSC.VML = class VML extends Engine {
    * Closes the current path.
    *
    * @method clear
-   * @since 3.0.0
+   * @since @todo
    */
   closePath() {
     // TODO:
@@ -124,7 +123,7 @@ export default EJSC.VML = class VML extends Engine {
    * @method draw
    * @param {Array} path The coordinates of the path
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   draw(/* path, styles */) {
     // TODO:
@@ -139,7 +138,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} rx The x radius of the ellipse
    * @param {Number} ry The y radius of the ellipse
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   ellipse(/* cx, cy, rx, ry, styles */) {
     // TODO:
@@ -149,7 +148,7 @@ export default EJSC.VML = class VML extends Engine {
    * Ends the current clipping of the canvas' drawing area.
    *
    * @method endClip
-   * @since 3.0.0
+   * @since @todo
    */
   endClip() {
     // TODO:
@@ -160,7 +159,7 @@ export default EJSC.VML = class VML extends Engine {
    *
    * @method fill
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   fill(/* styles */) {
     // TODO:
@@ -171,7 +170,7 @@ export default EJSC.VML = class VML extends Engine {
    *
    * @method horizontalTo
    * @param {Number} x The x coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   horizontalTo(/* x */) {
     // TODO:
@@ -186,7 +185,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} x2 The x coordinate for the ending point
    * @param {Number} y2 The y coordinate for the ending point
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   line(/* x1, y1, x2, y2, styles */) {
     // TODO:
@@ -198,7 +197,7 @@ export default EJSC.VML = class VML extends Engine {
    * @method lineTo
    * @param {Number} x The x coordinate to draw to
    * @param {Number} y The y coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   lineTo(/* x, y */) {
     // TODO:
@@ -210,7 +209,7 @@ export default EJSC.VML = class VML extends Engine {
    * @method measureText
    * @param {String} text The text
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   measureText(/* text, styles */) {
     // TODO:
@@ -222,7 +221,7 @@ export default EJSC.VML = class VML extends Engine {
    * @method moveTo
    * @param {Number} x The x coordinate to move to
    * @param {Number} y The y coordinate to move to
-   * @since 3.0.0
+   * @since @todo
    */
   moveTo(/* x, y */) {
     // TODO:
@@ -236,7 +235,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} cpy The y coordinate of the control point
    * @param {Number} x The end x coordinate of the curve
    * @param {Number} y The end y coordinate of the curve
-   * @since 3.0.0
+   * @since @todo
    */
   quadraticCurveTo(/* cpx, cpy, x, y */) {
     // TODO:
@@ -251,7 +250,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} width The width of the rectangle
    * @param {Number} height The height of the rectangle
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   rect(/* x, y, width, height, styles */) {
     // TODO:
@@ -263,7 +262,7 @@ export default EJSC.VML = class VML extends Engine {
    * @method resize
    * @param {Integer} width The new width for the canvas
    * @param {Integer} height The new height for the canvas
-   * @since 3.0.0
+   * @since @todo
    */
   resize(/* width, height */) {
     // TODO:
@@ -275,7 +274,7 @@ export default EJSC.VML = class VML extends Engine {
    * @method stroke
    * @param {Array} path The path
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   stroke(/* styles */) {
     // TODO:
@@ -289,7 +288,7 @@ export default EJSC.VML = class VML extends Engine {
    * @param {Number} x The x coordinate to draw the text at
    * @param {Number} y The y coordinate to draw the text at
    * @param {Object} styles The styles to apply
-   * @since 3.0.0
+   * @since @todo
    */
   text(/* text, x, y, styles */) {
     // TODO:
@@ -300,7 +299,7 @@ export default EJSC.VML = class VML extends Engine {
    *
    * @method verticalTo
    * @param {Number} y The y coordinate to draw to
-   * @since 3.0.0
+   * @since @todo
    */
   verticalTo(/* y */) {
     // TODO:
@@ -320,7 +319,7 @@ export default EJSC.VML = class VML extends Engine {
    * @method drawPath
    * @private
    * @param {Array} path The path to draw
-   * @since 3.0.0
+   * @since @todo
    */
   drawPath(/* path, styles */) {
     // TODO:
@@ -333,7 +332,7 @@ export default EJSC.VML = class VML extends Engine {
    * @private
    * @param {Object} styles The styles to apply
    * @return {Object}
-   * @since 3.0.0
+   * @since @todo
    */
   stylize(/* styles */) {
     // TODO:
@@ -347,7 +346,7 @@ export default EJSC.VML = class VML extends Engine {
  * @static
  * @private
  * @return {Boolean} If the browser supports VML
- * @since 3.0.0
+ * @since @todo
  */
 EJSC.VML.isSupported = () => {
   // Define the support variable

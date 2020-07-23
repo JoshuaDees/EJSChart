@@ -1,7 +1,10 @@
 {
   "globals": {
+    "Element": true,
     "document": true,
-    "window": true
+    "Document": true,
+    "window": true,
+    "Window": true
   },
   "parser": "babel-eslint",
   "rules": {
@@ -55,7 +58,7 @@
     "no-eq-null": "error",
     "no-eval": "error",
     "no-ex-assign": "error",
-    "no-extend-native": "error",
+    "no-extend-native": "off",
     "no-extra-bind": "error",
     "no-extra-boolean-cast": "error",
     "no-extra-label": "error",
@@ -83,7 +86,7 @@
     "no-multi-spaces": "error",
     "no-multi-str": "error",
     "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 0, "maxEOF": 1 }],
-    "no-negated-condition": "error",
+    "no-negated-condition": "off",
     "no-nested-ternary": "error",
     "no-new-func": "error",
     "no-new-object": "error",
