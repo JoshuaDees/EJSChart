@@ -8,11 +8,12 @@ import XYSeries from './base/XYSeries.es6';
  * ScatterSeries is rendered by drawing a styled point for each x,y coordinate in the dataset.
  *
  * @example
- *
+ *   ```
  *   // TODO:
+ *   ```
  *
- * @class EJSC['sparkline'].ScatterSeries
- * @extends EJSC['sparkline'].XYSeries
+ * @class EJSC.ScatterSeries
+ * @extends EJSC.XYSeries
  * @constructor
  * @param {Array} data The data array
  * @param {Object} options The config options
@@ -23,8 +24,9 @@ export default EJSC['sparkline'].ScatterSeries = class ScatterSeries extends XYS
    * Defines the style options for the points.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Object} points
    * @property {String} points.shape Defines the shape of the points. (Default: 'circle') (Values: 'box', 'circle', 'diamond', 'triangle')

@@ -8,15 +8,15 @@ import Axis from './base/Axis.es6';
  * LogarithmicAxis is an axis using a logarithmic scale.
  *
  * @example
- *
+ *   ```
  *   // TODO:
+ *   ```
  *
- * @class EJSC['sparkline'].LogarithmicAxis
+ * @class EJSC.LogarithmicAxis
  * @extends EJSC.Axis
  * @constructor
  * @param {Object} options The config options
- * @private
- * @since // TODO:
+ * @since @todo
  */
 export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends Axis {
   /**
@@ -24,7 +24,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    *
    * @attribute {Number} base
    * @default 10
-   * @since // TODO:
+   * @since @todo
    */
 
   // getter
@@ -54,7 +54,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    * @property {Number} logPoints.maxNegative (Default: null)
    * @property {Number} logPoints.minNegative (Default: null)
    * @private
-   * @since // TODO:
+   * @since @todo
    */
 
   // init
@@ -80,7 +80,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    *
    * @method calculateExtremes
    * @private
-   * @since // TODO:
+   * @since @todo
    */
   calculateExtremes() {
     // Grab some local pointers
@@ -192,7 +192,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
      * @method calculateTicks
      * @private
      * @return {Array} The list of ticks
-     * @since // TODO:
+     * @since @todo
      */
   calculateTicks() {
     // Grab some local pointers
@@ -220,7 +220,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    * @private
    * @param {Number} linear The linear point
    * @return {Number} The logarithmic point
-   * @since // TODO:
+   * @since @todo
    */
   convertLinearToPoint(linear) {
     // TODO:
@@ -265,7 +265,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    * @private
    * @param {Number} pixel The chart pixel
    * @return {Number} The logarithmic point
-   * @since // TODO:
+   * @since @todo
    */
   convertPixelToPoint(pixel) {
     // Grab some local pointers
@@ -329,7 +329,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    * @private
    * @param {Number} point The logarithmic point
    * @return {Number} The linear point
-   * @since // TODO:
+   * @since @todo
    */
   convertPointToLinear(point) {
     // TODO:
@@ -374,7 +374,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    * @private
    * @param {Number} point The logarithmic point
    * @return {Number} The chart pixel
-   * @since // TODO:
+   * @since @todo
    */
   convertPointToPixel(point) {
     // Grab some local pointers
@@ -435,7 +435,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    * @private
    * @param {Number} point The logarithmic point
    * @return {Number} The poser of the base
-   * @since // TODO:
+   * @since @todo
    */
   convertPointToPower(point) {
     // Return the power value
@@ -449,7 +449,7 @@ export default EJSC['sparkline'].LogarithmicAxis = class LogarithmicAxis extends
    * @private
    * @param {Number} power The poser of the base
    * @return {Number} The logarithmic point
-   * @since // TODO:
+   * @since @todo
    */
   convertPowerToPoint(power) {
     // Return the point value

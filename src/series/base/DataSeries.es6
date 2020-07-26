@@ -3,7 +3,7 @@ import EJSC from '../../EJSC.es6';
 /**
  * Defines a series that requires data.
  *
- * @class EJSC['sparkline'].DataSeries
+ * @class EJSC.DataSeries
  * @extends TODO:
  * @private
  * @constructor
@@ -18,7 +18,7 @@ export default EJSC['sparkline'].DataSeries = (superclass) => class DataSeries e
    * This is required, and therefore defined outside of the options array in the constructor.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container');
    *
@@ -31,8 +31,10 @@ export default EJSC['sparkline'].DataSeries = (superclass) => class DataSeries e
    *   // Log out the current data set
    *   console.log(series.getData());
    *   // => [[0, 1], [1, 2], [2, 0]]
+   *   ```
    *
-   * @property {Array} data
+   * @attribute {Array} data
+   * @required
    * @default []
    * @since @todo
    */

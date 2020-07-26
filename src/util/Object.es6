@@ -2,6 +2,10 @@ import { identity, noop } from './_Helpers.es6';
 import $Array from './Array.es6';
 
 // TODO: $Object documentation
+/**
+ * @class $Object
+ * @private
+ */
 let $Object = (object) => new class {
   // constructor
   constructor($object) {
@@ -13,9 +17,10 @@ let $Object = (object) => new class {
    * The predicate is invoked with three arguments: (value, key, object).
    *
    * @example
-   *
+   *   ```
    *   $Object({ a: 0, b: 1, c: 2 }).filter((value, key, object) => value > 0).result;
    *   // => { b: 1, c: 2 }
+   *   ```
    *
    * @method filter
    * @param {Function} predicate The function invoked per iteration
@@ -41,9 +46,10 @@ let $Object = (object) => new class {
    * Iteratee functions may exit iteration early by explicitly returning false.
    *
    * @example
-   *
+   *   ```
    *   $Object({ a: 1, b: 2 }).forEach((value, key, object) => console.log(key));
    *   // => Logs 'a' then 'b' (iteration order is not guaranteed).
+   *   ```
    *
    * @method forEach
    * @param {Function} predicate The function invoked per iteration
@@ -82,7 +88,7 @@ let $Object = (object) => new class {
    * Checks if path is a direct property of object.
    *
    * @example
-   *
+   *   ```
    *   $Object({ a: { b: 2 } }).has('a');
    *   // => true
    *
@@ -94,6 +100,7 @@ let $Object = (object) => new class {
    *
    *   $Object({ a: { b: 2 } }).has('c');
    *   // => false
+   *   ```
    *
    * @method has
    * @param {Array|String} path The path to check
@@ -152,9 +159,10 @@ let $Object = (object) => new class {
  * The predicate is invoked with three arguments: (value, key, object).
  *
  * @example
- *
+ *   ```
  *   $Object.filter({ a: 0, b: 1, c: 2 }, (value, key, object) => value > 0);
  *   // => { b: 1, c: 2 }
+ *   ```
  *
  * @static
  * @method filter
@@ -171,9 +179,10 @@ $Object.filter = (object, predicate = identity) => object && $Object(object).fil
  * Iteratee functions may exit iteration early by explicitly returning false.
  *
  * @example
- *
+ *   ```
  *   $Object.forEach({ a: 1, b: 2 }, (value, key, object) => console.log(key));
  *   // => Logs 'a' then 'b' (iteration order is not guaranteed).
+ *   ```
  *
  * @static
  * @method forEach
@@ -190,7 +199,7 @@ $Object.getProperty = (object, path) => object && $Object(object).getProperty(pa
  * Checks if path is a direct property of object.
  *
  * @example
- *
+ *   ```
  *   $Object.has({ a: { b: 2 } }, 'a');
  *   // => true
  *
@@ -202,6 +211,7 @@ $Object.getProperty = (object, path) => object && $Object(object).getProperty(pa
  *
  *   $Object.has({ a: { b: 2 } }, 'c');
  *   // => false
+ *   ```
  *
  * @static
  * @method has
@@ -216,12 +226,13 @@ $Object.has = (object, path) => object && $Object(object).has(path);
  * Checks if value is likely an arguments object.
  *
  * @example
- *
+ *   ```
  *   $Object.isArguments(function() { return arguments; }());
  *   // => true
  *
  *   $Object.isArguments([1, 2, 3]);
  *   // => false
+ *   ```
  *
  * @static
  * @method isArguments
@@ -235,7 +246,7 @@ $Object.isArguments = (value) => !$Object.isNil(value) && value.hasOwnProperty('
  * Checks if value is classified as an Array object.
  *
  * @example
- *
+ *   ```
  *   $Object.isArray([1, 2, 3]);
  *   // => true
  *
@@ -247,6 +258,7 @@ $Object.isArguments = (value) => !$Object.isNil(value) && value.hasOwnProperty('
  *
  *   $Object.isArray(function() {});
  *   // => false
+ *   ```
  *
  * @static
  * @method isArray
@@ -260,12 +272,13 @@ $Object.isArray = (value) => !$Object.isNil(value) && (value instanceof Array &&
  * Checks if value is likely a DOM element.
  *
  * @example
- *
+ *   ```
  *   $Object.isElement(document.body);
  *   // => true
  *
  *   $Object.isElement('<body>');
  *   // => false
+ *   ```
  *
  * @static
  * @method isElement
@@ -279,12 +292,13 @@ $Object.isElement = (value) => !$Object.isNil(value) && $Object.isObjectLike(val
  * Checks if value is classified as a Function object.
  *
  * @example
- *
+ *   ```
  *   $Object.isFunction(function() {});
  *   // => true
  *
  *   $Object.isFunction(/abc/);
  *   // => false
+ *   ```
  *
  * @static
  * @method isFunction
@@ -298,7 +312,7 @@ $Object.isFunction = (value) => !$Object.isNil(value) && ({}).toString.call(valu
  * Checks if value is null or undefined.
  *
  * @example
- *
+ *   ```
  *   $Object.isNil(null);
  *   // => true
  *
@@ -307,6 +321,7 @@ $Object.isFunction = (value) => !$Object.isNil(value) && ({}).toString.call(valu
  *
  *   $Object.isNil(NaN);
  *   // => false
+ *   ```
  *
  * @static
  * @method isNil
@@ -320,12 +335,13 @@ $Object.isNil = (value) => $Object.isNull(value) || $Object.isUndefined(value);
  * Checks if value is null.
  *
  * @example
- *
+ *   ```
  *   $Object.isNull(null);
  *   // => true
  *
  *   $Object.isNull(void 0);
  *   // => false
+ *   ```
  *
  * @static
  * @method isNull
@@ -342,7 +358,7 @@ $Object.isNumber = (value) => !$Object.isNil(value) && (typeof value === 'number
  * Checks if value is the language type of Object.
  *
  * @example
- *
+ *   ```
  *   $Object.isObject({});
  *   // => true
  *
@@ -354,6 +370,7 @@ $Object.isNumber = (value) => !$Object.isNil(value) && (typeof value === 'number
  *
  *   $Object.isObject(null);
  *   // => false
+ *   ```
  *
  * @static
  * @method isObject
@@ -368,7 +385,7 @@ $Object.isObject = (value) => !$Object.isNil(value) && (typeof value === 'object
  * A value is object-like if it's not null and has a typeof result of "object".
  *
  * @example
- *
+ *   ```
  *   $Object.isObjectLike({});
  *   // => true
  *
@@ -380,6 +397,7 @@ $Object.isObject = (value) => !$Object.isNil(value) && (typeof value === 'object
  *
  *   $Object.isObjectLike(null);
  *   // => false
+ *   ```
  *
  * @static
  * @method isObjectLike
@@ -393,7 +411,7 @@ $Object.isObjectLike = (value) => !$Object.isNil(value) && typeof value === 'obj
  * Checks if value is a plain object.
  *
  * @example
- *
+ *   ```
  *   $Object.isPlainObject(new function() {}());
  *   // => false
  *
@@ -405,6 +423,7 @@ $Object.isObjectLike = (value) => !$Object.isNil(value) && typeof value === 'obj
  *
  *   $Object.isPlainObject(Object.create(null));
  *   // => true
+ *   ```
  *
  * @static
  * @method isPlainObject
@@ -418,12 +437,13 @@ $Object.isPlainObject = (value) => !$Object.isNil(value) && value.constructor ==
  * Checks if the variable is a string.
  *
  * @example
- *
+ *   ```
  *   $Object.isString('abc');
  *   // => true
  *
  *   $Object.isString(1);
  *   // => false
+ *   ```
  *
  * @static
  * @method isString
@@ -437,12 +457,13 @@ $Object.isString = (value) => !$Object.isNil(value) && typeof value === 'string'
  * Checks if value is undefined.
  *
  * @example
- *
+ *   ```
  *   $Object.isUndefined(void 0);
  *   // => true
  *
  *   $Object.isUndefined(null);
  *   // => false
+ *   ```
  *
  * @static
  * @method isUndefined
@@ -462,8 +483,9 @@ $Object.isUndefined = (value) => value === noop();
  * Subsequent sources overwrite property assignments of previous sources.
  *
  * @example
- *
+ *   ```
  *   // @todo
+ *   ```
  *
  * @static
  * @method merge

@@ -8,7 +8,7 @@ import Inheritable from '../../class/Inheritable.es6';
 /**
  * Holds the code common to all Axis types.
  *
- * @class EJSC['sparkline'].Axis
+ * @class EJSC.Axis
  * @extends EJSC.Inheritable
  * @constructor
  * @private
@@ -20,8 +20,9 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
    * Defines the border of the axis.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Object} border
    * @property {Object} border.style
@@ -54,9 +55,10 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
    * Defines the caption of the axis.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
-   *
+   *   ```
+
    * @attribute {Object} caption
    * @property {Object} caption.style
    * @property {String} caption.style.fillStyle The color of the caption (Default: 'rgb(100, 100, 100)')
@@ -89,8 +91,9 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
    * Defines the extremes of the axis.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Object} extremes
    * @property {Number} extremes.max The max extreme (Default: null)
@@ -120,8 +123,9 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
    * Defines the grid of the axis.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Object} grid
    * @property {Object} grid.style
@@ -155,8 +159,9 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
    * Defines the major ticks to be displayed on the axis.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Object} majorTicks
    * @property {Integer} majorTicks.size The size of the major ticks (Default: 5)
@@ -189,8 +194,9 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
    * Defines the padding between the ends of the axis and the start and end of the data displayed when zoomed out.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Integer} padding
    * @default 5
@@ -218,8 +224,9 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
    * Defines if the order of the ticks on the axis are reversed or not.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Boolean} reverse
    * @default false

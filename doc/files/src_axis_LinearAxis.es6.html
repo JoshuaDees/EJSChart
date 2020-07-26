@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\axis\LinearAxis.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\axis\LinearAxis.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import $Array from &#x27;../util/Array.es6&#x27;;
+                import $Object from &#x27;../util/Object.es6&#x27;;
+                import $Number from &#x27;../util/Number.es6&#x27;;
+                import EJSC from &#x27;../EJSC.es6&#x27;;
+                import Axis from &#x27;./base/Axis.es6&#x27;;
+                
+                /**
+                 * LinearAxis is an axis using a linear scale.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   // TODO:
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @class EJSC.LinearAxis
+                 * @extends EJSC.Axis
+                 * @constructor
+                 * @param {Object} options The config options
+                 * @since @todo
+                 */
+                export default EJSC[&#x27;sparkline&#x27;].LinearAxis = class LinearAxis extends Axis {
+                  /* not-sparkline:start */
+                  /**
+                   * Calculates where a line segment between two given points croses the axis at a given coordinate.
+                   *
+                   * @method calculateCross
+                   * @private
+                   * @param {Object} point1 The first point
+                   * @param {Object} point2 The second point
+                   * @param {Number} coordinate The coordinate to cross at
+                   * @return {Object} The crossed coordinates
+                   * @since @todo
+                   */
+                  calculateCross(point1, point2, coordinate) {
+                    // Define some local variables
+                    let x = coordinate;
+                    let y = coordinate;
+                    let { x: x1, y: y1 } = point1;
+                    let { x: x2, y: y2 } = point2;
+                
+                    // Determine the cross points based on the side
+                    switch (this.orientation) {
+                      case &#x27;horizontal&#x27;:
+                        x = (((coordinate - y1) / (y2 - y1)) * (x2 - x1)) + x1;
+                        break;
+                
+                      case &#x27;vertical&#x27;:
+                        y = (((coordinate - x1) / (x2 - x1)) * (y2 - y1)) + y1;
+                        break;
+                    }
+                
+                    // Return the cross coordinates
+                    return { x, y };
+                  }
+                  /* not-sparkline:end */
+                
+                  /**
+                   * Calculates the extremes for the axis.
+                   *
+                   * @method calculateExtremes
+                   * @private
+                   * @since @todo
+                   */
+                  calculateExtremes() {
+                    // Grab some local pointers
+                    let { drawArea, orientation, padding, extremes } = this;
+                
+                    // Define some local variables
+                    let dataPoint = orientation === &#x27;vertical&#x27; ? &#x27;y&#x27; : &#x27;x&#x27;;
+                
+                    // Reset the extremes
+                    $Object.merge(extremes, {
+                      min: null,
+                      max: null
+                    });
+                
+                    // Loop through each of the visible series
+                    $Array(this.getVisibleSeries())
+                      .filter(series =&gt; $Object.has(series, &#x27;calculateExtremes&#x27;))
+                      .forEach(series =&gt; {
+                        // Calculate the series&#x27; extremes
+                        let seriesExtremes = series.calculateExtremes();
+                
+                        // Update the min and max range
+                        let min = seriesExtremes[dataPoint + &#x27;Min&#x27;];
+                        let max = seriesExtremes[dataPoint + &#x27;Max&#x27;];
+                
+                        // Calculate the series spacing
+                        let spacing = series.calculateSpacing();
+                        let paddingMin = padding + spacing[dataPoint + &#x27;Max&#x27;] - 1;
+                        let paddingMax = padding + spacing[dataPoint + &#x27;Min&#x27;] - 1;
+                
+                        // Determine the scale based on the axis&#x27; orientation
+                        let scale;
+                        switch (orientation) {
+                          case &#x27;horizontal&#x27;:
+                            scale = ((max - min) / (drawArea.right - drawArea.left - (paddingMin + paddingMax)));
+                            break;
+                
+                          case &#x27;vertical&#x27;:
+                            scale = ((max - min) / (drawArea.bottom - drawArea.top - (paddingMin + paddingMax)));
+                            break;
+                        }
+                
+                        // Update the values with padding
+                        min = min - (scale * paddingMin);
+                        max = max + (scale * paddingMax);
+                
+                        // Update the extremes
+                        $Object.merge(extremes, {
+                          min: $Number.min(extremes.min, min),
+                          max: $Number.max(extremes.max, max)
+                        });
+                      });
+                  }
+                
+                  /**
+                   * Calculates the axis&#x27; ticks based on the attached series&#x27; data.
+                   *
+                   * @method calculateTicks
+                   * @private
+                   * @return {Array} The list of ticks
+                   * @since @todo
+                   */
+                  calculateTicks() {
+                    // Grab some local pointers
+                    let zoom = this.getCurrentZoom();
+                
+                    // Define some local variables
+                    let { min, max } = zoom;
+                    let range = max - min;
+                    let interval = Math.pow(10, Math.floor(Math.log10(range)));
+                    let count = 3;
+                    let increment;
+                    let start;
+                    let i;
+                    let ticks = [];
+                
+                    // Set up the increment
+                    if (range / interval &gt;= count) {
+                      increment = interval;
+                    }
+                    else if (range / (interval / 2) &gt;= count) {
+                      increment = interval / 2;
+                    }
+                    else {
+                      increment = interval / 5;
+                    }
+                
+                    // Calculate the starting point
+                    start = Math.ceil(min / increment) * increment;
+                
+                    // Build the list of ticks
+                    for (i = start; i &lt;= max; i += increment) {
+                      ticks.push(i);
+                    }
+                
+                    // Return the list of ticks
+                    return ticks;
+                  }
+                
+                  /**
+                   * Converts from chart pixel to point.
+                   *
+                   * @method convertPixelToPoint
+                   * @private
+                   * @param {Number} pixel The pixel to convert
+                   * @return {Number} The point
+                   * @since @todo
+                   */
+                  convertPixelToPoint(pixel) {
+                    // Grab some local pointers
+                    let drawArea = this.drawArea;
+                    let zoom = this.getCurrentZoom();
+                
+                    // Define some local variables
+                    let pixelMin;
+                    let pixelMax;
+                    let pixelDif;
+                    let pixelPerc;
+                    let { min: pointMin, max: pointMax } = zoom;
+                    let pointDif = pointMax - pointMin;
+                    let point = null;
+                
+                    // There needs to be a current zoom to convert
+                    if (pointMin !== null &amp;&amp; pointMax !== null) {
+                      // Calculate the coordinate based on the axis&#x27; orientation
+                      switch (this.orientation) {
+                        case &#x27;horizontal&#x27;:
+                          pixelMin = drawArea.left;
+                          pixelMax = drawArea.right - 1;
+                          pixelDif = pixelMax - pixelMin;
+                          pixelPerc = ((pixel - pixelMin) / pixelDif);
+                
+                          if (this.reverse === false) {
+                            point = pointMin + (pointDif * pixelPerc);
+                          }
+                          else {
+                            point = pointMax - (pointDif * pixelPerc);
+                          }
+                
+                          break;
+                
+                        case &#x27;vertical&#x27;:
+                          pixelMin = drawArea.top;
+                          pixelMax = drawArea.bottom - 1;
+                          pixelDif = pixelMax - pixelMin;
+                          pixelPerc = ((pixel - pixelMin) / pixelDif);
+                
+                          if (this.reverse === false) {
+                            point = pointMax - (pointDif * pixelPerc);
+                          }
+                          else {
+                            point = pointMin + (pointDif * pixelPerc);
+                          }
+                
+                          break;
+                      }
+                    }
+                
+                    // Return the point
+                    return point;
+                  }
+                
+                  /**
+                   * Converts from chart point to pixel.
+                   *
+                   * @method convertPointToPixel
+                   * @private
+                   * @param {Number} point The point to convert
+                   * @return {Number} The pixel
+                   * @since @todo
+                   */
+                  convertPointToPixel(point) {
+                    // Grab some local pointers
+                    let drawArea = this.drawArea;
+                    let zoom = this.getCurrentZoom();
+                
+                    // Define some local variables
+                    let { min: pointMin, max: pointMax } = zoom;
+                    let pointPerc = ((point - pointMin) / (pointMax - pointMin));
+                    let pixelMin;
+                    let pixelMax;
+                    let pixelDif;
+                    let pixel = null;
+                
+                    // There needs to be a current zoom to convert
+                    if (pointMin !== null &amp;&amp; pointMax !== null) {
+                      // Determine the coordinate based on the axis&#x27; orientation
+                      switch (this.orientation) {
+                        case &#x27;horizontal&#x27;:
+                          pixelMin = drawArea.left;
+                          pixelMax = drawArea.right - 1;
+                          pixelDif = pixelMax - pixelMin;
+                
+                          if (this.reverse === false) {
+                            pixel = pixelMin + (pixelDif * pointPerc);
+                          }
+                          else {
+                            pixel = pixelMax - (pixelDif * pointPerc);
+                          }
+                
+                          break;
+                
+                        case &#x27;vertical&#x27;:
+                          pixelMin = drawArea.top;
+                          pixelMax = drawArea.bottom - 1;
+                          pixelDif = pixelMax - pixelMin;
+                
+                          if (this.reverse === false) {
+                            pixel = pixelMax - (pixelDif * pointPerc);
+                          }
+                          else {
+                            pixel = pixelMin + (pixelDif * pointPerc);
+                          }
+                
+                          break;
+                      }
+                    }
+                
+                    // Return the pixel
+                    return pixel;
+                  }
+                };
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

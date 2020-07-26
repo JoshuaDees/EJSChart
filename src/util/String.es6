@@ -1,4 +1,8 @@
 // TODO: $String documentation
+/**
+ * @class $String
+ * @private
+ */
 let $String = (string) => new class {
   // constructor
   constructor($string) {
@@ -9,9 +13,10 @@ let $String = (string) => new class {
   * Converts the first character of string to upper case and the remaining to lower case.
   *
   * @example
-  *
+  *   ```
   *   $String('FRED').capitalize().result;
   *   // => 'Fred'
+  *   ```
   *
   * @method capitalize
   * @chainable
@@ -29,12 +34,13 @@ let $String = (string) => new class {
    * Converts the first character of string to upper case.
    *
    * @example
-   *
+   *   ```
    *   $String('fred').upperFirst().result;
    *   // => 'Fred'
    *
    *   $String('FRED').upperFirst().result;
    *   // => 'FRED'
+   *   ```
    *
    * @method upperFirst
    * @chainable
@@ -53,9 +59,10 @@ let $String = (string) => new class {
 * Converts the first character of string to upper case and the remaining to lower case.
 *
 * @example
-*
+*   ```
 *   $String.capitalize('FRED');
 *   // => 'Fred'
+*   ```
 *
 * @static
 * @method capitalize
@@ -68,12 +75,13 @@ $String.capitalize = (string) => string && $String(string).capitalize().result;
  * Converts the first character of string to upper case.
  *
  * @example
- *
+ *   ```
  *   $String.upperFirst('fred');
  *   // => 'Fred'
  *
  *   $String.upperFirst('FRED');
  *   // => 'FRED'
+ *   ```
  *
  * @static
  * @method upperFirst

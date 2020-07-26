@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\series\base\Series.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\series\base\Series.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import $Object from &#x27;../../util/Object.es6&#x27;;
+                import EJSC from &#x27;../../EJSC.es6&#x27;;
+                import Inheritable from &#x27;../../class/Inheritable.es6&#x27;;
+                
+                /**
+                 * Holds all of the common code to all of the series.
+                 *
+                 * @class EJSC.Series
+                 * @private
+                 * @extends EJSC.Inheritable
+                 * @since @todo
+                 */
+                export default EJSC[&#x27;sparkline&#x27;].Series = class Series extends Inheritable {
+                  /**
+                   * Defines the color of the series.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} color
+                   * @default null
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getColor() {
+                    // Return the current color
+                    return this.color;
+                  }
+                
+                  // setter
+                  setColor(color) {
+                    // Update the current color
+                    this.color = color;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the title of the series.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} title
+                   * @default null
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getTitle() {
+                    // Return the current title
+                    return this.title;
+                  }
+                
+                  // setter
+                  setTitle(title) {
+                    // Update the current title
+                    this.title = title;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines if the series if visible or not.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Boolean} visible
+                   * @default true
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getVisible() {
+                    // Return the current visible
+                    return this.visible;
+                  }
+                
+                  // setter
+                  setVisible(visible) {
+                    // Store the current visible
+                    this.visible = visible;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Holds a pointer to this series&#x27; owner chart.
+                   *
+                   * @property {EJSC[&#x27;sparkline&#x27;].Chart} chart
+                   * @default null
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getChart() {
+                    // Return the current chart
+                    return this.chart;
+                  }
+                
+                  // init
+                  init() {
+                    // super
+                    super.init();
+                
+                    // Initialize some public properties
+                    this.color = null;
+                    this.title = null;
+                    this.visible = true;
+                
+                    // Initialize some private properties
+                    this.chart = null;
+                  }
+                
+                  /**
+                   * Draws the series to its owner chart&#x27;s drawing engine.
+                   *
+                   * @method draw
+                   * @private
+                   * @since @todo
+                   */
+                  draw() {
+                    // no-op
+                  }
+                
+                  /**
+                   * Determines if the series is visible or not.
+                   *
+                   * @method isVisible
+                   * @private
+                   * @return {Boolean} If the series is visible or not
+                   * @since @todo
+                   */
+                  isVisible() {
+                    // Return if this series is visible or not
+                    return this.visible;
+                  }
+                
+                  /**
+                   * Links the series to its owner chart.
+                   *
+                   * @method prepare
+                   * @private
+                   * @param {EJSC[&#x27;sparkline&#x27;].Chart} chart The owner chart
+                   * @param {Object} options Default options to apply if not defined
+                   * @since @todo
+                   */
+                  prepare(chart, options) {
+                    // Store the owner chart
+                    this.chart = chart;
+                
+                    // Update any options that haven&#x27;t been defined
+                    $Object.merge(this, options);
+                  }
+                
+                  /**
+                   * Sets the given opacity of a given color.
+                   *
+                   * @method setOpacity
+                   * @private
+                   * @param {String} color The color
+                   * @param {Number} opacity The opacity
+                   * @return {String} The final color
+                   * @since @todo
+                   */
+                  setOpacity(color, opacity) {
+                    // Return the string with the updated opacity
+                    return color
+                      .replace(/^rgba?\(/, &#x27;rgba(&#x27;)
+                      .replace(/\)$/, &#x27;,&#x27; + opacity + &#x27;)&#x27;)
+                      .replace(/\s/g, &#x27;&#x27;)
+                      .split(&#x27;,&#x27;)
+                      .slice(0, 3)
+                      .join(&#x27;,&#x27;) + &#x27;,&#x27; + opacity + &#x27;)&#x27;;
+                  }
+                
+                  /**
+                   * Fires when a property of the class has changed.
+                   *
+                   * @method update
+                   * @private
+                   * @since @todo
+                   */
+                  update() {
+                    // Redraw the chart
+                    $Object(this).invoke(&#x27;chart.redraw&#x27;);
+                  }
+                };
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

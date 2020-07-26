@@ -5,7 +5,7 @@ import Inheritable from '../../class/Inheritable.es6';
 /**
  * Holds all of the common code to all of the series.
  *
- * @class EJSC['sparkline'].Series
+ * @class EJSC.Series
  * @private
  * @extends EJSC.Inheritable
  * @since @todo
@@ -15,8 +15,9 @@ export default EJSC['sparkline'].Series = class Series extends Inheritable {
    * Defines the color of the series.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {String} color
    * @default null
@@ -44,8 +45,9 @@ export default EJSC['sparkline'].Series = class Series extends Inheritable {
    * Defines the title of the series.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {String} title
    * @default null
@@ -73,8 +75,9 @@ export default EJSC['sparkline'].Series = class Series extends Inheritable {
    * Defines if the series if visible or not.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Boolean} visible
    * @default true
@@ -102,10 +105,15 @@ export default EJSC['sparkline'].Series = class Series extends Inheritable {
    * Holds a pointer to this series' owner chart.
    *
    * @property {EJSC['sparkline'].Chart} chart
-   * @private
    * @default null
    * @since @todo
    */
+
+  // getter
+  getChart() {
+    // Return the current chart
+    return this.chart;
+  }
 
   // init
   init() {

@@ -2,6 +2,10 @@ import $Array from './Array.es6';
 import $Object from './Object.es6';
 
 // TODO: $Element documentation
+/**
+ * @class $Element
+ * @private
+ */
 let $Element = (element) => new class {
   // constructor
   constructor($element) {
@@ -12,8 +16,9 @@ let $Element = (element) => new class {
    * Attach an event handler function for one or more events to the element.
    *
    * @example
-   *
+   *   ```
    *   // TODO: $Element().on example
+   *   ```
    *
    * @method on
    * @param {Array|String} events The event(s) to listen for
@@ -64,8 +69,9 @@ $Element.find = (selector) => {
  * Attach an event handler function for one or more events to the element.
  *
  * @example
- *
+ *   ```
  *   // TODO: $Element.on example
+ *   ```
  *
  * @method on
  * @param {Element}

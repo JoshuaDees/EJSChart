@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>$Number - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <!-- h3 class="card-header icon class" -->
+                  <h3 class="card-header">
+                    $Number
+                    <small class="float-right">
+                      Class
+                    </small>
+                  </h3>
+                  <div class="card-body">
+                    
+                    <ul class="list-unstyled">
+                        <li>
+                          <label class="pull-left">Defined In:</label>
+                          <a href="../files/src_util_Number.es6.html#l5">src\util\Number.es6:5</a>
+                        </li>
+                    </ul>
+                      <div class="card">
+                        <h4 class="card-header">Methods</h4>
+                        <ul class="list-group list-group-flush">
+                            <li id="method_clamp" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">clamp</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          lower
+                                      </span>
+                                      <span class="arg">
+                                          uppser
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="badge badge-dark border chainable">chainable</span>
+                              </h5>
+                              <div class="description">
+                                  <p>Clamps number within the inclusive lower and upper bounds.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_util_Number.es6.html#l15">src\util\Number.es6:15</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      @todo
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <div class="border"><pre class="code prettyprint"><code>$Number(-10).clamp(-5, 5).result;
+                            // =&gt; -5
+                            
+                            $Number(10).clamp(-5, 5).result;
+                            // =&gt; 5
+                            </code></pre>
+                            </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">lower :</span>
+                                          <span class="type">Number</span>
+                                        <div class="param-description">
+                                          <p>The lower bound</p>
+                            
+                                        </div>
+                                      </li>
+                                      <li class="param">
+                                          <span class="param-name">uppser :</span>
+                                          <span class="type">Number</span>
+                                        <div class="param-description">
+                                          <p>The upper bound</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="method_clamp" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">clamp</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          number
+                                      </span>
+                                      <span class="arg">
+                                          lower
+                                      </span>
+                                      <span class="arg">
+                                          uppser
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="returns-inline">
+                                    <span class="type">: Number</span>
+                                  </span>
+                                  <span class="badge badge-dark border static">static</span>
+                              </h5>
+                              <div class="description">
+                                  <p>Clamps number within the inclusive lower and upper bounds.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_util_Number.es6.html#l70">src\util\Number.es6:70</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      @todo
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <div class="border"><pre class="code prettyprint"><code>$Number.clamp(-10, -5, 5);
+                            // =&gt; -5
+                            
+                            $Number.clamp(10, -5, 5);
+                            // =&gt; 5
+                            </code></pre>
+                            </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">number :</span>
+                                          <span class="type">Number</span>
+                                        <div class="param-description">
+                                          <p>The number to clamp</p>
+                            
+                                        </div>
+                                      </li>
+                                      <li class="param">
+                                          <span class="param-name">lower :</span>
+                                          <span class="type">Number</span>
+                                        <div class="param-description">
+                                          <p>The lower bound</p>
+                            
+                                        </div>
+                                      </li>
+                                      <li class="param">
+                                          <span class="param-name">uppser :</span>
+                                          <span class="type">Number</span>
+                                        <div class="param-description">
+                                          <p>The upper bound</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
+                                <div class="returns">
+                                  <h6>Returns:</h6>
+                                  <ul class="returns">
+                                    <li>
+                                          <span class="type">Number</span>
+                                        <p>The clamped value</p>
+                            
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="method_max" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">max</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          numbers
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="returns-inline">
+                                    <span class="type">: Number</span>
+                                  </span>
+                                  <span class="badge badge-dark border static">static</span>
+                              </h5>
+                              <div class="description">
+                                  <p>Computes the maximum value of array.
+                            If array is empty or falsey, undefined is returned.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_util_Number.es6.html#l92">src\util\Number.es6:92</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      @todo
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <div class="border"><pre class="code prettyprint"><code>$Number.max(4, 2, 8, 6);
+                            // =&gt; 8
+                            
+                            $Number.max();
+                            // =&gt; null
+                            </code></pre>
+                            </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">numbers :</span>
+                                          <span class="type">...Array</span>
+                                        <div class="param-description">
+                                          <p>The numbers to iterate over</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
+                                <div class="returns">
+                                  <h6>Returns:</h6>
+                                  <ul class="returns">
+                                    <li>
+                                          <span class="type">Number</span>
+                                        <p>The maximum value</p>
+                            
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="method_min" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">min</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          numbers
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="returns-inline">
+                                    <span class="type">: Number</span>
+                                  </span>
+                                  <span class="badge badge-dark border static">static</span>
+                              </h5>
+                              <div class="description">
+                                  <p>Computes the minimum value of array.
+                            If array is empty or falsey, undefined is returned.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_util_Number.es6.html#l122">src\util\Number.es6:122</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      @todo
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <div class="border"><pre class="code prettyprint"><code>$Number.min(4, 2, 8, 6);
+                            // =&gt; 2
+                            
+                            $Number.min();
+                            // =&gt; null
+                            </code></pre>
+                            </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">numbers :</span>
+                                          <span class="type">...Array</span>
+                                        <div class="param-description">
+                                          <p>The numbers to iterate over</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
+                                <div class="returns">
+                                  <h6>Returns:</h6>
+                                  <ul class="returns">
+                                    <li>
+                                          <span class="type">Number</span>
+                                        <p>The minimum value</p>
+                            
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="method_round" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">round</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          <span class="optional">[precision=0]</span>
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="badge badge-dark border chainable">chainable</span>
+                              </h5>
+                              <div class="description">
+                                  <p>Computes number rounded to precision.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_util_Number.es6.html#l41">src\util\Number.es6:41</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      @todo
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <div class="border"><pre class="code prettyprint"><code>$Number(4.006).round().result;
+                            // =&gt; 4
+                            
+                            $Number(4.006).round(2).result;
+                            // =&gt; 4.01
+                            
+                            $Number(4060).round(-2).result;
+                            // =&gt; 4100
+                            </code></pre>
+                            </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name optional">[precision=0] :</span>
+                                          <span class="type">Number</span>
+                                          <span class="badge badge-dark border optional" title="This parameter is optional.">optional</span>
+                                        <div class="param-description">
+                                          <p>The precision to round to</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="method_round" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">round</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          number
+                                      </span>
+                                      <span class="arg">
+                                          <span class="optional">[precision=0]</span>
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="returns-inline">
+                                    <span class="type">: Number</span>
+                                  </span>
+                                  <span class="badge badge-dark border static">static</span>
+                              </h5>
+                              <div class="description">
+                                  <p>Computes number rounded to precision.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_util_Number.es6.html#l152">src\util\Number.es6:152</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      @todo
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <div class="border"><pre class="code prettyprint"><code>$Number.round(4.006);
+                            // =&gt; 4
+                            
+                            $Number.round(4.006, 2);
+                            // =&gt; 4.01
+                            
+                            $Number.round(4060, -2);
+                            // =&gt; 4100
+                            </code></pre>
+                            </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">number :</span>
+                                          <span class="type">Number</span>
+                                        <div class="param-description">
+                                          <p>The number to round</p>
+                            
+                                        </div>
+                                      </li>
+                                      <li class="param">
+                                          <span class="param-name optional">[precision=0] :</span>
+                                          <span class="type">Number</span>
+                                          <span class="badge badge-dark border optional" title="This parameter is optional.">optional</span>
+                                        <div class="param-description">
+                                          <p>The precision to round to</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
+                                <div class="returns">
+                                  <h6>Returns:</h6>
+                                  <ul class="returns">
+                                    <li>
+                                          <span class="type">Number</span>
+                                        <p>The rounded value</p>
+                            
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                        </ul>
+                      </div>
+                    <!--
+                    -->
+                  </div>
+                </div>
+                
+                <!-- DOPNE TO HERE --
+                
+                    <div id="index" class="tab-pane active">
+                        <h2 class="off-left">Item Index</h2>
+                
+                            <div class="index-section methods">
+                                <h3>Methods</h3>
+                
+                                <ul class="index-list methods">
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_clamp" data-tablink="clamp">clamp</a>
+                
+                                        </li>
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_clamp" data-tablink="clamp">clamp</a>
+                
+                                                <span class="flag static">static</span>
+                                        </li>
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_max" data-tablink="max">max</a>
+                
+                                                <span class="flag static">static</span>
+                                        </li>
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_min" data-tablink="min">min</a>
+                
+                                                <span class="flag static">static</span>
+                                        </li>
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_round" data-tablink="round">round</a>
+                
+                                        </li>
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_round" data-tablink="round">round</a>
+                
+                                                <span class="flag static">static</span>
+                                        </li>
+                                </ul>
+                            </div>
+                
+                
+                
+                    </div>
+                
+                <!-- -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

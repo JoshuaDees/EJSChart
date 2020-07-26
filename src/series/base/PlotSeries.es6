@@ -6,8 +6,8 @@ import Series from './Series.es6';
 /**
  * Defines a series that will plot its data using the chart's axes.
  *
- * @class EJSC['sparkline'].PlotSeries
- * @extends EJSC['sparkline'].Series
+ * @class EJSC.PlotSeries
+ * @extends EJSC.Series
  * @private
  * @since @todo
  */
@@ -16,8 +16,9 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    * Defines the spacing around the series.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Number} spacing
    * @default 0
@@ -47,8 +48,9 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    * Valid values are: 'bottom', 'top'.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {String} xAxis
    * @default 'bottom'
@@ -78,8 +80,9 @@ export default EJSC['sparkline'].PlotSeries = class PlotSeries extends Series {
    * Valid values are: 'left', 'right'.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {String} yAxis
    * @default 'left'

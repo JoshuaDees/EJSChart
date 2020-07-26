@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{htmlTitle}}</title>
+    <link href="{{projectAssets}}/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="{{projectAssets}}/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="{{projectAssets}}/css/theme.css" rel="stylesheet" />
+    <script src="{{projectAssets}}/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="{{projectAssets}}/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="{{projectAssets}}/vendor/prettify/prettify-min.js"></script>
+    <script src="{{projectAssets}}/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="{{projectAssets}}/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">{{projectName}}</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>{{projectVersion}}</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          {{>sidebar}}
+        </div>
+        <div class="col-9">
+          {{>options}}
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                {{>layout_content}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

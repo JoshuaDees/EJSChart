@@ -38,18 +38,35 @@ module.exports = function(grunt) {
     webpack: {
       // Runs the webpack builder for production
       dist: require('./webpack.config')
+    },
+
+    yuidoc: {
+      doc: {
+        name: 'EJSCharts',
+        description: '<%= pkg.description %>',
+        version: '<%= pkg.version %>',
+        url: '<%= pkg.homepage %>',
+        options: {
+          extension: '.es6',
+          paths: ['src/'],
+          outdir: 'doc/',
+          themedir: 'build/yuidoc/theme',
+          helpers: ['build/yuidoc/theme/helpers/helpers.js']
+        }
+      }
     }
   });
 
   // Load the NPM tasks
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-yuidoc');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-webpack');
 
   // Grunt tasks
   grunt.registerTask('setup', ['copy:hooks']);
-  grunt.registerTask('build', ['webpack:dist'])
+  grunt.registerTask('build', ['webpack:dist', 'yuidoc:doc'])
   grunt.registerTask('lint', ['eslint:src']);
 
   // Git tasks

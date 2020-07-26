@@ -26,7 +26,7 @@
     "guard-for-in": "warn",
     "key-spacing": "error",
     "keyword-spacing": "error",
-    "linebreak-style": "error",
+    "linebreak-style": ["error", "unix"],
     "max-depth": "error",
     "max-len": ["error", { "code": 160 }],
     "max-nested-callbacks": ["error", { "max": 3 }],

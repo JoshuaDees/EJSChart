@@ -3,10 +3,15 @@ import $Element from './util/Element.es6';
 import $Object from './util/Object.es6';
 
 /**
+ * @module EJSC
+ * @since 1.0.0
+ */
+/**
  * Top level namespace for all classes and variables used by the Emprise JavaScript Charts package.
  * Use of this namespace prevents variable name collisions with other available JavaScript packages.
  *
- * @module EJSC
+ * @class EJSC
+ * @static
  * @since 1.0.0
  */
 export default window.EJSC = new class EJSC {
@@ -23,11 +28,12 @@ export default window.EJSC = new class EJSC {
    * Prepares a callback function to be called when the window loads.
    *
    * @example
-   *
+   *   ```
    *   // Prepare code for EJSC to run on window load
    *   EJSC.prepare(() => {
    *     // Do something...
    *   });
+   *   ```
    *
    * @method prepare
    * @param {Function} callback The callback function
@@ -63,7 +69,7 @@ export default window.EJSC = new class EJSC {
 }();
 
 /* sparkline:start */
-/**
+/*
  * The namespace for all of the sparkline classes and variables used by the Emprise JavaScript Charts package.
  *
  * @namespace EJSC.sparkline

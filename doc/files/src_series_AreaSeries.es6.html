@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\series\AreaSeries.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\series\AreaSeries.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import $Array from &#x27;../util/Array.es6&#x27;;
+                import $Number from &#x27;../util/Number.es6&#x27;;
+                import $Object from &#x27;../util/Object.es6&#x27;;
+                import EJSC from &#x27;../EJSC.es6&#x27;;
+                import LineSeries from &#x27;./LineSeries.es6&#x27;;
+                
+                /**
+                 * AreaSeries is rendered by drawing a line from point to point and then filling the area defined.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   // TODO:
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @class EJSC.AreaSeries
+                 * @extends EJSC.LineSeries
+                 * @constructor
+                 * @param {Array} data The data array
+                 * @param {Object} options The config options
+                 * @since @todo
+                 */
+                export default EJSC[&#x27;sparkline&#x27;].AreaSeries = class AreaSeries extends LineSeries {
+                  /**
+                   * Defines the styles for the area fill.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;);
+                   *
+                   *   // Define a new AreaSeries with the area&#x27;s background color as light grey
+                   *   let series = new EJSC[&#x27;sparkline&#x27;].AreaSeries([[0, 0], [1, 2], [2, 1]], {
+                   *     area: { fillStyle: &#x27;rgb(200, 200, 200)&#x27; }
+                   *   });
+                   *
+                   *   // Update the area&#x27;s background color to light blue
+                   *   series.setArea({
+                   *     fillStyle: &#x27;rgb(200, 200, 255)&#x27;
+                   *   });
+                   *
+                   *   // Log out the current area styles
+                   *   console.log(series.getArea());
+                   *   // =&gt; { fillStyle: &#x27;rgb(200, 200, 255)&#x27; }
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Object} area
+                   * @property {String} area.fillStyle The background color of the area fill. (Default: null)
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getArea() {
+                    // Return the current area
+                    return this.area;
+                  }
+                
+                  // setter
+                  setArea(area) {
+                    // Update the current area
+                    $Object.merge(this.area, area);
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the zero coordinate for the series.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Number} zeroCoordinate
+                   * @default 0
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getZeroCoordinate() {
+                    // Return the current zero coordinate
+                    return this.zeroCoordinate;
+                  }
+                
+                  // setter
+                  setZeroCoordinate(zeroCoordinate) {
+                    // Update the current zero coordinate
+                    this.zeroCoordinate = zeroCoordinate;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  // init
+                  init() {
+                    // super
+                    super.init();
+                
+                    // Initialize some public properties
+                    this.area = {
+                      fillStyle: null
+                    };
+                    this.zeroCoordinate = 0;
+                  }
+                
+                  /**
+                   * Calculates the extremes for the series based off of its data.
+                   *
+                   * @method calculateExtremes
+                   * @private
+                   * @return {Object} The calculated extremes
+                   * @since @todo
+                   */
+                  calculateExtremes() {
+                    // Grab some local pointers
+                    let extremes = super.calculateExtremes();
+                    let zeroCoordinate = this.zeroCoordinate;
+                
+                    // Update extremes to the zero coordinate
+                    extremes.yMin = $Number.min(extremes.yMin, zeroCoordinate);
+                    extremes.yMax = $Number.max(extremes.yMax, zeroCoordinate);
+                
+                    // Return the extremes
+                    return extremes;
+                  }
+                
+                  /**
+                   * Draws the series to the chart.
+                   *
+                   * @method draw
+                   * @private
+                   * @since @todo
+                   */
+                  draw() {
+                    // Grab some local pointers
+                    let chart = this.chart;
+                    let xAxis = this.referenceXAxis();
+                    let yAxis = this.referenceYAxis();
+                    let yAxisZoom = yAxis.getCurrentZoom();
+                    let zeroCoordinate = yAxis.convertPointToPixel($Number.clamp(this.zeroCoordinate, yAxisZoom.min, yAxisZoom.max));
+                    let points = this.buildPath();
+                
+                    // Start at the first point
+                    chart.beginPath();
+                
+                    // Loop through the points of data adding them to the path array
+                    $Array.forEach(points, (point, index) =&gt; chart[index === 0 ? &#x27;moveTo&#x27; : &#x27;lineTo&#x27;](
+                      xAxis.convertPointToPixel(point.x),
+                      yAxis.convertPointToPixel(point.y)
+                    ));
+                
+                    // Loop through the points of data adding them to the path array
+                    $Array.forEach(points.reverse(), point =&gt; chart.lineTo(
+                      xAxis.convertPointToPixel(point.x),
+                      zeroCoordinate
+                    ));
+                
+                    // Close the path
+                    chart.closePath();
+                
+                    // Fill in the path
+                    chart.fill($Object.merge({}, this.area, {
+                      fillStyle: this.area.fillStyle || this.setOpacity(this.color, 0.5)
+                    }));
+                
+                    // Draw the line
+                    super.draw();
+                  }
+                };
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

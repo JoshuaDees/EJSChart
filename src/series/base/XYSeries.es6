@@ -5,9 +5,9 @@ import DataSeries from './DataSeries.es6';
 /**
  * Holds the common properties of series types that use XY data.
  *
- * @class EJSC['sparkline'].XYSeries
- * @extends EJSC['sparkline'].PlotSeries
- * @uses EJSC['sparkline'].DataSeries
+ * @class EJSC.XYSeries
+ * @extends EJSC.PlotSeries
+ * @uses EJSC.DataSeries
  * @private
  * @since @todo
  */

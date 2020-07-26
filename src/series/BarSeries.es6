@@ -9,11 +9,12 @@ import ScatterSeries from './ScatterSeries.es6';
  * BarSeries renders its points as vertical or horizontal bars which are fixed to a baseline.
  *
  * @example
- *
+ *   ```
  *   // TODO:
+ *   ```
  *
- * @class EJSC['sparkline'].BarSeries
- * @extends EJSC['sparkline'].ScatterSeries
+ * @class EJSC.BarSeries
+ * @extends EJSC.ScatterSeries
  * @constructor
  * @param {Array} data The data array
  * @param {Object} options The config options
@@ -24,8 +25,9 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    * Defines the styles for the bar.
    *
    * @example
-   *
+   *   ```
    *     // TODO:
+   *   ```
    *
    * @attribute {Object} bar
    * @property {Number} bar.size The amount of available space the bars should take up. (Default: 0.8)
@@ -57,8 +59,9 @@ export default EJSC['sparkline'].BarSeries = class BarSeries extends ScatterSeri
    * Defines the zero coordinate for the series.
    *
    * @example
-   *
+   *   ```
    *     // TODO:
+   *   ```
    *
    * @attribute {Number} zeroCoordinate
    * @default 0

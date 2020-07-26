@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\series\ScatterSeries.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\series\ScatterSeries.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import $Array from &#x27;../util/Array.es6&#x27;;
+                import $Number from &#x27;../util/Number.es6&#x27;;
+                import $Object from &#x27;../util/Object.es6&#x27;;
+                import EJSC from &#x27;../EJSC.es6&#x27;;
+                import XYSeries from &#x27;./base/XYSeries.es6&#x27;;
+                
+                /**
+                 * ScatterSeries is rendered by drawing a styled point for each x,y coordinate in the dataset.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   // TODO:
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @class EJSC.ScatterSeries
+                 * @extends EJSC.XYSeries
+                 * @constructor
+                 * @param {Array} data The data array
+                 * @param {Object} options The config options
+                 * @since @todo
+                 */
+                export default EJSC[&#x27;sparkline&#x27;].ScatterSeries = class ScatterSeries extends XYSeries {
+                  /**
+                   * Defines the style options for the points.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Object} points
+                   * @property {String} points.shape Defines the shape of the points. (Default: &#x27;circle&#x27;) (Values: &#x27;box&#x27;, &#x27;circle&#x27;, &#x27;diamond&#x27;, &#x27;triangle&#x27;)
+                   * @property {Integer} points.size Defines the size of the points. (Default: 5)
+                   * @property {Object} points.style
+                   * @property {String} points.style.fillStyle Defines the fill color. (Default: null)
+                   * @property {Integer} points.style.lineWidth Defines the width of the line. (Default: 2)
+                   * @property {String} points.style.strokeStyle Defines the color of the line. (Default: null)
+                   * @property {Boolean} points.visible Defines if the points should be drawn. Only applies to child classes of ScatterSeries. (Default: false)
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getPoints() {
+                    // Return the current points
+                    return this.points;
+                  }
+                
+                  // setter
+                  setPoints(points) {
+                    // Update the current points
+                    $Object.merge(this.points, points);
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  // init
+                  init() {
+                    // super
+                    super.init();
+                
+                    // Initialize some public properties
+                    this.points = {
+                      shape: &#x27;circle&#x27;,
+                      size: 5,
+                      style: {
+                        fillStyle: null,
+                        lineWidth: 2,
+                        strokeStyle: null
+                      },
+                      visible: false
+                    };
+                  }
+                
+                  /**
+                   * Calculates the extremes for the series based on its data.
+                   *
+                   * @method calculateExtremes
+                   * @private
+                   * @return {Object} The new extremes
+                   * @since @todo
+                   */
+                  calculateExtremes() {
+                    // Return the calculated extremes
+                    return $Array.transform(this.data, (extremes, point) =&gt; $Object.merge(extremes, {
+                      xMin: $Number.min(extremes.xMin, point.x),
+                      xMax: $Number.max(extremes.xMax, point.x),
+                      yMin: $Number.min(extremes.yMin, point.y),
+                      yMax: $Number.max(extremes.yMax, point.y)
+                    }), {
+                      xMin: null,
+                      xMax: null,
+                      yMin: null,
+                      yMax: null
+                    });
+                  }
+                
+                  /**
+                   * Calculates the spacing needed for the series.
+                   *
+                   * @method calculateSpacing
+                   * @private
+                   * @return {Number} The spacing needed for the series
+                   * @since @todo
+                   */
+                  calculateSpacing() {
+                    // Grab some local pointers
+                    let points = this.points;
+                
+                    // Define some local variables
+                    let spacing = Math.ceil(points.size + (points.style.lineWidth / 2));
+                
+                    // Return the spacing needed for the series
+                    return {
+                      xMin: spacing,
+                      xMax: spacing,
+                      yMin: spacing,
+                      yMax: spacing
+                    };
+                  }
+                
+                  /**
+                   * Draws the series.
+                   *
+                   * @method draw
+                   * @private
+                   * @since @todo
+                   */
+                  draw() {
+                    // Grab some local pointers
+                    let { chart, points, color } = this;
+                
+                      // Define some local variables
+                    let xAxis = this.referenceXAxis();
+                    let yAxis = this.referenceYAxis();
+                    let style = $Object.merge({}, points.style);
+                    let size = points.size;
+                
+                    // Fill in missing colors if needed
+                    style.fillStyle = style.fillStyle || this.setOpacity(color, 0.5);
+                    style.strokeStyle = style.strokeStyle || color;
+                
+                    // Draw the visible points
+                    $Array.forEach(this.getVisiblePoints(), point =&gt; {
+                      // Define the pixel values
+                      let dx = xAxis.convertPointToPixel(point.x) + 0.5;
+                      let dy = yAxis.convertPointToPixel(point.y) + 0.5;
+                
+                      // Determine what shape to draw
+                      switch (points.shape) {
+                        // Draw the rect
+                        case &#x27;box&#x27;:
+                          chart.rect(dx - size, dy - size, size * 2, size * 2, style);
+                          break;
+                
+                        // Draw the circle
+                        case &#x27;circle&#x27;:
+                          chart.circle(dx, dy, size, style);
+                          break;
+                
+                        // Draw the diamond
+                        case &#x27;diamond&#x27;:
+                          chart.beginPath();
+                          chart.moveTo(dx, dy - size);
+                          chart.lineTo(dx - size, dy);
+                          chart.lineTo(dx, dy + size);
+                          chart.lineTo(dx + size, dy);
+                          chart.lineTo(dx, dy - size);
+                          chart.draw(style);
+                          break;
+                
+                        // Draw the triangle
+                        case &#x27;triangle&#x27;:
+                          chart.beginPath();
+                          chart.moveTo(dx, dy - size);
+                          chart.lineTo(dx - size, dy + size);
+                          chart.lineTo(dx + size, dy + size);
+                          chart.lineTo(dx, dy - size);
+                          chart.draw(style);
+                          break;
+                      }
+                    });
+                  }
+                
+                  /**
+                   * Determines if a point is currently visible or not.
+                   *
+                   * @method isPointVisible
+                   * @private
+                   * @param {Array&lt;Number, Number&gt;} point The point to determine
+                   * @return {Boolean} If the point is currently visible or not
+                   * @since @todo
+                   */
+                  isPointVisible(point,
+                    xAxisZoom = this.referenceXAxis().getCurrentZoom(this.calculateSpacing()),
+                    yAxisZoom = this.referenceYAxis().getCurrentZoom(this.calculateSpacing())
+                  ) {
+                    // Return if the point is visible in the current zoom
+                    return (
+                      $Object.isNil(point.x) === false &amp;&amp;
+                      $Object.isNil(point.y) === false &amp;&amp;
+                      point.x &gt;= xAxisZoom.min &amp;&amp;
+                      point.x &lt;= xAxisZoom.max &amp;&amp;
+                      point.y &gt;= yAxisZoom.min &amp;&amp;
+                      point.y &lt;= yAxisZoom.max
+                    );
+                  }
+                };
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

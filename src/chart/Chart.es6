@@ -10,14 +10,15 @@ import Drawing from '../drawing/Drawing.es6';
  * A container must be defined in the config options in order for the chart to be rendered to the page.
  *
  * @example
- *
+ *   ```
  *   // Create a chart sending in the id of the container
  *   let chart = new EJSC['sparkline'].Chart('chart-container', { ... });
  *
  *   // Create a chart sending in a reference to the container's element
  *   let chart = new EJSC['sparkline'].Chart(document.getElementById('chart-container'), { ... });
+ *   ```
  *
- * @class EJSC['sparkline'].Chart
+ * @class EJSC.Chart
  * @extends EJSC.Drawing
  * @constructor
  * @param {Element|String} container The container to render the chart in
@@ -30,7 +31,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Defines the bottom axis for the chart.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the bottom axis by sending in the config options
@@ -42,6 +43,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *     // Define the bottom axis by sending in an Axis class
    *     axisBottom: new EJSC['sparkline'].LinearAxis({ ... })
    *   });
+   *   ```
    *
    * @attribute {EJSC['sparkline'].Axis|Object} axisBottom
    * @default null
@@ -79,7 +81,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Defines the left axis for the chart.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the left axis by sending in the config options
@@ -91,6 +93,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *     // Define the left axis by sending in an Axis class
    *     axisLeft: new EJSC['sparkline'].LinearAxis({ ... })
    *   });
+   *   ```
    *
    * @attribute {EJSC['sparkline'].Axis|Object} axisLeft
    * @default null
@@ -128,7 +131,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Defines the right axis for the chart.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the right axis by sending in the config options
@@ -140,6 +143,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *     // Define the right axis by sending in an Axis class
    *     axisRight: new EJSC['sparkline'].LinearAxis({ ... })
    *   });
+   *   ```
    *
    * @attribute {EJSC['sparkline'].Axis|Object} axisRight
    * @default null
@@ -177,7 +181,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Defines the top axis for the chart.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the top axis by sending in the config options
@@ -189,6 +193,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *     // Define the top axis by sending in an Axis class
    *     axisTop: new EJSC['sparkline'].LinearAxis({ ... })
    *   });
+   *   ```
    *
    * @attribute {EJSC['sparkline'].Axis|Object} axisTop
    * @default null
@@ -225,12 +230,13 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Defines the color of the chart area background.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Set the background color of the chart to white (using hex)
    *     background: '#ffffff'
    *   });
+   *   ```
    *
    * @attribute String background
    * @default 'rgba(0, 0, 0, 0)'
@@ -258,12 +264,13 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Defines the default colors to apply to new series.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the default colors as [red, green, blue]
    *     colors: ['rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)']
    *   });
+   *   ```
    *
    * @attribute {Array} colors
    * @default [...]
@@ -292,12 +299,13 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Defines the title to display at the top of the chart.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Define the title as 'My Chart'
    *     title: 'My Chart'
    *   });
+   *   ```
    *
    * @attribute {String} title
    * @default 'Emprise JavaScript Charts'
@@ -327,7 +335,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Defines the styles for the titlebar.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container', {
    *     // Center align the title
@@ -335,6 +343,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *       align: 'center'
    *     }
    *   }};
+   *   ```
    *
    * @attribute {Object} titlebar
    * @property {String} titlebar.align The horizontal alignment of the text in the titlebar (Default: 'left')
@@ -522,7 +531,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Adds a new series to the chart and (optionally) redraws the chart.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart(document.getElementById('chart-container'));
    *
@@ -530,6 +539,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *   let series = chart.addSeries(
    *     new EJSC['sparkline'].ScatterSeries(...)
    *   );
+   *   ```
    *
    * @method addSeries
    * @param {EJSC['sparkline'].Series} series The series to add to the chart
@@ -564,7 +574,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    * Redraws the chart.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = new EJSC['sparkline'].Chart('chart-container');
    *
@@ -582,6 +592,7 @@ export default EJSC['sparkline'].Chart = class Chart extends Drawing {
    *
    *   // Redraw the chart
    *   chart.redraw();
+   *   ```
    *
    * @method redraw
    * @since @todo

@@ -1,6 +1,10 @@
 import { identity } from './_Helpers.es6';
 
 // TODO: $Array documentation
+/**
+ * @class $Array
+ * @private
+ */
 let $Array = (array) => new class {
   // constructor
   constructor($array) {
@@ -12,9 +16,10 @@ let $Array = (array) => new class {
    * The predicate is invoked with three arguments: (value, key, array).
    *
    * @example
-   *
+   *   ```
    *   $Array([0, 1, 2]).filter((value, key, array) => value > 0).result;
    *   // => [1, 2]
+   *   ```
    *
    * @method filter
    * @param {Function} predicate The function invoked per iteration
@@ -35,9 +40,10 @@ let $Array = (array) => new class {
    * Iteratee functions may exit iteration early by explicitly returning false.
    *
    * @example
-   *
+   *   ```
    *   $Array([1, 2]).forEach((value, key, array) => console.log(value));
    *   // => Logs '1' then '2'.
+   *   ```
    *
    * @method forEach
    * @param {Function} predicate The function invoked per iteration
@@ -62,9 +68,10 @@ let $Array = (array) => new class {
    * Checks if the given value exists in the given array.
    *
    * @example
-   *
+   *   ```
    *   $Array([1, 2, 3]).includes(1);
    *   // => true
+   *   ```
    *
    * @method includes
    * @param {*} valueToFind The value to search for
@@ -104,12 +111,13 @@ let $Array = (array) => new class {
    * Transforms an array into a new accumulator array.
    *
    * @example
-   *
+   *   ```
    *   $Array([2, 3, 4]).transform((result, n) => {
    *     result.push(n *= n);
    *     return n % 2 == 0;
    *   }, []).result;
    *   // => [4, 9]
+   *   ```
    *
    * @method transform
    * @param {Function} [predicate=identity] The function invoked per iteration
@@ -132,9 +140,10 @@ let $Array = (array) => new class {
    * Creates an array excluding all given values using SameValueZero for equality comparisons.
    *
    * @example
-   *
+   *   ```
    *   $Array([2, 1, 2, 3]).without(1, 2).result;
    *   // => [3]
+   *   ```
    *
    * @method without
    * @param {*} [...values] The values to exclude
@@ -155,9 +164,10 @@ let $Array = (array) => new class {
  * The predicate is invoked with three arguments: (value, key, array).
  *
  * @example
- *
+ *   ```
  *   $Array.filter([0, 1, 2], (value, key, array) => value > 0);
  *   // => [1, 2]
+ *   ```
  *
  * @static
  * @method filter
@@ -174,9 +184,10 @@ $Array.filter = (array, predicate = identity) => array && $Array(array).filter(p
  * Iteratee functions may exit iteration early by explicitly returning false.
  *
  * @example
- *
+ *   ```
  *   $Array.forEach([1, 2], (value, key, array) => console.log(value));
  *   // => Logs '1' then '2'.
+ *   ```
  *
  * @static
  * @method forEach
@@ -194,9 +205,10 @@ $Array.first = (array) => array && $Array(array).first();
  * Checks if the given value exists in the given array.
  *
  * @example
- *
+ *   ```
  *   $Array.includes([1, 2, 3], 1);
  *   // => true
+ *   ```
  *
  * @static
  * @method includes
@@ -221,12 +233,13 @@ $Array.sort = (array, predicate = identity) => array && $Array(array).sort(predi
  * Transforms an array into a new accumulator array.
  *
  * @example
- *
+ *   ```
  *   $Array.transform([2, 3, 4], (result, n) => {
  *     result.push(n *= n);
  *     return n % 2 == 0;
  *   }, []);
  *   // => [4, 9]
+ *   ```
  *
  * @method transform
  * @param {Array} array The array to iterate over
@@ -241,9 +254,10 @@ $Array.transform = (array, predicate = identity, accumulator = []) => array && $
  * Creates an array excluding all given values using SameValueZero for equality comparisons.
  *
  * @example
- *
+ *   ```
  *   $Array.without([2, 1, 2, 3], 1, 2);
  *   // => [3]
+ *   ```
  *
  * @static
  * @method without

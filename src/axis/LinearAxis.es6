@@ -8,15 +8,15 @@ import Axis from './base/Axis.es6';
  * LinearAxis is an axis using a linear scale.
  *
  * @example
- *
+ *   ```
  *   // TODO:
+ *   ```
  *
- * @class EJSC['sparkline'].LinearAxis
- * @extends EJSC['sparkline'].Axis
+ * @class EJSC.LinearAxis
+ * @extends EJSC.Axis
  * @constructor
  * @param {Object} options The config options
- * @private
- * @since // TODO:
+ * @since @todo
  */
 export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
   /* not-sparkline:start */
@@ -29,7 +29,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    * @param {Object} point2 The second point
    * @param {Number} coordinate The coordinate to cross at
    * @return {Object} The crossed coordinates
-   * @since // TODO:
+   * @since @todo
    */
   calculateCross(point1, point2, coordinate) {
     // Define some local variables
@@ -59,7 +59,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    *
    * @method calculateExtremes
    * @private
-   * @since // TODO:
+   * @since @todo
    */
   calculateExtremes() {
     // Grab some local pointers
@@ -120,7 +120,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    * @method calculateTicks
    * @private
    * @return {Array} The list of ticks
-   * @since // TODO:
+   * @since @todo
    */
   calculateTicks() {
     // Grab some local pointers
@@ -166,7 +166,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    * @private
    * @param {Number} pixel The pixel to convert
    * @return {Number} The point
-   * @since // TODO:
+   * @since @todo
    */
   convertPixelToPoint(pixel) {
     // Grab some local pointers
@@ -229,7 +229,7 @@ export default EJSC['sparkline'].LinearAxis = class LinearAxis extends Axis {
    * @private
    * @param {Number} point The point to convert
    * @return {Number} The pixel
-   * @since // TODO:
+   * @since @todo
    */
   convertPointToPixel(point) {
     // Grab some local pointers

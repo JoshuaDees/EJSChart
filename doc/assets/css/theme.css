@@ -1,0 +1,167 @@
+/* Global Styles */
+
+body,
+code,
+.form-control {
+  font-size: 14px;
+}
+
+h1, .h1 {
+  font-size: 24px !important;
+  margin-bottom: 0;
+}
+
+h2, .h2, h3, .h3 {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+h4, .h4 {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+h5, .h5, h6, .h6 {
+  font-size: 14px;
+}
+
+h5, .h5 {
+  margin-bottom: 0;
+}
+
+h6, .h6 {
+  margin-bottom: 1rem;
+}
+
+code p:last-child {
+  margin-bottom: 0;
+}
+
+nav, .nav {
+  margin-bottom: 15px;
+}
+
+small, .small {
+  font-size: 60%;
+}
+
+/* Alerts */
+
+.alert label {
+  margin-bottom: 0;
+  margin-left: 15px;
+}
+
+/* Badges */
+
+.badge {
+  font-weight: 400;
+}
+
+/* Cards */
+
+.card {
+  margin-bottom: 15px;
+}
+
+.card > .list-group-flush {
+  border-top: 0 !important;
+}
+
+.card .card-body .card:last-child,
+.card .card-body ul:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists */
+
+.list-unstyled label {
+  float: left;
+  margin-bottom: 0;
+  width: 120px;
+}
+
+@media (min-width: 576px) {
+  .form-inline .form-control {
+    min-width: 240px;
+  }
+}
+
+/* Items */
+
+.item {
+  padding-left: 35px;
+  position: relative;
+}
+
+.item .toggle {
+  display: block;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+}
+
+.item .description p {
+  margin-bottom: 0;
+}
+
+.item .details .args .arg:not(:last-child)::after {
+  content: ",";
+}
+
+.item .meta ul.list-unstyled:last-child {
+  margin-bottom: 15px;
+}
+
+/* Items - Collapsed */
+
+.item .toggle::after {
+  content: "\25B7";
+}
+
+.item .description {
+  height: 21px;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.item .example,
+.item .meta,
+.item .params,
+.item .returns,
+.item .default {
+  display: none;
+}
+
+/* Items - Expanded */
+
+.item.expanded .toggle::after {
+  content: "\25BD";
+}
+
+.item.expanded .description,
+.item.expanded .example {
+  height: auto;
+  margin-bottom: 1rem;
+  overflow: visible;
+}
+
+.item.expanded .example,
+.item.expanded .meta,
+.item.expanded .params,
+.item.expanded .returns,
+.item.expanded .default {
+  display: block;
+}
+
+/* Pretty-Print */
+
+.prettyprint {
+  background-color: transparent;
+  border: 0 none;
+  margin-bottom: 0;
+}
+
+.prettyprint.linenums ol.linenums {
+  padding: 0;
+}

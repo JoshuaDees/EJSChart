@@ -46,7 +46,7 @@ export default EJSC.Inheritable = class Inheritable {
    * Applies new options to the class.
    *
    * @example
-   *
+   *   ```
    *   // Create a class
    *   let myClass = new EJSC.SomeClass();
    *
@@ -54,6 +54,7 @@ export default EJSC.Inheritable = class Inheritable {
    *   myClass.apply({
    *     newProperty: 'newValue'
    *   });
+   *   ```
    *
    * @method apply
    * @param {Object} [options={}] The options to apply

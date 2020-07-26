@@ -7,9 +7,10 @@ import Inheritable from '../class/Inheritable.es6';
  * Defines a drawing that uses an engine (Canvas, SVG, VML, etc.) to draw on the page.
  *
  * @example
- *
+ *   ```
  *   // Create a chart sending in the id of the container
  *   let chart = new EJSC['.sparkline'].Chart('#chart-container');
+ *   ```
  *
  * @class EJSC.Drawing
  * @extends EJSC.Inheritable
@@ -23,12 +24,13 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
    * Defines the container element to render the drawing in.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart sending in the id of the container
    *   let chart = new EJSC['.sparkline'].Chart('#chart-container');
    *
    *   // Create a chart sending in a reference to the container's element
    *   let chart = new EJSC['.sparkline'].Chart(document.getElementById('chart-container'));
+   *   ```
    *
    * @attribute {Element|String} container
    * @default null
@@ -85,8 +87,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws an arc at a point.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method arc
     * @param {Number} cx The x coordinate of the center
@@ -118,8 +121,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws an arc stemming using a control point to an end point.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method arcTo
     * @param {Number} cpx The x coordinate of the control point
@@ -163,8 +167,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Begins clippig the given area.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method beginClip
     * @param {Number} left The left coordinate of the clip area
@@ -186,8 +191,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Begins a new path.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method beginPath
     * @chainable
@@ -209,8 +215,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a bezier curve.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method bezierCurveTo
     * @param {Number} cp1x The x coordinate of the first control point
@@ -238,8 +245,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a circle on the canvas.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method circle
     * @param {Number} x The x coordinate for the center of the circle
@@ -261,8 +269,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Clears the canvas.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method clear
     * @chainable
@@ -280,8 +289,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Closes the current path.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method clear
     * @chainable
@@ -299,8 +309,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Fills and strokes the given path on the canvas.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method draw
     * @param {Object} styles The styles to apply to the fill
@@ -319,8 +330,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a ellipse.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method ellipse
     * @param {Number} x The x coordinate to start the ellipse at
@@ -343,8 +355,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Ends the current clipping of the canvas' drawing area.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method endClip
     * @chainable
@@ -362,8 +375,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Fills the given path on the canvas.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method fill
     * @param {Object} styles The styles to apply to the fill
@@ -382,8 +396,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a horizontal line to a new position.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method horizontalTo
     * @param {Number} x The x coordinate to draw to
@@ -406,8 +421,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a line between two points.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method line
     * @param {Number} x1 The x coordinate for the starting point
@@ -430,8 +446,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a line to a new position.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method lineTo
     * @param {Number} x The x coordinate to draw to
@@ -455,8 +472,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Measures the width of the given text.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method measureText
     * @param {String} text The text
@@ -473,8 +491,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Moves the pen to a new position.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method moveTo
     * @param {Number} x The x coordinate to move to
@@ -498,8 +517,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a quadratic curve.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method quadraticCurveTo
     * @param {Number} cpx The x coordinate of the control point
@@ -525,8 +545,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a rectanle on the canvas.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method rect
     * @param {Number} x The x coordinate to start at
@@ -549,8 +570,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Resizes the canvas.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method resize
     * @param {Integer} [width] The new width for the canvas
@@ -574,8 +596,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a bezier curve stemming from a control point from a previous bezier curve.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method smoothBezierCurveTo
     * @param {Number} cpx The x coordinate of the next control point
@@ -606,8 +629,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a quadratic curve stemming from a control point from a previous quadratic curve.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method smoothQuadraticCurveTo
     * @param {Number} x The end x coordinate of the curve
@@ -636,8 +660,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a stroke along the current drawing path.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method stroke
     * @param {Object} attributes The set of attributes to apply to the stroke
@@ -656,8 +681,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws text on the canvas.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method text
     * @param {String} text The text to draw on the canvas
@@ -679,8 +705,9 @@ export default EJSC.Drawing = class Drawing extends Inheritable {
     * Draws a vertical line to a new position.
     *
     * @example
-    *
+    *   ```
     *   // TODO:
+    *   ```
     *
     * @method verticalTo
     * @param {Number} y The y coordinate to draw to

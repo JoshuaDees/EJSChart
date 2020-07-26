@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\drawing\engine\VML.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\drawing\engine\VML.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import EJSC from &#x27;../../EJSC.es6&#x27;;
+                // import Drawing from &#x27;../Drawing.es6&#x27;;
+                import Engine from &#x27;./base/Engine.es6&#x27;;
+                
+                /**
+                 * Defines the VML rendering engine for EJSCharts.
+                 *
+                 * @class EJSC.VML
+                 * @constructor
+                 * @private
+                 * @extends EJSC.Engine
+                 * @since @todo
+                 */
+                export default EJSC.VML = class VML extends Engine {
+                  /**
+                   * Draws an arc at a point.
+                   *
+                   * @method arc
+                   * @param {Number} cx The x coordinate of the center
+                   * @param {Number} cy The y coordinate of the center
+                   * @param {Number} radius The radius of the arc
+                   * @param {Number} startAngle The start angle (in radians)
+                   * @param {Number} endAngle The end angle (in radians)
+                   * @param {Boolean} counterClockwise Whether to draw this counter-clockwise
+                   * @since @todo
+                   */
+                  arc(/* cx, cy, r, startAngle, endAngle, counterClockwise */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws an arc stemming using a control point to an end point.
+                   *
+                   * @method arcTo
+                   * @param {Number} cpx The x coordinate of the control point
+                   * @param {Number} cpy The y coordinate of the control point
+                   * @param {Number} x The x coordinate of the end point
+                   * @param {Number} y The y coordinate of the end point
+                   * @param {Number} radius The radius of the arc
+                   * @since @todo
+                   */
+                  arcTo(/* cpx, cpy, x, y, radius */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Begins clippig the given area.
+                   *
+                   * @method beginClip
+                   * @param {Number} left The left coordinate of the clip area
+                   * @param {Number} top The top coordinate of the clip area
+                   * @param {Number} width The width of the clip area
+                   * @param {Number} height The height of the clip area
+                   * @since @todo
+                   */
+                  beginClip(/* x, y, width, height */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Begins a new path.
+                   *
+                   * @method beginPath
+                   * @since @todo
+                   */
+                  beginPath() {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a bezier curve.
+                   *
+                   * @method bezierCurveTo
+                   * @param {Number} cp1x The x coordinate of the first control point
+                   * @param {Number} cp1y The y coordinate of the first control point
+                   * @param {Number} cp2x The x coordinate of the second control point
+                   * @param {Number} cp2y The y coordinate of the second control point
+                   * @param {Number} x The end x coordinate of the curve
+                   * @param {Number} y The end y coordinate of the curve
+                   * @since @todo
+                   */
+                  bezierCurveTo(/* cp1x, cp1y, cp2x, cp2y, x, y */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a circle on the canvas.
+                   *
+                   * @method circle
+                   * @param {Number} x The x coordinate for the center of the circle
+                   * @param {Number} y The y coordinate for the center of the circle
+                   * @param {Number} radius The radius (in px) of the circle
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  circle(/* cx, cy, radius, styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Clears the canvas.
+                   *
+                   * @method clear
+                   * @since @todo
+                   */
+                  clear() {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Closes the current path.
+                   *
+                   * @method clear
+                   * @since @todo
+                   */
+                  closePath() {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Fills and strokes the given path on the canvas.
+                   *
+                   * @method draw
+                   * @param {Array} path The coordinates of the path
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  draw(/* path, styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a ellipse.
+                   *
+                   * @method ellipse
+                   * @param {Number} x The x coordinate to start the ellipse at
+                   * @param {Number} y The y coordinate to start the ellipse at
+                   * @param {Number} rx The x radius of the ellipse
+                   * @param {Number} ry The y radius of the ellipse
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  ellipse(/* cx, cy, rx, ry, styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Ends the current clipping of the canvas&#x27; drawing area.
+                   *
+                   * @method endClip
+                   * @since @todo
+                   */
+                  endClip() {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Fills the given path on the canvas.
+                   *
+                   * @method fill
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  fill(/* styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a horizontal line to a new position.
+                   *
+                   * @method horizontalTo
+                   * @param {Number} x The x coordinate to draw to
+                   * @since @todo
+                   */
+                  horizontalTo(/* x */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a line between two points.
+                   *
+                   * @method line
+                   * @param {Number} x1 The x coordinate for the starting point
+                   * @param {Number} y1 The y coordinate for the starting point
+                   * @param {Number} x2 The x coordinate for the ending point
+                   * @param {Number} y2 The y coordinate for the ending point
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  line(/* x1, y1, x2, y2, styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a line to a new position.
+                   *
+                   * @method lineTo
+                   * @param {Number} x The x coordinate to draw to
+                   * @param {Number} y The y coordinate to draw to
+                   * @since @todo
+                   */
+                  lineTo(/* x, y */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Measures the width of the given text.
+                   *
+                   * @method measureText
+                   * @param {String} text The text
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  measureText(/* text, styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Moves the pen to a new position.
+                   *
+                   * @method moveTo
+                   * @param {Number} x The x coordinate to move to
+                   * @param {Number} y The y coordinate to move to
+                   * @since @todo
+                   */
+                  moveTo(/* x, y */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a quadratic curve.
+                   *
+                   * @method quadraticCurveTo
+                   * @param {Number} cpx The x coordinate of the control point
+                   * @param {Number} cpy The y coordinate of the control point
+                   * @param {Number} x The end x coordinate of the curve
+                   * @param {Number} y The end y coordinate of the curve
+                   * @since @todo
+                   */
+                  quadraticCurveTo(/* cpx, cpy, x, y */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a rectanle on the canvas.
+                   *
+                   * @method rect
+                   * @param {Number} x The x coordinate to start at
+                   * @param {Number} y The y coordinate to start at
+                   * @param {Number} width The width of the rectangle
+                   * @param {Number} height The height of the rectangle
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  rect(/* x, y, width, height, styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Resizes the canvas.
+                   *
+                   * @method resize
+                   * @param {Integer} width The new width for the canvas
+                   * @param {Integer} height The new height for the canvas
+                   * @since @todo
+                   */
+                  resize(/* width, height */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a stroke along the current drawing path.
+                   *
+                   * @method stroke
+                   * @param {Array} path The path
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  stroke(/* styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws text on the canvas.
+                   *
+                   * @method text
+                   * @param {String} text The text to draw on the canvas
+                   * @param {Number} x The x coordinate to draw the text at
+                   * @param {Number} y The y coordinate to draw the text at
+                   * @param {Object} styles The styles to apply
+                   * @since @todo
+                   */
+                  text(/* text, x, y, styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws a vertical line to a new position.
+                   *
+                   * @method verticalTo
+                   * @param {Number} y The y coordinate to draw to
+                   * @since @todo
+                   */
+                  verticalTo(/* y */) {
+                    // TODO:
+                  }
+                
+                  // constructor
+                  constructor() {
+                    // super
+                    super();
+                
+                    // TODO:
+                  }
+                
+                  /**
+                   * Draws the given path.
+                   *
+                   * @method drawPath
+                   * @private
+                   * @param {Array} path The path to draw
+                   * @since @todo
+                   */
+                  drawPath(/* path, styles */) {
+                    // TODO:
+                  }
+                
+                  /**
+                   * Applies the given styles to the drawing context.
+                   *
+                   * @method stylize
+                   * @private
+                   * @param {Object} styles The styles to apply
+                   * @return {Object}
+                   * @since @todo
+                   */
+                  stylize(/* styles */) {
+                    // TODO:
+                  }
+                };
+                
+                /**
+                 * Determines if the browser supports VML.
+                 *
+                 * @method isSupported
+                 * @static
+                 * @private
+                 * @return {Boolean} If the browser supports VML
+                 * @since @todo
+                 */
+                EJSC.VML.isSupported = () =&gt; {
+                  // Define the support variable
+                  let supportsVML = false;
+                
+                  // Build a container div and insert a shape into it
+                  let div = document.body.appendChild(document.createElement(&#x27;div&#x27;));
+                  div.innerHTML = &#x27;&lt;v:shape id=&quot;vml_flag1&quot; adj=&quot;1&quot; /&gt;&#x27;;
+                
+                  // Grab the shape and set it&#x27;s behavior
+                  let shape = div.firstChild;
+                  shape.style.behavior = &#x27;url(#default#VML)&#x27;;
+                
+                  // Determine if VML is supported
+                  supportsVML = (shape ? typeof shape.adj === &#x27;object&#x27; : true);
+                
+                  // Remove the un-needed node
+                  div.parentNode.removeChild(div);
+                
+                  // Return if VML is supported
+                  return supportsVML;
+                };
+                
+                // Register the engine
+                // EJSC.Drawing.register(&#x27;VML&#x27;, EJSC.VML);
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

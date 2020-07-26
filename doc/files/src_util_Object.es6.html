@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\util\Object.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\util\Object.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import { identity, noop } from &#x27;./_Helpers.es6&#x27;;
+                import $Array from &#x27;./Array.es6&#x27;;
+                
+                // TODO: $Object documentation
+                /**
+                 * @class $Object
+                 * @private
+                 */
+                let $Object = (object) =&gt; new class {
+                  // constructor
+                  constructor($object) {
+                    this.result = $object;
+                  }
+                
+                  /**
+                   * Iterates over elements of object, returning an array of all elements predicate returns truthy for.
+                   * The predicate is invoked with three arguments: (value, key, object).
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   $Object({ a: 0, b: 1, c: 2 }).filter((value, key, object) =&gt; value &gt; 0).result;
+                   *   // =&gt; { b: 1, c: 2 }
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method filter
+                   * @param {Function} predicate The function invoked per iteration
+                   * @chainable
+                   * @since @todo
+                   */
+                  filter(predicate = identity) {
+                    // Use Object.entries to convert to an array, then use the built in filter method
+                    this.result = Object.entries(this.result)
+                      .filter(([key, value]) =&gt; predicate(value, key, this.result))
+                      .reduce((accumulator, [key, value]) =&gt; {
+                        accumulator[key] = value;
+                        return accumulator;
+                      }, {});
+                
+                    // Chain
+                    return this;
+                  }
+                
+                  /**
+                   * Iterates over elements of object and invokes iteratee for each element.
+                   * The iteratee is invoked with three arguments: (value, key, object).
+                   * Iteratee functions may exit iteration early by explicitly returning false.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   $Object({ a: 1, b: 2 }).forEach((value, key, object) =&gt; console.log(key));
+                   *   // =&gt; Logs &#x27;a&#x27; then &#x27;b&#x27; (iteration order is not guaranteed).
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method forEach
+                   * @param {Function} predicate The function invoked per iteration
+                   * @since @todo
+                   */
+                  forEach(predicate) {
+                    // Use Object.entries to convert to an array, then use the built in forEach method
+                    Object.entries(this.result)
+                      .forEach(([key, value]) =&gt; predicate(value, key, this.result));
+                
+                    // Chain
+                    return this;
+                  }
+                
+                  // TODO: Object.protype.getProperty documentation
+                  getProperty(path) {
+                    let value = null;
+                
+                    if ($Object.has(this.result, path)) {
+                      // Define some local variables
+                      path = ($Object.isString(path) ? path.replace(/[[\]]/g, &#x27;&#x27;).split(&#x27;.&#x27;) : path);
+                      value = this.result;
+                
+                      // Loop through each of the parts of the path
+                      $Array(path).forEach(step =&gt; {
+                        // Move to the next piece
+                        value = value[step];
+                      });
+                    }
+                
+                    // Return the final value
+                    return value;
+                  }
+                
+                  /**
+                   * Checks if path is a direct property of object.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   $Object({ a: { b: 2 } }).has(&#x27;a&#x27;);
+                   *   // =&gt; true
+                   *
+                   *   $Object({ a: { b: 2 } }).has(&#x27;a.b&#x27;);
+                   *   // =&gt; true
+                   *
+                   *   $Object({ a: { b: 2 } }).has([&#x27;a&#x27;, &#x27;b&#x27;]);
+                   *   // =&gt; true
+                   *
+                   *   $Object({ a: { b: 2 } }).has(&#x27;c&#x27;);
+                   *   // =&gt; false
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method has
+                   * @param {Array|String} path The path to check
+                   * @return {Boolean} If path exists
+                   * @since @todo
+                   */
+                  has(path) {
+                    // Make sure the path is in array form
+                    path = ($Object.isString(path) ? path.replace(/[[\]]/g, &#x27;&#x27;).split(&#x27;.&#x27;) : path);
+                
+                    // Define some local variables
+                    let owner = this.result;
+                    let has = true;
+                
+                    // Loop through each of the parts of the path
+                    $Array(path).forEach(step =&gt; {
+                      // If the next step exists
+                      if (!$Object.isNil(owner[step])) {
+                        // Move to the next piece
+                        owner = owner[step];
+                
+                        // Return true to continue the loop
+                        return true;
+                      }
+                
+                      // If the next step doesn&#x27;t exist
+                      else {
+                        // Mark has as false
+                        has = false;
+                
+                        // Return false to stop the loop
+                        return false;
+                      }
+                    });
+                
+                    // Rreturn if the object has the path
+                    return has;
+                  }
+                
+                  // TODO: Object.protype.invoke documentation
+                  invoke(path, ...args) {
+                    let steps = ($Object.isString(path) ? path.replace(/[[\]]/g, &#x27;&#x27;).split(&#x27;.&#x27;) : path);
+                    let method = $Object.getProperty(this.result, path);
+                    let reference = $Object.getProperty(this.result, $Array.slice(steps, 0, steps.length - 1));
+                
+                    if ($Object.isFunction(method)) {
+                      return method.apply(reference, args);
+                    }
+                
+                    return undefined;
+                  }
+                }(object);
+                
+                /**
+                 * Iterates over elements of object, returning an array of all elements predicate returns truthy for.
+                 * The predicate is invoked with three arguments: (value, key, object).
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.filter({ a: 0, b: 1, c: 2 }, (value, key, object) =&gt; value &gt; 0);
+                 *   // =&gt; { b: 1, c: 2 }
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method filter
+                 * @param {Object} object The object to iterate over
+                 * @param {Function} [predicate=identity] The function invoked per iteration
+                 * @return {Object} The filtered values
+                 * @since @todo
+                 */
+                $Object.filter = (object, predicate = identity) =&gt; object &amp;&amp; $Object(object).filter(predicate).result;
+                
+                /**
+                 * Iterates over elements of object and invokes iteratee for each element.
+                 * The iteratee is invoked with three arguments: (value, key, object).
+                 * Iteratee functions may exit iteration early by explicitly returning false.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.forEach({ a: 1, b: 2 }, (value, key, object) =&gt; console.log(key));
+                 *   // =&gt; Logs &#x27;a&#x27; then &#x27;b&#x27; (iteration order is not guaranteed).
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method forEach
+                 * @param {Object} object The object to iterate over
+                 * @param {Function} [predicate=identity] The function invoked per iteration
+                 * @since @todo
+                 */
+                $Object.forEach = (object, predicate = identity) =&gt; object &amp;&amp; $Object(object).forEach(predicate);
+                
+                // TODO: Object.getProperty documentation
+                $Object.getProperty = (object, path) =&gt; object &amp;&amp; $Object(object).getProperty(path);
+                
+                /**
+                 * Checks if path is a direct property of object.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.has({ a: { b: 2 } }, &#x27;a&#x27;);
+                 *   // =&gt; true
+                 *
+                 *   $Object.has({ a: { b: 2 } }, &#x27;a.b&#x27;);
+                 *   // =&gt; true
+                 *
+                 *   $Object.has({ a: { b: 2 } }, [&#x27;a&#x27;, &#x27;b&#x27;]);
+                 *   // =&gt; true
+                 *
+                 *   $Object.has({ a: { b: 2 } }, &#x27;c&#x27;);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method has
+                 * @param {Object} object The object to query
+                 * @param {Array|String} path The path to check
+                 * @return {Boolean} If path exists
+                 * @since @todo
+                 */
+                $Object.has = (object, path) =&gt; object &amp;&amp; $Object(object).has(path);
+                
+                /**
+                 * Checks if value is likely an arguments object.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isArguments(function() { return arguments; }());
+                 *   // =&gt; true
+                 *
+                 *   $Object.isArguments([1, 2, 3]);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isArguments
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is an arguments array
+                 * @since @todo
+                 */
+                $Object.isArguments = (value) =&gt; !$Object.isNil(value) &amp;&amp; value.hasOwnProperty(&#x27;callee&#x27;) &amp;&amp; !value.propertyIsEnumerable(&#x27;callee&#x27;);
+                
+                /**
+                 * Checks if value is classified as an Array object.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isArray([1, 2, 3]);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isArray(document.body.children);
+                 *   // =&gt; false
+                 *
+                 *   $Object.isArray(&#x27;abc&#x27;);
+                 *   // =&gt; false
+                 *
+                 *   $Object.isArray(function() {});
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isArray
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is an array
+                 * @since @todo
+                 */
+                $Object.isArray = (value) =&gt; !$Object.isNil(value) &amp;&amp; (value instanceof Array &amp;&amp; !$Object.isArguments(value));
+                
+                /**
+                 * Checks if value is likely a DOM element.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isElement(document.body);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isElement(&#x27;&lt;body&gt;&#x27;);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isElement
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is a DOM element
+                 * @since @todo
+                 */
+                $Object.isElement = (value) =&gt; !$Object.isNil(value) &amp;&amp; $Object.isObjectLike(value) &amp;&amp; value.nodeType === 1 &amp;&amp; !$Object.isPlainObject(value);
+                
+                /**
+                 * Checks if value is classified as a Function object.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isFunction(function() {});
+                 *   // =&gt; true
+                 *
+                 *   $Object.isFunction(/abc/);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isFunction
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is a function
+                 * @since @todo
+                 */
+                $Object.isFunction = (value) =&gt; !$Object.isNil(value) &amp;&amp; ({}).toString.call(value) === &#x27;[object Function]&#x27;;
+                
+                /**
+                 * Checks if value is null or undefined.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isNil(null);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isNil(void 0);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isNil(NaN);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isNil
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is nullish.
+                 * @since @todo
+                 */
+                $Object.isNil = (value) =&gt; $Object.isNull(value) || $Object.isUndefined(value);
+                
+                /**
+                 * Checks if value is null.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isNull(null);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isNull(void 0);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isNull
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is null.
+                 * @since @todo
+                 */
+                $Object.isNull = (value) =&gt; value === null;
+                
+                // TODO: $Object.isNumber documentation
+                $Object.isNumber = (value) =&gt; !$Object.isNil(value) &amp;&amp; (typeof value === &#x27;number&#x27; || Object.prototype.toString.call(value) === &#x27;[object Number]&#x27;);
+                
+                /**
+                 * Checks if value is the language type of Object.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isObject({});
+                 *   // =&gt; true
+                 *
+                 *   $Object.isObject([1, 2, 3]);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isObject(function() {});
+                 *   // =&gt; true
+                 *
+                 *   $Object.isObject(null);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isObject
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is an object.
+                 * @since @todo
+                 */
+                $Object.isObject = (value) =&gt; !$Object.isNil(value) &amp;&amp; (typeof value === &#x27;object&#x27; || typeof value === &#x27;function&#x27;);
+                
+                /**
+                 * Checks if value is object-like.
+                 * A value is object-like if it&#x27;s not null and has a typeof result of &quot;object&quot;.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isObjectLike({});
+                 *   // =&gt; true
+                 *
+                 *   $Object.isObjectLike([1, 2, 3]);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isObjectLike(function() {});
+                 *   // =&gt; false
+                 *
+                 *   $Object.isObjectLike(null);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isObjectLike
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is object-like.
+                 * @since @todo
+                 */
+                $Object.isObjectLike = (value) =&gt; !$Object.isNil(value) &amp;&amp; typeof value === &#x27;object&#x27;;
+                
+                /**
+                 * Checks if value is a plain object.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isPlainObject(new function() {}());
+                 *   // =&gt; false
+                 *
+                 *   $Object.isPlainObject([1, 2, 3]);
+                 *   // =&gt; false
+                 *
+                 *   $Object.isPlainObject({ x: 0, y: 0 });
+                 *   // =&gt; true
+                 *
+                 *   $Object.isPlainObject(Object.create(null));
+                 *   // =&gt; true
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isPlainObject
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is a plain object
+                 * @since @todo
+                 */
+                $Object.isPlainObject = (value) =&gt; !$Object.isNil(value) &amp;&amp; value.constructor === Object;
+                
+                /**
+                 * Checks if the variable is a string.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isString(&#x27;abc&#x27;);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isString(1);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isString
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is a string
+                 * @since @todo
+                 */
+                $Object.isString = (value) =&gt; !$Object.isNil(value) &amp;&amp; typeof value === &#x27;string&#x27;;
+                
+                /**
+                 * Checks if value is undefined.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Object.isUndefined(void 0);
+                 *   // =&gt; true
+                 *
+                 *   $Object.isUndefined(null);
+                 *   // =&gt; false
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method isUndefined
+                 * @param {*} value The value to test
+                 * @return {Boolean} If value is undefined.
+                 * @since @todo
+                 */
+                $Object.isUndefined = (value) =&gt; value === noop();
+                
+                /**
+                 * This method is like $Object.assign except that it recursively merges own and inherited
+                 * enumerable string keyed properties of source objects into the destination object.
+                 * Source properties that resolve to undefined are skipped if a destination value exists.
+                 * Array and plain object properties are merged recursively.
+                 * Other objects and value types are overridden by assignment.
+                 * Source objects are applied from left to right.
+                 * Subsequent sources overwrite property assignments of previous sources.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   // @todo
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method merge
+                 * @param {Object} object The destination object
+                 * @param {Object} ...sources The source objects
+                 * @return {Object} The destination object with merged values
+                 * @since @todo
+                 */
+                $Object.merge = (object, ...sources) =&gt; {
+                  // Loop through each of the sources
+                  $Array(sources)
+                    .without(null, undefined)
+                    .forEach(source =&gt; {
+                      // Loop through each of the properties of the current source
+                      $Object(source).forEach((value, key) =&gt; {
+                        // Deep copy the property from the source to the destination
+                        if ($Object.isArray(value)) {
+                          $Object.merge(object[key] = object[key] || [], value);
+                        }
+                        else if ($Object.isPlainObject(value)) {
+                          $Object.merge(object[key] = object[key] || {}, value);
+                        }
+                        else {
+                          object[key] = ($Object.isUndefined(value) ? object[key] : value);
+                        }
+                      });
+                    });
+                
+                  // Return the destination object
+                  return object;
+                };
+                
+                export default $Object;
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

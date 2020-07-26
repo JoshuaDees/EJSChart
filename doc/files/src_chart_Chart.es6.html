@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\chart\Chart.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\chart\Chart.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import $Array from &#x27;../util/Array.es6&#x27;;
+                import $Element from &#x27;../util/Element.es6&#x27;;
+                import $Object from &#x27;../util/Object.es6&#x27;;
+                import $String from &#x27;../util/String.es6&#x27;;
+                import EJSC from &#x27;../EJSC.es6&#x27;;
+                import Drawing from &#x27;../drawing/Drawing.es6&#x27;;
+                
+                /**
+                 * Defines a basic chart that can display a variety of series types on it.
+                 * A container must be defined in the config options in order for the chart to be rendered to the page.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   // Create a chart sending in the id of the container
+                 *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, { ... });
+                 *
+                 *   // Create a chart sending in a reference to the container&#x27;s element
+                 *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(document.getElementById(&#x27;chart-container&#x27;), { ... });
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @class EJSC.Chart
+                 * @extends EJSC.Drawing
+                 * @constructor
+                 * @param {Element|String} container The container to render the chart in
+                 * @param {Object} [options] The config options to apply to the chart
+                 * @since @todo
+                 */
+                export default EJSC[&#x27;sparkline&#x27;].Chart = class Chart extends Drawing {
+                  /* not-sparkline:start */
+                  /**
+                   * Defines the bottom axis for the chart.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the bottom axis by sending in the config options
+                   *     axisBottom: { ... }}
+                   *   });
+                   *
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the bottom axis by sending in an Axis class
+                   *     axisBottom: new EJSC[&#x27;sparkline&#x27;].LinearAxis({ ... })
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {EJSC[&#x27;sparkline&#x27;].Axis|Object} axisBottom
+                   * @default null
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getAxisBottom() {
+                    // Return the current axisBottom
+                    return this.axisBottom;
+                  }
+                
+                  // setter
+                  setAxisBottom(axisBottom) {
+                    // Make sure the axis is actually an axis
+                    if (!(axisBottom instanceof EJSC[&#x27;sparkline&#x27;].Axis)) {
+                      axisBottom = new EJSC[&#x27;sparkline&#x27;].LinearAxis(axisBottom);
+                    }
+                
+                    // Prepare the axis
+                    axisBottom.prepare(this, &#x27;bottom&#x27;);
+                
+                    // Store the new axisBottom
+                    this.axisBottom = axisBottom;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Defines the left axis for the chart.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the left axis by sending in the config options
+                   *     axisLeft: { ... }
+                   *   });
+                   *
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the left axis by sending in an Axis class
+                   *     axisLeft: new EJSC[&#x27;sparkline&#x27;].LinearAxis({ ... })
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {EJSC[&#x27;sparkline&#x27;].Axis|Object} axisLeft
+                   * @default null
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getAxisLeft() {
+                    // Return the current axisLeft
+                    return this.axisLeft;
+                  }
+                
+                  // setter
+                  setAxisLeft(axisLeft) {
+                    // Make sure the axis is actually an axis
+                    if (!(axisLeft instanceof EJSC[&#x27;sparkline&#x27;].Axis)) {
+                      axisLeft = new EJSC[&#x27;sparkline&#x27;].LinearAxis(axisLeft);
+                    }
+                
+                    // Prepare the axis
+                    axisLeft.prepare(this, &#x27;left&#x27;);
+                
+                    // Store the new axisLeft
+                    this.axisLeft = axisLeft;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Defines the right axis for the chart.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the right axis by sending in the config options
+                   *     axisRight: { ... }
+                   *   });
+                   *
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the right axis by sending in an Axis class
+                   *     axisRight: new EJSC[&#x27;sparkline&#x27;].LinearAxis({ ... })
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {EJSC[&#x27;sparkline&#x27;].Axis|Object} axisRight
+                   * @default null
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getAxisRight() {
+                    // Return the current axisRight
+                    return this.axisRight;
+                  }
+                
+                  // setter
+                  setAxisRight(axisRight) {
+                    // Make sure the axis is actually an axis
+                    if (!(axisRight instanceof EJSC[&#x27;sparkline&#x27;].Axis)) {
+                      axisRight = new EJSC[&#x27;sparkline&#x27;].LinearAxis(axisRight);
+                    }
+                
+                    // Prepare the axis
+                    axisRight.prepare(this, &#x27;right&#x27;);
+                
+                    // Store the new axisRight
+                    this.axisRight = axisRight;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Defines the top axis for the chart.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the top axis by sending in the config options
+                   *     axisTop: { ... }
+                   *   });
+                   *
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the top axis by sending in an Axis class
+                   *     axisTop: new EJSC[&#x27;sparkline&#x27;].LinearAxis({ ... })
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {EJSC[&#x27;sparkline&#x27;].Axis|Object} axisTop
+                   * @default null
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getAxisTop() {
+                    // Return the current axisTop
+                    return this.axisTop;
+                  }
+                
+                  // setter
+                  setAxisTop(axisTop) {
+                    // Make sure the axis is actually an axis
+                    if (!(axisTop instanceof EJSC[&#x27;sparkline&#x27;].Axis)) {
+                      axisTop = new EJSC[&#x27;sparkline&#x27;].LinearAxis(axisTop);
+                    }
+                
+                    // Prepare the axis
+                    axisTop.prepare(this, &#x27;top&#x27;);
+                
+                    // Store the new axisTop
+                    this.axisTop = axisTop;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                  /* not-sparkline:end */
+                
+                  /**
+                   * Defines the color of the chart area background.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Set the background color of the chart to white (using hex)
+                   *     background: &#x27;#ffffff&#x27;
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute String background
+                   * @default &#x27;rgba(0, 0, 0, 0)&#x27;
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getBackground() {
+                    // Return the current background
+                    return this.background;
+                  }
+                
+                  // setter
+                  setBackground(background) {
+                    // Store the new background
+                    this.background = background;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the default colors to apply to new series.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the default colors as [red, green, blue]
+                   *     colors: [&#x27;rgb(255, 0, 0)&#x27;, &#x27;rgb(0, 255, 0)&#x27;, &#x27;rgb(0, 0, 255)&#x27;]
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Array} colors
+                   * @default [...]
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getColors() {
+                    // Return the current colors
+                    return this.colors;
+                  }
+                
+                  // setter
+                  setColors(colors) {
+                    // Store the new colors
+                    this.colors = colors;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Defines the title to display at the top of the chart.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Define the title as &#x27;My Chart&#x27;
+                   *     title: &#x27;My Chart&#x27;
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} title
+                   * @default &#x27;Emprise JavaScript Charts&#x27;
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getTitle() {
+                    // Return the current title
+                    return this.title;
+                  }
+                
+                  // setter
+                  setTitle(title) {
+                    // Store the new title
+                    this.title = title;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Defines the styles for the titlebar.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;, {
+                   *     // Center align the title
+                   *     titlebar: {
+                   *       align: &#x27;center&#x27;
+                   *     }
+                   *   }};
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Object} titlebar
+                   * @property {String} titlebar.align The horizontal alignment of the text in the titlebar (Default: &#x27;left&#x27;)
+                   * @property {String} titlebar.baseline The vertical alignment of the text in the titlebar (Default: &#x27;middle&#x27;)
+                   * @property {String} titlebar.color The color of the text in the titlebar (Default: &#x27;rgb(102, 102, 102)&#x27;)
+                   * @property {String} titlebar.font The font of the text in the titlebar (Default: &#x27;Bold 11px Verdana&#x27;)
+                   * @property {Integer} titlebar.height The height of the titlebar (Default: 20)
+                   * @property {Integer} titlebar.lineHeight The line-height of the text in the titlebar (Default: 20)
+                   * @property {Integer} titlebar.padding The horizontal padding of the titlebar (Default: 5)
+                   * @property {Boolean} titlebar.visible If the titlebar is visible or not (Default: true)
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getTitlebar() {
+                    // Return the current titlebar
+                    return this.titlebar;
+                  }
+                
+                  // setter
+                  setTitlebar(titlebar) {
+                    // Update the current titlebar
+                    $Object.merge(this.titlebar, titlebar);
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                  /* not-sparkline:end */
+                
+                  /**
+                   * Holds the list of series attached to the chart.
+                   *
+                   * @property {Array} series
+                   * @protected
+                   * @default []
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getSeries() {
+                    // Return the current series
+                    return this.series;
+                  }
+                
+                  /**
+                   * Holds the list of axis property names.
+                   *
+                   * @property {Array} axisList
+                   * @private
+                   * @default [&#x27;axisBottom&#x27;, &#x27;axisLeft&#x27;, &#x27;axisRight&#x27;, &#x27;axisTop&#x27;]
+                   * @since @todo
+                   */
+                
+                  /**
+                   * Defines the next index to use to choose a color.
+                   *
+                   * @property {Integer} colorIndex
+                   * @private
+                   * @default 0
+                   * @since @todo
+                   */
+                
+                  /**
+                   * Holds the coordinates that the chart can draw in.
+                   *
+                   * @property {Object} drawArea
+                   * @property {Integer} drawArea.bottom The bottom coordinate of the chart&#x27;s draw area (Default: null)
+                   * @property {Integer} drawArea.left The left coordinate of the chart&#x27;s draw area (Default: null)
+                   * @property {Integer} drawArea.right The right coordinate of the chart&#x27;s draw area (Default: null)
+                   * @property {Integer} drawArea.top The top coordinate of the chart&#x27;s draw area (Default: null)
+                   * @private
+                   * @since @todo
+                   */
+                
+                  /**
+                   * Holds the list of axis side names.
+                   *
+                   * @property {Array} sidesList
+                   * @private
+                   * @default [&#x27;bottom&#x27;, &#x27;left&#x27;, &#x27;righ&#x27;, &#x27;top&#x27;]
+                   * @since @todo
+                   */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Handles when the user clicks the mouse button.
+                   *
+                   * @method handleClick
+                   * @private
+                   * @param WindowEvent event The window event
+                   * @since @todo
+                   */
+                  handleClick(/* event */) {
+                    // TODO:
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Handles when the user presses a key.
+                   *
+                   * @method handleKeyDown
+                   * @private
+                   * @param WindowEvent event The window event
+                   * @since @todo
+                   */
+                  handleKeyDown(/* event */) {
+                    // TODO:
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Handles when the user releases a key.
+                   *
+                   * @method handleKeyUp
+                   * @private
+                   * @param WindowEvent event The window event
+                   * @since @todo
+                   */
+                  handleKeyUp(/* event */) {
+                    // TODO:
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Handles when the user presses the mouse button.
+                   *
+                   * @method handleMouseDown
+                   * @private
+                   * @param WindowEvent event The window event
+                   * @since @todo
+                   */
+                  handleMouseDown(/* event */) {
+                    // TODO:
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Handles when the user moves the mouse.
+                   *
+                   * @method handleMouseMove
+                   * @private
+                   * @param WindowEvent event The window event
+                   * @since @todo
+                   */
+                  handleMouseMove(/* event */) {
+                    // TODO:
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Handles when the user releases the mouse button.
+                   *
+                   * @method handleMouseUp
+                   * @private
+                   * @param WindowEvent event The window event
+                   * @since @todo
+                   */
+                  handleMouseUp(/* event */) {
+                    // TODO:
+                  }
+                  /* not-sparkline:end */
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Handles when the user scrolls the mouse wheel.
+                   *
+                   * @method handleMouseWheel
+                   * @private
+                   * @param WindowEvent event The window event
+                   * @since @todo
+                   */
+                  handleMouseWheel(/* event */) {
+                    // TODO:
+                  }
+                  /* not-sparkline:end */
+                
+                  /**
+                   * Adds a new series to the chart and (optionally) redraws the chart.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(document.getElementById(&#x27;chart-container&#x27;));
+                   *
+                   *   // Add a scatter series to the chart
+                   *   let series = chart.addSeries(
+                   *     new EJSC[&#x27;sparkline&#x27;].ScatterSeries(...)
+                   *   );
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method addSeries
+                   * @param {EJSC[&#x27;sparkline&#x27;].Series} series The series to add to the chart
+                   * @param {Boolean} [redraw=true] Whether to redraw the chart or not
+                   * @return {EJSC[&#x27;sparkline&#x27;].Series} The series that was added
+                   * @since @todo
+                   */
+                  addSeries(series, redraw) {
+                    // If the series is not actually a series, back out
+                    if (!(series instanceof EJSC[&#x27;sparkline&#x27;].Series)) {
+                      return null;
+                    }
+                
+                    // Prepare the series
+                    series.prepare(this, {
+                      color: this.getNextColor()
+                    });
+                
+                    // Add the series to the array
+                    this.series.push(series);
+                
+                    // Redraw the chart
+                    if (redraw !== false) {
+                      this.redraw();
+                    }
+                
+                    // Return the series
+                    return series;
+                  }
+                
+                  /**
+                   * Redraws the chart.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a chart in the element with the id &#x27;chart-container&#x27;
+                   *   let chart = new EJSC[&#x27;sparkline&#x27;].Chart(&#x27;chart-container&#x27;);
+                   *
+                   *   // Add a scatter series to the chart without redrawing the chart
+                   *   let series1 = chart.addSeries(
+                   *     new EJSC[&#x27;sparkline&#x27;].ScatterSeries(...),
+                   *     false
+                   *   );
+                   *
+                   *   // Add a line series to the chart without redrawing the chart
+                   *   let series2 = chart.addSeries(
+                   *     new EJSC[&#x27;sparkline&#x27;].LineSeries(...),
+                   *     false
+                   *   );
+                   *
+                   *   // Redraw the chart
+                   *   chart.redraw();
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method redraw
+                   * @since @todo
+                   */
+                  redraw() {
+                    // Reset the draw area
+                    this.resetDrawArea();
+                
+                    // Clear the drawing
+                    this.clear();
+                
+                    // Draw the background
+                    this.drawBackground();
+                
+                    /* not-sparkline:start */
+                    // Draw the titlebar
+                    this.drawTitlebar();
+                    /* not-sparkline:end */
+                
+                    // Draw the axes
+                    this.drawAxes();
+                
+                    // Draw the series
+                    this.drawSeries();
+                
+                    /* not-sparkline:start */
+                    // Draw the hint
+                    // TODO: this.drawHint();
+                    /* not-sparkline:end */
+                
+                    /* not-sparkline:start */
+                    // Draw the zoombox
+                    // TODO: this.zoom.draw();
+                    /* not-sparkline:end */
+                  }
+                
+                  // constructor
+                  constructor(container, options) {
+                    // super
+                    super(container, options);
+                
+                    // Prepare the chart
+                    this.prepare();
+                
+                    // Redraw the chart
+                    this.redraw();
+                  }
+                
+                  // init
+                  init() {
+                    // Initialize some public properties
+                    this.axisBottom = null;
+                    this.axisLeft = null;
+                    this.axisRight = null;
+                    this.axisTop = null;
+                    this.background = &#x27;rgba(0, 0, 0, 0)&#x27;;
+                    this.colors = [
+                      &#x27;rgb(150, 184, 211)&#x27;,
+                      &#x27;rgb(205, 171, 66)&#x27;,
+                      &#x27;rgb(139, 167, 55)&#x27;,
+                      &#x27;rgb(204, 136, 92)&#x27;,
+                      &#x27;rgb(59, 144, 144)&#x27;,
+                      &#x27;rgb(181, 94, 94)&#x27;,
+                      &#x27;rgb(144, 100, 144)&#x27;,
+                      &#x27;rgb(109, 136, 79)&#x27;,
+                      &#x27;rgb(197, 190, 104)&#x27;,
+                      &#x27;rgb(59, 144, 187)&#x27;,
+                      &#x27;rgb(140, 48, 51)&#x27;,
+                      &#x27;rgb(151, 135, 169)&#x27;,
+                      &#x27;rgb(191, 132, 72)&#x27;,
+                      &#x27;rgb(206, 173, 136)&#x27;,
+                      &#x27;rgb(159, 153, 57)&#x27;,
+                      &#x27;rgb(209, 130, 139)&#x27;,
+                      &#x27;rgb(205, 197, 51)&#x27;,
+                      &#x27;rgb(55, 106, 155)&#x27;,
+                      &#x27;rgb(203, 143, 71)&#x27;,
+                      &#x27;rgb(178, 87, 56)&#x27;,
+                      &#x27;rgb(53, 115, 53)&#x27;,
+                      &#x27;rgb(120, 90, 59)&#x27;
+                    ];
+                
+                    /* not-sparkline:start */
+                    // Initialize some more public properties
+                    this.title = &#x27;Emprise JavaScript Charts&#x27;;
+                    this.titlebar = {
+                      align: &#x27;left&#x27;,
+                      baseline: &#x27;middle&#x27;,
+                      color: &#x27;rgb(102, 102, 102)&#x27;,
+                      font: &#x27;Bold 11px Verdana&#x27;,
+                      height: 20,
+                      lineHeight: 20,
+                      padding: 5,
+                      visible: true
+                    };
+                    /* not-sparkline:start */
+                
+                    // Initialize some protected properties
+                    this.series = [];
+                    this.axisList = [&#x27;axisBottom&#x27;, &#x27;axisLeft&#x27;, &#x27;axisRight&#x27;, &#x27;axisTop&#x27;];
+                    this.colorIndex = 0;
+                    this.drawArea = {
+                      bottom: null,
+                      left: null,
+                      right: null,
+                      top: null
+                    };
+                    this.sidesList = [&#x27;bottom&#x27;, &#x27;left&#x27;, &#x27;right&#x27;, &#x27;top&#x27;];
+                  }
+                
+                  /**
+                   * Draws each of the axis to the chart.
+                   * Updates the draw area according to the axes sizes.
+                   *
+                   * @method drawAxes
+                   * @private
+                   * @since @todo
+                   */
+                  drawAxes() {
+                    // Draw the axes
+                    $Array.forEach(this.axisList, axis =&gt; this[axis].draw());
+                
+                    /* not-sparkline:start */
+                    // Update the draw area
+                    this.drawArea.bottom -= this.axisBottom.getOffsetSize();
+                    this.drawArea.left += this.axisLeft.getOffsetSize();
+                    this.drawArea.right -= this.axisRight.getOffsetSize();
+                    this.drawArea.top += this.axisTop.getOffsetSize();
+                    /* not-sparkline:end */
+                  }
+                
+                  /**
+                   * Draws the background of the chart.
+                   *
+                   * @method drawBackground
+                   * @private
+                   * @since @todo
+                   */
+                  drawBackground() {
+                    // Draw a rectangle that covers the whole draw area
+                    this.rect(0, 0, this.drawArea.right, this.drawArea.bottom, {
+                      fillStyle: this.background,
+                      strokeStyle: &#x27;none&#x27;
+                    });
+                  }
+                
+                  /**
+                   * Loops through each of the visible series and draw them to the chart.
+                   *
+                   * @method drawSeries
+                   * @private
+                   * @since @todo
+                   */
+                  drawSeries() {
+                    // Begin clipping the drawing area
+                    this.beginClip(
+                      this.drawArea.left,
+                      this.drawArea.top,
+                      this.drawArea.right - this.drawArea.left,
+                      this.drawArea.bottom - this.drawArea.top
+                    );
+                
+                    // Loop through the visible series and draw each
+                    $Array.forEach(this.getVisibleSeries(), series =&gt; series.draw());
+                
+                    // End clipping the drawing area
+                    this.endClip();
+                  }
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Draws the titlebar to the chart.
+                   *
+                   * @method drawTitlebar
+                   * @private
+                   * @since @todo
+                   */
+                  drawTitlebar() {
+                    // If the titlebar isn&#x27;t visible, don&#x27;t do anything
+                    if (this.titlebar.visible &amp;&amp; this.title) {
+                      // Begin clipping the drawing area
+                      this.beginClip(
+                        this.drawArea.left + this.titlebar.padding,
+                        this.drawArea.top,
+                        this.drawArea.right - (this.titlebar.padding * 2),
+                        this.titlebar.height
+                      );
+                
+                      // Draw the title
+                      this.text(
+                        this.title,
+                        this.titlebar.padding,
+                        this.titlebar.lineHeight / 2,
+                      {
+                        font: this.titlebar.font,
+                        fillStyle: this.titlebar.color,
+                        textAlign: this.titlebar.align,
+                        textBaseline: this.titlebar.baseline
+                      });
+                
+                      // End clipping the drawing area
+                      this.endClip();
+                
+                      // Update the draw area
+                      this.drawArea.top += this.titlebar.height;
+                    }
+                  }
+                  /* not-sparkline:end */
+                
+                  /**
+                   * Gets the next available series color.
+                   *
+                   * @method getNextColor
+                   * @private
+                   * @return {String} The next available color
+                   * @since @todo
+                   */
+                  getNextColor() {
+                    // Grab the next available color
+                    let color = this.colors[this.colorIndex++];
+                
+                    // Reset the color index if needed
+                    if (this.colorIndex === this.colors.length) {
+                      this.colorIndex = 0;
+                    }
+                
+                    // Return the selected color
+                    return color;
+                  }
+                
+                  /**
+                   * Gets the list of currently visible series.
+                   *
+                   * @method getVisibleSeries
+                   * @private
+                   * @return {Array} The list of visible series
+                   * @since @todo
+                   */
+                  getVisibleSeries() {
+                    // Return the list of visible series
+                    return $Array.filter(this.series, series =&gt; series.isVisible());
+                  }
+                
+                  /**
+                   * Prepares the chart for first use.
+                   *
+                   * @method prepare
+                   * @private
+                   * @since @todo
+                   */
+                  prepare() {
+                    /* not-sparkline:start */
+                    // Attach the listeners
+                    this.prepareListeners();
+                    /* not-sparkline:end */
+                
+                    this.prepareAxes();
+                  }
+                
+                  /**
+                   * Prepares the chart&#x27;s axes for first use.
+                   *
+                   * @method prepareAxes
+                   * @private
+                   * @since @todo
+                   */
+                  prepareAxes() {
+                    // Loop through each of the sides
+                    $Array.forEach(this.sidesList, side =&gt; {
+                      // Create some temporary variables
+                      let axis = &#x27;axis&#x27; + $String.capitalize(side);
+                
+                      // Turn the axis into a class if not already one
+                      if (!(this[axis] instanceof EJSC[&#x27;sparkline&#x27;].Axis)) {
+                        this[axis] = new EJSC[&#x27;sparkline&#x27;].LinearAxis(this[axis]);
+                      }
+                
+                      // Prepare the axis
+                      this[axis].prepare(this, side);
+                    });
+                  }
+                
+                  /* not-sparkline:start */
+                  /**
+                   * Prepares the chart&#x27;s listeners.
+                   *
+                   * @method prepareListeners
+                   * @private
+                   * @since @todo
+                   */
+                  prepareListeners() {
+                    // Grab the engine&#x27;s element
+                    let element = this.engine.element;
+                
+                    // Set the tabIndex so the chart can gain focus
+                    element.tabIndex = 0;
+                    element.style.outline = &#x27;none&#x27;;
+                
+                    // Add local event listeners
+                    $Element(element)
+                      .on(&#x27;click&#x27;, this.handleClick.bind(this))
+                      .on(&#x27;keydown&#x27;, this.handleKeyDown.bind(this))
+                      .on(&#x27;keyup&#x27;, this.handleKeyUp.bind(this))
+                      .on(&#x27;mousedown&#x27;, this.handleMouseDown.bind(this))
+                      .on(&#x27;mousemove&#x27;, this.handleMouseMove.bind(this))
+                      .on(&#x27;mouseup&#x27;, this.handleMouseUp.bind(this))
+                      .on([&#x27;mousewheel&#x27;, &#x27;DOMMouseScroll&#x27;], this.handleMouseWheel.bind(this));
+                
+                    // Add global event listeners
+                    $Element(document)
+                      .on(&#x27;mousemove&#x27;, this.handleMouseMove.bind(this))
+                      .on(&#x27;mouseup&#x27;, this.handleMouseUp.bind(this));
+                  }
+                  /* not-sparkline:end */
+                
+                  /**
+                   * Resets the stored draw area.
+                   *
+                   * @method resetDrawArea
+                   * @private
+                   * @since @todo
+                   */
+                  resetDrawArea() {
+                    // Reset the current draw area
+                    this.drawArea = {
+                      left: 0,
+                      top: 0,
+                      right: this.container.clientWidth,
+                      bottom: this.container.clientHeight
+                    };
+                  }
+                
+                  /**
+                   * Fires when a property of the class has changed.
+                   *
+                   * @method update
+                   * @private
+                   * @since @todo
+                   */
+                  update() {
+                    // Redraw the chart
+                    this.redraw();
+                  }
+                };
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

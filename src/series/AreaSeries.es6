@@ -8,11 +8,12 @@ import LineSeries from './LineSeries.es6';
  * AreaSeries is rendered by drawing a line from point to point and then filling the area defined.
  *
  * @example
- *
+ *   ```
  *   // TODO:
+ *   ```
  *
- * @class EJSC['sparkline'].AreaSeries
- * @extends EJSC['sparkline'].LineSeries
+ * @class EJSC.AreaSeries
+ * @extends EJSC.LineSeries
  * @constructor
  * @param {Array} data The data array
  * @param {Object} options The config options
@@ -23,7 +24,7 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    * Defines the styles for the area fill.
    *
    * @example
-   *
+   *   ```
    *   // Create a chart in the element with the id 'chart-container'
    *   let chart = EJSC['sparkline'].Chart('chart-container');
    *
@@ -40,6 +41,7 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    *   // Log out the current area styles
    *   console.log(series.getArea());
    *   // => { fillStyle: 'rgb(200, 200, 255)' }
+   *   ```
    *
    * @attribute {Object} area
    * @property {String} area.fillStyle The background color of the area fill. (Default: null)
@@ -67,8 +69,9 @@ export default EJSC['sparkline'].AreaSeries = class AreaSeries extends LineSerie
    * Defines the zero coordinate for the series.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Number} zeroCoordinate
    * @default 0

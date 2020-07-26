@@ -2,6 +2,10 @@ import $Array from './Array.es6';
 import $Object from './Object.es6';
 
 // TODO: $Number documentation
+/**
+ * @class $Number
+ * @private
+ */
 let $Number = (number) => new class {
   // constructor
   constructor($number) {
@@ -12,12 +16,13 @@ let $Number = (number) => new class {
    * Clamps number within the inclusive lower and upper bounds.
    *
    * @example
-   *
+   *   ```
    *   $Number(-10).clamp(-5, 5).result;
    *   // => -5
    *
    *   $Number(10).clamp(-5, 5).result;
    *   // => 5
+   *   ```
    *
    * @method clamp
    * @param {Number} lower The lower bound
@@ -37,7 +42,7 @@ let $Number = (number) => new class {
    * Computes number rounded to precision.
    *
    * @example
-   *
+   *   ```
    *   $Number(4.006).round().result;
    *   // => 4
    *
@@ -46,6 +51,7 @@ let $Number = (number) => new class {
    *
    *   $Number(4060).round(-2).result;
    *   // => 4100
+   *   ```
    *
    * @method round
    * @param {Number} [precision=0] The precision to round to
@@ -65,12 +71,13 @@ let $Number = (number) => new class {
  * Clamps number within the inclusive lower and upper bounds.
  *
  * @example
- *
+ *   ```
  *   $Number.clamp(-10, -5, 5);
  *   // => -5
  *
  *   $Number.clamp(10, -5, 5);
  *   // => 5
+ *   ```
  *
  * @static
  * @method clamp
@@ -87,12 +94,13 @@ $Number.clamp = (number, lower, upper) => number && $Number(number).clamp(lower,
  * If array is empty or falsey, undefined is returned.
  *
  * @example
- *
+ *   ```
  *   $Number.max(4, 2, 8, 6);
  *   // => 8
  *
  *   $Number.max();
  *   // => null
+ *   ```
  *
  * @static
  * @method max
@@ -116,12 +124,13 @@ $Number.max = (...numbers) => {
  * If array is empty or falsey, undefined is returned.
  *
  * @example
- *
+ *   ```
  *   $Number.min(4, 2, 8, 6);
  *   // => 2
  *
  *   $Number.min();
  *   // => null
+ *   ```
  *
  * @static
  * @method min
@@ -144,7 +153,7 @@ $Number.min = (...numbers) => {
  * Computes number rounded to precision.
  *
  * @example
- *
+ *   ```
  *   $Number.round(4.006);
  *   // => 4
  *
@@ -153,6 +162,7 @@ $Number.min = (...numbers) => {
  *
  *   $Number.round(4060, -2);
  *   // => 4100
+ *   ```
  *
  * @static
  * @method round

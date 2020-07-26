@@ -8,11 +8,12 @@ import ScatterSeries from './ScatterSeries.es6';
  * LineSeries is rendered by drawing a line from point to point.
  *
  * @example
- *
+ *   ```
  *   // TODO:
+ *   ```
  *
- * @class EJSC['sparkline'].LineSeries
- * @extends EJSC['sparkline'].ScatterSeries
+ * @class EJSC.LineSeries
+ * @extends EJSC.ScatterSeries
  * @constructor
  * @param {Array} data The data array
  * @param {Object} options The config options
@@ -23,8 +24,9 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
    * Defines the style options for the drawn line.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Object} line
    * @property {Integer} line.lineWidth Defines the width of the line. (Default: 1)
@@ -53,8 +55,9 @@ export default EJSC['sparkline'].LineSeries = class LineSeries extends ScatterSe
    * Determines if the drawing routine should draw as steps.
    *
    * @example
-   *
+   *   ```
    *   // TODO:
+   *   ```
    *
    * @attribute {Boolean} step
    * @default false

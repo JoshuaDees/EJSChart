@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\series\base\PlotSeries.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\series\base\PlotSeries.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import $Array from &#x27;../../util/Array.es6&#x27;;
+                import $String from &#x27;../../util/String.es6&#x27;;
+                import EJSC from &#x27;../../EJSC.es6&#x27;;
+                import Series from &#x27;./Series.es6&#x27;;
+                
+                /**
+                 * Defines a series that will plot its data using the chart&#x27;s axes.
+                 *
+                 * @class EJSC.PlotSeries
+                 * @extends EJSC.Series
+                 * @private
+                 * @since @todo
+                 */
+                export default EJSC[&#x27;sparkline&#x27;].PlotSeries = class PlotSeries extends Series {
+                  /**
+                   * Defines the spacing around the series.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Number} spacing
+                   * @default 0
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getSpacing() {
+                    // Return the current spacing
+                    return this.spacing;
+                  }
+                
+                  // setter
+                  setSpacing(spacing) {
+                    // Update the current spacing
+                    this.spacing = spacing;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the x axis to draw on.
+                   *
+                   * Valid values are: &#x27;bottom&#x27;, &#x27;top&#x27;.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} xAxis
+                   * @default &#x27;bottom&#x27;
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getXAxis() {
+                    // Return the current x axis
+                    return this.xAxis;
+                  }
+                
+                  // setter
+                  setXAxis(xAxis) {
+                    // Update the current x axis
+                    this.xAxis = xAxis;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the y axis to draw on.
+                   *
+                   * Valid values are: &#x27;left&#x27;, &#x27;right&#x27;.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} yAxis
+                   * @default &#x27;left&#x27;
+                   * @since @todo
+                   */
+                
+                  // getter
+                  getYAxis() {
+                    // Return the current y axis
+                    return this.yAxis;
+                  }
+                
+                  // setter
+                  setYAxis(yAxis) {
+                    // Update the current y axis
+                    this.yAxis = yAxis;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  // init
+                  init() {
+                    // super
+                    super.init();
+                
+                    // Initialize some public properties
+                    this.spacing = 0;
+                    this.xAxis = &#x27;bottom&#x27;;
+                    this.yAxis = &#x27;left&#x27;;
+                  }
+                
+                  /**
+                   * Calculates the extremes for the series based on its data.
+                   *
+                   * @method calculateExtremes
+                   * @private
+                   * @return {Object} The new extremes
+                   * @since @todo
+                   */
+                  calculateExtremes() {
+                    // Define some local variables
+                    let extremes = {
+                      xMin: null,
+                      xMax: null,
+                      yMin: null,
+                      yMax: null
+                    };
+                
+                    // Return the extremes
+                    return extremes;
+                  }
+                
+                  /**
+                   * Returns the list of visible points.
+                   *
+                   * @method getVisiblePoints
+                   * @private
+                   * @return {Array} The list of visible points
+                   * @since @todo
+                   */
+                  getVisiblePoints() {
+                    // Return the list of visible points
+                    return $Array.filter(this.data, point =&gt; this.isPointVisible(point));
+                  }
+                
+                  /**
+                   * Returns a reference to the x axis
+                   *
+                   * @method referenceXAxis
+                   * @private
+                   * @return {EJSC[&#x27;sparkline&#x27;].Axis} The x axis
+                   * @since @todo
+                   */
+                  referenceXAxis() {
+                    // Return a reference to the x axis
+                    return this.chart[&#x27;axis&#x27; + $String.capitalize(this.xAxis)];
+                  }
+                
+                  /**
+                   * Returns a reference to the y axis
+                   *
+                   * @method referenceXAxis
+                   * @private
+                   * @return {EJSC[&#x27;sparkline&#x27;].Axis} The y axis
+                   * @since @todo
+                   */
+                  referenceYAxis() {
+                    // Return a reference to the y axis
+                    return this.chart[&#x27;axis&#x27; + $String.capitalize(this.yAxis)];
+                  }
+                };
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

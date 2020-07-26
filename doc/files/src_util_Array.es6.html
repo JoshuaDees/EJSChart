@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\util\Array.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\util\Array.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import { identity } from &#x27;./_Helpers.es6&#x27;;
+                
+                // TODO: $Array documentation
+                /**
+                 * @class $Array
+                 * @private
+                 */
+                let $Array = (array) =&gt; new class {
+                  // constructor
+                  constructor($array) {
+                    this.result = $array;
+                  }
+                
+                  /**
+                   * Iterates over elements of array, returning an array of all elements predicate returns truthy for.
+                   * The predicate is invoked with three arguments: (value, key, array).
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   $Array([0, 1, 2]).filter((value, key, array) =&gt; value &gt; 0).result;
+                   *   // =&gt; [1, 2]
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method filter
+                   * @param {Function} predicate The function invoked per iteration
+                   * @chainable
+                   * @since @todo
+                   */
+                  filter(predicate = identity) {
+                    // TODO: Cover if no built-in method
+                    this.result = Array.prototype.filter.call(this.result, predicate);
+                
+                    // Chain
+                    return this;
+                  }
+                
+                  /**
+                   * Iterates over elements of array and invokes iteratee for each element.
+                   * The iteratee is invoked with three arguments: (value, key, array).
+                   * Iteratee functions may exit iteration early by explicitly returning false.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   $Array([1, 2]).forEach((value, key, array) =&gt; console.log(value));
+                   *   // =&gt; Logs &#x27;1&#x27; then &#x27;2&#x27;.
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method forEach
+                   * @param {Function} predicate The function invoked per iteration
+                   * @chainable
+                   * @since @todo
+                   */
+                  forEach(predicate = identity) {
+                    // TODO: Cover if no built-in method
+                    Array.prototype.forEach.call(this.result, predicate);
+                
+                    // Chain
+                    return this;
+                  }
+                
+                  // TODO: $Array().first documentation
+                  first() {
+                    // Return the first item in the array
+                    return this.result[0];
+                  }
+                
+                  /**
+                   * Checks if the given value exists in the given array.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   $Array([1, 2, 3]).includes(1);
+                   *   // =&gt; true
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method includes
+                   * @param {*} valueToFind The value to search for
+                   * @param {Number} [fromIndex=0] The index to search from (for arrays)
+                   * @return {Boolean} If value is found
+                   * @since @todo
+                   */
+                  includes(valueToFind, fromIndex = 0) {
+                    // TODO: Cover if no built-in method
+                    return Array.prototype.includes.call(this.result, valueToFind, fromIndex);
+                  }
+                
+                  // TODO: $Array().last documentation
+                  last() {
+                    return this.result[this.result.length - 1];
+                  }
+                
+                  // TODO: $Array().slice documentation
+                  slice(start = 0, end = this.result.length) {
+                    // TODO: Cover if no built-in method
+                    this.result = Array.prototype.slice.call(this.result, start, end);
+                
+                    // Chain
+                    return this;
+                  }
+                
+                  // TODO: $Array().sort documentation
+                  sort(predicate = identity) {
+                    // TODO: Cover if no built-in method
+                    this.result = Array.prototype.sort.call(this.result, predicate);
+                
+                    // Chain
+                    return this;
+                  }
+                
+                  /**
+                   * Transforms an array into a new accumulator array.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   $Array([2, 3, 4]).transform((result, n) =&gt; {
+                   *     result.push(n *= n);
+                   *     return n % 2 == 0;
+                   *   }, []).result;
+                   *   // =&gt; [4, 9]
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method transform
+                   * @param {Function} [predicate=identity] The function invoked per iteration
+                   * @param {*} [accumulator=[]] The custom accumulator
+                   * @chainable
+                   * @since @todo
+                   */
+                  transform(predicate = identity, accumulator = []) {
+                    // Usese the built in forEach method
+                    $Array.forEach(this.result, (value, index, object) =&gt; predicate(accumulator, value, index, object));
+                
+                    // Store the accumulator
+                    this.result = accumulator;
+                
+                    // Chain
+                    return this;
+                  }
+                
+                  /**
+                   * Creates an array excluding all given values using SameValueZero for equality comparisons.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   $Array([2, 1, 2, 3]).without(1, 2).result;
+                   *   // =&gt; [3]
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method without
+                   * @param {*} [...values] The values to exclude
+                   * @chainable
+                   * @since @todo
+                   */
+                  without(...values) {
+                    // Filter out the unwanted values
+                    this.result = $Array.filter(this.result, value =&gt; !$Array.includes(values, value));
+                
+                    // Chain
+                    return this;
+                  }
+                }(array);
+                
+                /**
+                 * Iterates over elements of array, returning an array of all elements predicate returns truthy for.
+                 * The predicate is invoked with three arguments: (value, key, array).
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Array.filter([0, 1, 2], (value, key, array) =&gt; value &gt; 0);
+                 *   // =&gt; [1, 2]
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method filter
+                 * @param {Array} array The array to iterate over
+                 * @param {Function} [predicate=identity] The function invoked per iteration
+                 * @return {Array} The new filterd array
+                 * @since @todo
+                 */
+                $Array.filter = (array, predicate = identity) =&gt; array &amp;&amp; $Array(array).filter(predicate).result;
+                
+                /**
+                 * Iterates over elements of array and invokes iteratee for each element.
+                 * The iteratee is invoked with three arguments: (value, key, array).
+                 * Iteratee functions may exit iteration early by explicitly returning false.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Array.forEach([1, 2], (value, key, array) =&gt; console.log(value));
+                 *   // =&gt; Logs &#x27;1&#x27; then &#x27;2&#x27;.
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method forEach
+                 * @param {Array} array The array to iterate over
+                 * @param {Function} [predicate=identity] The function invoked per iteration
+                 * @return {Array} The array
+                 * @since @todo
+                 */
+                $Array.forEach = (array, predicate = identity) =&gt; array &amp;&amp; $Array(array).forEach(predicate).result;
+                
+                // TODO: $Array.first documentation
+                $Array.first = (array) =&gt; array &amp;&amp; $Array(array).first();
+                
+                /**
+                 * Checks if the given value exists in the given array.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Array.includes([1, 2, 3], 1);
+                 *   // =&gt; true
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method includes
+                 * @param {Array} array The array to inspect
+                 * @param {*} valueToFind The value to search for
+                 * @param {Number} [fromIndex=0] The index to search from (for arrays)
+                 * @return {Boolean} If value is found
+                 * @since @todo
+                 */
+                $Array.includes = (array, valueToFind, fromIndex = 0) =&gt; array &amp;&amp; $Array(array).includes(valueToFind, fromIndex);
+                
+                // TODO: $Array.last documentation
+                $Array.last = (array) =&gt; array &amp;&amp; $Array(array).last();
+                
+                // TODO: $Array.slice documentation
+                $Array.slice = (array, start = 0, end = array.length) =&gt; array &amp;&amp; $Array(array).slice(start, end).result;
+                
+                // TODO: $Array.sort documentation
+                $Array.sort = (array, predicate = identity) =&gt; array &amp;&amp; $Array(array).sort(predicate).result;
+                
+                /**
+                 * Transforms an array into a new accumulator array.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Array.transform([2, 3, 4], (result, n) =&gt; {
+                 *     result.push(n *= n);
+                 *     return n % 2 == 0;
+                 *   }, []);
+                 *   // =&gt; [4, 9]
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @method transform
+                 * @param {Array} array The array to iterate over
+                 * @param {Function} [predicate=identity] The function invoked per iteration
+                 * @param {*} [accumulator=[]] The custom accumulator
+                 * @return {*} The accumulated value
+                 * @since @todo
+                 */
+                $Array.transform = (array, predicate = identity, accumulator = []) =&gt; array &amp;&amp; $Array(array).transform(predicate, accumulator).result;
+                
+                /**
+                 * Creates an array excluding all given values using SameValueZero for equality comparisons.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   $Array.without([2, 1, 2, 3], 1, 2);
+                 *   // =&gt; [3]
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @static
+                 * @method without
+                 * @param {Array} array The array to inspect
+                 * @param {*} [...values] The values to exclude
+                 * @return {Array} The new array of filtered values
+                 * @since @todo
+                 */
+                $Array.without = (array, ...values) =&gt; array &amp;&amp; $Array(array).without(...values).result;
+                
+                export default $Array;
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
