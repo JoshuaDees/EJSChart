@@ -63,6 +63,18 @@ let $String = (string) => new class {
     return this;
   }
 
+  // TODO:
+  padStart(length = 0, chars = ' ') {
+    // Pad the end of the string
+    while (this.result.length < length) {
+      // TODO: Fix to truncate if needed
+      this.result = chars + this.result;
+    }
+
+    // Chain
+    return this;
+  }
+
   /**
    * Converts the first character of string to upper case.
    *
@@ -130,6 +142,8 @@ $String.capitalize = (string) => string && $String(string).capitalize().result;
 * @since @todo
 */
 $String.padEnd = (string, length = 0, chars = ' ') => string && $String(string).padEnd(length, chars).result;
+
+$String.padStart = (string, length = 0, chars = ' ') => string && $String(string).padStart(length, chars).result;
 
 /**
  * Converts the first character of string to upper case.

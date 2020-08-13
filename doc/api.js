@@ -13,6 +13,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "EJSC.Canvas",
         "EJSC.Chart",
         "EJSC.DataSeries",
+        "EJSC.DateFormatter",
         "EJSC.Drawing",
         "EJSC.Engine",
         "EJSC.Formatter",

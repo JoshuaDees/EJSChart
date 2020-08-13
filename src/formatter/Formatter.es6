@@ -17,6 +17,11 @@ export default EJSC.Formatter = class Formatter extends Inheritable {
   /**
    * Formats the value for display.
    *
+   * @example
+   *   ```
+   *   // TODO:
+   *   ```
+   *
    * @method format
    * @param {*} value The value to format
    * @return {String} The formatted value

@@ -102,7 +102,7 @@ small, .small {
 }
 
 .item .description p {
-  margin-bottom: 0;
+  /*margin-bottom: 0;*/
 }
 
 .item .details .args .arg:not(:last-child)::after {

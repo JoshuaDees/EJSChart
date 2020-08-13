@@ -96,6 +96,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src\\formatter\\DateFormatter.es6": {
+            "name": "src\\formatter\\DateFormatter.es6",
+            "modules": {},
+            "classes": {
+                "EJSC.DateFormatter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src\\formatter\\Formatter.es6": {
             "name": "src\\formatter\\Formatter.es6",
             "modules": {},
@@ -259,6 +268,7 @@
                 "EJSC.SVG": 1,
                 "EJSC.VML": 1,
                 "EJSC.Drawing": 1,
+                "EJSC.DateFormatter": 1,
                 "EJSC.Formatter": 1,
                 "EJSC.NumberFormatter": 1,
                 "EJSC.DataSeries": 1,
@@ -516,6 +526,39 @@
                 }
             ],
             "since": "@todo"
+        },
+        "EJSC.DateFormatter": {
+            "name": "EJSC.DateFormatter",
+            "shortname": "EJSC.DateFormatter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "EJSC",
+            "file": "src\\formatter\\DateFormatter.es6",
+            "line": 6,
+            "description": "Use this formatter when you want to display date values in your charts.",
+            "example": [
+                "\n  ```\n  // Create a basic DateFormatter\n  new EJSC.DateFormatter();\n  ```"
+            ],
+            "is_constructor": 1,
+            "extends": "EJSC.Formatter",
+            "params": [
+                {
+                    "name": "formatString",
+                    "description": "The format string",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "The config options to apply",
+                    "type": "Object",
+                    "optional": true,
+                    "optdefault": "{}"
+                }
+            ],
+            "since": "1.0.0"
         },
         "EJSC.Formatter": {
             "name": "EJSC.Formatter",
@@ -6022,9 +6065,74 @@
             "class": "EJSC.Drawing"
         },
         {
+            "file": "src\\formatter\\DateFormatter.es6",
+            "line": 24,
+            "description": "Defines the format to convert the date into.\n\nThe <b>formatString</b> property follows very closely to the PHP implementation of DateTime::format.\n\n<table class=\"border table table-sm\">\n<thead>\n<tr><th>Char</th><th>Description</th><th>Example(s)</th></tr>\n</thead>\n<tbody>\n<tr><th colspan=\"3\">Day</th></tr>\n<tr><td>d</td><td>Day of the month, 2 digits with leading zeros</td><td>01 to 31</td></tr>\n<tr><td>D</td><td>A textual representation of a day, three letters</td><td>Mon through Sun</td></tr>\n<tr><td>j</td><td>Day of the month without leading zeros</td><td>1 to 31</td></tr>\n<tr><td>l</td><td>A full textual representation of the day of the week</td><td>Sunday through Saturday</td></tr>\n<tr><th colspan=\"3\">Month</th></tr>\n<tr><td>F</td><td>A full textual representation of a month, such as January or March</td><td>January through December</td></tr>\n<tr><td>m</td><td>Numeric representation of a month, with leading zeros</td><td>01 through 12</td></tr>\n<tr><td>M</td><td>A short textual representation of a month, three letters</td><td>Jan through Dec</td></tr>\n<tr><td>n</td><td>Numeric representation of a month, without leading zeros</td><td>1 through 12</td></tr>\n<tr><th colspan=\"3\">Year</th></tr>\n<tr><td>Y</td><td>A full numeric representation of a year, 4 digits</td><td>Examples: 1999 or 2003</td></tr>\n<tr><td>y</td><td>A two digit representation of a year</td><td>Examples: 99 or 03</td></tr>\n<tr><th colspan=\"3\">Time</th></tr>\n<tr><td>a</td><td>Lowercase Ante meridiem and Post meridiem</td><td>am or pm</td></tr>\n<tr><td>A</td><td>Uppercase Ante meridiem and Post meridiem</td><td>AM or PM</td></tr>\n<tr><td>g</td><td>12-hour format of an hour without leading zeros</td><td>1 through 12</td></tr>\n<tr><td>G</td><td>24-hour format of an hour without leading zeros</td><td>0 through 23</td></tr>\n<tr><td>h</td><td>12-hour format of an hour with leading zeros</td><td>01 through 12</td></tr>\n<tr><td>H</td><td>24-hour format of an hour with leading zeros</td><td>00 through 23</td></tr>\n<tr><td>i</td><td>Minutes with leading zeros</td><td>00 to 59</td></tr>\n<tr><td>s</td><td>Seconds with leading zeros</td><td>00 through 59</td></tr>\n<tr><td>v</td><td>Milliseconds</td><td>Example: 654</td></tr>\n</tbody>\n</table>",
+            "example": [
+                "\n  ```\n  // Create a DateFormatter which will format the date like \"2020-08-13\"\n  new EJSC.DateFormatter({\n    formatString: 'Y-m-d'\n  });\n  ```"
+            ],
+            "required": 1,
+            "itemtype": "attribute",
+            "name": "formatString",
+            "type": "String",
+            "since": "3.0.0",
+            "class": "EJSC.DateFormatter"
+        },
+        {
+            "file": "src\\formatter\\DateFormatter.es6",
+            "line": 91,
+            "description": "Set this property to false to use the workstation local time to calculate dates.\nThis may be useful when passing in dates generated by JavaScript on the client machine to indicate current time.",
+            "example": [
+                "\n  ```\n  // Create a DateFormatter which will use local time instead of UTC\n  new EJSC.DateFormatter({\n    useUTC: false\n  });\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "useUTC",
+            "type": "Boolean",
+            "default": "true",
+            "since": "3.0.0",
+            "class": "EJSC.DateFormatter"
+        },
+        {
+            "file": "src\\formatter\\DateFormatter.es6",
+            "line": 134,
+            "description": "Initializes the variable properties of the class.",
+            "itemtype": "method",
+            "name": "init",
+            "access": "private",
+            "tagname": "",
+            "since": "3.0.0",
+            "class": "EJSC.DateFormatter"
+        },
+        {
+            "file": "src\\formatter\\DateFormatter.es6",
+            "line": 149,
+            "description": "Formats the value for display.",
+            "example": [
+                "\n  ```\n  // TODO:\n  ```"
+            ],
+            "itemtype": "method",
+            "name": "format",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to format",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "The formatted value",
+                "type": "String"
+            },
+            "since": "1.0.0",
+            "class": "EJSC.DateFormatter"
+        },
+        {
             "file": "src\\formatter\\Formatter.es6",
             "line": 17,
             "description": "Formats the value for display.",
+            "example": [
+                "\n  ```\n  // TODO:\n  ```"
+            ],
             "itemtype": "method",
             "name": "format",
             "params": [
@@ -6197,8 +6305,22 @@
         },
         {
             "file": "src\\formatter\\NumberFormatter.es6",
-            "line": 446,
+            "line": 427,
+            "description": "Initializes the variable properties of the class.",
+            "itemtype": "method",
+            "name": "init",
+            "access": "private",
+            "tagname": "",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 452,
             "description": "Formats the value for display.",
+            "example": [
+                "\n  ```\n  // TODO:\n  ```"
+            ],
             "itemtype": "method",
             "name": "format",
             "params": [
@@ -7950,7 +8072,7 @@
         },
         {
             "file": "src\\util\\String.es6",
-            "line": 66,
+            "line": 78,
             "description": "Converts the first character of string to upper case.",
             "example": [
                 "\n  ```\n  $String('fred').upperFirst().result;\n  // => 'Fred'\n\n  $String('FRED').upperFirst().result;\n  // => 'FRED'\n  ```"
@@ -7963,7 +8085,7 @@
         },
         {
             "file": "src\\util\\String.es6",
-            "line": 91,
+            "line": 103,
             "description": "Converts the first character of string to upper case and the remaining to lower case.",
             "example": [
                 "\n  ```\n  $String.capitalize('FRED');\n  // => 'Fred'\n  ```"
@@ -7987,7 +8109,7 @@
         },
         {
             "file": "src\\util\\String.es6",
-            "line": 108,
+            "line": 120,
             "description": "Pads string on the right side if it's shorter than length.\nPadding characters are truncated if they exceed length.",
             "example": [
                 "\n  ```\n  $String.padEnd('abc', 6);\n  // => 'abc   '\n\n  $String.padEnd('abc', 6, '_-');\n  // => 'abc_-_'\n\n  $String.padEnd('abc', 3);\n  // => 'abc'\n  ```"
@@ -8022,7 +8144,7 @@
         },
         {
             "file": "src\\util\\String.es6",
-            "line": 134,
+            "line": 148,
             "description": "Converts the first character of string to upper case.",
             "example": [
                 "\n  ```\n  $String.upperFirst('fred');\n  // => 'Fred'\n\n  $String.upperFirst('FRED');\n  // => 'FRED'\n  ```"

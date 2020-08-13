@@ -112,16 +112,17 @@ __webpack_require__(16);
 __webpack_require__(17);
 __webpack_require__(18);
 __webpack_require__(7);
-__webpack_require__(10);
 __webpack_require__(19);
+__webpack_require__(10);
 __webpack_require__(20);
+__webpack_require__(21);
+__webpack_require__(28);
 __webpack_require__(27);
+__webpack_require__(25);
 __webpack_require__(26);
 __webpack_require__(24);
-__webpack_require__(25);
-__webpack_require__(23);
-__webpack_require__(21);
 __webpack_require__(22);
+__webpack_require__(23);
 __webpack_require__(3);
 __webpack_require__(2);
 __webpack_require__(8);
@@ -2921,6 +2922,24 @@ var $String = function $String(string) {
         return this;
       }
 
+      // TODO:
+
+    }, {
+      key: 'padStart',
+      value: function padStart() {
+        var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        var chars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ' ';
+
+        // Pad the end of the string
+        while (this.result.length < length) {
+          // TODO: Fix to truncate if needed
+          this.result = chars + this.result;
+        }
+
+        // Chain
+        return this;
+      }
+
       /**
        * Converts the first character of string to upper case.
        *
@@ -3000,6 +3019,12 @@ $String.padEnd = function (string) {
   var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
   var chars = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ' ';
   return string && $String(string).padEnd(length, chars).result;
+};
+
+$String.padStart = function (string) {
+  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var chars = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ' ';
+  return string && $String(string).padStart(length, chars).result;
 };
 
 /**
@@ -3486,6 +3511,11 @@ exports.default = _EJSC2.default.Formatter = function (_Inheritable) {
 
     /**
      * Formats the value for display.
+     *
+     * @example
+     *   ```
+     *   // TODO:
+     *   ```
      *
      * @method format
      * @param {*} value The value to format
@@ -8960,6 +8990,312 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
+
+var _String = __webpack_require__(6);
+
+var _String2 = _interopRequireDefault(_String);
+
+var _EJSC = __webpack_require__(7);
+
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _Formatter2 = __webpack_require__(10);
+
+var _Formatter3 = _interopRequireDefault(_Formatter2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Use this formatter when you want to display date values in your charts.
+ *
+ * @example
+ *   ```
+ *   // Create a basic DateFormatter
+ *   new EJSC.DateFormatter();
+ *   ```
+ *
+ * @constructor
+ * @class EJSC.DateFormatter
+ * @extends EJSC.Formatter
+ * @param {String} formatString The format string
+ * @param {Object} [options={}] The config options to apply
+ * @since 1.0.0
+ */
+exports.default = _EJSC2.default.DateFormatter = function (_Formatter) {
+  _inherits(DateFormatter, _Formatter);
+
+  _createClass(DateFormatter, [{
+    key: 'getFormatString',
+
+    /* eslint-disable no-irregular-whitespace */
+    /**
+     * Defines the format to convert the date into.
+     *
+     * The <b>formatString</b> property follows very closely to the PHP implementation of DateTime::format.
+     *
+     * <table class="border table table-sm">
+     * <thead>
+     * <tr><th>Char</th><th>Description</th><th>Example(s)</th></tr>
+     * </thead>
+     * <tbody>
+     * <tr><th colspan="3">Day</th></tr>
+     * <tr><td>d</td><td>Day of the month, 2 digits with leading zeros</td><td>01 to 31</td></tr>
+     * <tr><td>D</td><td>A textual representation of a day, three letters</td><td>Mon through Sun</td></tr>
+     * <tr><td>j</td><td>Day of the month without leading zeros</td><td>1 to 31</td></tr>
+     * <tr><td>l</td><td>A full textual representation of the day of the week</td><td>Sunday through Saturday</td></tr>
+     * <tr><th colspan="3">Month</th></tr>
+     * <tr><td>F</td><td>A full textual representation of a month, such as January or March</td><td>January through December</td></tr>
+     * <tr><td>m</td><td>Numeric representation of a month, with leading zeros</td><td>01 through 12</td></tr>
+     * <tr><td>M</td><td>A short textual representation of a month, three letters</td><td>Jan through Dec</td></tr>
+     * <tr><td>n</td><td>Numeric representation of a month, without leading zeros</td><td>1 through 12</td></tr>
+     * <tr><th colspan="3">Year</th></tr>
+     * <tr><td>Y</td><td>A full numeric representation of a year, 4 digits</td><td>Examples: 1999 or 2003</td></tr>
+     * <tr><td>y</td><td>A two digit representation of a year</td><td>Examples: 99 or 03</td></tr>
+     * <tr><th colspan="3">Time</th></tr>
+     * <tr><td>a</td><td>Lowercase Ante meridiem and Post meridiem</td><td>am or pm</td></tr>
+     * <tr><td>A</td><td>Uppercase Ante meridiem and Post meridiem</td><td>AM or PM</td></tr>
+     * <tr><td>g</td><td>12-hour format of an hour without leading zeros</td><td>1 through 12</td></tr>
+     * <tr><td>G</td><td>24-hour format of an hour without leading zeros</td><td>0 through 23</td></tr>
+     * <tr><td>h</td><td>12-hour format of an hour with leading zeros</td><td>01 through 12</td></tr>
+     * <tr><td>H</td><td>24-hour format of an hour with leading zeros</td><td>00 through 23</td></tr>
+     * <tr><td>i</td><td>Minutes with leading zeros</td><td>00 to 59</td></tr>
+     * <tr><td>s</td><td>Seconds with leading zeros</td><td>00 through 59</td></tr>
+     * <tr><td>v</td><td>Milliseconds</td><td>Example: 654</td></tr>
+     * </tbody>
+     * </table>
+     *
+     * @example
+     *   ```
+     *   // Create a DateFormatter which will format the date like "2020-08-13"
+     *   new EJSC.DateFormatter({
+     *     formatString: 'Y-m-d'
+     *   });
+     *   ```
+     *
+     * @required
+     * @attribute {String} formatString
+     * @since 3.0.0
+     */
+    /* eslint-enable no-irregular-whitespace */
+
+    // getter
+    value: function getFormatString() {
+      // Return the current format string
+      return this.formatString;
+    }
+
+    // setter
+
+  }, {
+    key: 'formatString',
+    value: function formatString(_formatString) {
+      // Update the current format string
+      this.formatString = _formatString;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Set this property to false to use the workstation local time to calculate dates.
+     * This may be useful when passing in dates generated by JavaScript on the client machine to indicate current time.
+     *
+     * @example
+     *   ```
+     *   // Create a DateFormatter which will use local time instead of UTC
+     *   new EJSC.DateFormatter({
+     *     useUTC: false
+     *   });
+     *   ```
+     *
+     * @attribute {Boolean} useUTC
+     * @default true
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getUseUTC',
+    value: function getUseUTC() {
+      // Return the current use UTC
+      return this.useUTC;
+    }
+
+    // setter
+
+  }, {
+    key: 'setUseUTC',
+    value: function setUseUTC(useUTC) {
+      // Update the current use UTC
+      this.useUTC = useUTC;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    // constructor
+
+  }]);
+
+  function DateFormatter(formatString, options) {
+    _classCallCheck(this, DateFormatter);
+
+    // Store and prepare the data handler
+    var _this = _possibleConstructorReturn(this, (DateFormatter.__proto__ || Object.getPrototypeOf(DateFormatter)).call(this, options));
+    // super
+
+
+    _this.formatString = formatString;
+    return _this;
+  }
+
+  /**
+   * Initializes the variable properties of the class.
+   *
+   * @method init
+   * @private
+   * @since 3.0.0
+   */
+
+
+  _createClass(DateFormatter, [{
+    key: 'init',
+    value: function init() {
+      // super
+      _get(DateFormatter.prototype.__proto__ || Object.getPrototypeOf(DateFormatter.prototype), 'init', this).call(this);
+
+      // Initialize some public properties
+      this.useUTC = true;
+    }
+
+    /**
+     * Formats the value for display.
+     *
+     * @example
+     *   ```
+     *   // TODO:
+     *   ```
+     *
+     * @method format
+     * @param {*} value The value to format
+     * @return {String} The formatted value
+     * @since 1.0.0
+     */
+
+  }, {
+    key: 'format',
+    value: function format(value) {
+      // Make sure the value is a number
+      if (!_Object2.default.isNumber(value)) {}
+      // TODO: error out
+
+
+      // Create some local variables
+      var utcPrefix = this.useUTC ? 'UTC' : '';
+      var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      var meridiems = ['AM', 'PM'];
+
+      // Create the list of replacements
+      var replacements = {
+        'd': function d(date) {
+          return _String2.default.padStart(date['get' + utcPrefix + 'Date']().toString(), 2, '0');
+        },
+        'D': function D(date) {
+          return days[date['get' + utcPrefix + 'Day']()].substr(0, 3);
+        },
+        'j': function j(date) {
+          return date['get' + utcPrefix + 'Date']();
+        },
+        'l': function l(date) {
+          return days[date['get' + utcPrefix + 'Day']()];
+        },
+        'F': function F(date) {
+          return months[date['get' + utcPrefix + 'Month']()];
+        },
+        'm': function m(date) {
+          return _String2.default.padStart((date['get' + utcPrefix + 'Month']() + 1).toString(), 2, '0');
+        },
+        'M': function M(date) {
+          return months[date['get' + utcPrefix + 'Month']()].substr(0, 3);
+        },
+        'n': function n(date) {
+          return date['get' + utcPrefix + 'Month']() + 1;
+        },
+        'Y': function Y(date) {
+          return date['get' + utcPrefix + 'FullYear']();
+        },
+        'y': function y(date) {
+          return Math.round(date['get' + utcPrefix + 'FullYear']() / 100 % 1 * 100);
+        },
+        'a': function a(date) {
+          return meridiems[Math.floor(date['get' + utcPrefix + 'Hours']() / 12)].toLowerCase();
+        },
+        'A': function A(date) {
+          return meridiems[Math.floor(date['get' + utcPrefix + 'Hours']() / 12)];
+        },
+        'g': function g(date) {
+          return date['get' + utcPrefix + 'Hours']() % 12 || 0;
+        },
+        'G': function G(date) {
+          return date['get' + utcPrefix + 'Hours']();
+        },
+        'h': function h(date) {
+          return _String2.default.padStart((date['get' + utcPrefix + 'Hours']() % 12 || 0).toString(), 2, '0');
+        },
+        'H': function H(date) {
+          return _String2.default.padStart(date['get' + utcPrefix + 'Hours']().toString(), 2, '0');
+        },
+        'i': function i(date) {
+          return _String2.default.padStart(date['get' + utcPrefix + 'Minutes']().toString(), 2, '0');
+        },
+        's': function s(date) {
+          return _String2.default.padStart(date['get' + utcPrefix + 'Seconds']().toString(), 2, '0');
+        },
+        'v': function v(date) {
+          return _String2.default.padStart(date['get' + utcPrefix + 'Milliseconds']().toString(), 3, '0');
+        }
+      };
+
+      // Return the formatted string
+      return this.formatString.replace(new RegExp('(' + Object.keys(replacements).join('|') + ')', 'g'), function (match) {
+        return replacements[match](new Date(value));
+      });
+    }
+  }]);
+
+  return DateFormatter;
+}(_Formatter3.default);
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -9486,7 +9822,13 @@ exports.default = _EJSC2.default.NumberFormatter = function (_Formatter) {
       }
     }
 
-    // init
+    /**
+     * Initializes the variable properties of the class.
+     *
+     * @method init
+     * @private
+     * @since 3.0.0
+     */
 
   }, {
     key: 'init',
@@ -9510,6 +9852,11 @@ exports.default = _EJSC2.default.NumberFormatter = function (_Formatter) {
 
     /**
      * Formats the value for display.
+     *
+     * @example
+     *   ```
+     *   // TODO:
+     *   ```
      *
      * @method format
      * @param {*} value The value to format
@@ -9562,7 +9909,7 @@ exports.default = _EJSC2.default.NumberFormatter = function (_Formatter) {
 }(_Formatter3.default);
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9592,7 +9939,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _LineSeries2 = __webpack_require__(21);
+var _LineSeries2 = __webpack_require__(22);
 
 var _LineSeries3 = _interopRequireDefault(_LineSeries2);
 
@@ -9803,7 +10150,7 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
 }(_LineSeries3.default);
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9833,7 +10180,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _ScatterSeries2 = __webpack_require__(22);
+var _ScatterSeries2 = __webpack_require__(23);
 
 var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
 
@@ -10480,7 +10827,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
 }(_ScatterSeries3.default);
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10510,7 +10857,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _XYSeries2 = __webpack_require__(23);
+var _XYSeries2 = __webpack_require__(24);
 
 var _XYSeries3 = _interopRequireDefault(_XYSeries2);
 
@@ -10758,7 +11105,7 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
 }(_XYSeries3.default);
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10776,11 +11123,11 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _PlotSeries = __webpack_require__(24);
+var _PlotSeries = __webpack_require__(25);
 
 var _PlotSeries2 = _interopRequireDefault(_PlotSeries);
 
-var _DataSeries2 = __webpack_require__(26);
+var _DataSeries2 = __webpack_require__(27);
 
 var _DataSeries3 = _interopRequireDefault(_DataSeries2);
 
@@ -10839,7 +11186,7 @@ exports.default = _EJSC2.default.XYSeries = function (_DataSeries) {
 }((0, _DataSeries3.default)(_PlotSeries2.default));
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10865,7 +11212,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Series2 = __webpack_require__(25);
+var _Series2 = __webpack_require__(26);
 
 var _Series3 = _interopRequireDefault(_Series2);
 
@@ -11101,7 +11448,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
 }(_Series3.default);
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11382,7 +11729,7 @@ exports.default = _EJSC2.default.Series = function (_Inheritable) {
 }(_Inheritable3.default);
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11520,7 +11867,7 @@ exports.default = _EJSC2.default.DataSeries = function (superclass) {
 };
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11550,7 +11897,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _ScatterSeries2 = __webpack_require__(22);
+var _ScatterSeries2 = __webpack_require__(23);
 
 var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
 

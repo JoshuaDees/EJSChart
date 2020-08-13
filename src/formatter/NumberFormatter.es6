@@ -424,7 +424,13 @@ export default EJSC.NumberFormatter = class NumberFormatter extends Formatter {
     }
   }
 
-  // init
+  /**
+   * Initializes the variable properties of the class.
+   *
+   * @method init
+   * @private
+   * @since 3.0.0
+   */
   init() {
     // super
     super.init();
@@ -445,6 +451,11 @@ export default EJSC.NumberFormatter = class NumberFormatter extends Formatter {
 
   /**
    * Formats the value for display.
+   *
+   * @example
+   *   ```
+   *   // TODO:
+   *   ```
    *
    * @method format
    * @param {*} value The value to format

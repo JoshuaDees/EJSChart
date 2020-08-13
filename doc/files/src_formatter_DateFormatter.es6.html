@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\formatter\DateFormatter.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.DateFormatter.html">EJSC.DateFormatter</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.NumberFormatter.html">EJSC.NumberFormatter</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\formatter\DateFormatter.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import $Object from &#x27;../util/Object.es6&#x27;;
+                import $String from &#x27;../util/String.es6&#x27;;
+                import EJSC from &#x27;../EJSC.es6&#x27;;
+                import Formatter from &#x27;./Formatter.es6&#x27;;
+                
+                /**
+                 * Use this formatter when you want to display date values in your charts.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   // Create a basic DateFormatter
+                 *   new EJSC.DateFormatter();
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @constructor
+                 * @class EJSC.DateFormatter
+                 * @extends EJSC.Formatter
+                 * @param {String} formatString The format string
+                 * @param {Object} [options={}] The config options to apply
+                 * @since 1.0.0
+                 */
+                export default EJSC.DateFormatter = class DateFormatter extends Formatter {
+                  /* eslint-disable no-irregular-whitespace */
+                  /**
+                   * Defines the format to convert the date into.
+                   *
+                   * The &lt;b&gt;formatString&lt;/b&gt; property follows very closely to the PHP implementation of DateTime::format.
+                   *
+                   * &lt;table class=&quot;border table table-sm&quot;&gt;
+                   * &lt;thead&gt;
+                   * &lt;tr&gt;&lt;th&gt;Char&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;th&gt;Example(s)&lt;/th&gt;&lt;/tr&gt;
+                   * &lt;/thead&gt;
+                   * &lt;tbody&gt;
+                   * &lt;tr&gt;&lt;th colspan=&quot;3&quot;&gt;Day&lt;/th&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;d&lt;/td&gt;&lt;td&gt;Day of the month, 2 digits with leading zeros&lt;/td&gt;&lt;td&gt;01 to 31&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;A textual representation of a day, three letters&lt;/td&gt;&lt;td&gt;Mon through Sun&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;j&lt;/td&gt;&lt;td&gt;Day of the month without leading zeros&lt;/td&gt;&lt;td&gt;1 to 31&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;l&lt;/td&gt;&lt;td&gt;A full textual representation of the day of the week&lt;/td&gt;&lt;td&gt;Sunday through Saturday&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;th colspan=&quot;3&quot;&gt;Month&lt;/th&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;F&lt;/td&gt;&lt;td&gt;A full textual representation of a month, such as January or March&lt;/td&gt;&lt;td&gt;January through December&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;m&lt;/td&gt;&lt;td&gt;Numeric representation of a month, with leading zeros&lt;/td&gt;&lt;td&gt;01 through 12&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;A short textual representation of a month, three letters&lt;/td&gt;&lt;td&gt;Jan through Dec&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;n&lt;/td&gt;&lt;td&gt;Numeric representation of a month, without leading zeros&lt;/td&gt;&lt;td&gt;1 through 12&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;th colspan=&quot;3&quot;&gt;Year&lt;/th&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;A full numeric representation of a year, 4 digits&lt;/td&gt;&lt;td&gt;Examples: 1999 or 2003&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;y&lt;/td&gt;&lt;td&gt;A two digit representation of a year&lt;/td&gt;&lt;td&gt;Examples: 99 or 03&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;th colspan=&quot;3&quot;&gt;Time&lt;/th&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;a&lt;/td&gt;&lt;td&gt;Lowercase Ante meridiem and Post meridiem&lt;/td&gt;&lt;td&gt;am or pm&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;Uppercase Ante meridiem and Post meridiem&lt;/td&gt;&lt;td&gt;AM or PM&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;g&lt;/td&gt;&lt;td&gt;12-hour format of an hour without leading zeros&lt;/td&gt;&lt;td&gt;1 through 12&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;G&lt;/td&gt;&lt;td&gt;24-hour format of an hour without leading zeros&lt;/td&gt;&lt;td&gt;0 through 23&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;h&lt;/td&gt;&lt;td&gt;12-hour format of an hour with leading zeros&lt;/td&gt;&lt;td&gt;01 through 12&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;H&lt;/td&gt;&lt;td&gt;24-hour format of an hour with leading zeros&lt;/td&gt;&lt;td&gt;00 through 23&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;i&lt;/td&gt;&lt;td&gt;Minutes with leading zeros&lt;/td&gt;&lt;td&gt;00 to 59&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;s&lt;/td&gt;&lt;td&gt;Seconds with leading zeros&lt;/td&gt;&lt;td&gt;00 through 59&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;tr&gt;&lt;td&gt;v&lt;/td&gt;&lt;td&gt;Milliseconds&lt;/td&gt;&lt;td&gt;Example: 654&lt;/td&gt;&lt;/tr&gt;
+                   * &lt;/tbody&gt;
+                   * &lt;/table&gt;
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a DateFormatter which will format the date like &quot;2020-08-13&quot;
+                   *   new EJSC.DateFormatter({
+                   *     formatString: &#x27;Y-m-d&#x27;
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @required
+                   * @attribute {String} formatString
+                   * @since 3.0.0
+                   */
+                   /* eslint-enable no-irregular-whitespace */
+                
+                  // getter
+                  getFormatString() {
+                    // Return the current format string
+                    return this.formatString;
+                  }
+                
+                  // setter
+                  formatString(formatString) {
+                    // Update the current format string
+                    this.formatString = formatString;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Set this property to false to use the workstation local time to calculate dates.
+                   * This may be useful when passing in dates generated by JavaScript on the client machine to indicate current time.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a DateFormatter which will use local time instead of UTC
+                   *   new EJSC.DateFormatter({
+                   *     useUTC: false
+                   *   });
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Boolean} useUTC
+                   * @default true
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getUseUTC() {
+                    // Return the current use UTC
+                    return this.useUTC;
+                  }
+                
+                  // setter
+                  setUseUTC(useUTC) {
+                    // Update the current use UTC
+                    this.useUTC = useUTC;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  // constructor
+                  constructor(formatString, options) {
+                    // super
+                    super(options);
+                
+                    // Store and prepare the data handler
+                    this.formatString = formatString;
+                  }
+                
+                  /**
+                   * Initializes the variable properties of the class.
+                   *
+                   * @method init
+                   * @private
+                   * @since 3.0.0
+                   */
+                  init() {
+                    // super
+                    super.init();
+                
+                    // Initialize some public properties
+                    this.useUTC = true;
+                  }
+                
+                  /**
+                   * Formats the value for display.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // TODO:
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @method format
+                   * @param {*} value The value to format
+                   * @return {String} The formatted value
+                   * @since 1.0.0
+                   */
+                  format(value) {
+                    // Make sure the value is a number
+                    if (!$Object.isNumber(value)) {
+                      // TODO: error out
+                    }
+                
+                    // Create some local variables
+                    let utcPrefix = this.useUTC ? &#x27;UTC&#x27; : &#x27;&#x27;;
+                    let days = [&#x27;Sunday&#x27;, &#x27;Monday&#x27;, &#x27;Tuesday&#x27;, &#x27;Wednesday&#x27;, &#x27;Thursday&#x27;, &#x27;Friday&#x27;, &#x27;Saturday&#x27;];
+                    let months = [&#x27;January&#x27;, &#x27;February&#x27;, &#x27;March&#x27;, &#x27;April&#x27;, &#x27;May&#x27;, &#x27;June&#x27;, &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;December&#x27;];
+                    let meridiems = [&#x27;AM&#x27;, &#x27;PM&#x27;];
+                
+                    // Create the list of replacements
+                    let replacements = {
+                      &#x27;d&#x27;: (date) =&gt; $String.padStart(date[&#x27;get&#x27; + utcPrefix + &#x27;Date&#x27;]().toString(), 2, &#x27;0&#x27;),
+                      &#x27;D&#x27;: (date) =&gt; days[date[&#x27;get&#x27; + utcPrefix + &#x27;Day&#x27;]()].substr(0, 3),
+                      &#x27;j&#x27;: (date) =&gt; date[&#x27;get&#x27; + utcPrefix + &#x27;Date&#x27;](),
+                      &#x27;l&#x27;: (date) =&gt; days[date[&#x27;get&#x27; + utcPrefix + &#x27;Day&#x27;]()],
+                      &#x27;F&#x27;: (date) =&gt; months[date[&#x27;get&#x27; + utcPrefix + &#x27;Month&#x27;]()],
+                      &#x27;m&#x27;: (date) =&gt; $String.padStart((date[&#x27;get&#x27; + utcPrefix + &#x27;Month&#x27;]() + 1).toString(), 2, &#x27;0&#x27;),
+                      &#x27;M&#x27;: (date) =&gt; months[date[&#x27;get&#x27; + utcPrefix + &#x27;Month&#x27;]()].substr(0, 3),
+                      &#x27;n&#x27;: (date) =&gt; date[&#x27;get&#x27; + utcPrefix + &#x27;Month&#x27;]() + 1,
+                      &#x27;Y&#x27;: (date) =&gt; date[&#x27;get&#x27; + utcPrefix + &#x27;FullYear&#x27;](),
+                      &#x27;y&#x27;: (date) =&gt; Math.round(((date[&#x27;get&#x27; + utcPrefix + &#x27;FullYear&#x27;]() / 100) % 1) * 100),
+                      &#x27;a&#x27;: (date) =&gt; meridiems[Math.floor(date[&#x27;get&#x27; + utcPrefix + &#x27;Hours&#x27;]() / 12)].toLowerCase(),
+                      &#x27;A&#x27;: (date) =&gt; meridiems[Math.floor(date[&#x27;get&#x27; + utcPrefix + &#x27;Hours&#x27;]() / 12)],
+                      &#x27;g&#x27;: (date) =&gt; ((date[&#x27;get&#x27; + utcPrefix + &#x27;Hours&#x27;]() % 12) || 0),
+                      &#x27;G&#x27;: (date) =&gt; date[&#x27;get&#x27; + utcPrefix + &#x27;Hours&#x27;](),
+                      &#x27;h&#x27;: (date) =&gt; $String.padStart(((date[&#x27;get&#x27; + utcPrefix + &#x27;Hours&#x27;]() % 12) || 0).toString(), 2, &#x27;0&#x27;),
+                      &#x27;H&#x27;: (date) =&gt; $String.padStart(date[&#x27;get&#x27; + utcPrefix + &#x27;Hours&#x27;]().toString(), 2, &#x27;0&#x27;),
+                      &#x27;i&#x27;: (date) =&gt; $String.padStart(date[&#x27;get&#x27; + utcPrefix + &#x27;Minutes&#x27;]().toString(), 2, &#x27;0&#x27;),
+                      &#x27;s&#x27;: (date) =&gt; $String.padStart(date[&#x27;get&#x27; + utcPrefix + &#x27;Seconds&#x27;]().toString(), 2, &#x27;0&#x27;),
+                      &#x27;v&#x27;: (date) =&gt; $String.padStart(date[&#x27;get&#x27; + utcPrefix + &#x27;Milliseconds&#x27;]().toString(), 3, &#x27;0&#x27;)
+                    };
+                
+                    // Return the formatted string
+                    return this.formatString.replace(new RegExp(&#x27;(&#x27; + Object.keys(replacements).join(&#x27;|&#x27;) + &#x27;)&#x27;, &#x27;g&#x27;), (match) =&gt; replacements[match](new Date(value)));
+                  }
+                };
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
