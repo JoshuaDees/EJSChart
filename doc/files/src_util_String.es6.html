@@ -48,6 +48,7 @@
                   <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
                   <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
                   <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.NumberFormatter.html">EJSC.NumberFormatter</a></li>
                   <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
               </ul>
             </div>
@@ -113,6 +114,39 @@
                   }
                 
                   /**
+                  * Pads string on the right side if it&#x27;s shorter than length.
+                  * Padding characters are truncated if they exceed length.
+                  *
+                  * @example
+                  *   &#x60;&#x60;&#x60;
+                  *   $String(&#x27;abc&#x27;).padEnd(6).result;
+                  *   // =&gt; &#x27;abc   &#x27;
+                  *
+                  *   $String(&#x27;abc&#x27;).padEnd(6, &#x27;_-&#x27;).result;
+                  *   // =&gt; &#x27;abc_-_&#x27;
+                  *
+                  *   $String(&#x27;abc&#x27;).padEnd(3).result;
+                  *   // =&gt; &#x27;abc&#x27;
+                  *   &#x60;&#x60;&#x60;
+                  *
+                  * @method padEnd
+                  * @param {String} [length=0] The padding length
+                  * @param {String} [chars=&#x27; &#x27;] The string used as padding
+                  * @chainable
+                  * @since @todo
+                  */
+                  padEnd(length = 0, chars = &#x27; &#x27;) {
+                    // Pad the end of the string
+                    while (this.result.length &lt; length) {
+                      // TODO: Fix to truncate if needed
+                      this.result += chars;
+                    }
+                
+                    // Chain
+                    return this;
+                  }
+                
+                  /**
                    * Converts the first character of string to upper case.
                    *
                    * @example
@@ -148,10 +182,37 @@
                 *
                 * @static
                 * @method capitalize
+                * @param {String} string The string to capitalize
                 * @return {String} The capitalized value
                 * @since @todo
                 */
                 $String.capitalize = (string) =&gt; string &amp;&amp; $String(string).capitalize().result;
+                
+                /**
+                * Pads string on the right side if it&#x27;s shorter than length.
+                * Padding characters are truncated if they exceed length.
+                *
+                * @example
+                *   &#x60;&#x60;&#x60;
+                *   $String.padEnd(&#x27;abc&#x27;, 6);
+                *   // =&gt; &#x27;abc   &#x27;
+                *
+                *   $String.padEnd(&#x27;abc&#x27;, 6, &#x27;_-&#x27;);
+                *   // =&gt; &#x27;abc_-_&#x27;
+                *
+                *   $String.padEnd(&#x27;abc&#x27;, 3);
+                *   // =&gt; &#x27;abc&#x27;
+                *   &#x60;&#x60;&#x60;
+                *
+                * @static
+                * @method padEnd
+                * @param {String} string The string to pad
+                * @param {String} [length=0] The padding length
+                * @param {String} [chars=&#x27; &#x27;] The string used as padding
+                * @chainable
+                * @since @todo
+                */
+                $String.padEnd = (string, length = 0, chars = &#x27; &#x27;) =&gt; string &amp;&amp; $String(string).padEnd(length, chars).result;
                 
                 /**
                  * Converts the first character of string to upper case.
@@ -167,6 +228,7 @@
                  *
                  * @static
                  * @method upperFirst
+                 * @param {String} string The string to convert
                  * @return {String} The upper cased value
                  * @since @todo
                  */

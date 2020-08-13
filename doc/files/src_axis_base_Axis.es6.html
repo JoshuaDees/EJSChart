@@ -48,6 +48,7 @@
                   <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
                   <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
                   <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.NumberFormatter.html">EJSC.NumberFormatter</a></li>
                   <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
               </ul>
             </div>
@@ -86,6 +87,7 @@
                 import $String from &#x27;../../util/String.es6&#x27;;
                 import EJSC from &#x27;../../EJSC.es6&#x27;;
                 import Inheritable from &#x27;../../class/Inheritable.es6&#x27;;
+                import Formatter from &#x27;../../formatter/Formatter.es6&#x27;;
                 
                 /**
                  * Holds the code common to all Axis types.
@@ -199,6 +201,8 @@
                       this.update();
                     }
                   }
+                
+                  // TODO: formatter
                 
                   /* not-sparkline:start */
                   /**
@@ -535,6 +539,7 @@
                       text: null,
                       visible: true
                     };
+                    this.formatter = new Formatter();
                     this.grid = {
                       style: {
                         lineDash: [3, 3],
@@ -1040,7 +1045,7 @@
                       }
                 
                       // Draw the text
-                      chart.text(text, x, y, {
+                      chart.text(this.formatter.format(text), x, y, {
                         textAlign: align,
                         textBaseline: baseline
                       });

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>EJSC.PlotSeries - EJSCharts</title>
+    <title>EJSC.NumberFormatter - EJSCharts</title>
     <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
     <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
     <link href="../assets/css/theme.css" rel="stylesheet" />
@@ -80,86 +80,102 @@
                 <div class="card">
                   <!-- h3 class="card-header icon class" -->
                   <h3 class="card-header">
-                    EJSC.PlotSeries
+                    EJSC.NumberFormatter
                     <small class="float-right">
                       Class
                     </small>
                   </h3>
                   <div class="card-body">
-                    <p>Defines a series that will plot its data using the chart's axes.</p>
+                    <p>Use this formatter when you want more control over the display of numeric values in your charts.
+                It can be applied to the chart axis as well as series hints.</p>
                 
                     <ul class="list-unstyled">
                         <li>
                           <label class="pull-left">Extends:</label>
-                          <a href="../classes/EJSC.Series.html" class="crosslink">EJSC.Series</a>
+                          <a href="../classes/EJSC.Formatter.html" class="crosslink">EJSC.Formatter</a>
                         </li>
                         <li>
                           <label class="pull-left">Defined In:</label>
-                          <a href="../files/src_series_base_PlotSeries.es6.html#l6">src\series\base\PlotSeries.es6:6</a>
+                          <a href="../files/src_formatter_NumberFormatter.es6.html#l7">src\formatter\NumberFormatter.es6:7</a>
                         </li>
                         <li>
                           <label class="pull-left">Available Since:</label>
-                          @todo
+                          1.0.0
                         </li>
                     </ul>
                       <div class="card">
+                          <h4 class="card-header">Constructor</h4>
+                          <ul class="list-group list-group-flush"><li id="method_EJSC.NumberFormatter" class="list-group-item method item">
+                  <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                  <h5 class="details">
+                    <b class="name">EJSC.NumberFormatter</b>
+                      <span class="paren">(</span>
+                      <span class="args">
+                          <span class="arg">
+                              <span class="optional">[options={}]</span>
+                          </span>
+                      </span>
+                      <span class="paren">)</span>
+                  </h5>
+                  <div class="description">
+                      (No Description Available)
+                  </div>
+                  <div class="meta">
+                    <ul class="list-unstyled">
+                      <li class="inherited">
+                            <label>
+                                Defined in
+                            </label>
+                          <a href="../files/src_formatter_NumberFormatter.es6.html#l7">src\formatter\NumberFormatter.es6:7</a>
+                      </li>
+                        <li class="available">
+                          <label>Available since:</label>
+                          1.0.0
+                        </li>
+                    </ul>
+                  </div>
+                    <div class="example">
+                      <h6>Example:</h6>
+                      <div class="border"><pre class="code prettyprint"><code>// Create a basic NumberFormatter
+                new EJSC.NumberFormatter();
+                
+                // Create a NumberFormatter that forces 2 decimals to be displayed
+                new EJSC.NumberFormatter({
+                  minimumDecimals: 2
+                });
+                </code></pre>
+                </div>
+                    </div>
+                    <div class="params">
+                      <h6>Parameters:</h6>
+                      <ul>
+                          <li class="param">
+                              <span class="param-name optional">[options={}] :</span>
+                              <span class="type">Object</span>
+                              <span class="badge badge-dark border optional" title="This parameter is optional.">optional</span>
+                            <div class="param-description">
+                              <p>The config options to apply</p>
+                
+                            </div>
+                          </li>
+                      </ul>
+                    </div>
+                </li>
+                </ul>
+                      </div>
+                      <div class="card">
                         <h4 class="card-header">Config Options</h4>
                         <div class="list-group list-group-flush">
-                            <li id="attr_color" class="list-group-item attr item inherited">
+                            <li id="attr_currencyAlign" class="list-group-item attr item">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
-                                <b class="name">color</b>
+                                <b class="name">currencyAlign</b>
                                 :
                                 <span class="type">String</span>
                               </h3>
                               <div class="description">
-                                  Defines the color of the series.
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>Inherited From:</label>
-                                        <a href="../classes/EJSC.Series.html#attr_color">EJSC.Series</a>:
-                                      <a href="../files/src_series_base_Series.es6.html#l14">src\series\base\Series.es6:14</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="example">
-                                  <h6>Example:</h6>
-                                  <code class="alert bg-light border d-block">
-                                    <pre class="code prettyprint"><code>// TODO:
-                            </code></pre>
-                            
-                                  </code>
-                                </div>
-                            
-                            <!-- TODO:START --
-                            
-                            
-                            <!-- TODO:END -->
-                            
-                                <div class="default">
-                                  <ul class="list-unstyled">
-                                    <li>
-                                      <label>Default Value:</label>
-                                      null
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="attr_spacing" class="list-group-item attr item">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">spacing</b>
-                                :
-                                <span class="type">Number</span>
-                              </h3>
-                              <div class="description">
-                                  <p>Defines the spacing around the series.</p>
+                                  <p>Defines the currency alignment.</p>
+                            <p>Valid values: 'left', 'right'</p>
                             
                               </div>
                               <div class="meta">
@@ -168,208 +184,30 @@
                                         <label>
                                             Defined in
                                         </label>
-                                      <a href="../files/src_series_base_PlotSeries.es6.html#l15">src\series\base\PlotSeries.es6:15</a>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l29">src\formatter\NumberFormatter.es6:29</a>
                                   </li>
                                     <li class="available">
                                       <label>Available since:</label>
-                                      @todo
+                                      3.0.0
                                     </li>
                                 </ul>
                               </div>
                                 <div class="example">
                                   <h6>Example:</h6>
                                   <code class="alert bg-light border d-block">
-                                    <pre class="code prettyprint"><code>// TODO:
-                            </code></pre>
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that sets the currency alignment to 'right'
+                            new EJSC.NumberFormatter({
+                              // currencyAlign: 'left',
+                              currencySymbol: '$'
+                            });
+                            // 0.1234 -&gt; $0.1234
                             
-                                  </code>
-                                </div>
-                            
-                            <!-- TODO:START --
-                            
-                            
-                            <!-- TODO:END -->
-                            
-                                <div class="default">
-                                  <ul class="list-unstyled">
-                                    <li>
-                                      <label>Default Value:</label>
-                                      0
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="attr_title" class="list-group-item attr item inherited">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">title</b>
-                                :
-                                <span class="type">String</span>
-                              </h3>
-                              <div class="description">
-                                  Defines the title of the series.
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>Inherited From:</label>
-                                        <a href="../classes/EJSC.Series.html#attr_title">EJSC.Series</a>:
-                                      <a href="../files/src_series_base_Series.es6.html#l44">src\series\base\Series.es6:44</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="example">
-                                  <h6>Example:</h6>
-                                  <code class="alert bg-light border d-block">
-                                    <pre class="code prettyprint"><code>// TODO:
-                            </code></pre>
-                            
-                                  </code>
-                                </div>
-                            
-                            <!-- TODO:START --
-                            
-                            
-                            <!-- TODO:END -->
-                            
-                                <div class="default">
-                                  <ul class="list-unstyled">
-                                    <li>
-                                      <label>Default Value:</label>
-                                      null
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="attr_visible" class="list-group-item attr item inherited">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">visible</b>
-                                :
-                                <span class="type">Boolean</span>
-                              </h3>
-                              <div class="description">
-                                  Defines if the series if visible or not.
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>Inherited From:</label>
-                                        <a href="../classes/EJSC.Series.html#attr_visible">EJSC.Series</a>:
-                                      <a href="../files/src_series_base_Series.es6.html#l74">src\series\base\Series.es6:74</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="example">
-                                  <h6>Example:</h6>
-                                  <code class="alert bg-light border d-block">
-                                    <pre class="code prettyprint"><code>// TODO:
-                            </code></pre>
-                            
-                                  </code>
-                                </div>
-                            
-                            <!-- TODO:START --
-                            
-                            
-                            <!-- TODO:END -->
-                            
-                                <div class="default">
-                                  <ul class="list-unstyled">
-                                    <li>
-                                      <label>Default Value:</label>
-                                      true
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="attr_xAxis" class="list-group-item attr item">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">xAxis</b>
-                                :
-                                <span class="type">String</span>
-                              </h3>
-                              <div class="description">
-                                  <p>Defines the x axis to draw on.</p>
-                            <p>Valid values are: 'bottom', 'top'.</p>
-                            
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
-                                      <a href="../files/src_series_base_PlotSeries.es6.html#l45">src\series\base\PlotSeries.es6:45</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="example">
-                                  <h6>Example:</h6>
-                                  <code class="alert bg-light border d-block">
-                                    <pre class="code prettyprint"><code>// TODO:
-                            </code></pre>
-                            
-                                  </code>
-                                </div>
-                            
-                            <!-- TODO:START --
-                            
-                            
-                            <!-- TODO:END -->
-                            
-                                <div class="default">
-                                  <ul class="list-unstyled">
-                                    <li>
-                                      <label>Default Value:</label>
-                                      &#x27;bottom&#x27;
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="attr_yAxis" class="list-group-item attr item">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">yAxis</b>
-                                :
-                                <span class="type">String</span>
-                              </h3>
-                              <div class="description">
-                                  <p>Defines the y axis to draw on.</p>
-                            <p>Valid values are: 'left', 'right'.</p>
-                            
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
-                                      <a href="../files/src_series_base_PlotSeries.es6.html#l77">src\series\base\PlotSeries.es6:77</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="example">
-                                  <h6>Example:</h6>
-                                  <code class="alert bg-light border d-block">
-                                    <pre class="code prettyprint"><code>// TODO:
+                            // Create a NumberFormatter that sets the currency alignment to 'right'
+                            new EJSC.NumberFormatter({
+                              currencyAlign: 'right',
+                              currencySymbol: '$'
+                            });
+                            // 0.1234 -&gt; 0.1234$
                             </code></pre>
                             
                                   </code>
@@ -389,34 +227,52 @@
                                   </ul>
                                 </div>
                             </li>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <h4 class="card-header">Properties</h4>
-                        <div class="list-group list-group-flush">
-                            <li id="property_chart" class="list-group-item property item inherited">
+                            <li id="attr_currencyPosition" class="list-group-item attr item">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
-                                <b class="name">chart</b>
+                                <b class="name">currencyPosition</b>
                                 :
-                                <span class="type">EJSC'sparkline'.Chart</span>
-                              </h5>
+                                <span class="type">String</span>
+                              </h3>
                               <div class="description">
-                                  Holds a pointer to this series' owner chart.
+                                  <p>Defines the currency position.</p>
+                            <p>Valid values: 'inner', 'outer'</p>
+                            
                               </div>
                               <div class="meta">
                                 <ul class="list-unstyled">
                                   <li class="inherited">
-                                        <label>Inherited From:</label>
-                                        <a href="../classes/EJSC.Series.html#property_chart">EJSC.Series</a>:
-                                      <a href="../files/src_series_base_Series.es6.html#l104">src\series\base\Series.es6:104</a>
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l73">src\formatter\NumberFormatter.es6:73</a>
                                   </li>
                                     <li class="available">
                                       <label>Available since:</label>
-                                      @todo
+                                      3.0.0
                                     </li>
                                 </ul>
                               </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that sets the currency position to 'inner'
+                            new EJSC.NumberFormatter({
+                              currencyPosition: 'inner',
+                              currencySymbol: '$'
+                            });
+                            // -0.1234 -&gt; -$0.1234
+                            
+                            // Create a NumberFormatter that keeps the currency position as 'outer'
+                            new EJSC.NumberFormatter({
+                              // currencyPosition: 'outer',
+                              currencySymbol: '$'
+                            });
+                            // -0.1234 -&gt; $-0.1234
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
                             
                             <!-- TODO:START --
                             
@@ -427,11 +283,486 @@
                                   <ul class="list-unstyled">
                                     <li>
                                       <label>Default Value:</label>
-                                      null
+                                      &#x27;outer&#x27;
                                     </li>
                                   </ul>
                                 </div>
                             </li>
+                            <li id="attr_currencySymbol" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">currencySymbol</b>
+                                :
+                                <span class="type">String</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the currency symbol.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l117">src\formatter\NumberFormatter.es6:117</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that sets the currency symbol to ','
+                            new EJSC.NumberFormatter({
+                              currencySymbol: '$'
+                            });
+                            // 0.1234 -&gt; $0.1234
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      &#x27;&#x27;
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="attr_decimalSymbol" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">decimalSymbol</b>
+                                :
+                                <span class="type">String</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the symbol to place before the decimals.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l151">src\formatter\NumberFormatter.es6:151</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that switches the decimal symbol to ','
+                            new EJSC.NumberFormatter({
+                              decimalSymbol: ','
+                            });
+                            // 0.1234 -&gt; 0,1234
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      &#x27;.&#x27;
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="attr_maximumDecimals" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">maximumDecimals</b>
+                                :
+                                <span class="type">Integer</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the maximum decimals of the formatter.</p>
+                            <p>Valid values are 0-14.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l185">src\formatter\NumberFormatter.es6:185</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that allows a maximum of 2 decimals
+                            new EJSC.NumberFormatter({
+                              maximumDecimals: 2
+                            });
+                            // 0.1234 -&gt; 0.12
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      14
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="attr_minimumDecimals" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">minimumDecimals</b>
+                                :
+                                <span class="type">Integer</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the minimum decimals of the formatter.</p>
+                            <p>Valid values are 0-14.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l221">src\formatter\NumberFormatter.es6:221</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that allows a minimum of 2 decimals
+                            new EJSC.NumberFormatter({
+                              minimumDecimals: 6
+                            });
+                            // 0.1234 -&gt; 0.123400
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      0
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="attr_negativePrefix" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">negativePrefix</b>
+                                :
+                                <span class="type">String</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the prefix to use for negative numbers.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l257">src\formatter\NumberFormatter.es6:257</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that sets the prefix for negative numbers to '('
+                            new EJSC.NumberFormatter({
+                              negativePrefix: '('
+                            });
+                            // -0.1234 -&gt; (0.1234
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      &#x27;-&#x27;
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="attr_negativeSuffix" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">negativeSuffix</b>
+                                :
+                                <span class="type">String</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the suffix to use for negative numbers.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l291">src\formatter\NumberFormatter.es6:291</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that sets the suffix for negative numbers to ')'
+                            new EJSC.NumberFormatter({
+                              negativeSuffix: ')'
+                            });
+                            // -0.1234 -&gt; -0.1234)
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      &#x27;&#x27;
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="attr_positivePrefix" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">positivePrefix</b>
+                                :
+                                <span class="type">String</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the prefix to use for positive numbers.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l325">src\formatter\NumberFormatter.es6:325</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that sets the prefix for positive numbers to '('
+                            new EJSC.NumberFormatter({
+                              positivePrefix: '('
+                            });
+                            // 0.1234 -&gt; (0.1234
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      &#x27;-&#x27;
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="attr_positiveSuffix" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">positiveSuffix</b>
+                                :
+                                <span class="type">String</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the suffix to use for positive numbers.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l359">src\formatter\NumberFormatter.es6:359</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that sets the suffix for positive numbers to ')'
+                            new EJSC.NumberFormatter({
+                              positiveSuffix: ')'
+                            });
+                            // 0.1234 -&gt; 0.1234)
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      &#x27;&#x27;
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="attr_thousandsSymbol" class="list-group-item attr item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">thousandsSymbol</b>
+                                :
+                                <span class="type">String</span>
+                              </h3>
+                              <div class="description">
+                                  <p>Defines the symbol to use for separating the whole value into thousands.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l393">src\formatter\NumberFormatter.es6:393</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      3.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <code class="alert bg-light border d-block">
+                                    <pre class="code prettyprint"><code>// Create a NumberFormatter that sets the thousands symbol to ','
+                            new EJSC.NumberFormatter({
+                              thousandsSymbol: ','
+                            });
+                            // 1234 -&gt; 1,234
+                            </code></pre>
+                            
+                                  </code>
+                                </div>
+                            
+                            <!-- TODO:START --
+                            
+                            
+                            <!-- TODO:END -->
+                            
+                                <div class="default">
+                                  <ul class="list-unstyled">
+                                    <li>
+                                      <label>Default Value:</label>
+                                      &#x27;&#x27;
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <h4 class="card-header">Properties</h4>
+                        <div class="list-group list-group-flush">
                             <li id="property_initialized" class="list-group-item property item private inherited">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
@@ -573,103 +904,60 @@
                                   </ul>
                                 </div>
                             </li>
-                            <li id="method_calculateExtremes" class="list-group-item method item private">
+                            <li id="method_format" class="list-group-item method item">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
-                                <b class="name">calculateExtremes</b>
-                                  <span class="paren">()</span>
-                                  <span class="returns-inline">
-                                    <span class="type">: Object</span>
+                                <b class="name">format</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          value
+                                      </span>
                                   </span>
-                                  <span class="badge badge-dark border private">private</span>
+                                  <span class="paren">)</span>
+                                  <span class="returns-inline">
+                                    <span class="type">: String</span>
+                                  </span>
                               </h5>
                               <div class="description">
-                                  <p>Calculates the extremes for the series based on its data.</p>
+                                  <p>Formats the value for display.</p>
                             
                               </div>
                               <div class="meta">
                                 <ul class="list-unstyled">
                                   <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
-                                      <a href="../files/src_series_base_PlotSeries.es6.html#l120">src\series\base\PlotSeries.es6:120</a>
+                                      <label>Inherited From:</label>
+                                      <a href="../classes/EJSC.Formatter.html#method_format">
+                                        EJSC.Formatter
+                                      </a>
+                                        but overwritten in
+                                      <a href="../files/src_formatter_NumberFormatter.es6.html#l446">src\formatter\NumberFormatter.es6:446</a>
                                   </li>
                                     <li class="available">
                                       <label>Available since:</label>
-                                      @todo
+                                      1.0.0
                                     </li>
                                 </ul>
                               </div>
-                                <div class="returns">
-                                  <h6>Returns:</h6>
-                                  <ul class="returns">
-                                    <li>
-                                          <span class="type">Object</span>
-                                        <p>The new extremes</p>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">value :</span>
+                                          <span class="type"></span>
+                                        <div class="param-description">
+                                          <p>The value to format</p>
                             
-                                    </li>
+                                        </div>
+                                      </li>
                                   </ul>
                                 </div>
-                            </li>
-                            <li id="method_draw" class="list-group-item method item private inherited">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">draw</b>
-                                  <span class="paren">()</span>
-                                  <span class="badge badge-dark border private">private</span>
-                              </h5>
-                              <div class="description">
-                                  Draws the series to its owner chart's drawing engine.
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>Inherited From:</label>
-                                        <a href="../classes/EJSC.Series.html#method_draw">EJSC.Series</a>:
-                                      <a href="../files/src_series_base_Series.es6.html#l132">src\series\base\Series.es6:132</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                            </li>
-                            <li id="method_getVisiblePoints" class="list-group-item method item private">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">getVisiblePoints</b>
-                                  <span class="paren">()</span>
-                                  <span class="returns-inline">
-                                    <span class="type">: Array</span>
-                                  </span>
-                                  <span class="badge badge-dark border private">private</span>
-                              </h5>
-                              <div class="description">
-                                  <p>Returns the list of visible points.</p>
-                            
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
-                                      <a href="../files/src_series_base_PlotSeries.es6.html#l141">src\series\base\PlotSeries.es6:141</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
                                 <div class="returns">
                                   <h6>Returns:</h6>
                                   <ul class="returns">
                                     <li>
-                                          <span class="type">Array</span>
-                                        <p>The list of visible points</p>
+                                          <span class="type">String</span>
+                                        <p>The formatted value</p>
                             
                                     </li>
                                   </ul>
@@ -700,236 +988,6 @@
                                 </ul>
                               </div>
                             </li>
-                            <li id="method_isVisible" class="list-group-item method item private inherited">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">isVisible</b>
-                                  <span class="paren">()</span>
-                                  <span class="returns-inline">
-                                    <span class="type">: Boolean</span>
-                                  </span>
-                                  <span class="badge badge-dark border private">private</span>
-                              </h5>
-                              <div class="description">
-                                  Determines if the series is visible or not.
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>Inherited From:</label>
-                                        <a href="../classes/EJSC.Series.html#method_isVisible">EJSC.Series</a>:
-                                      <a href="../files/src_series_base_Series.es6.html#l143">src\series\base\Series.es6:143</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="returns">
-                                  <h6>Returns:</h6>
-                                  <ul class="returns">
-                                    <li>
-                                          <span class="type">Boolean</span>
-                                        If the series is visible or not
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="method_prepare" class="list-group-item method item private inherited">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">prepare</b>
-                                  <span class="paren">(</span>
-                                  <span class="args">
-                                      <span class="arg">
-                                          chart
-                                      </span>
-                                      <span class="arg">
-                                          options
-                                      </span>
-                                  </span>
-                                  <span class="paren">)</span>
-                                  <span class="badge badge-dark border private">private</span>
-                              </h5>
-                              <div class="description">
-                                  Links the series to its owner chart.
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>Inherited From:</label>
-                                        <a href="../classes/EJSC.Series.html#method_prepare">EJSC.Series</a>:
-                                      <a href="../files/src_series_base_Series.es6.html#l156">src\series\base\Series.es6:156</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="params">
-                                  <h6>Parameters:</h6>
-                                  <ul>
-                                      <li class="param">
-                                          <span class="param-name">chart :</span>
-                                          <span class="type">EJSC'sparkline'.Chart</span>
-                                        <div class="param-description">
-                                          The owner chart
-                                        </div>
-                                      </li>
-                                      <li class="param">
-                                          <span class="param-name">options :</span>
-                                          <span class="type">Object</span>
-                                        <div class="param-description">
-                                          Default options to apply if not defined
-                                        </div>
-                                      </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="method_referenceXAxis" class="list-group-item method item private">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">referenceXAxis</b>
-                                  <span class="paren">()</span>
-                                  <span class="returns-inline">
-                                    <span class="type">: EJSC'sparkline'.Axis</span>
-                                  </span>
-                                  <span class="badge badge-dark border private">private</span>
-                              </h5>
-                              <div class="description">
-                                  <p>Returns a reference to the x axis</p>
-                            
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
-                                      <a href="../files/src_series_base_PlotSeries.es6.html#l154">src\series\base\PlotSeries.es6:154</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="returns">
-                                  <h6>Returns:</h6>
-                                  <ul class="returns">
-                                    <li>
-                                          <span class="type">EJSC'sparkline'.Axis</span>
-                                        <p>The x axis</p>
-                            
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="method_referenceXAxis" class="list-group-item method item private">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">referenceXAxis</b>
-                                  <span class="paren">()</span>
-                                  <span class="returns-inline">
-                                    <span class="type">: EJSC'sparkline'.Axis</span>
-                                  </span>
-                                  <span class="badge badge-dark border private">private</span>
-                              </h5>
-                              <div class="description">
-                                  <p>Returns a reference to the y axis</p>
-                            
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
-                                      <a href="../files/src_series_base_PlotSeries.es6.html#l167">src\series\base\PlotSeries.es6:167</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="returns">
-                                  <h6>Returns:</h6>
-                                  <ul class="returns">
-                                    <li>
-                                          <span class="type">EJSC'sparkline'.Axis</span>
-                                        <p>The y axis</p>
-                            
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
-                            <li id="method_setOpacity" class="list-group-item method item private inherited">
-                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
-                              <h5 class="details">
-                                <b class="name">setOpacity</b>
-                                  <span class="paren">(</span>
-                                  <span class="args">
-                                      <span class="arg">
-                                          color
-                                      </span>
-                                      <span class="arg">
-                                          opacity
-                                      </span>
-                                  </span>
-                                  <span class="paren">)</span>
-                                  <span class="returns-inline">
-                                    <span class="type">: String</span>
-                                  </span>
-                                  <span class="badge badge-dark border private">private</span>
-                              </h5>
-                              <div class="description">
-                                  Sets the given opacity of a given color.
-                              </div>
-                              <div class="meta">
-                                <ul class="list-unstyled">
-                                  <li class="inherited">
-                                        <label>Inherited From:</label>
-                                        <a href="../classes/EJSC.Series.html#method_setOpacity">EJSC.Series</a>:
-                                      <a href="../files/src_series_base_Series.es6.html#l173">src\series\base\Series.es6:173</a>
-                                  </li>
-                                    <li class="available">
-                                      <label>Available since:</label>
-                                      @todo
-                                    </li>
-                                </ul>
-                              </div>
-                                <div class="params">
-                                  <h6>Parameters:</h6>
-                                  <ul>
-                                      <li class="param">
-                                          <span class="param-name">color :</span>
-                                          <span class="type">String</span>
-                                        <div class="param-description">
-                                          The color
-                                        </div>
-                                      </li>
-                                      <li class="param">
-                                          <span class="param-name">opacity :</span>
-                                          <span class="type">Number</span>
-                                        <div class="param-description">
-                                          The opacity
-                                        </div>
-                                      </li>
-                                  </ul>
-                                </div>
-                                <div class="returns">
-                                  <h6>Returns:</h6>
-                                  <ul class="returns">
-                                    <li>
-                                          <span class="type">String</span>
-                                        The final color
-                                    </li>
-                                  </ul>
-                                </div>
-                            </li>
                             <li id="method_update" class="list-group-item method item private inherited">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
@@ -938,17 +996,15 @@
                                   <span class="badge badge-dark border private">private</span>
                               </h5>
                               <div class="description">
-                                  Fires when a property of the class has changed.
+                                  <p>Updates the class after properties have changed.</p>
+                            
                               </div>
                               <div class="meta">
                                 <ul class="list-unstyled">
                                   <li class="inherited">
-                                      <label>Inherited From:</label>
-                                      <a href="../classes/EJSC.Inheritable.html#method_update">
-                                        EJSC.Inheritable
-                                      </a>
-                                        but overwritten in
-                                      <a href="../files/src_series_base_Series.es6.html#l194">src\series\base\Series.es6:194</a>
+                                        <label>Inherited From:</label>
+                                        <a href="../classes/EJSC.Inheritable.html#method_update">EJSC.Inheritable</a>:
+                                      <a href="../files/src_class_Inheritable.es6.html#l112">src\class\Inheritable.es6:112</a>
                                   </li>
                                     <li class="available">
                                       <label>Available since:</label>
@@ -977,16 +1033,8 @@
                                             <a href="#" data-tabid="#methods" data-anchor="#method_apply" data-tablink="apply">apply</a>
                 
                                         </li>
-                                        <li class="index-item method private">
-                                            <a href="#" data-tabid="#methods" data-anchor="#method_calculateExtremes" data-tablink="calculateExtremes">calculateExtremes</a>
-                
-                                        </li>
-                                        <li class="index-item method private inherited">
-                                            <a href="#" data-tabid="#methods" data-anchor="#method_draw" data-tablink="draw">draw</a>
-                
-                                        </li>
-                                        <li class="index-item method private">
-                                            <a href="#" data-tabid="#methods" data-anchor="#method_getVisiblePoints" data-tablink="getVisiblePoints">getVisiblePoints</a>
+                                        <li class="index-item method inherited">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_format" data-tablink="format">format</a>
                 
                                         </li>
                                         <li class="index-item method private inherited">
@@ -994,26 +1042,6 @@
                 
                                         </li>
                                         <li class="index-item method private inherited">
-                                            <a href="#" data-tabid="#methods" data-anchor="#method_isVisible" data-tablink="isVisible">isVisible</a>
-                
-                                        </li>
-                                        <li class="index-item method private inherited">
-                                            <a href="#" data-tabid="#methods" data-anchor="#method_prepare" data-tablink="prepare">prepare</a>
-                
-                                        </li>
-                                        <li class="index-item method private">
-                                            <a href="#" data-tabid="#methods" data-anchor="#method_referenceXAxis" data-tablink="referenceXAxis">referenceXAxis</a>
-                
-                                        </li>
-                                        <li class="index-item method private">
-                                            <a href="#" data-tabid="#methods" data-anchor="#method_referenceXAxis" data-tablink="referenceXAxis">referenceXAxis</a>
-                
-                                        </li>
-                                        <li class="index-item method private inherited">
-                                            <a href="#" data-tabid="#methods" data-anchor="#method_setOpacity" data-tablink="setOpacity">setOpacity</a>
-                
-                                        </li>
-                                        <li class="index-item method private inherited inherited">
                                             <a href="#" data-tabid="#methods" data-anchor="#method_update" data-tablink="update">update</a>
                 
                                         </li>
@@ -1024,10 +1052,6 @@
                                 <h3>Properties</h3>
                 
                                 <ul class="index-list properties extends">
-                                        <li class="index-item property inherited">
-                                            <a href="#" data-tabid="#properties" data-anchor="#property_chart" data-tablink="chart">chart</a>
-                
-                                        </li>
                                         <li class="index-item property private inherited">
                                             <a href="#" data-tabid="#properties" data-anchor="#property_initialized" data-tablink="initialized">initialized</a>
                 
@@ -1043,23 +1067,38 @@
                                 <h3>Attributes</h3>
                 
                                 <ul class="index-list attrs extends">
-                                        <li class="index-item attr inherited">
-                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_color" data-tablink="color">color</a>
+                                        <li class="index-item attr">
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_currencyAlign" data-tablink="currencyAlign">currencyAlign</a>
                                         </li>
                                         <li class="index-item attr">
-                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_spacing" data-tablink="spacing">spacing</a>
-                                        </li>
-                                        <li class="index-item attr inherited">
-                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_title" data-tablink="title">title</a>
-                                        </li>
-                                        <li class="index-item attr inherited">
-                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_visible" data-tablink="visible">visible</a>
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_currencyPosition" data-tablink="currencyPosition">currencyPosition</a>
                                         </li>
                                         <li class="index-item attr">
-                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_xAxis" data-tablink="xAxis">xAxis</a>
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_currencySymbol" data-tablink="currencySymbol">currencySymbol</a>
                                         </li>
                                         <li class="index-item attr">
-                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_yAxis" data-tablink="yAxis">yAxis</a>
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_decimalSymbol" data-tablink="decimalSymbol">decimalSymbol</a>
+                                        </li>
+                                        <li class="index-item attr">
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_maximumDecimals" data-tablink="maximumDecimals">maximumDecimals</a>
+                                        </li>
+                                        <li class="index-item attr">
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_minimumDecimals" data-tablink="minimumDecimals">minimumDecimals</a>
+                                        </li>
+                                        <li class="index-item attr">
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_negativePrefix" data-tablink="negativePrefix">negativePrefix</a>
+                                        </li>
+                                        <li class="index-item attr">
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_negativeSuffix" data-tablink="negativeSuffix">negativeSuffix</a>
+                                        </li>
+                                        <li class="index-item attr">
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_positivePrefix" data-tablink="positivePrefix">positivePrefix</a>
+                                        </li>
+                                        <li class="index-item attr">
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_positiveSuffix" data-tablink="positiveSuffix">positiveSuffix</a>
+                                        </li>
+                                        <li class="index-item attr">
+                                            <a href="#" data-tabid="#attrs" data-anchor="#attr_thousandsSymbol" data-tablink="thousandsSymbol">thousandsSymbol</a>
                                         </li>
                                 </ul>
                             </div>

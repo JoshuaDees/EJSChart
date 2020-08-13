@@ -10,16 +10,16 @@ import $Object from './util/Object.es6';
  * Top level namespace for all classes and variables used by the Emprise JavaScript Charts package.
  * Use of this namespace prevents variable name collisions with other available JavaScript packages.
  *
- * @class EJSC
  * @static
+ * @class EJSC
  * @since 1.0.0
  */
 export default window.EJSC = new class EJSC {
   /**
    * Array of prepared functions to be called when the window loads.
    *
-   * @property {Array} prepared
    * @private
+   * @property {Array} prepared
    * @default []
    * @since 3.0.0
    */
@@ -58,8 +58,8 @@ export default window.EJSC = new class EJSC {
   /**
    * Runs each of the prepared callback functions when the page loads.
    *
-   * @method load
    * @private
+   * @method load
    * @since 3.0.0
    */
   load() {

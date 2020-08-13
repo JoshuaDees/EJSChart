@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>src\formatter\NumberFormatter.es6 - EJSCharts</title>
+    <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/bootstrap-4.5.0.bundle.min.js"></script>
+    <script src="../assets/vendor/prettify/prettify-min.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png" />
+  </head>
+  <body>
+    <nav class="bg-light border-bottom navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <h1 class="navbar-brand">EJSCharts</h1>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown">API Docs for Version: <b>3.0.0</b></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item">3.0.0</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="card">
+            <h2 class="card-header">
+              API
+            </h2>
+            <div class="card-body">
+              <ul class="list-unstyled">
+                  <li><a href="../classes/EJSC.html">EJSC</a></li>
+                  <li><a href="../classes/EJSC.AreaSeries.html">EJSC.AreaSeries</a></li>
+                  <li><a href="../classes/EJSC.BarSeries.html">EJSC.BarSeries</a></li>
+                  <li><a href="../classes/EJSC.Chart.html">EJSC.Chart</a></li>
+                  <li><a href="../classes/EJSC.Drawing.html">EJSC.Drawing</a></li>
+                  <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
+                  <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
+                  <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.NumberFormatter.html">EJSC.NumberFormatter</a></li>
+                  <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <form class="alert alert-secondary bg-light options text-right">
+            Show:
+            <label for="api-show-inherited" class="checkbox">
+              <input type="checkbox" id="api-show-inherited" checked>
+              Inherited
+            </label>
+            <label for="api-show-protected" class="checkbox">
+              <input type="checkbox" id="api-show-protected">
+              Protected
+            </label>
+            <label for="api-show-private" class="checkbox">
+              <input type="checkbox" id="api-show-private">
+              Private
+            </label>
+            <label for="api-show-deprecated" class="checkbox">
+              <input type="checkbox" id="api-show-deprecated">
+              Deprecated
+            </label>
+          </form>
+          <div class="apidocs">
+            <div id="docs-main">
+              <div class="content">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>src\formatter\NumberFormatter.es6 <small class="float-right">File</small></h3>
+                  </div>
+                  <pre class="card-body prettyprint linenums">import $Number from &#x27;../util/Number.es6&#x27;;
+                import $Object from &#x27;../util/Object.es6&#x27;;
+                import $String from &#x27;../util/String.es6&#x27;;
+                import EJSC from &#x27;../EJSC.es6&#x27;;
+                import Formatter from &#x27;./Formatter.es6&#x27;;
+                
+                /**
+                 * Use this formatter when you want more control over the display of numeric values in your charts.
+                 * It can be applied to the chart axis as well as series hints.
+                 *
+                 * @example
+                 *   &#x60;&#x60;&#x60;
+                 *   // Create a basic NumberFormatter
+                 *   new EJSC.NumberFormatter();
+                 *
+                 *   // Create a NumberFormatter that forces 2 decimals to be displayed
+                 *   new EJSC.NumberFormatter({
+                 *     minimumDecimals: 2
+                 *   });
+                 *   &#x60;&#x60;&#x60;
+                 *
+                 * @constructor
+                 * @class EJSC.NumberFormatter
+                 * @extends EJSC.Formatter
+                 * @param {Object} [options={}] The config options to apply
+                 * @since 1.0.0
+                 */
+                export default EJSC.NumberFormatter = class NumberFormatter extends Formatter {
+                  /**
+                   * Defines the currency alignment.
+                   *
+                   * Valid values: &#x27;left&#x27;, &#x27;right&#x27;
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that sets the currency alignment to &#x27;right&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     // currencyAlign: &#x27;left&#x27;,
+                   *     currencySymbol: &#x27;$&#x27;
+                   *   });
+                   *   // 0.1234 -&gt; $0.1234
+                   *
+                   *   // Create a NumberFormatter that sets the currency alignment to &#x27;right&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     currencyAlign: &#x27;right&#x27;,
+                   *     currencySymbol: &#x27;$&#x27;
+                   *   });
+                   *   // 0.1234 -&gt; 0.1234$
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} currencyAlign
+                   * @default &#x27;left&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getCurrencyAlign() {
+                    // Return the current currency align
+                    return this.currencyAlign;
+                  }
+                
+                  // setter
+                  setCurrencyAlign(currencyAlign) {
+                    // Update the current currency align
+                    this.currencyAlign = currencyAlign;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the currency position.
+                   *
+                   * Valid values: &#x27;inner&#x27;, &#x27;outer&#x27;
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that sets the currency position to &#x27;inner&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     currencyPosition: &#x27;inner&#x27;,
+                   *     currencySymbol: &#x27;$&#x27;
+                   *   });
+                   *   // -0.1234 -&gt; -$0.1234
+                   *
+                   *   // Create a NumberFormatter that keeps the currency position as &#x27;outer&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     // currencyPosition: &#x27;outer&#x27;,
+                   *     currencySymbol: &#x27;$&#x27;
+                   *   });
+                   *   // -0.1234 -&gt; $-0.1234
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} currencyPosition
+                   * @default &#x27;outer&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getCurrencyPosition() {
+                    // Return the current currency position
+                    return this.currencySymbol;
+                  }
+                
+                  // setter
+                  setCurrencyPosition(currencyPosition) {
+                    // Update the current currency position
+                    this.currencyPosition = currencyPosition;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the currency symbol.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that sets the currency symbol to &#x27;,&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     currencySymbol: &#x27;$&#x27;
+                   *   });
+                   *   // 0.1234 -&gt; $0.1234
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} currencySymbol
+                   * @default &#x27;&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getCurrencySymbol() {
+                    // Return the current currency symbol
+                    return this.currencySymbol;
+                  }
+                
+                  // setter
+                  setCurrencySymbol(currencySymbol) {
+                    // Update the current currency symbol
+                    this.currencySymbol = currencySymbol;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the symbol to place before the decimals.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that switches the decimal symbol to &#x27;,&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     decimalSymbol: &#x27;,&#x27;
+                   *   });
+                   *   // 0.1234 -&gt; 0,1234
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} decimalSymbol
+                   * @default &#x27;.&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getDecimalSymbol() {
+                    // Return the current decimal symbol
+                    return this.decimalSymbol;
+                  }
+                
+                  // setter
+                  setDecimalSymbol(decimalSymbol) {
+                    // Update the current decimal symbol
+                    this.decimalSymbol = decimalSymbol;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the maximum decimals of the formatter.
+                   *
+                   * Valid values are 0-14.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that allows a maximum of 2 decimals
+                   *   new EJSC.NumberFormatter({
+                   *     maximumDecimals: 2
+                   *   });
+                   *   // 0.1234 -&gt; 0.12
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Integer} maximumDecimals
+                   * @default 14
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getMaximumDecimals() {
+                    // Return the current maximum decimals
+                    return this.maximumDecimals;
+                  }
+                
+                  // setter
+                  setMaximumDecimals(maximumDecimals) {
+                    // Update the current maximum decimals
+                    this.maximumDecimals = maximumDecimals;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the minimum decimals of the formatter.
+                   *
+                   * Valid values are 0-14.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that allows a minimum of 2 decimals
+                   *   new EJSC.NumberFormatter({
+                   *     minimumDecimals: 6
+                   *   });
+                   *   // 0.1234 -&gt; 0.123400
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {Integer} minimumDecimals
+                   * @default 0
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getMinimumDecimals() {
+                    // Return the current minimum decimals
+                    return this.minimumDecimals;
+                  }
+                
+                  // setter
+                  setMinimumDecimals(minimumDecimals) {
+                    // Update the current minimum decimals
+                    this.minimumDecimals = minimumDecimals;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the prefix to use for negative numbers.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that sets the prefix for negative numbers to &#x27;(&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     negativePrefix: &#x27;(&#x27;
+                   *   });
+                   *   // -0.1234 -&gt; (0.1234
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} negativePrefix
+                   * @default &#x27;-&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getNegativePrefix() {
+                    // Return the current negative prefix
+                    return this.negativePrefix;
+                  }
+                
+                  // setter
+                  setNegativePrefix(negativePrefix) {
+                    // Update the current negative prefix
+                    this.negativePrefix = negativePrefix;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the suffix to use for negative numbers.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that sets the suffix for negative numbers to &#x27;)&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     negativeSuffix: &#x27;)&#x27;
+                   *   });
+                   *   // -0.1234 -&gt; -0.1234)
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} negativeSuffix
+                   * @default &#x27;&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getNegativeSuffix() {
+                    // Return the current negative suffix
+                    return this.negativeSuffix;
+                  }
+                
+                  // setter
+                  setNegativeSuffix(negativeSuffix) {
+                    // Update the current negative suffix
+                    this.negativeSuffix = negativeSuffix;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the prefix to use for positive numbers.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that sets the prefix for positive numbers to &#x27;(&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     positivePrefix: &#x27;(&#x27;
+                   *   });
+                   *   // 0.1234 -&gt; (0.1234
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} positivePrefix
+                   * @default &#x27;-&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getPositivePrefix() {
+                    // Return the current positive prefix
+                    return this.positivePrefix;
+                  }
+                
+                  // setter
+                  setPositivePrefix(positivePrefix) {
+                    // Update the current positive prefix
+                    this.positivePrefix = positivePrefix;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the suffix to use for positive numbers.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that sets the suffix for positive numbers to &#x27;)&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     positiveSuffix: &#x27;)&#x27;
+                   *   });
+                   *   // 0.1234 -&gt; 0.1234)
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} positiveSuffix
+                   * @default &#x27;&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getPositiveSuffix() {
+                    // Return the current positive suffix
+                    return this.positiveSuffix;
+                  }
+                
+                  // setter
+                  setPositiveSuffix(positiveSuffix) {
+                    // Update the current positive suffix
+                    this.positiveSuffix = positiveSuffix;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  /**
+                   * Defines the symbol to use for separating the whole value into thousands.
+                   *
+                   * @example
+                   *   &#x60;&#x60;&#x60;
+                   *   // Create a NumberFormatter that sets the thousands symbol to &#x27;,&#x27;
+                   *   new EJSC.NumberFormatter({
+                   *     thousandsSymbol: &#x27;,&#x27;
+                   *   });
+                   *   // 1234 -&gt; 1,234
+                   *   &#x60;&#x60;&#x60;
+                   *
+                   * @attribute {String} thousandsSymbol
+                   * @default &#x27;&#x27;
+                   * @since 3.0.0
+                   */
+                
+                  // getter
+                  getThousandsSymbol() {
+                    // Return the current thousands symbol
+                    return this.thousandsSymbol;
+                  }
+                
+                  // setter
+                  setThousandsSymbol(thousandsSymbol) {
+                    // Update the current thousands symbol
+                    this.thousandsSymbol = thousandsSymbol;
+                
+                    // Redraw the chart if needed
+                    if (this.listening) {
+                      this.update();
+                    }
+                  }
+                
+                  // init
+                  init() {
+                    // super
+                    super.init();
+                
+                    // Initialize some public properties
+                    this.currencyAlign = &#x27;left&#x27;;
+                    this.currencyPosition = &#x27;inner&#x27;;
+                    this.currencySymbol = &#x27;&#x27;;
+                    this.decimalSymbol = &#x27;.&#x27;;
+                    this.maximumDecimals = 14;
+                    this.minimumDecimals = 0;
+                    this.negativePrefix = &#x27;-&#x27;;
+                    this.negativeSuffix = &#x27;&#x27;;
+                    this.positivePrefix = &#x27;&#x27;;
+                    this.positiveSuffix = &#x27;&#x27;;
+                    this.thousandsSymbol = &#x27;&#x27;;
+                  }
+                
+                  /**
+                   * Formats the value for display.
+                   *
+                   * @method format
+                   * @param {*} value The value to format
+                   * @return {String} The formatted value
+                   * @since 1.0.0
+                   */
+                  format(value) {
+                    // Make sure the value is a number
+                    if (!$Object.isNumber(value)) {
+                      // TODO: error out
+                    }
+                
+                    // Define some local variables
+                    let thousandsPattern = /(\d+)(\d{3})/;
+                
+                    // Grab the parts of the number
+                    let isNegative = value &lt; 0;
+                    let wholeValue = Math.floor(Math.abs(value));
+                    let decimalValue = $Number.round(Math.abs(value) - wholeValue, 14);
+                
+                    // Convert parts of the number to strings
+                    wholeValue = wholeValue.toString();
+                
+                    // Apply the thousands symbol
+                    if (this.thousandsSymbol !== &#x27;&#x27;) {
+                      while (thousandsPattern.test(wholeValue)) {
+                        wholeValue = wholeValue.replace(thousandsPattern, &#x27;$1&#x27; + this.thousandsSymbol + &#x27;$2&#x27;);
+                      }
+                    }
+                
+                    // Apply the maximum decimals
+                    decimalValue = $Number.round(decimalValue, this.maximumDecimals);
+                
+                    // Apply the minimum decimals
+                    if (decimalValue || this.minimumDecimals) {
+                      decimalValue = $String.padEnd(decimalValue.toString().replace(/^.+\./, &#x27;&#x27;), this.minimumDecimals, &#x27;0&#x27;);
+                    }
+                    else {
+                      decimalValue = &#x27;&#x27;;
+                    }
+                
+                    // Return the final value
+                    return ([
+                      (this.currencyPosition === &#x27;outer&#x27; &amp;&amp; this.currencyAlign === &#x27;left&#x27; ? this.currencySymbol : &#x27;&#x27;),
+                      (isNegative ? this.negativePrefix : this.positivePrefix),
+                      (this.currencyPosition === &#x27;inner&#x27; &amp;&amp; this.currencyAlign === &#x27;left&#x27; ? this.currencySymbol : &#x27;&#x27;),
+                      wholeValue,
+                      (decimalValue ? this.decimalSymbol + decimalValue : &#x27;&#x27;),
+                      (this.currencyPosition === &#x27;inner&#x27; &amp;&amp; this.currencyAlign === &#x27;right&#x27; ? this.currencySymbol : &#x27;&#x27;),
+                      (isNegative ? this.negativeSuffix : this.positiveSuffix),
+                      (this.currencyPosition === &#x27;outer&#x27; &amp;&amp; this.currencyAlign === &#x27;right&#x27; ? this.currencySymbol : &#x27;&#x27;)
+                    ]).join(&#x27;&#x27;);
+                  }
+                };
+                </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

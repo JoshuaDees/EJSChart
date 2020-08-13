@@ -96,6 +96,24 @@
             "fors": {},
             "namespaces": {}
         },
+        "src\\formatter\\Formatter.es6": {
+            "name": "src\\formatter\\Formatter.es6",
+            "modules": {},
+            "classes": {
+                "EJSC.Formatter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src\\formatter\\NumberFormatter.es6": {
+            "name": "src\\formatter\\NumberFormatter.es6",
+            "modules": {},
+            "classes": {
+                "EJSC.NumberFormatter": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src\\series\\base\\DataSeries.es6": {
             "name": "src\\series\\base\\DataSeries.es6",
             "modules": {},
@@ -241,6 +259,8 @@
                 "EJSC.SVG": 1,
                 "EJSC.VML": 1,
                 "EJSC.Drawing": 1,
+                "EJSC.Formatter": 1,
+                "EJSC.NumberFormatter": 1,
                 "EJSC.DataSeries": 1,
                 "EJSC.PlotSeries": 1,
                 "EJSC.Series": 1,
@@ -275,7 +295,7 @@
             "extension_for": [],
             "module": "EJSC",
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 8,
+            "line": 9,
             "description": "Holds the code common to all Axis types.",
             "extends": "EJSC.Inheritable",
             "is_constructor": 1,
@@ -496,6 +516,61 @@
                 }
             ],
             "since": "@todo"
+        },
+        "EJSC.Formatter": {
+            "name": "EJSC.Formatter",
+            "shortname": "EJSC.Formatter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "EJSC",
+            "file": "src\\formatter\\Formatter.es6",
+            "line": 4,
+            "description": "The top level Formatter class is used as a base for all label formatters.\nIt defines a format() method as a guide for descendants.\nThe format method is required to be overridden in all descendant classes in order to function properly when used with the chart classes.",
+            "access": "private",
+            "tagname": "",
+            "is_constructor": 1,
+            "extends": "EJSC.Inheritable",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "The config options to apply",
+                    "type": "Object",
+                    "optional": true,
+                    "optdefault": "{}"
+                }
+            ],
+            "since": "1.0.0"
+        },
+        "EJSC.NumberFormatter": {
+            "name": "EJSC.NumberFormatter",
+            "shortname": "EJSC.NumberFormatter",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "EJSC",
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 7,
+            "description": "Use this formatter when you want more control over the display of numeric values in your charts.\nIt can be applied to the chart axis as well as series hints.",
+            "example": [
+                "\n  ```\n  // Create a basic NumberFormatter\n  new EJSC.NumberFormatter();\n\n  // Create a NumberFormatter that forces 2 decimals to be displayed\n  new EJSC.NumberFormatter({\n    minimumDecimals: 2\n  });\n  ```"
+            ],
+            "is_constructor": 1,
+            "extends": "EJSC.Formatter",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "The config options to apply",
+                    "type": "Object",
+                    "optional": true,
+                    "optdefault": "{}"
+                }
+            ],
+            "since": "1.0.0"
         },
         "EJSC.DataSeries": {
             "name": "EJSC.DataSeries",
@@ -798,7 +873,7 @@
     "classitems": [
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 19,
+            "line": 20,
             "description": "Defines the border of the axis.",
             "example": [
                 "\n  ```\n  // TODO:\n  ```"
@@ -833,7 +908,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 54,
+            "line": 55,
             "description": "Defines the caption of the axis.",
             "example": [
                 "\n  ```\n  // TODO:\n  ```"
@@ -878,7 +953,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 90,
+            "line": 91,
             "description": "Defines the extremes of the axis.",
             "example": [
                 "\n  ```\n  // TODO:\n  ```"
@@ -903,7 +978,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 122,
+            "line": 125,
             "description": "Defines the grid of the axis.",
             "example": [
                 "\n  ```\n  // TODO:\n  ```"
@@ -943,7 +1018,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 158,
+            "line": 161,
             "description": "Defines the major ticks to be displayed on the axis.",
             "example": [
                 "\n  ```\n  // TODO:\n  ```"
@@ -983,7 +1058,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 193,
+            "line": 196,
             "description": "Defines the padding between the ends of the axis and the start and end of the data displayed when zoomed out.",
             "example": [
                 "\n  ```\n  // TODO:\n  ```"
@@ -997,7 +1072,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 223,
+            "line": 226,
             "description": "Defines if the order of the ticks on the axis are reversed or not.",
             "example": [
                 "\n  ```\n  // TODO:\n  ```"
@@ -1011,7 +1086,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 254,
+            "line": 257,
             "description": "Defines the size (height or width) of the axis.\nIf left null, default values will be used.",
             "itemtype": "property",
             "name": "size",
@@ -1022,7 +1097,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 282,
+            "line": 285,
             "description": "Defines if the axis is visible or not.",
             "itemtype": "attribute",
             "name": "visible",
@@ -1033,7 +1108,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 309,
+            "line": 312,
             "description": "Defines the zero plane of the axis.",
             "itemtype": "property",
             "name": "zeroPlane",
@@ -1070,7 +1145,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 339,
+            "line": 342,
             "description": "Defines the current zoom of the axis.",
             "itemtype": "property",
             "name": "zoom",
@@ -1092,7 +1167,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 365,
+            "line": 368,
             "description": "Holds a reference to the owner chart.",
             "itemtype": "property",
             "name": "chart",
@@ -1105,7 +1180,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 379,
+            "line": 382,
             "description": "Holds the dimensions for the draw area of this axis.",
             "itemtype": "property",
             "name": "drawArea",
@@ -1139,7 +1214,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 391,
+            "line": 394,
             "description": "Holds the orientation of the axis.\n\nValues: 'horizontal', 'vertical'",
             "itemtype": "property",
             "name": "orientation",
@@ -1152,7 +1227,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 402,
+            "line": 405,
             "description": "Holds the current scale to convert pixels to points.",
             "itemtype": "property",
             "name": "scale",
@@ -1165,7 +1240,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 411,
+            "line": 414,
             "description": "Holds the side of the axis.\n\nValues: 'left', 'top', 'right', 'bottom'",
             "itemtype": "property",
             "name": "side",
@@ -1178,7 +1253,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 498,
+            "line": 502,
             "description": "Calculates the draw area for the axis.",
             "itemtype": "method",
             "name": "calculateDrawArea",
@@ -1189,7 +1264,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 558,
+            "line": 562,
             "description": "Calculates the extremes for the axis.",
             "itemtype": "method",
             "name": "calculateExtremes",
@@ -1200,7 +1275,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 569,
+            "line": 573,
             "description": "Calculates the scale for the axis.",
             "itemtype": "method",
             "name": "calculateScale",
@@ -1211,7 +1286,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 593,
+            "line": 597,
             "description": "Calculates the axis' ticks based on the attached series' data.",
             "itemtype": "method",
             "name": "calculateTicks",
@@ -1222,7 +1297,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 605,
+            "line": 609,
             "description": "Converts a linear point to a logarithmic point.",
             "itemtype": "method",
             "name": "convertLinearToPoint",
@@ -1244,7 +1319,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 619,
+            "line": 623,
             "description": "Converts from chart pixel to point.",
             "itemtype": "method",
             "name": "convertPixelToPoint",
@@ -1266,7 +1341,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 633,
+            "line": 637,
             "description": "Converts a logarithmic point to a linear point.",
             "itemtype": "method",
             "name": "convertPointToLinear",
@@ -1288,7 +1363,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 647,
+            "line": 651,
             "description": "Converts from chart point to pixel.",
             "itemtype": "method",
             "name": "convertPointToPixel",
@@ -1310,7 +1385,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 661,
+            "line": 665,
             "description": "Draws the axis.",
             "itemtype": "method",
             "name": "draw",
@@ -1321,7 +1396,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 724,
+            "line": 728,
             "description": "Draws the axis' border.",
             "itemtype": "method",
             "name": "drawBorder",
@@ -1332,7 +1407,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 794,
+            "line": 798,
             "description": "Draws the axis' caption.",
             "itemtype": "method",
             "name": "drawCaption",
@@ -1343,7 +1418,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 851,
+            "line": 855,
             "description": "Draws the axis' grid.",
             "itemtype": "method",
             "name": "drawGrid",
@@ -1361,7 +1436,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 899,
+            "line": 903,
             "description": "Draws the axis' tick captions.",
             "itemtype": "method",
             "name": "drawMajorTickCaptions",
@@ -1379,7 +1454,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 970,
+            "line": 974,
             "description": "Draws the axis' major ticks.",
             "itemtype": "method",
             "name": "drawMajorTicks",
@@ -1397,7 +1472,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1033,
+            "line": 1037,
             "description": "Draws the axis' zero plane.",
             "itemtype": "method",
             "name": "drawZeroPlane",
@@ -1408,7 +1483,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1083,
+            "line": 1087,
             "description": "Returns the current zoom (plus given spacing) of the axis.",
             "itemtype": "method",
             "name": "getCurrentZoom",
@@ -1426,7 +1501,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1105,
+            "line": 1109,
             "description": "Returns the current offset size of the axis.",
             "itemtype": "method",
             "name": "getOffsetSize",
@@ -1441,7 +1516,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1118,
+            "line": 1122,
             "description": "Returns the list of visible series attached to the axis.",
             "itemtype": "method",
             "name": "getVisibleSeries",
@@ -1456,7 +1531,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1134,
+            "line": 1138,
             "description": "Returns if the axis has currently visible series.",
             "itemtype": "method",
             "name": "hasVisibleSeries",
@@ -1471,7 +1546,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1147,
+            "line": 1151,
             "description": "Determines if the axis is currently visible (needs to be drawn).",
             "itemtype": "method",
             "name": "isVisible",
@@ -1486,7 +1561,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1160,
+            "line": 1164,
             "description": "Links the series to its owner chart.",
             "itemtype": "method",
             "name": "prepare",
@@ -1509,7 +1584,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1183,
+            "line": 1187,
             "description": "Fires when a property of the class has changed.",
             "itemtype": "method",
             "name": "update",
@@ -1520,7 +1595,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1196,
+            "line": 1200,
             "description": "Defines the default values for orientation or axes.",
             "itemtype": "property",
             "name": "orientations",
@@ -1555,7 +1630,7 @@
         },
         {
             "file": "src\\axis\\base\\Axis.es6",
-            "line": 1215,
+            "line": 1219,
             "description": "Defines the default values for size of axes.",
             "itemtype": "property",
             "name": "sizes",
@@ -5947,6 +6022,200 @@
             "class": "EJSC.Drawing"
         },
         {
+            "file": "src\\formatter\\Formatter.es6",
+            "line": 17,
+            "description": "Formats the value for display.",
+            "itemtype": "method",
+            "name": "format",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to format",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "The formatted value",
+                "type": "String"
+            },
+            "since": "1.0.0",
+            "class": "EJSC.Formatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 29,
+            "description": "Defines the currency alignment.\n\nValid values: 'left', 'right'",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that sets the currency alignment to 'right'\n  new EJSC.NumberFormatter({\n    // currencyAlign: 'left',\n    currencySymbol: '$'\n  });\n  // 0.1234 -> $0.1234\n\n  // Create a NumberFormatter that sets the currency alignment to 'right'\n  new EJSC.NumberFormatter({\n    currencyAlign: 'right',\n    currencySymbol: '$'\n  });\n  // 0.1234 -> 0.1234$\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "currencyAlign",
+            "type": "String",
+            "default": "'left'",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 73,
+            "description": "Defines the currency position.\n\nValid values: 'inner', 'outer'",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that sets the currency position to 'inner'\n  new EJSC.NumberFormatter({\n    currencyPosition: 'inner',\n    currencySymbol: '$'\n  });\n  // -0.1234 -> -$0.1234\n\n  // Create a NumberFormatter that keeps the currency position as 'outer'\n  new EJSC.NumberFormatter({\n    // currencyPosition: 'outer',\n    currencySymbol: '$'\n  });\n  // -0.1234 -> $-0.1234\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "currencyPosition",
+            "type": "String",
+            "default": "'outer'",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 117,
+            "description": "Defines the currency symbol.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that sets the currency symbol to ','\n  new EJSC.NumberFormatter({\n    currencySymbol: '$'\n  });\n  // 0.1234 -> $0.1234\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "currencySymbol",
+            "type": "String",
+            "default": "''",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 151,
+            "description": "Defines the symbol to place before the decimals.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that switches the decimal symbol to ','\n  new EJSC.NumberFormatter({\n    decimalSymbol: ','\n  });\n  // 0.1234 -> 0,1234\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "decimalSymbol",
+            "type": "String",
+            "default": "'.'",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 185,
+            "description": "Defines the maximum decimals of the formatter.\n\nValid values are 0-14.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that allows a maximum of 2 decimals\n  new EJSC.NumberFormatter({\n    maximumDecimals: 2\n  });\n  // 0.1234 -> 0.12\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "maximumDecimals",
+            "type": "Integer",
+            "default": "14",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 221,
+            "description": "Defines the minimum decimals of the formatter.\n\nValid values are 0-14.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that allows a minimum of 2 decimals\n  new EJSC.NumberFormatter({\n    minimumDecimals: 6\n  });\n  // 0.1234 -> 0.123400\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "minimumDecimals",
+            "type": "Integer",
+            "default": "0",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 257,
+            "description": "Defines the prefix to use for negative numbers.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that sets the prefix for negative numbers to '('\n  new EJSC.NumberFormatter({\n    negativePrefix: '('\n  });\n  // -0.1234 -> (0.1234\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "negativePrefix",
+            "type": "String",
+            "default": "'-'",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 291,
+            "description": "Defines the suffix to use for negative numbers.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that sets the suffix for negative numbers to ')'\n  new EJSC.NumberFormatter({\n    negativeSuffix: ')'\n  });\n  // -0.1234 -> -0.1234)\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "negativeSuffix",
+            "type": "String",
+            "default": "''",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 325,
+            "description": "Defines the prefix to use for positive numbers.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that sets the prefix for positive numbers to '('\n  new EJSC.NumberFormatter({\n    positivePrefix: '('\n  });\n  // 0.1234 -> (0.1234\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "positivePrefix",
+            "type": "String",
+            "default": "'-'",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 359,
+            "description": "Defines the suffix to use for positive numbers.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that sets the suffix for positive numbers to ')'\n  new EJSC.NumberFormatter({\n    positiveSuffix: ')'\n  });\n  // 0.1234 -> 0.1234)\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "positiveSuffix",
+            "type": "String",
+            "default": "''",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 393,
+            "description": "Defines the symbol to use for separating the whole value into thousands.",
+            "example": [
+                "\n  ```\n  // Create a NumberFormatter that sets the thousands symbol to ','\n  new EJSC.NumberFormatter({\n    thousandsSymbol: ','\n  });\n  // 1234 -> 1,234\n  ```"
+            ],
+            "itemtype": "attribute",
+            "name": "thousandsSymbol",
+            "type": "String",
+            "default": "''",
+            "since": "3.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
+            "file": "src\\formatter\\NumberFormatter.es6",
+            "line": 446,
+            "description": "Formats the value for display.",
+            "itemtype": "method",
+            "name": "format",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value to format",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "The formatted value",
+                "type": "String"
+            },
+            "since": "1.0.0",
+            "class": "EJSC.NumberFormatter"
+        },
+        {
             "file": "src\\series\\base\\DataSeries.es6",
             "line": 15,
             "description": "Holds the data for the series.\n\nThis is required, and therefore defined outside of the options array in the constructor.",
@@ -7653,6 +7922,35 @@
         {
             "file": "src\\util\\String.es6",
             "line": 33,
+            "description": "Pads string on the right side if it's shorter than length.\nPadding characters are truncated if they exceed length.",
+            "example": [
+                "\n  ```\n  $String('abc').padEnd(6).result;\n  // => 'abc   '\n\n  $String('abc').padEnd(6, '_-').result;\n  // => 'abc_-_'\n\n  $String('abc').padEnd(3).result;\n  // => 'abc'\n  ```"
+            ],
+            "itemtype": "method",
+            "name": "padEnd",
+            "params": [
+                {
+                    "name": "length",
+                    "description": "The padding length",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "0"
+                },
+                {
+                    "name": "chars",
+                    "description": "The string used as padding",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "' '"
+                }
+            ],
+            "chainable": 1,
+            "since": "@todo",
+            "class": "$String"
+        },
+        {
+            "file": "src\\util\\String.es6",
+            "line": 66,
             "description": "Converts the first character of string to upper case.",
             "example": [
                 "\n  ```\n  $String('fred').upperFirst().result;\n  // => 'Fred'\n\n  $String('FRED').upperFirst().result;\n  // => 'FRED'\n  ```"
@@ -7665,7 +7963,7 @@
         },
         {
             "file": "src\\util\\String.es6",
-            "line": 58,
+            "line": 91,
             "description": "Converts the first character of string to upper case and the remaining to lower case.",
             "example": [
                 "\n  ```\n  $String.capitalize('FRED');\n  // => 'Fred'\n  ```"
@@ -7673,6 +7971,13 @@
             "static": 1,
             "itemtype": "method",
             "name": "capitalize",
+            "params": [
+                {
+                    "name": "string",
+                    "description": "The string to capitalize",
+                    "type": "String"
+                }
+            ],
             "return": {
                 "description": "The capitalized value",
                 "type": "String"
@@ -7682,7 +7987,42 @@
         },
         {
             "file": "src\\util\\String.es6",
-            "line": 74,
+            "line": 108,
+            "description": "Pads string on the right side if it's shorter than length.\nPadding characters are truncated if they exceed length.",
+            "example": [
+                "\n  ```\n  $String.padEnd('abc', 6);\n  // => 'abc   '\n\n  $String.padEnd('abc', 6, '_-');\n  // => 'abc_-_'\n\n  $String.padEnd('abc', 3);\n  // => 'abc'\n  ```"
+            ],
+            "static": 1,
+            "itemtype": "method",
+            "name": "padEnd",
+            "params": [
+                {
+                    "name": "string",
+                    "description": "The string to pad",
+                    "type": "String"
+                },
+                {
+                    "name": "length",
+                    "description": "The padding length",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "0"
+                },
+                {
+                    "name": "chars",
+                    "description": "The string used as padding",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "' '"
+                }
+            ],
+            "chainable": 1,
+            "since": "@todo",
+            "class": "$String"
+        },
+        {
+            "file": "src\\util\\String.es6",
+            "line": 134,
             "description": "Converts the first character of string to upper case.",
             "example": [
                 "\n  ```\n  $String.upperFirst('fred');\n  // => 'Fred'\n\n  $String.upperFirst('FRED');\n  // => 'FRED'\n  ```"
@@ -7690,6 +8030,13 @@
             "static": 1,
             "itemtype": "method",
             "name": "upperFirst",
+            "params": [
+                {
+                    "name": "string",
+                    "description": "The string to convert",
+                    "type": "String"
+                }
+            ],
             "return": {
                 "description": "The upper cased value",
                 "type": "String"
@@ -7701,11 +8048,11 @@
             "file": "src\\EJSC.es6",
             "line": 18,
             "description": "Array of prepared functions to be called when the window loads.",
+            "access": "private",
+            "tagname": "",
             "itemtype": "property",
             "name": "prepared",
             "type": "Array",
-            "access": "private",
-            "tagname": "",
             "default": "[]",
             "since": "3.0.0",
             "class": "EJSC",
@@ -7735,10 +8082,10 @@
             "file": "src\\EJSC.es6",
             "line": 58,
             "description": "Runs each of the prepared callback functions when the page loads.",
-            "itemtype": "method",
-            "name": "load",
             "access": "private",
             "tagname": "",
+            "itemtype": "method",
+            "name": "load",
             "since": "3.0.0",
             "class": "EJSC",
             "module": "EJSC"

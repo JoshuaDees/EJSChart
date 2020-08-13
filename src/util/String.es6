@@ -31,6 +31,39 @@ let $String = (string) => new class {
   }
 
   /**
+  * Pads string on the right side if it's shorter than length.
+  * Padding characters are truncated if they exceed length.
+  *
+  * @example
+  *   ```
+  *   $String('abc').padEnd(6).result;
+  *   // => 'abc   '
+  *
+  *   $String('abc').padEnd(6, '_-').result;
+  *   // => 'abc_-_'
+  *
+  *   $String('abc').padEnd(3).result;
+  *   // => 'abc'
+  *   ```
+  *
+  * @method padEnd
+  * @param {String} [length=0] The padding length
+  * @param {String} [chars=' '] The string used as padding
+  * @chainable
+  * @since @todo
+  */
+  padEnd(length = 0, chars = ' ') {
+    // Pad the end of the string
+    while (this.result.length < length) {
+      // TODO: Fix to truncate if needed
+      this.result += chars;
+    }
+
+    // Chain
+    return this;
+  }
+
+  /**
    * Converts the first character of string to upper case.
    *
    * @example
@@ -66,10 +99,37 @@ let $String = (string) => new class {
 *
 * @static
 * @method capitalize
+* @param {String} string The string to capitalize
 * @return {String} The capitalized value
 * @since @todo
 */
 $String.capitalize = (string) => string && $String(string).capitalize().result;
+
+/**
+* Pads string on the right side if it's shorter than length.
+* Padding characters are truncated if they exceed length.
+*
+* @example
+*   ```
+*   $String.padEnd('abc', 6);
+*   // => 'abc   '
+*
+*   $String.padEnd('abc', 6, '_-');
+*   // => 'abc_-_'
+*
+*   $String.padEnd('abc', 3);
+*   // => 'abc'
+*   ```
+*
+* @static
+* @method padEnd
+* @param {String} string The string to pad
+* @param {String} [length=0] The padding length
+* @param {String} [chars=' '] The string used as padding
+* @chainable
+* @since @todo
+*/
+$String.padEnd = (string, length = 0, chars = ' ') => string && $String(string).padEnd(length, chars).result;
 
 /**
  * Converts the first character of string to upper case.
@@ -85,6 +145,7 @@ $String.capitalize = (string) => string && $String(string).capitalize().result;
  *
  * @static
  * @method upperFirst
+ * @param {String} string The string to convert
  * @return {String} The upper cased value
  * @since @todo
  */

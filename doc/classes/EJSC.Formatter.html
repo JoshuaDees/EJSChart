@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>EJSC.Inheritable - EJSCharts</title>
+    <title>EJSC.Formatter - EJSCharts</title>
     <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
     <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
     <link href="../assets/css/theme.css" rel="stylesheet" />
@@ -80,30 +80,36 @@
                 <div class="card">
                   <!-- h3 class="card-header icon class" -->
                   <h3 class="card-header">
-                    EJSC.Inheritable
+                    EJSC.Formatter
                     <small class="float-right">
                       Class
                     </small>
                   </h3>
                   <div class="card-body">
-                    <p>Base class from which all EJSC classes descend.</p>
+                    <p>The top level Formatter class is used as a base for all label formatters.
+                It defines a format() method as a guide for descendants.
+                The format method is required to be overridden in all descendant classes in order to function properly when used with the chart classes.</p>
                 
                     <ul class="list-unstyled">
                         <li>
+                          <label class="pull-left">Extends:</label>
+                          <a href="../classes/EJSC.Inheritable.html" class="crosslink">EJSC.Inheritable</a>
+                        </li>
+                        <li>
                           <label class="pull-left">Defined In:</label>
-                          <a href="../files/src_class_Inheritable.es6.html#l5">src\class\Inheritable.es6:5</a>
+                          <a href="../files/src_formatter_Formatter.es6.html#l4">src\formatter\Formatter.es6:4</a>
                         </li>
                         <li>
                           <label class="pull-left">Available Since:</label>
-                          @todo
+                          1.0.0
                         </li>
                     </ul>
                       <div class="card">
                           <h4 class="card-header">Constructor</h4>
-                          <ul class="list-group list-group-flush"><li id="method_EJSC.Inheritable" class="list-group-item method item private">
+                          <ul class="list-group list-group-flush"><li id="method_EJSC.Formatter" class="list-group-item method item private">
                   <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                   <h5 class="details">
-                    <b class="name">EJSC.Inheritable</b>
+                    <b class="name">EJSC.Formatter</b>
                       <span class="paren">(</span>
                       <span class="args">
                           <span class="arg">
@@ -122,11 +128,11 @@
                             <label>
                                 Defined in
                             </label>
-                          <a href="../files/src_class_Inheritable.es6.html#l5">src\class\Inheritable.es6:5</a>
+                          <a href="../files/src_formatter_Formatter.es6.html#l4">src\formatter\Formatter.es6:4</a>
                       </li>
                         <li class="available">
                           <label>Available since:</label>
-                          @todo
+                          1.0.0
                         </li>
                     </ul>
                   </div>
@@ -138,7 +144,7 @@
                               <span class="type">Object</span>
                               <span class="badge badge-dark border optional" title="This parameter is optional.">optional</span>
                             <div class="param-description">
-                              <p>The options to apply</p>
+                              <p>The config options to apply</p>
                 
                             </div>
                           </li>
@@ -150,7 +156,7 @@
                       <div class="card">
                         <h4 class="card-header">Properties</h4>
                         <div class="list-group list-group-flush">
-                            <li id="property_initialized" class="list-group-item property item private">
+                            <li id="property_initialized" class="list-group-item property item private inherited">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
                                 <b class="name">initialized</b>
@@ -165,9 +171,8 @@
                               <div class="meta">
                                 <ul class="list-unstyled">
                                   <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
+                                        <label>Inherited From:</label>
+                                        <a href="../classes/EJSC.Inheritable.html#property_initialized">EJSC.Inheritable</a>:
                                       <a href="../files/src_class_Inheritable.es6.html#l15">src\class\Inheritable.es6:15</a>
                                   </li>
                                     <li class="available">
@@ -191,7 +196,7 @@
                                   </ul>
                                 </div>
                             </li>
-                            <li id="property_listening" class="list-group-item property item private">
+                            <li id="property_listening" class="list-group-item property item private inherited">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
                                 <b class="name">listening</b>
@@ -206,9 +211,8 @@
                               <div class="meta">
                                 <ul class="list-unstyled">
                                   <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
+                                        <label>Inherited From:</label>
+                                        <a href="../classes/EJSC.Inheritable.html#property_listening">EJSC.Inheritable</a>:
                                       <a href="../files/src_class_Inheritable.es6.html#l24">src\class\Inheritable.es6:24</a>
                                   </li>
                                     <li class="available">
@@ -237,7 +241,7 @@
                       <div class="card">
                         <h4 class="card-header">Methods</h4>
                         <ul class="list-group list-group-flush">
-                            <li id="method_apply" class="list-group-item method item">
+                            <li id="method_apply" class="list-group-item method item inherited">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
                                 <b class="name">apply</b>
@@ -256,9 +260,8 @@
                               <div class="meta">
                                 <ul class="list-unstyled">
                                   <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
+                                        <label>Inherited From:</label>
+                                        <a href="../classes/EJSC.Inheritable.html#method_apply">EJSC.Inheritable</a>:
                                       <a href="../files/src_class_Inheritable.es6.html#l45">src\class\Inheritable.es6:45</a>
                                   </li>
                                     <li class="available">
@@ -294,7 +297,64 @@
                                   </ul>
                                 </div>
                             </li>
-                            <li id="method_init" class="list-group-item method item private">
+                            <li id="method_format" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">format</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          value
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="returns-inline">
+                                    <span class="type">: String</span>
+                                  </span>
+                              </h5>
+                              <div class="description">
+                                  <p>Formats the value for display.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_formatter_Formatter.es6.html#l17">src\formatter\Formatter.es6:17</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      1.0.0
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">value :</span>
+                                          <span class="type"></span>
+                                        <div class="param-description">
+                                          <p>The value to format</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
+                                <div class="returns">
+                                  <h6>Returns:</h6>
+                                  <ul class="returns">
+                                    <li>
+                                          <span class="type">String</span>
+                                        <p>The formatted value</p>
+                            
+                                    </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="method_init" class="list-group-item method item private inherited">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
                                 <b class="name">init</b>
@@ -308,9 +368,8 @@
                               <div class="meta">
                                 <ul class="list-unstyled">
                                   <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
+                                        <label>Inherited From:</label>
+                                        <a href="../classes/EJSC.Inheritable.html#method_init">EJSC.Inheritable</a>:
                                       <a href="../files/src_class_Inheritable.es6.html#l99">src\class\Inheritable.es6:99</a>
                                   </li>
                                     <li class="available">
@@ -320,7 +379,7 @@
                                 </ul>
                               </div>
                             </li>
-                            <li id="method_update" class="list-group-item method item private">
+                            <li id="method_update" class="list-group-item method item private inherited">
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
                                 <b class="name">update</b>
@@ -334,9 +393,8 @@
                               <div class="meta">
                                 <ul class="list-unstyled">
                                   <li class="inherited">
-                                        <label>
-                                            Defined in
-                                        </label>
+                                        <label>Inherited From:</label>
+                                        <a href="../classes/EJSC.Inheritable.html#method_update">EJSC.Inheritable</a>:
                                       <a href="../files/src_class_Inheritable.es6.html#l112">src\class\Inheritable.es6:112</a>
                                   </li>
                                     <li class="available">
@@ -361,16 +419,20 @@
                             <div class="index-section methods">
                                 <h3>Methods</h3>
                 
-                                <ul class="index-list methods">
-                                        <li class="index-item method">
+                                <ul class="index-list methods extends">
+                                        <li class="index-item method inherited">
                                             <a href="#" data-tabid="#methods" data-anchor="#method_apply" data-tablink="apply">apply</a>
                 
                                         </li>
-                                        <li class="index-item method private">
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_format" data-tablink="format">format</a>
+                
+                                        </li>
+                                        <li class="index-item method private inherited">
                                             <a href="#" data-tabid="#methods" data-anchor="#method_init" data-tablink="init">init</a>
                 
                                         </li>
-                                        <li class="index-item method private">
+                                        <li class="index-item method private inherited">
                                             <a href="#" data-tabid="#methods" data-anchor="#method_update" data-tablink="update">update</a>
                 
                                         </li>
@@ -380,12 +442,12 @@
                             <div class="index-section properties">
                                 <h3>Properties</h3>
                 
-                                <ul class="index-list properties">
-                                        <li class="index-item property private">
+                                <ul class="index-list properties extends">
+                                        <li class="index-item property private inherited">
                                             <a href="#" data-tabid="#properties" data-anchor="#property_initialized" data-tablink="initialized">initialized</a>
                 
                                         </li>
-                                        <li class="index-item property private">
+                                        <li class="index-item property private inherited">
                                             <a href="#" data-tabid="#properties" data-anchor="#property_listening" data-tablink="listening">listening</a>
                 
                                         </li>

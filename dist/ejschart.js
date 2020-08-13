@@ -102,24 +102,26 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-__webpack_require__(10);
 __webpack_require__(11);
 __webpack_require__(12);
-__webpack_require__(9);
 __webpack_require__(13);
+__webpack_require__(9);
 __webpack_require__(14);
 __webpack_require__(15);
 __webpack_require__(16);
 __webpack_require__(17);
-__webpack_require__(7);
 __webpack_require__(18);
-__webpack_require__(25);
-__webpack_require__(24);
-__webpack_require__(22);
-__webpack_require__(23);
-__webpack_require__(21);
+__webpack_require__(7);
+__webpack_require__(10);
 __webpack_require__(19);
 __webpack_require__(20);
+__webpack_require__(27);
+__webpack_require__(26);
+__webpack_require__(24);
+__webpack_require__(25);
+__webpack_require__(23);
+__webpack_require__(21);
+__webpack_require__(22);
 __webpack_require__(3);
 __webpack_require__(2);
 __webpack_require__(8);
@@ -164,6 +166,10 @@ var _EJSC2 = _interopRequireDefault(_EJSC);
 var _Inheritable2 = __webpack_require__(9);
 
 var _Inheritable3 = _interopRequireDefault(_Inheritable2);
+
+var _Formatter = __webpack_require__(10);
+
+var _Formatter2 = _interopRequireDefault(_Formatter);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -310,6 +316,8 @@ exports.default = _EJSC2.default.Axis = function (_Inheritable) {
         this.update();
       }
     }
+
+    // TODO: formatter
 
     /* not-sparkline:start */
     /**
@@ -700,6 +708,7 @@ exports.default = _EJSC2.default.Axis = function (_Inheritable) {
         text: null,
         visible: true
       };
+      this.formatter = new _Formatter2.default();
       this.grid = {
         style: {
           lineDash: [3, 3],
@@ -1191,6 +1200,8 @@ exports.default = _EJSC2.default.Axis = function (_Inheritable) {
   }, {
     key: 'drawMajorTickCaptions',
     value: function drawMajorTickCaptions(ticks) {
+      var _this2 = this;
+
       // Grab some local pointers
       var axis = this;
       var chart = this.chart;
@@ -1244,7 +1255,7 @@ exports.default = _EJSC2.default.Axis = function (_Inheritable) {
         }
 
         // Draw the text
-        chart.text(text, x, y, {
+        chart.text(_this2.formatter.format(text), x, y, {
           textAlign: align,
           textBaseline: baseline
         });
@@ -1429,11 +1440,11 @@ exports.default = _EJSC2.default.Axis = function (_Inheritable) {
   }, {
     key: 'getVisibleSeries',
     value: function getVisibleSeries() {
-      var _this2 = this;
+      var _this3 = this;
 
       // Return the list of visible series
       return _Array2.default.filter(this.chart.series, function (series) {
-        return _this2.orientation === 'horizontal' && series.xAxis === _this2.side && series.isVisible() || _this2.orientation === 'vertical' && series.yAxis === _this2.side && series.isVisible();
+        return _this3.orientation === 'horizontal' && series.xAxis === _this3.side && series.isVisible() || _this3.orientation === 'vertical' && series.yAxis === _this3.side && series.isVisible();
       });
     }
 
@@ -2862,10 +2873,49 @@ var $String = function $String(string) {
 
 
     _createClass(_class, [{
-      key: "capitalize",
+      key: 'capitalize',
       value: function capitalize() {
         // Return the capitalized string
         this.result = this.result.substr(0, 1).toUpperCase() + this.result.substr(1).toLowerCase();
+
+        // Chain
+        return this;
+      }
+
+      /**
+      * Pads string on the right side if it's shorter than length.
+      * Padding characters are truncated if they exceed length.
+      *
+      * @example
+      *   ```
+      *   $String('abc').padEnd(6).result;
+      *   // => 'abc   '
+      *
+      *   $String('abc').padEnd(6, '_-').result;
+      *   // => 'abc_-_'
+      *
+      *   $String('abc').padEnd(3).result;
+      *   // => 'abc'
+      *   ```
+      *
+      * @method padEnd
+      * @param {String} [length=0] The padding length
+      * @param {String} [chars=' '] The string used as padding
+      * @chainable
+      * @since @todo
+      */
+
+    }, {
+      key: 'padEnd',
+      value: function padEnd() {
+        var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+        var chars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ' ';
+
+        // Pad the end of the string
+        while (this.result.length < length) {
+          // TODO: Fix to truncate if needed
+          this.result += chars;
+        }
 
         // Chain
         return this;
@@ -2889,7 +2939,7 @@ var $String = function $String(string) {
        */
 
     }, {
-      key: "upperFirst",
+      key: 'upperFirst',
       value: function upperFirst() {
         // Return the string with the first character in upper case
         this.result = this.result.substr(0, 1).toUpperCase() + this.result.substr(1);
@@ -2914,11 +2964,42 @@ var $String = function $String(string) {
 *
 * @static
 * @method capitalize
+* @param {String} string The string to capitalize
 * @return {String} The capitalized value
 * @since @todo
 */
 $String.capitalize = function (string) {
   return string && $String(string).capitalize().result;
+};
+
+/**
+* Pads string on the right side if it's shorter than length.
+* Padding characters are truncated if they exceed length.
+*
+* @example
+*   ```
+*   $String.padEnd('abc', 6);
+*   // => 'abc   '
+*
+*   $String.padEnd('abc', 6, '_-');
+*   // => 'abc_-_'
+*
+*   $String.padEnd('abc', 3);
+*   // => 'abc'
+*   ```
+*
+* @static
+* @method padEnd
+* @param {String} string The string to pad
+* @param {String} [length=0] The padding length
+* @param {String} [chars=' '] The string used as padding
+* @chainable
+* @since @todo
+*/
+$String.padEnd = function (string) {
+  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var chars = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ' ';
+  return string && $String(string).padEnd(length, chars).result;
 };
 
 /**
@@ -2935,6 +3016,7 @@ $String.capitalize = function (string) {
  *
  * @static
  * @method upperFirst
+ * @param {String} string The string to convert
  * @return {String} The upper cased value
  * @since @todo
  */
@@ -2981,8 +3063,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Top level namespace for all classes and variables used by the Emprise JavaScript Charts package.
  * Use of this namespace prevents variable name collisions with other available JavaScript packages.
  *
- * @class EJSC
  * @static
+ * @class EJSC
  * @since 1.0.0
  */
 exports.default = window.EJSC = new (function () {
@@ -2992,8 +3074,8 @@ exports.default = window.EJSC = new (function () {
     /**
      * Array of prepared functions to be called when the window loads.
      *
-     * @property {Array} prepared
      * @private
+     * @property {Array} prepared
      * @default []
      * @since 3.0.0
      */
@@ -3037,8 +3119,8 @@ exports.default = window.EJSC = new (function () {
   /**
    * Runs each of the prepared callback functions when the page loads.
    *
-   * @method load
    * @private
+   * @method load
    * @since 3.0.0
    */
 
@@ -3351,6 +3433,76 @@ exports.default = _EJSC2.default.Inheritable = function () {
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _EJSC = __webpack_require__(7);
+
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _Inheritable2 = __webpack_require__(9);
+
+var _Inheritable3 = _interopRequireDefault(_Inheritable2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * The top level Formatter class is used as a base for all label formatters.
+ * It defines a format() method as a guide for descendants.
+ * The format method is required to be overridden in all descendant classes in order to function properly when used with the chart classes.
+ *
+ * @private
+ * @constructor
+ * @class EJSC.Formatter
+ * @extends EJSC.Inheritable
+ * @param {Object} [options={}] The config options to apply
+ * @since 1.0.0
+ */
+exports.default = _EJSC2.default.Formatter = function (_Inheritable) {
+  _inherits(Formatter, _Inheritable);
+
+  function Formatter() {
+    _classCallCheck(this, Formatter);
+
+    return _possibleConstructorReturn(this, (Formatter.__proto__ || Object.getPrototypeOf(Formatter)).apply(this, arguments));
+  }
+
+  _createClass(Formatter, [{
+    key: 'format',
+
+    /**
+     * Formats the value for display.
+     *
+     * @method format
+     * @param {*} value The value to format
+     * @return {String} The formatted value
+     * @since 1.0.0
+     */
+    value: function format(value) {
+      // Return the default value
+      return value;
+    }
+  }]);
+
+  return Formatter;
+}(_Inheritable3.default);
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3703,7 +3855,7 @@ exports.default = _EJSC2.default.LinearAxis = function (_Axis) {
 }(_Axis3.default);
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4248,7 +4400,7 @@ exports.default = _EJSC2.default.LogarithmicAxis = function (_Axis) {
 }(_Axis3.default);
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4280,7 +4432,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Drawing2 = __webpack_require__(13);
+var _Drawing2 = __webpack_require__(14);
 
 var _Drawing3 = _interopRequireDefault(_Drawing2);
 
@@ -5316,7 +5468,7 @@ exports.default = _EJSC2.default.Chart = function (_Drawing) {
 }(_Drawing3.default);
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6281,7 +6433,7 @@ _EJSC2.default.Drawing.defaults = {
 _EJSC2.default.Drawing.engines = {};
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6764,7 +6916,7 @@ exports.default = _EJSC2.default.Engine = function (_Inheritable) {
 }(_Inheritable3.default);
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6790,11 +6942,11 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Drawing = __webpack_require__(13);
+var _Drawing = __webpack_require__(14);
 
 var _Drawing2 = _interopRequireDefault(_Drawing);
 
-var _Engine2 = __webpack_require__(14);
+var _Engine2 = __webpack_require__(15);
 
 var _Engine3 = _interopRequireDefault(_Engine2);
 
@@ -7440,7 +7592,7 @@ _EJSC2.default.Canvas.isSupported = function () {
 _Drawing2.default.register('Canvas', _EJSC2.default.Canvas);
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7460,11 +7612,11 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Drawing = __webpack_require__(13);
+var _Drawing = __webpack_require__(14);
 
 var _Drawing2 = _interopRequireDefault(_Drawing);
 
-var _Engine2 = __webpack_require__(14);
+var _Engine2 = __webpack_require__(15);
 
 var _Engine3 = _interopRequireDefault(_Engine2);
 
@@ -8306,7 +8458,7 @@ _EJSC2.default.SVG.isSupported = function () {
 _Drawing2.default.register('SVG', _EJSC2.default.SVG);
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8324,7 +8476,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Engine2 = __webpack_require__(14);
+var _Engine2 = __webpack_require__(15);
 
 var _Engine3 = _interopRequireDefault(_Engine2);
 
@@ -8798,7 +8950,619 @@ _EJSC2.default.VML.isSupported = function () {
 // EJSC.Drawing.register('VML', EJSC.VML);
 
 /***/ }),
-/* 18 */
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Number = __webpack_require__(4);
+
+var _Number2 = _interopRequireDefault(_Number);
+
+var _Object = __webpack_require__(5);
+
+var _Object2 = _interopRequireDefault(_Object);
+
+var _String = __webpack_require__(6);
+
+var _String2 = _interopRequireDefault(_String);
+
+var _EJSC = __webpack_require__(7);
+
+var _EJSC2 = _interopRequireDefault(_EJSC);
+
+var _Formatter2 = __webpack_require__(10);
+
+var _Formatter3 = _interopRequireDefault(_Formatter2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Use this formatter when you want more control over the display of numeric values in your charts.
+ * It can be applied to the chart axis as well as series hints.
+ *
+ * @example
+ *   ```
+ *   // Create a basic NumberFormatter
+ *   new EJSC.NumberFormatter();
+ *
+ *   // Create a NumberFormatter that forces 2 decimals to be displayed
+ *   new EJSC.NumberFormatter({
+ *     minimumDecimals: 2
+ *   });
+ *   ```
+ *
+ * @constructor
+ * @class EJSC.NumberFormatter
+ * @extends EJSC.Formatter
+ * @param {Object} [options={}] The config options to apply
+ * @since 1.0.0
+ */
+exports.default = _EJSC2.default.NumberFormatter = function (_Formatter) {
+  _inherits(NumberFormatter, _Formatter);
+
+  function NumberFormatter() {
+    _classCallCheck(this, NumberFormatter);
+
+    return _possibleConstructorReturn(this, (NumberFormatter.__proto__ || Object.getPrototypeOf(NumberFormatter)).apply(this, arguments));
+  }
+
+  _createClass(NumberFormatter, [{
+    key: 'getCurrencyAlign',
+
+    /**
+     * Defines the currency alignment.
+     *
+     * Valid values: 'left', 'right'
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that sets the currency alignment to 'right'
+     *   new EJSC.NumberFormatter({
+     *     // currencyAlign: 'left',
+     *     currencySymbol: '$'
+     *   });
+     *   // 0.1234 -> $0.1234
+     *
+     *   // Create a NumberFormatter that sets the currency alignment to 'right'
+     *   new EJSC.NumberFormatter({
+     *     currencyAlign: 'right',
+     *     currencySymbol: '$'
+     *   });
+     *   // 0.1234 -> 0.1234$
+     *   ```
+     *
+     * @attribute {String} currencyAlign
+     * @default 'left'
+     * @since 3.0.0
+     */
+
+    // getter
+    value: function getCurrencyAlign() {
+      // Return the current currency align
+      return this.currencyAlign;
+    }
+
+    // setter
+
+  }, {
+    key: 'setCurrencyAlign',
+    value: function setCurrencyAlign(currencyAlign) {
+      // Update the current currency align
+      this.currencyAlign = currencyAlign;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the currency position.
+     *
+     * Valid values: 'inner', 'outer'
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that sets the currency position to 'inner'
+     *   new EJSC.NumberFormatter({
+     *     currencyPosition: 'inner',
+     *     currencySymbol: '$'
+     *   });
+     *   // -0.1234 -> -$0.1234
+     *
+     *   // Create a NumberFormatter that keeps the currency position as 'outer'
+     *   new EJSC.NumberFormatter({
+     *     // currencyPosition: 'outer',
+     *     currencySymbol: '$'
+     *   });
+     *   // -0.1234 -> $-0.1234
+     *   ```
+     *
+     * @attribute {String} currencyPosition
+     * @default 'outer'
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getCurrencyPosition',
+    value: function getCurrencyPosition() {
+      // Return the current currency position
+      return this.currencySymbol;
+    }
+
+    // setter
+
+  }, {
+    key: 'setCurrencyPosition',
+    value: function setCurrencyPosition(currencyPosition) {
+      // Update the current currency position
+      this.currencyPosition = currencyPosition;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the currency symbol.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that sets the currency symbol to ','
+     *   new EJSC.NumberFormatter({
+     *     currencySymbol: '$'
+     *   });
+     *   // 0.1234 -> $0.1234
+     *   ```
+     *
+     * @attribute {String} currencySymbol
+     * @default ''
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getCurrencySymbol',
+    value: function getCurrencySymbol() {
+      // Return the current currency symbol
+      return this.currencySymbol;
+    }
+
+    // setter
+
+  }, {
+    key: 'setCurrencySymbol',
+    value: function setCurrencySymbol(currencySymbol) {
+      // Update the current currency symbol
+      this.currencySymbol = currencySymbol;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the symbol to place before the decimals.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that switches the decimal symbol to ','
+     *   new EJSC.NumberFormatter({
+     *     decimalSymbol: ','
+     *   });
+     *   // 0.1234 -> 0,1234
+     *   ```
+     *
+     * @attribute {String} decimalSymbol
+     * @default '.'
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getDecimalSymbol',
+    value: function getDecimalSymbol() {
+      // Return the current decimal symbol
+      return this.decimalSymbol;
+    }
+
+    // setter
+
+  }, {
+    key: 'setDecimalSymbol',
+    value: function setDecimalSymbol(decimalSymbol) {
+      // Update the current decimal symbol
+      this.decimalSymbol = decimalSymbol;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the maximum decimals of the formatter.
+     *
+     * Valid values are 0-14.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that allows a maximum of 2 decimals
+     *   new EJSC.NumberFormatter({
+     *     maximumDecimals: 2
+     *   });
+     *   // 0.1234 -> 0.12
+     *   ```
+     *
+     * @attribute {Integer} maximumDecimals
+     * @default 14
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getMaximumDecimals',
+    value: function getMaximumDecimals() {
+      // Return the current maximum decimals
+      return this.maximumDecimals;
+    }
+
+    // setter
+
+  }, {
+    key: 'setMaximumDecimals',
+    value: function setMaximumDecimals(maximumDecimals) {
+      // Update the current maximum decimals
+      this.maximumDecimals = maximumDecimals;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the minimum decimals of the formatter.
+     *
+     * Valid values are 0-14.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that allows a minimum of 2 decimals
+     *   new EJSC.NumberFormatter({
+     *     minimumDecimals: 6
+     *   });
+     *   // 0.1234 -> 0.123400
+     *   ```
+     *
+     * @attribute {Integer} minimumDecimals
+     * @default 0
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getMinimumDecimals',
+    value: function getMinimumDecimals() {
+      // Return the current minimum decimals
+      return this.minimumDecimals;
+    }
+
+    // setter
+
+  }, {
+    key: 'setMinimumDecimals',
+    value: function setMinimumDecimals(minimumDecimals) {
+      // Update the current minimum decimals
+      this.minimumDecimals = minimumDecimals;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the prefix to use for negative numbers.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that sets the prefix for negative numbers to '('
+     *   new EJSC.NumberFormatter({
+     *     negativePrefix: '('
+     *   });
+     *   // -0.1234 -> (0.1234
+     *   ```
+     *
+     * @attribute {String} negativePrefix
+     * @default '-'
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getNegativePrefix',
+    value: function getNegativePrefix() {
+      // Return the current negative prefix
+      return this.negativePrefix;
+    }
+
+    // setter
+
+  }, {
+    key: 'setNegativePrefix',
+    value: function setNegativePrefix(negativePrefix) {
+      // Update the current negative prefix
+      this.negativePrefix = negativePrefix;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the suffix to use for negative numbers.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that sets the suffix for negative numbers to ')'
+     *   new EJSC.NumberFormatter({
+     *     negativeSuffix: ')'
+     *   });
+     *   // -0.1234 -> -0.1234)
+     *   ```
+     *
+     * @attribute {String} negativeSuffix
+     * @default ''
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getNegativeSuffix',
+    value: function getNegativeSuffix() {
+      // Return the current negative suffix
+      return this.negativeSuffix;
+    }
+
+    // setter
+
+  }, {
+    key: 'setNegativeSuffix',
+    value: function setNegativeSuffix(negativeSuffix) {
+      // Update the current negative suffix
+      this.negativeSuffix = negativeSuffix;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the prefix to use for positive numbers.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that sets the prefix for positive numbers to '('
+     *   new EJSC.NumberFormatter({
+     *     positivePrefix: '('
+     *   });
+     *   // 0.1234 -> (0.1234
+     *   ```
+     *
+     * @attribute {String} positivePrefix
+     * @default '-'
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getPositivePrefix',
+    value: function getPositivePrefix() {
+      // Return the current positive prefix
+      return this.positivePrefix;
+    }
+
+    // setter
+
+  }, {
+    key: 'setPositivePrefix',
+    value: function setPositivePrefix(positivePrefix) {
+      // Update the current positive prefix
+      this.positivePrefix = positivePrefix;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the suffix to use for positive numbers.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that sets the suffix for positive numbers to ')'
+     *   new EJSC.NumberFormatter({
+     *     positiveSuffix: ')'
+     *   });
+     *   // 0.1234 -> 0.1234)
+     *   ```
+     *
+     * @attribute {String} positiveSuffix
+     * @default ''
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getPositiveSuffix',
+    value: function getPositiveSuffix() {
+      // Return the current positive suffix
+      return this.positiveSuffix;
+    }
+
+    // setter
+
+  }, {
+    key: 'setPositiveSuffix',
+    value: function setPositiveSuffix(positiveSuffix) {
+      // Update the current positive suffix
+      this.positiveSuffix = positiveSuffix;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    /**
+     * Defines the symbol to use for separating the whole value into thousands.
+     *
+     * @example
+     *   ```
+     *   // Create a NumberFormatter that sets the thousands symbol to ','
+     *   new EJSC.NumberFormatter({
+     *     thousandsSymbol: ','
+     *   });
+     *   // 1234 -> 1,234
+     *   ```
+     *
+     * @attribute {String} thousandsSymbol
+     * @default ''
+     * @since 3.0.0
+     */
+
+    // getter
+
+  }, {
+    key: 'getThousandsSymbol',
+    value: function getThousandsSymbol() {
+      // Return the current thousands symbol
+      return this.thousandsSymbol;
+    }
+
+    // setter
+
+  }, {
+    key: 'setThousandsSymbol',
+    value: function setThousandsSymbol(thousandsSymbol) {
+      // Update the current thousands symbol
+      this.thousandsSymbol = thousandsSymbol;
+
+      // Redraw the chart if needed
+      if (this.listening) {
+        this.update();
+      }
+    }
+
+    // init
+
+  }, {
+    key: 'init',
+    value: function init() {
+      // super
+      _get(NumberFormatter.prototype.__proto__ || Object.getPrototypeOf(NumberFormatter.prototype), 'init', this).call(this);
+
+      // Initialize some public properties
+      this.currencyAlign = 'left';
+      this.currencyPosition = 'inner';
+      this.currencySymbol = '';
+      this.decimalSymbol = '.';
+      this.maximumDecimals = 14;
+      this.minimumDecimals = 0;
+      this.negativePrefix = '-';
+      this.negativeSuffix = '';
+      this.positivePrefix = '';
+      this.positiveSuffix = '';
+      this.thousandsSymbol = '';
+    }
+
+    /**
+     * Formats the value for display.
+     *
+     * @method format
+     * @param {*} value The value to format
+     * @return {String} The formatted value
+     * @since 1.0.0
+     */
+
+  }, {
+    key: 'format',
+    value: function format(value) {
+      // Make sure the value is a number
+      if (!_Object2.default.isNumber(value)) {}
+      // TODO: error out
+
+
+      // Define some local variables
+      var thousandsPattern = /(\d+)(\d{3})/;
+
+      // Grab the parts of the number
+      var isNegative = value < 0;
+      var wholeValue = Math.floor(Math.abs(value));
+      var decimalValue = _Number2.default.round(Math.abs(value) - wholeValue, 14);
+
+      // Convert parts of the number to strings
+      wholeValue = wholeValue.toString();
+
+      // Apply the thousands symbol
+      if (this.thousandsSymbol !== '') {
+        while (thousandsPattern.test(wholeValue)) {
+          wholeValue = wholeValue.replace(thousandsPattern, '$1' + this.thousandsSymbol + '$2');
+        }
+      }
+
+      // Apply the maximum decimals
+      decimalValue = _Number2.default.round(decimalValue, this.maximumDecimals);
+
+      // Apply the minimum decimals
+      if (decimalValue || this.minimumDecimals) {
+        decimalValue = _String2.default.padEnd(decimalValue.toString().replace(/^.+\./, ''), this.minimumDecimals, '0');
+      } else {
+        decimalValue = '';
+      }
+
+      // Return the final value
+      return [this.currencyPosition === 'outer' && this.currencyAlign === 'left' ? this.currencySymbol : '', isNegative ? this.negativePrefix : this.positivePrefix, this.currencyPosition === 'inner' && this.currencyAlign === 'left' ? this.currencySymbol : '', wholeValue, decimalValue ? this.decimalSymbol + decimalValue : '', this.currencyPosition === 'inner' && this.currencyAlign === 'right' ? this.currencySymbol : '', isNegative ? this.negativeSuffix : this.positiveSuffix, this.currencyPosition === 'outer' && this.currencyAlign === 'right' ? this.currencySymbol : ''].join('');
+    }
+  }]);
+
+  return NumberFormatter;
+}(_Formatter3.default);
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8828,7 +9592,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _LineSeries2 = __webpack_require__(19);
+var _LineSeries2 = __webpack_require__(21);
 
 var _LineSeries3 = _interopRequireDefault(_LineSeries2);
 
@@ -9039,7 +9803,7 @@ exports.default = _EJSC2.default.AreaSeries = function (_LineSeries) {
 }(_LineSeries3.default);
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9069,7 +9833,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _ScatterSeries2 = __webpack_require__(20);
+var _ScatterSeries2 = __webpack_require__(22);
 
 var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
 
@@ -9716,7 +10480,7 @@ exports.default = _EJSC2.default.LineSeries = function (_ScatterSeries) {
 }(_ScatterSeries3.default);
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9746,7 +10510,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _XYSeries2 = __webpack_require__(21);
+var _XYSeries2 = __webpack_require__(23);
 
 var _XYSeries3 = _interopRequireDefault(_XYSeries2);
 
@@ -9994,7 +10758,7 @@ exports.default = _EJSC2.default.ScatterSeries = function (_XYSeries) {
 }(_XYSeries3.default);
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10012,11 +10776,11 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _PlotSeries = __webpack_require__(22);
+var _PlotSeries = __webpack_require__(24);
 
 var _PlotSeries2 = _interopRequireDefault(_PlotSeries);
 
-var _DataSeries2 = __webpack_require__(24);
+var _DataSeries2 = __webpack_require__(26);
 
 var _DataSeries3 = _interopRequireDefault(_DataSeries2);
 
@@ -10075,7 +10839,7 @@ exports.default = _EJSC2.default.XYSeries = function (_DataSeries) {
 }((0, _DataSeries3.default)(_PlotSeries2.default));
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10101,7 +10865,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _Series2 = __webpack_require__(23);
+var _Series2 = __webpack_require__(25);
 
 var _Series3 = _interopRequireDefault(_Series2);
 
@@ -10337,7 +11101,7 @@ exports.default = _EJSC2.default.PlotSeries = function (_Series) {
 }(_Series3.default);
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10618,7 +11382,7 @@ exports.default = _EJSC2.default.Series = function (_Inheritable) {
 }(_Inheritable3.default);
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10756,7 +11520,7 @@ exports.default = _EJSC2.default.DataSeries = function (superclass) {
 };
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10786,7 +11550,7 @@ var _EJSC = __webpack_require__(7);
 
 var _EJSC2 = _interopRequireDefault(_EJSC);
 
-var _ScatterSeries2 = __webpack_require__(20);
+var _ScatterSeries2 = __webpack_require__(22);
 
 var _ScatterSeries3 = _interopRequireDefault(_ScatterSeries2);
 

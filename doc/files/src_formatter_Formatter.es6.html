@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>src\util\Element.es6 - EJSCharts</title>
+    <title>src\formatter\Formatter.es6 - EJSCharts</title>
     <link href="../assets/vendor/bootstrap/bootstrap-4.5.0.min.css" rel="stylesheet" />
     <link href="../assets/vendor/prettify/prettify-min.css" rel="stylesheet" />
     <link href="../assets/css/theme.css" rel="stylesheet" />
@@ -79,93 +79,37 @@
               <div class="content">
                 <div class="card">
                   <div class="card-header">
-                    <h3>src\util\Element.es6 <small class="float-right">File</small></h3>
+                    <h3>src\formatter\Formatter.es6 <small class="float-right">File</small></h3>
                   </div>
-                  <pre class="card-body prettyprint linenums">import $Array from &#x27;./Array.es6&#x27;;
-                import $Object from &#x27;./Object.es6&#x27;;
+                  <pre class="card-body prettyprint linenums">import EJSC from &#x27;../EJSC.es6&#x27;;
+                import Inheritable from &#x27;../class/Inheritable.es6&#x27;;
                 
-                // TODO: $Element documentation
                 /**
-                 * @class $Element
+                 * The top level Formatter class is used as a base for all label formatters.
+                 * It defines a format() method as a guide for descendants.
+                 * The format method is required to be overridden in all descendant classes in order to function properly when used with the chart classes.
+                 *
                  * @private
+                 * @constructor
+                 * @class EJSC.Formatter
+                 * @extends EJSC.Inheritable
+                 * @param {Object} [options={}] The config options to apply
+                 * @since 1.0.0
                  */
-                let $Element = (element) =&gt; new class {
-                  // constructor
-                  constructor($element) {
-                    this.result = $element;
-                  }
-                
+                export default EJSC.Formatter = class Formatter extends Inheritable {
                   /**
-                   * Attach an event handler function for one or more events to the element.
+                   * Formats the value for display.
                    *
-                   * @example
-                   *   &#x60;&#x60;&#x60;
-                   *   // TODO: $Element().on example
-                   *   &#x60;&#x60;&#x60;
-                   *
-                   * @method on
-                   * @param {Array|String} events The event(s) to listen for
-                   * @param {Function} callback The function to call when the event occurs
-                   * @chainable
-                   * @since @todo
+                   * @method format
+                   * @param {*} value The value to format
+                   * @return {String} The formatted value
+                   * @since 1.0.0
                    */
-                  on(events, callback) {
-                    // Convert the events to an array if it&#x27;s not already
-                    if (!$Object.isArray(events)) {
-                      events = [events];
-                    }
-                
-                    // Loop through each of the events
-                    $Array.forEach(events, event =&gt; {
-                      // Attach the event handler function for the current event to the element
-                      if (this.result.attachEvent) {
-                        this.result.attachEvent(&#x27;on&#x27; + event, callback.bind(this.result));
-                      }
-                      else {
-                        this.result.addEventListener(event, callback.bind(this.result), true);
-                      }
-                    });
-                
-                    // Chain
-                    return this;
+                  format(value) {
+                    // Return the default value
+                    return value;
                   }
-                }(element);
-                
-                // TODO: $Element.find documentation
-                $Element.find = (selector) =&gt; {
-                  let element = null;
-                
-                  if ($Object.isElement(selector)) {
-                    element = [selector];
-                  }
-                  else if ($Object.isString(selector)) {
-                    element = document.querySelectorAll(selector);
-                  }
-                  else if ($Object.isArray(selector)) {
-                    // TODO: $Element.find $Object.isArray
-                  }
-                
-                  return element;
                 };
-                
-                /**
-                 * Attach an event handler function for one or more events to the element.
-                 *
-                 * @example
-                 *   &#x60;&#x60;&#x60;
-                 *   // TODO: $Element.on example
-                 *   &#x60;&#x60;&#x60;
-                 *
-                 * @method on
-                 * @param {Element}
-                 * @param {Array|String} events The event(s) to listen for
-                 * @param {Function} callback The function to call when the event occurs
-                 * @return {Element} The element
-                 * @since @todo
-                 */
-                $Element.on = (element, events, callback) =&gt; element &amp;&amp; $Element(element).on(events, callback).result;
-                
-                export default $Element;
                 </pre>
                 </div>
               </div>

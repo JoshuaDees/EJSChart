@@ -48,6 +48,7 @@
                   <li><a href="../classes/EJSC.LinearAxis.html">EJSC.LinearAxis</a></li>
                   <li><a href="../classes/EJSC.LineSeries.html">EJSC.LineSeries</a></li>
                   <li><a href="../classes/EJSC.LogarithmicAxis.html">EJSC.LogarithmicAxis</a></li>
+                  <li><a href="../classes/EJSC.NumberFormatter.html">EJSC.NumberFormatter</a></li>
                   <li><a href="../classes/EJSC.ScatterSeries.html">EJSC.ScatterSeries</a></li>
               </ul>
             </div>
@@ -132,7 +133,13 @@
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
                                 <b class="name">capitalize</b>
-                                  <span class="paren">()</span>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          string
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
                                   <span class="returns-inline">
                                     <span class="type">: String</span>
                                   </span>
@@ -148,7 +155,7 @@
                                         <label>
                                             Defined in
                                         </label>
-                                      <a href="../files/src_util_String.es6.html#l58">src\util\String.es6:58</a>
+                                      <a href="../files/src_util_String.es6.html#l91">src\util\String.es6:91</a>
                                   </li>
                                     <li class="available">
                                       <label>Available since:</label>
@@ -163,6 +170,19 @@
                             </code></pre>
                             </div>
                                 </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">string :</span>
+                                          <span class="type">String</span>
+                                        <div class="param-description">
+                                          <p>The string to capitalize</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
                                 <div class="returns">
                                   <h6>Returns:</h6>
                                   <ul class="returns">
@@ -171,6 +191,162 @@
                                         <p>The capitalized value</p>
                             
                                     </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="method_padEnd" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">padEnd</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          <span class="optional">[length=0]</span>
+                                      </span>
+                                      <span class="arg">
+                                          <span class="optional">[chars=&#x27; &#x27;]</span>
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="badge badge-dark border chainable">chainable</span>
+                              </h5>
+                              <div class="description">
+                                  <p>Pads string on the right side if it's shorter than length.
+                            Padding characters are truncated if they exceed length.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_util_String.es6.html#l33">src\util\String.es6:33</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      @todo
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <div class="border"><pre class="code prettyprint"><code>$String('abc').padEnd(6).result;
+                            // =&gt; 'abc   '
+                            
+                            $String('abc').padEnd(6, '_-').result;
+                            // =&gt; 'abc_-_'
+                            
+                            $String('abc').padEnd(3).result;
+                            // =&gt; 'abc'
+                            </code></pre>
+                            </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name optional">[length=0] :</span>
+                                          <span class="type">String</span>
+                                          <span class="badge badge-dark border optional" title="This parameter is optional.">optional</span>
+                                        <div class="param-description">
+                                          <p>The padding length</p>
+                            
+                                        </div>
+                                      </li>
+                                      <li class="param">
+                                          <span class="param-name optional">[chars=&#x27; &#x27;] :</span>
+                                          <span class="type">String</span>
+                                          <span class="badge badge-dark border optional" title="This parameter is optional.">optional</span>
+                                        <div class="param-description">
+                                          <p>The string used as padding</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
+                                </div>
+                            </li>
+                            <li id="method_padEnd" class="list-group-item method item">
+                              <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
+                              <h5 class="details">
+                                <b class="name">padEnd</b>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          string
+                                      </span>
+                                      <span class="arg">
+                                          <span class="optional">[length=0]</span>
+                                      </span>
+                                      <span class="arg">
+                                          <span class="optional">[chars=&#x27; &#x27;]</span>
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
+                                  <span class="badge badge-dark border static">static</span>
+                                  <span class="badge badge-dark border chainable">chainable</span>
+                              </h5>
+                              <div class="description">
+                                  <p>Pads string on the right side if it's shorter than length.
+                            Padding characters are truncated if they exceed length.</p>
+                            
+                              </div>
+                              <div class="meta">
+                                <ul class="list-unstyled">
+                                  <li class="inherited">
+                                        <label>
+                                            Defined in
+                                        </label>
+                                      <a href="../files/src_util_String.es6.html#l108">src\util\String.es6:108</a>
+                                  </li>
+                                    <li class="available">
+                                      <label>Available since:</label>
+                                      @todo
+                                    </li>
+                                </ul>
+                              </div>
+                                <div class="example">
+                                  <h6>Example:</h6>
+                                  <div class="border"><pre class="code prettyprint"><code>$String.padEnd('abc', 6);
+                            // =&gt; 'abc   '
+                            
+                            $String.padEnd('abc', 6, '_-');
+                            // =&gt; 'abc_-_'
+                            
+                            $String.padEnd('abc', 3);
+                            // =&gt; 'abc'
+                            </code></pre>
+                            </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">string :</span>
+                                          <span class="type">String</span>
+                                        <div class="param-description">
+                                          <p>The string to pad</p>
+                            
+                                        </div>
+                                      </li>
+                                      <li class="param">
+                                          <span class="param-name optional">[length=0] :</span>
+                                          <span class="type">String</span>
+                                          <span class="badge badge-dark border optional" title="This parameter is optional.">optional</span>
+                                        <div class="param-description">
+                                          <p>The padding length</p>
+                            
+                                        </div>
+                                      </li>
+                                      <li class="param">
+                                          <span class="param-name optional">[chars=&#x27; &#x27;] :</span>
+                                          <span class="type">String</span>
+                                          <span class="badge badge-dark border optional" title="This parameter is optional.">optional</span>
+                                        <div class="param-description">
+                                          <p>The string used as padding</p>
+                            
+                                        </div>
+                                      </li>
                                   </ul>
                                 </div>
                             </li>
@@ -191,7 +367,7 @@
                                         <label>
                                             Defined in
                                         </label>
-                                      <a href="../files/src_util_String.es6.html#l33">src\util\String.es6:33</a>
+                                      <a href="../files/src_util_String.es6.html#l66">src\util\String.es6:66</a>
                                   </li>
                                     <li class="available">
                                       <label>Available since:</label>
@@ -214,7 +390,13 @@
                               <a class="toggle" onclick="$(this.parentNode).toggleClass('expanded');"></a>
                               <h5 class="details">
                                 <b class="name">upperFirst</b>
-                                  <span class="paren">()</span>
+                                  <span class="paren">(</span>
+                                  <span class="args">
+                                      <span class="arg">
+                                          string
+                                      </span>
+                                  </span>
+                                  <span class="paren">)</span>
                                   <span class="returns-inline">
                                     <span class="type">: String</span>
                                   </span>
@@ -230,7 +412,7 @@
                                         <label>
                                             Defined in
                                         </label>
-                                      <a href="../files/src_util_String.es6.html#l74">src\util\String.es6:74</a>
+                                      <a href="../files/src_util_String.es6.html#l134">src\util\String.es6:134</a>
                                   </li>
                                     <li class="available">
                                       <label>Available since:</label>
@@ -247,6 +429,19 @@
                             // =&gt; 'FRED'
                             </code></pre>
                             </div>
+                                </div>
+                                <div class="params">
+                                  <h6>Parameters:</h6>
+                                  <ul>
+                                      <li class="param">
+                                          <span class="param-name">string :</span>
+                                          <span class="type">String</span>
+                                        <div class="param-description">
+                                          <p>The string to convert</p>
+                            
+                                        </div>
+                                      </li>
+                                  </ul>
                                 </div>
                                 <div class="returns">
                                   <h6>Returns:</h6>
@@ -281,6 +476,15 @@
                                         </li>
                                         <li class="index-item method">
                                             <a href="#" data-tabid="#methods" data-anchor="#method_capitalize" data-tablink="capitalize">capitalize</a>
+                
+                                                <span class="flag static">static</span>
+                                        </li>
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_padEnd" data-tablink="padEnd">padEnd</a>
+                
+                                        </li>
+                                        <li class="index-item method">
+                                            <a href="#" data-tabid="#methods" data-anchor="#method_padEnd" data-tablink="padEnd">padEnd</a>
                 
                                                 <span class="flag static">static</span>
                                         </li>

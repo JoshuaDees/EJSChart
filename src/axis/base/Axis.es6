@@ -4,6 +4,7 @@ import $Object from '../../util/Object.es6';
 import $String from '../../util/String.es6';
 import EJSC from '../../EJSC.es6';
 import Inheritable from '../../class/Inheritable.es6';
+import Formatter from '../../formatter/Formatter.es6';
 
 /**
  * Holds the code common to all Axis types.
@@ -117,6 +118,8 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
       this.update();
     }
   }
+
+  // TODO: formatter
 
   /* not-sparkline:start */
   /**
@@ -453,6 +456,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
       text: null,
       visible: true
     };
+    this.formatter = new Formatter();
     this.grid = {
       style: {
         lineDash: [3, 3],
@@ -958,7 +962,7 @@ export default EJSC['sparkline'].Axis = class Axis extends Inheritable {
       }
 
       // Draw the text
-      chart.text(text, x, y, {
+      chart.text(this.formatter.format(text), x, y, {
         textAlign: align,
         textBaseline: baseline
       });
